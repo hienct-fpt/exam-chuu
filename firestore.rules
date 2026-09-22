@@ -1,0 +1,58 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function isAdmin() { return signedIn() && request.auth.token.admin == true; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+
+    // Answer keys: never readable from the client. Cloud Functions use the Admin SDK (bypasses rules).
+    match /answerKeys/{examId} {
+      allow read, write: if false;
+    }
+
+    // Outgoing mail queue consumed by the firestore-send-email extension.
+    match /mail/{mailId} {
+      allow read, write: if false;
+    }
+
+    // Public catalog (metadata only, no answers).
+    match /exams/{examId} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+    match /topics/{topicId} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+    match /questionMeta/{examId} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    // Student profile + attempts.
+    match /students/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid);
+      allow update: if (isOwner(uid) && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'parentEmail'])) || isAdmin();
+
+      match /attempts/{attemptId} {
+        allow read: if isOwner(uid) || isAdmin();
+        // Student may create and edit an attempt only while it is in progress, then submit it once.
+        allow create: if isOwner(uid)
+          && request.resource.data.status == 'in_progress'
+          && request.resource.data.examId is string;
+        allow update: if isAdmin() || (isOwner(uid)
+          && resource.data.status == 'in_progress'
+          && request.resource.data.status in ['in_progress', 'submitted']
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['result', 'score', 'gradedAt', 'examId', 'startedAt']));
+        allow delete: if isAdmin();
+      }
+
+      match /topicStats/{topicId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow write: if isAdmin();
+      }
+    }
+  }
+}

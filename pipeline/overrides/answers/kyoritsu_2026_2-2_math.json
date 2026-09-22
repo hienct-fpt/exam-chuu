@@ -1,0 +1,54 @@
+{
+  "slots": {
+    "2-1": {
+      "answer": "12",
+      "answer_type": "number",
+      "unit": "時速 km"
+    },
+    "2-2": {
+      "answer": "8",
+      "answer_type": "number",
+      "unit": "%"
+    },
+    "4-2": {
+      "answer": "84",
+      "answer_type": "number",
+      "unit": "秒後"
+    },
+    "4-3": {
+      "answer": [
+        "17",
+        "21",
+        "2.4",
+        "27"
+      ],
+      "parts": [
+        "あ",
+        "い",
+        "う",
+        "え"
+      ],
+      "answer_type": "multi",
+      "unit": ""
+    },
+    "4-4": {
+      "delete": true
+    },
+    "5-1": {
+      "answer": "3",
+      "answer_type": "number",
+      "unit": "分ごと"
+    },
+    "5-2": {
+      "answer": "6",
+      "answer_type": "number",
+      "unit": "回"
+    },
+    "5-3": {
+      "answer": "1.5",
+      "answer_type": "number",
+      "unit": "分後",
+      "work_required": true
+    }
+  }
+}

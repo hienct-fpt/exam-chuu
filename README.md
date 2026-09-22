@@ -1,0 +1,74 @@
+# exam-chuu — 中学受験 過去問練習アプリ
+
+Past-paper practice app: questions cropped from PDF → web answer sheet → auto-grading → email report to parent.
+Plan and status: `docs/PLAN.md`.
+
+```
+pipeline/   offline PDF → question crops + bank json + answer keys   (python pipeline/run_all.py)
+functions/  Firebase Cloud Functions (Python): grade_attempt + email; examcore/ grading lib
+web/        Vite SPA (vanilla JS) → Firebase Hosting
+scripts/    sync_assets, import_bank (Firestore), set_admin, dev_server (local mock backend)
+tests/      pytest (grading + grader + report)
+```
+
+## 1. Local development (no Firebase needed)
+
+```bash
+pip install -r requirements.txt
+python pipeline/run_all.py              # builds pipeline/out (crops, bank, answers)
+python scripts/sync_assets.py           # -> web/public/bank, web/public/q
+python -m pytest tests -q
+
+python scripts/dev_server.py            # mock grader on :8790 (uses functions/ code)
+cd web && npm install && npm run dev:mock   # http://localhost:5173  (VITE_MOCK=1: localStorage attempts)
+```
+
+Mock mode: no login, attempts stored in the browser, grading + email HTML produced by `dev_server.py`
+(result page has a "メールプレビュー" link).
+
+## 2. Firebase setup (once)
+
+Prereqs: Firebase project on **Blaze** plan (Functions + Extensions), Gmail account with an **app password**.
+
+```bash
+npm i -g firebase-tools && firebase login
+# edit .firebaserc -> your project id
+firebase use REPLACE_WITH_FIREBASE_PROJECT_ID
+
+# Console: Authentication > Sign-in method > enable Google
+# Console: Project settings > Your apps > Add web app -> copy config into web/.env.local (see web/env.example)
+cp functions/env.example functions/.env          # PARENT_EMAIL, APP_URL=https://<project>.web.app
+
+# email extension (SMTP via Gmail app password)
+firebase ext:install firebase/firestore-send-email --params=extensions/firestore-send-email.env
+#   -> when prompted: SMTP_PASSWORD = Gmail app password. MAIL_COLLECTION must be "mail".
+```
+
+## 3. Deploy
+
+```bash
+python pipeline/run_all.py && python scripts/sync_assets.py
+(cd web && npm run build)
+firebase deploy --only firestore:rules,firestore:indexes,functions,hosting,extensions
+
+# upload catalog + answer keys (Admin SDK; needs gcloud ADC or GOOGLE_APPLICATION_CREDENTIALS)
+gcloud auth application-default login
+python scripts/import_bank.py --project REPLACE_WITH_FIREBASE_PROJECT_ID
+
+# after the parent signs in once with Google:
+python scripts/set_admin.py parent@gmail.com --project REPLACE_WITH_FIREBASE_PROJECT_ID
+```
+
+Result emails go to `students/{uid}.parentEmail` if set (admin edits in console), else `PARENT_EMAIL`.
+
+## 4. Data flow
+
+```
+web (Hosting)  --Auth--> students/{uid}/attempts/{aid}  {status: in_progress -> submitted}
+                                   │ Firestore trigger
+                          functions.grade_attempt  --reads--> answerKeys/{examId}, exams/{examId}
+                                   ├─ update attempt {status: graded, result}
+                                   └─ add mail/{id} {to, message{subject, html}}  --> extension --> SMTP
+```
+
+Answer keys are never readable from the client (`firestore.rules`); the bank json on Hosting has no answers.

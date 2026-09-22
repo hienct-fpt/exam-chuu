@@ -1,0 +1,28 @@
+{
+  "slots": {
+    "2-2": {
+      "answer": [
+        "1",
+        "12"
+      ],
+      "parts": [
+        "分",
+        "秒"
+      ],
+      "answer_type": "multi",
+      "unit": ""
+    },
+    "4-3": {
+      "answer": [
+        "17",
+        "6"
+      ],
+      "parts": [
+        "段目",
+        "番目"
+      ],
+      "answer_type": "multi",
+      "unit": ""
+    }
+  }
+}

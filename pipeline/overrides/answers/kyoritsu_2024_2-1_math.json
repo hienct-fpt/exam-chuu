@@ -1,0 +1,28 @@
+{
+  "slots": {
+    "3-3": {
+      "answer": "9:40",
+      "answer_type": "text",
+      "unit": "",
+      "note": "時刻"
+    },
+    "4-2": {
+      "answer": "25/22",
+      "variants": [
+        "1 3/22"
+      ],
+      "answer_type": "fraction",
+      "unit": "秒速 m"
+    },
+    "5-4": {
+      "answer": "7.2",
+      "variants": [
+        "7 1/5",
+        "36/5"
+      ],
+      "answer_type": "number",
+      "unit": "cm",
+      "work_required": true
+    }
+  }
+}

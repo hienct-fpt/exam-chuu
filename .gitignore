@@ -1,0 +1,11 @@
+# source exam PDFs (copyrighted school materials, 137 MB) stay local
+.flezi-emt/
+.pytest_cache/
+__pycache__/
+extensions/*.secret.local
+functions/.env
+functions/venv/
+kyoritsu_past/
+node_modules/
+pipeline/out/
+shinagawa_past/

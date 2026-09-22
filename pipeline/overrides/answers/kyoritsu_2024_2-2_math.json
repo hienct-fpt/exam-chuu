@@ -1,0 +1,47 @@
+{
+  "slots": {
+    "3-1": {
+      "answer": "50.24",
+      "variants": [
+        "1256/25",
+        "50 6/25"
+      ],
+      "answer_type": "number",
+      "unit": "cm2"
+    },
+    "3-2": {
+      "answer": "78.5",
+      "variants": [
+        "78 1/2",
+        "157/2"
+      ],
+      "answer_type": "number",
+      "unit": "cm2"
+    },
+    "3-3": {
+      "answer": "28.26",
+      "variants": [
+        "28 13/50",
+        "1413/50"
+      ],
+      "answer_type": "number",
+      "unit": "cm2",
+      "work_required": true
+    },
+    "4-2": {
+      "answer": "29.5",
+      "variants": [
+        "29 1/2",
+        "59/2"
+      ],
+      "answer_type": "number",
+      "unit": "cm2"
+    },
+    "5-2": {
+      "answer": "55",
+      "answer_type": "number",
+      "unit": "km",
+      "work_required": true
+    }
+  }
+}
