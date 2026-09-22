@@ -1,0 +1,24 @@
+{
+  "_source": "第２回_解答.pdf (scan) p3-p4, transcribed by hand",
+  "slots": {
+    "1-1": {"answer_type": "fraction", "answer": "16/15", "variants": ["1 1/15"], "work_required": true},
+    "1-2": {"answer_type": "fraction", "answer": "1/10", "work_required": true},
+    "2-1": {"answer_type": "number", "answer": "1800", "unit": "円"},
+    "2-2": {"answer_type": "number", "answer": "9"},
+    "2-3": {"answer_type": "number", "answer": "8", "unit": "通り"},
+    "2-4": {"answer_type": "number", "answer": "36"},
+    "2-5": {"answer_type": "number", "answer": "10", "unit": "月"},
+    "3-1": {"answer_type": "set", "answer": ["60", "68"], "note": "2つの数を「、」区切りで"},
+    "3-2": {"answer_type": "number", "answer": "43", "unit": "°"},
+    "3-3": {"answer_type": "number", "answer": "50.24", "unit": "cm²"},
+    "3-4": {"answer_type": "multi", "parts": ["午前 …時", "…分"], "answer": ["9", "12"]},
+    "4-1": {"answer_type": "ratio", "answer": "3:4", "unit": ":", "work_required": true},
+    "4-2": {"answer_type": "number", "answer": "22.5", "unit": "cm²", "work_required": true},
+    "5-1": {"answer_type": "number", "answer": "82.5", "work_required": true},
+    "5-2": {"answer_type": "number", "answer": "6.5", "work_required": true},
+    "5-3": {"answer_type": "number", "answer": "75", "unit": "cm", "work_required": true},
+    "6-1": {"answer_type": "text", "answer": "(1,2,4)と(3,4)", "variants": ["(1、2、4)と(3、4)", "1,2,4と3,4", "(1,2,4),(3,4)"], "work_required": true, "note": "例: (1,2,4)と(3,4)"},
+    "6-2": {"answer_type": "set", "answer": ["1点", "8点", "10点"], "work_required": true, "note": "「1点、8点、10点」のように入力"},
+    "6-3": {"answer_type": "multi", "parts": ["人以上", "人以下"], "answer": ["7", "22"], "work_required": true}
+  }
+}

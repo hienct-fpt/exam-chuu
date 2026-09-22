@@ -2,15 +2,23 @@ import { loadIndex, listAttempts } from '../api.js';
 
 const SUBJ = { math: '算数', japanese: '国語', science: '理科', social: '社会' };
 const GRADE_KEY = 'exam-chuu.grade';
+const SCHOOL_KEY = 'exam-chuu.school';
+const SCHOOLS = [['all', 'すべて'], ['kyoritsu', '共立女子'], ['shinagawa', '品川女子学院']];
 
 export function getGradePref() {
   try { return localStorage.getItem(GRADE_KEY) || '5'; } catch { return '5'; }
 }
 function setGradePref(v) { try { localStorage.setItem(GRADE_KEY, v); } catch { /* ignore */ } }
+export function getSchoolPref() {
+  try { return localStorage.getItem(SCHOOL_KEY) || 'all'; } catch { return 'all'; }
+}
+function setSchoolPref(v) { try { localStorage.setItem(SCHOOL_KEY, v); } catch { /* ignore */ } }
 
 export async function renderHome({ app }) {
-  const [index, attempts] = await Promise.all([loadIndex(), listAttempts(200)]);
+  const [fullIndex, attempts] = await Promise.all([loadIndex(), listAttempts(200)]);
   const grade = getGradePref(); // '5' | 'all'
+  const school = getSchoolPref(); // 'all' | school id
+  const index = school === 'all' ? fullIndex : fullIndex.filter((e) => e.school === school);
   const best = {};
   for (const a of attempts) {
     if (a.status !== 'graded') continue;
@@ -30,6 +38,9 @@ export async function renderHome({ app }) {
         <button data-g="all" class="${grade === 'all' ? 'on' : ''}">全問（小6含む）</button>
       </div>
       <span class="muted">${grade === '5' ? '小5までに習う内容だけを出題します（小6の比・相似・点の移動などは除外）' : '本番と同じ全問を出題します'}</span>
+      <div class="seg" id="schoolseg">
+        ${SCHOOLS.map(([id, label]) => `<button data-s="${id}" class="${school === id ? 'on' : ''}">${label}</button>`).join('')}
+      </div>
     </div>
     <div class="exam-grid">${index.map((e) => {
       const n = count(e);
@@ -48,6 +59,12 @@ export async function renderHome({ app }) {
     const g = e.target.dataset.g;
     if (!g) return;
     setGradePref(g);
+    renderHome({ app });
+  };
+  app.querySelector('#schoolseg').onclick = (e) => {
+    const s = e.target.dataset.s;
+    if (!s) return;
+    setSchoolPref(s);
     renderHome({ app });
   };
 }

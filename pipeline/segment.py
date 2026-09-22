@@ -19,7 +19,7 @@ import re
 import fitz
 
 from common import OUT, OVERRIDES, ROOT, iter_spans, load_json, dump_json
-from labels import parse_label, is_big_digit
+from labels import parse_label, is_big_digit, RE_Q
 
 BIG_MIN_SIZE = 12.0
 BIG_MAX_X = 70
@@ -28,8 +28,9 @@ TOP_MARGIN = 30
 PAD_TOP = 1.5
 PAD_BOTTOM = 4
 
-RE_FOOTER = re.compile(r"^[−\-–—]\s*\d+\s*[−\-–—]$")
-NOISE_TEXT = ("（問題はこれで終わりです）", "【問題は次のページにもあります】")
+RE_FOOTER = re.compile(r"^[−\-–—－]\s*(?:社|理|算|国)?\s*\d+\s*[−\-–—－]$")   # − 3 −, － 理4 －, － 社8 －
+NOISE_TEXT = ("（問題はこれで終わりです）", "【問題は次のページにもあります】", "【問題は次のページに続きます】",
+              "【計算用紙】", "【問題はこれで終わりです】")
 
 
 def _is_noise_block(text: str) -> bool:
@@ -42,15 +43,22 @@ def page_content_bottom(page: fitz.Page, y_from: float, y_to: float | None = Non
     y_to = y_to if y_to is not None else page.rect.height
     bottom = y_from
     clip = fitz.Rect(0, y_from, page.rect.width, y_to)
-    for b in page.get_text("dict", clip=clip)["blocks"]:
-        txt = "".join(s["text"] for l in b.get("lines", []) for s in l["spans"])
-        if _is_noise_block(txt):
+    blocks = [(b, "".join(s["text"] for l in b.get("lines", []) for s in l["spans"]))
+              for b in page.get_text("dict", clip=clip)["blocks"]]
+    # nothing meaningful sits below the page number / "次のページに続きます" trailer (stray ruby glyphs do)
+    for b, txt in blocks:
+        if _is_noise_block(txt) and b["bbox"][1] > y_from + 20:
+            y_to = min(y_to, b["bbox"][1])
+    for b, txt in blocks:
+        if _is_noise_block(txt) or b["bbox"][1] >= y_to:
             continue
         bottom = max(bottom, min(b["bbox"][3], y_to))
     ph, pw = page.rect.height, page.rect.width
     for d in page.get_drawings():
         r = fitz.Rect(d["rect"])
         if r.height > 0.5 * ph or r.width > 0.9 * pw:
+            continue
+        if r.x1 < 20 or r.x0 > pw - 20:      # printer's crop marks at the page edge
             continue
         if r.y1 > y_from and r.y0 < y_to and r.width > 1:
             bottom = max(bottom, min(r.y1, y_to))
@@ -67,48 +75,81 @@ def is_blank_page(page: fitz.Page) -> bool:
 
 # which marker ranks a subject uses, and which ranks may appear directly under a 大問
 SUBJECT_RULES = {
-    "math":    {"ranks": {3}, "top": {3}},          # ①②③ directly under 大問; （１）lists are text, not questions
+    "math":    {"ranks": {3}, "top": {3}},          # kyoritsu: ①②③ directly under 大問; （１）lists are text
     "science": {"ranks": {2, 3}, "top": {2}},       # （１）（２） then ①② inside
     "social":  {"ranks": {1, 2, 3}, "top": {1, 2}}, # 問１ then （１） then ①
+    "shinagawa_math":    {"ranks": {2, 3}, "top": {2}},                   # ⑴⑵ then ①
+    "shinagawa_science": {"ranks": {1, 2, 3}, "top": {1, 2}, "roman": True},  # Ⅰ/Ⅱ sections, ⑴, ①
+    "shinagawa_social":  {"ranks": {1, 2, 3}, "top": {1, 2}},
 }
 
 
-def find_markers(doc: fitz.Document, subject: str = "math") -> list[dict]:
+BOLD_HINTS = ("-Bo", "Bold", "-He", "Heav", "ExHe", "-Med")
+
+
+def _is_big_marker(s) -> bool:
+    """kyoritsu: half-width digit >= 12pt. shinagawa 社会/理科: bold full-width digit (9-11pt) at the left margin."""
+    t = s.text.strip()
+    if s.size >= BIG_MIN_SIZE:
+        return True
+    fullwidth = all(ch in "０１２３４５６７８９" for ch in t)
+    return fullwidth and s.size >= 9 and any(h in s.font for h in BOLD_HINTS)
+
+
+def find_markers(doc: fitz.Document, subject: str = "math", page_range: tuple[int, int] | None = None) -> list[dict]:
     """All markers in reading order: [{page, y, rank, key, label, big}]; rank 0 = 大問.
-    Kana (あいう) are never markers here: they are fill-in slots inside the text."""
+    Kana (あいう) are never markers here: they are fill-in slots inside the text.
+    page_range (inclusive) restricts to a subject's pages inside a combined PDF (its first page is content)."""
     rules = SUBJECT_RULES.get(subject, SUBJECT_RULES["science"])
+    first, last = page_range if page_range else (1, len(doc) - 1)
     raw = []
     for s in iter_spans(doc):
-        if s.page == 0 or s.y0 < TOP_MARGIN:
+        if s.page < first or s.page > last or s.y0 < TOP_MARGIN:
             continue
-        if s.size >= BIG_MIN_SIZE and s.x0 < BIG_MAX_X and (n := is_big_digit(s.text)) is not None:
+        if s.x0 < BIG_MAX_X and (n := is_big_digit(s.text)) is not None and _is_big_marker(s):
             raw.append({"page": s.page, "y": s.y0, "rank": 0, "key": str(n), "label": str(n), "no": n})
             continue
         if s.x0 < SUB_MAX_X:
             lab = parse_label(s.text)
+            if lab and lab.kind == "ROMAN" and rules.get("roman"):
+                raw.append({"page": s.page, "y": s.y0, "rank": 1, "key": lab.text, "label": lab.text})
+                continue
             if lab and lab.rank in rules["ranks"] and lab.kind != "K":
                 raw.append({"page": s.page, "y": s.y0, "rank": lab.rank, "key": lab.key, "label": lab.text})
+                if lab.kind == "Q" and 2 in rules["ranks"]:
+                    # "問２　⑴ …" in one span (shinagawa 社会): the ⑴ is a second marker just below 問２
+                    rest = s.text.strip()[RE_Q.match(s.text.strip()).end():].strip()
+                    sub = parse_label(rest)
+                    if sub and sub.rank == 2:
+                        raw.append({"page": s.page, "y": s.y0 + 0.01, "rank": 2, "key": sub.key, "label": sub.text})
     raw.sort(key=lambda m: (m["page"], m["y"]))
     # structural filter: a marker is valid only if its would-be parent is a 大問 (and rank allowed at top)
     # or a marker of exactly one rank higher (no skipping levels) -> drops list bullets in passages
     out = []
-    stack: list[int] = []  # ranks of open nodes
+    stack: list[int] = []            # ranks of open nodes
+    seen: list[set[str]] = []        # keys already used at each stack depth (siblings)
     for m in raw:
         r = m["rank"]
         if r == 0:
             out.append(m)
             stack = [0]
+            seen = [set()]
             continue
         if not stack:
             continue
         while len(stack) > 1 and stack[-1] >= r:
             stack.pop()
+            seen.pop()
         parent = stack[-1]
         ok = (parent == 0 and r in rules["top"]) or (parent > 0 and r > parent and (r - parent == 1 or parent == 1 and r == 2))
         if not ok:
             continue
+        if m["key"] in seen[-1]:     # same marker repeated under one parent = a reference in the text, not a new question
+            continue
+        seen[-1].add(m["key"])
         out.append(m)
         stack.append(r)
+        seen.append(set())
     return out
 
 
@@ -171,9 +212,9 @@ def build_tree(doc: fitz.Document, markers: list[dict], last_page: int) -> list[
     return bigs
 
 
-def segment(doc: fitz.Document, subject: str = "math") -> list[dict]:
-    markers = find_markers(doc, subject)
-    last_page = len(doc) - 1
+def segment(doc: fitz.Document, subject: str = "math", page_range: tuple[int, int] | None = None) -> list[dict]:
+    markers = find_markers(doc, subject, page_range)
+    last_page = page_range[1] if page_range else len(doc) - 1
     while last_page > 0 and is_blank_page(doc[last_page]):
         last_page -= 1
     return build_tree(doc, markers, last_page)
@@ -214,7 +255,9 @@ def main() -> None:
             dump_json(OUT / "segments" / f"{eid}.json", {"exam_id": eid, "bigs": bigs})
             print(f"[segment] {eid}: " + " ".join(f"{b['no']}[{len(b['regions'])}p]" for b in bigs))
             continue
-        bigs = apply_overrides(eid, segment(doc, ex["subject"]))
+        rule = f"{ex['school']}_{ex['subject']}" if ex["school"] != "kyoritsu" else ex["subject"]
+        pr = tuple(ex["page_range"]) if ex.get("page_range") else None
+        bigs = apply_overrides(eid, segment(doc, rule, pr))
         dump_json(OUT / "segments" / f"{eid}.json", {"exam_id": eid, "bigs": bigs})
         print(f"[segment] {eid}: " + " ".join(f"{b['no']}{_summary(b)}" for b in bigs))
 

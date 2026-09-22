@@ -1,0 +1,29 @@
+{
+  "bigs": {
+    "1": {"grade": 6, "topic": "立体-切断"},
+    "2": {"grade": 5, "topic": "数の性質"},
+    "3": {"grade": 5, "topic": "割合と比"},
+    "4": {"grade": 5, "topic": "割合・食塩水"},
+    "5": {"grade": 5, "topic": "数の性質"},
+    "6": {"grade": 5, "topic": "速さ"},
+    "7": {"grade": 5, "topic": "売買損益"},
+    "8": {"grade": 5, "topic": "速さ"},
+    "9": {"grade": 5, "topic": "数の性質"},
+    "10": {"grade": 5, "topic": "数の性質"},
+    "11": {"grade": 5, "topic": "仕事算"},
+    "12": {"grade": 5, "topic": "規則性"},
+    "13": {"grade": 5, "topic": "場合の数"},
+    "14": {"grade": 6, "topic": "速さと比"},
+    "15": {"grade": 5, "topic": "角度"},
+    "16": {"grade": 5, "topic": "通過算"},
+    "17": {"grade": 5, "topic": "平均"},
+    "18": {"grade": 5, "topic": "虫食い算"},
+    "19": {"grade": 5, "topic": "時計算"},
+    "20": {"grade": 5, "topic": "規則性"},
+    "21": {"grade": 5, "topic": "規則性"},
+    "22": {"grade": 5, "topic": "角度"},
+    "23": {"grade": 5, "topic": "平面図形-面積"},
+    "24": {"grade": 5, "topic": "場合の数"}
+  },
+  "items": {}
+}

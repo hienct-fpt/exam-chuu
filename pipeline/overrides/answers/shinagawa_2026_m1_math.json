@@ -1,0 +1,31 @@
+{
+  "_source": "算数１教科_解答.pdf (scan) p1-p3, transcribed by hand",
+  "slots": {
+    "1": {"answer_type": "set", "answer": ["③", "⑤", "⑥"], "note": "番号を「、」区切りで入力"},
+    "2": {"answer_type": "fraction", "answer": "36/5", "variants": ["7 1/5"]},
+    "3": {"answer_type": "number", "answer": "21", "unit": "m"},
+    "4": {"answer_type": "number", "answer": "25", "unit": "g"},
+    "5": {"answer_type": "number", "answer": "4.97"},
+    "6": {"answer_type": "number", "answer": "6.75", "unit": "km"},
+    "7": {"answer_type": "number", "answer": "150", "unit": "円"},
+    "8": {"answer_type": "number", "answer": "4.8", "unit": "km"},
+    "9": {"answer_type": "number", "answer": "5"},
+    "10": {"answer_type": "number", "answer": "208"},
+    "11": {"answer_type": "number", "answer": "80", "unit": "分"},
+    "12": {"answer_type": "text", "answer": "白", "variants": ["白い", "しろ"]},
+    "13": {"answer_type": "number", "answer": "6", "unit": "通り"},
+    "14": {"answer_type": "number", "answer": "560", "unit": "m"},
+    "15": {"answer_type": "number", "answer": "130", "unit": "°"},
+    "16": {"answer_type": "number", "answer": "44", "unit": "秒"},
+    "17": {"answer_type": "multi", "parts": ["①(人)", "②(人)"], "answer": ["2", "3"]},
+    "18": {"answer_type": "multi", "parts": ["ア", "イ", "ウ"], "answer": ["6", "8", "5"]},
+    "19": {"answer_type": "multi", "parts": ["分", "秒"], "answer": ["32", "43 7/11"], "note": "秒は帯分数 43と7/11"},
+    "20": {"answer_type": "set", "answer": ["8", "23"]},
+    "21": {"answer_type": "number", "answer": "7"},
+    "22": {"answer_type": "number", "answer": "126", "unit": "°"},
+    "23": {"answer_type": "number", "answer": "3.925", "unit": "cm²"},
+    "24": {"delete": true},
+    "24-1": {"label": "24 (1)", "answer_type": "number", "answer": "5", "unit": "通り"},
+    "24-2": {"label": "24 (2)", "answer_type": "number", "answer": "11", "unit": "通り"}
+  }
+}

@@ -48,8 +48,15 @@ describe('mock api + views', () => {
     const { renderHome } = await import('../src/views/home.js');
     const app = document.createElement('main');
     await renderHome({ app });
-    expect(app.querySelectorAll('.exam-tile').length).toBe(24);
+    expect(app.querySelectorAll('.exam-tile').length).toBe(38);
     expect(app.textContent).toContain('2026年度');
+    expect(app.textContent).toContain('品川女子学院');
+    // school filter narrows the list
+    app.querySelector('#schoolseg button[data-s="shinagawa"]').click();
+    await new Promise((r) => setTimeout(r, 50));
+    expect(app.querySelectorAll('.exam-tile').length).toBe(14);
+    app.querySelector('#schoolseg button[data-s="all"]').click();
+    await new Promise((r) => setTimeout(r, 50));
   });
 
   it('exam view renders every answer slot, autosaves, submits, and result view shows grading', async () => {

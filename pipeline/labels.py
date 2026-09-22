@@ -75,13 +75,14 @@ def parse_label(text: str) -> Label | None:
         return Label(4, "A", KATA.index(ch) + 1, ch, t)
     if RE_ALPHA_PART.match(t) and (len(t) >= 2 or t in "XYZ"):   # AD, BC, or X / Y part labels
         return Label(4, "ALPHA", 0, t, t)
-    if RE_ROMAN.match(t):
-        return Label(4, "ROMAN", "ⅠⅡⅢⅣⅤ".find(unicodedata.normalize("NFKC", t)[0]) + 1, t, t)
+    if ch in "ⅠⅡⅢⅣⅤⅰⅱⅲⅳⅴ" and (len(t) == 1 or t[1] in " \u3000.．、"):
+        return Label(4, "ROMAN", "ⅠⅡⅢⅣⅤ".find(unicodedata.normalize("NFKC", ch)[0]) + 1, ch, t)
     return None
 
 
 def is_big_digit(text: str) -> int | None:
-    t = text.strip()
-    if len(t) == 1 and t in "123456789":
+    """大問 number: 1-30, half- or full-width."""
+    t = unicodedata.normalize("NFKC", text.strip())
+    if t.isdigit() and 1 <= int(t) <= 30 and len(t) <= 2:
         return int(t)
     return None

@@ -272,3 +272,21 @@ Known gaps -> P3/P4:
 - Tests: pytest 29 (analytics, cross-exam grading, dev_server end-to-end), vitest 8.
 
 Deferred: 国語 per-問 crops, 配点, P4 shinagawa.
+
+## 12. P4 status (2026-09-23) — DONE (shinagawa 2018 + 2026, 14 exams)
+
+- Inventory: `scan_shinagawa()` — sessions r1/r2/m1 (第1回/第2回/算数1教科), 社会理科 combined PDF split by the
+  `社n` / `理n` page footers into `page_range`; math PDFs without a 注意 cover start at page 0 (2026 算数1教科).
+  2015–2025 folders hold blank 解答用紙 only → skipped. No shinagawa 国語 問題 exists.
+- Segmentation: 大問 markers now accept bold full-width `１２３` (RyuminPro-Bold, 9–11pt, x≈51) and two-digit
+  numbers 1–30 (算数1教科 has 24 大問); Ⅰ/Ⅱ sections as rank-1 nodes (`roman` rule); `問２　⑴` merged spans emit
+  both markers; sibling-key dedupe drops in-text references like a second "(3)"; footer regex covers `－ 理4 －`
+  and everything below the page number / 続きます trailer is cut (stray ruby glyphs sat there).
+- Answers: `answer_key_tree.py` builds slots from the tree leaves; all 14 sheets (scans in
+  `out/pages/shinagawa_*_scan/`) were read and transcribed into `overrides/answers/shinagawa_*.json`
+  (394 items; drawings = manual: 2026 r1 算数 4-2, 理科 3-7, 2026 r2 理科 3-4-①, 2018 r1 理科 2-9/2-10, 2018 r2 理科 1-Ⅱ-2).
+- Tags: `tags/shinagawa_*.json` — math per item (小問集合), 理科・社会 per 大問; grade 5/6 same rubric as kyoritsu.
+- Web: school filter on the home page (localStorage `exam-chuu.school`); tests updated (38 exams, 14 shinagawa).
+- Totals: 38 exams, 1098 items, 1413 crop files. pytest 29, vitest 8.
+
+Deferred: 国語 per-問 crops, 配点, showing the scanned 模範解答 page next to a graded item.

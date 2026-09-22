@@ -1,0 +1,29 @@
+{
+  "bigs": {
+    "1": {"grade": 5, "topic": "規則性"},
+    "2": {"grade": 5, "topic": "植木算"},
+    "3": {"grade": 5, "topic": "場合の数"},
+    "4": {"grade": 5, "topic": "計算"},
+    "5": {"grade": 5, "topic": "集合"},
+    "6": {"grade": 5, "topic": "立体の体積"},
+    "7": {"grade": 5, "topic": "縮尺・面積"},
+    "8": {"grade": 5, "topic": "平均"},
+    "9": {"grade": 6, "topic": "数の性質"},
+    "10": {"grade": 6, "topic": "平面図形-相似・比"},
+    "11": {"grade": 5, "topic": "流水算"},
+    "12": {"grade": 5, "topic": "数の性質"},
+    "13": {"grade": 5, "topic": "立体-展開図"},
+    "14": {"grade": 5, "topic": "つるかめ算"},
+    "15": {"grade": 5, "topic": "売買損益"},
+    "16": {"grade": 5, "topic": "角度"},
+    "17": {"grade": 5, "topic": "数の性質"},
+    "18": {"grade": 5, "topic": "通過算"},
+    "19": {"grade": 5, "topic": "文章題"},
+    "20": {"grade": 5, "topic": "平面図形-面積"},
+    "21": {"grade": 5, "topic": "平均"},
+    "22": {"grade": 5, "topic": "数の性質"},
+    "23": {"grade": 5, "topic": "数の性質"},
+    "24": {"grade": 5, "topic": "論理・推理"}
+  },
+  "items": {}
+}

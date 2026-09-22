@@ -18,7 +18,7 @@ def main() -> None:
     segment.main()
     render.main()
     answer_key.main()            # math (position-matched 模範解答)
-    answer_key_generic.main()    # science / social (table cells) and japanese (vertical columns)
+    answer_key_generic.main()    # science / social (table cells), japanese (vertical columns), shinagawa (tree + transcribed overrides)
     build.main()
 
 

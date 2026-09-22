@@ -1,0 +1,26 @@
+{
+  "_source": "第２回_解答.pdf (scan) p3-p4, transcribed by hand",
+  "slots": {
+    "1-1": {"answer_type": "fraction", "answer": "11/12", "work_required": true},
+    "1-2": {"answer_type": "fraction", "answer": "7/9", "work_required": true},
+    "1-3": {"answer_type": "number", "answer": "123.4"},
+    "1-4": {"answer_type": "number", "answer": "9"},
+    "2-1": {"answer_type": "multi", "parts": ["時間", "分", "秒"], "answer": ["3", "9", "55"]},
+    "2-2": {"answer_type": "fraction", "answer": "4/63"},
+    "2-3": {"answer_type": "number", "answer": "9", "unit": "個"},
+    "2-4": {"answer_type": "multi", "parts": ["ア", "イ"], "answer": ["3", "2"]},
+    "2-5": {"answer_type": "number", "answer": "157"},
+    "2-6": {"answer_type": "number", "answer": "6", "unit": "%"},
+    "2-7": {"answer_type": "number", "answer": "9", "unit": "cm"},
+    "2-8": {"answer_type": "number", "answer": "800", "unit": "m"},
+    "2-9": {"answer_type": "number", "answer": "12", "unit": "通り"},
+    "2-10": {"answer_type": "fraction", "answer": "30/7", "variants": ["4 2/7"], "unit": "cm"},
+    "3-1": {"answer_type": "number", "answer": "57", "unit": "cm"},
+    "3-2": {"answer_type": "number", "answer": "452", "unit": "cm"},
+    "3-3": {"answer_type": "number", "answer": "18", "unit": "本", "work_required": true},
+    "4-1": {"answer_type": "multi", "parts": ["秒後", "秒速(cm)"], "answer": ["4", "6"]},
+    "4-2": {"answer_type": "multi", "parts": ["秒速(cm)", "cm"], "answer": ["4", "15"]},
+    "4-3": {"answer_type": "number", "answer": "2.4", "unit": "秒後", "work_required": true},
+    "4-4": {"answer_type": "number", "answer": "7.2", "unit": "秒後", "work_required": true}
+  }
+}

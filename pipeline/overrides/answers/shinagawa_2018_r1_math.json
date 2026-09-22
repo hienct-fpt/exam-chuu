@@ -1,0 +1,22 @@
+{
+  "_source": "第１回_解答.pdf (scan) p3-p4, transcribed by hand",
+  "slots": {
+    "1-1": {"answer_type": "number", "answer": "7", "work_required": true},
+    "1-2": {"answer_type": "fraction", "answer": "3/20", "work_required": true},
+    "2-1": {"answer_type": "number", "answer": "25", "unit": "km (時速)"},
+    "2-2": {"answer_type": "number", "answer": "60", "unit": "通り"},
+    "2-3": {"answer_type": "number", "answer": "226.08", "unit": "cm²"},
+    "2-4": {"answer_type": "number", "answer": "40"},
+    "2-5": {"answer_type": "number", "answer": "42"},
+    "3-1": {"answer_type": "number", "answer": "15", "unit": "個"},
+    "3-2": {"answer_type": "number", "answer": "2100", "unit": "円"},
+    "3-3": {"answer_type": "text", "answer": "南西", "unit": "の方角"},
+    "3-4": {"answer_type": "fraction", "answer": "5/6", "unit": "cm"},
+    "4-1": {"answer_type": "number", "answer": "40", "unit": "cm", "work_required": true},
+    "4-2": {"answer_type": "number", "answer": "18", "unit": "枚", "work_required": true},
+    "5-1": {"answer_type": "number", "answer": "4396", "unit": "cm³", "work_required": true},
+    "5-2": {"answer_type": "number", "answer": "15", "unit": "cm", "work_required": true},
+    "6-1": {"answer_type": "number", "answer": "16", "unit": "人", "work_required": true},
+    "6-2": {"answer_type": "number", "answer": "29", "unit": "人", "work_required": true}
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "_source": "第１回_解答.pdf (scan) p6, transcribed by hand",
+  "slots": {
+    "1-Ⅰ-1": {"answer_type": "choice", "answer": "ウ"},
+    "1-Ⅰ-2-1": {"answer_type": "text", "answer": "等圧線"},
+    "1-Ⅰ-2-2": {"answer_type": "choice", "answer": "イ"},
+    "1-Ⅰ-2-3": {"answer_type": "choice", "answer": "エ"},
+    "1-Ⅰ-3-1": {"answer_type": "choice", "answer": "イ"},
+    "1-Ⅰ-3-2": {"answer_type": "sequence", "answer": "エ→ア→ウ→イ"},
+    "1-Ⅱ-1": {"answer_type": "number", "answer": "147", "unit": "g"},
+    "1-Ⅱ-2": {"answer_type": "number", "answer": "51", "unit": "%"},
+    "1-Ⅱ-3": {"answer_type": "number", "answer": "236", "unit": "g"},
+    "1-Ⅱ-4": {"answer_type": "choice", "answer": "ウ"},
+    "1-Ⅱ-5": {"answer_type": "text", "answer": "A"},
+    "1-Ⅱ-6-1": {"answer_type": "number", "answer": "40", "unit": "g"},
+    "1-Ⅱ-6-2": {"answer_type": "number", "answer": "30.8", "unit": "g"},
+    "2-1": {"answer_type": "set", "answer": ["ア", "ウ"]},
+    "2-2": {"answer_type": "text", "answer": "落葉広葉樹", "variants": ["落葉広葉"]},
+    "2-3-1": {"answer_type": "number", "answer": "10", "unit": "キロルクス"},
+    "2-3-2": {"answer_type": "number", "answer": "25", "unit": "mg"},
+    "2-3-3": {"answer_type": "choice", "answer": "ウ"},
+    "2-3-4": {"answer_type": "essay", "answer": "どのように変化するか: 減っていく。／理由: 地表が暗くなると、グループIの幼い木は成長しにくいため。"},
+    "2-4": {"answer_type": "sequence", "answer": "ウ→ア→イ→オ→エ"},
+    "3-1-1": {"answer_type": "choice", "answer": "エ"},
+    "3-1-2": {"answer_type": "choice", "answer": "ア"},
+    "3-2": {"answer_type": "choice", "answer": "イ"},
+    "3-3": {"answer_type": "set", "answer": ["ア", "エ"]},
+    "3-4": {"answer_type": "number", "answer": "0.45", "unit": "A"},
+    "3-5": {"answer_type": "choice", "answer": "キ"},
+    "3-6": {"answer_type": "choice", "answer": "ア"},
+    "3-7": {"answer_type": "manual", "answer": null, "note": "回路図の作図 (抵抗線2本を並列→電熱線→ファン付きモーター)"}
+  }
+}

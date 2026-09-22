@@ -63,9 +63,13 @@ def process(eid: str, ex: dict, verbose: bool = True) -> list[dict] | None:
 def main(only: set[str] | None = None, verbose: bool = False) -> None:
     exams = load_json(OUT / "exams.json", {})
     for eid, ex in exams.items():
-        if ex["subject"] == "math":
-            continue
         if only and eid not in only:
+            continue
+        if ex["school"] == "shinagawa":
+            import answer_key_tree
+            answer_key_tree.process(eid, verbose)
+            continue
+        if ex["subject"] == "math":
             continue
         process(eid, ex, verbose)
 

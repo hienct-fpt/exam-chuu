@@ -1,0 +1,30 @@
+{
+  "_source": "算数１教科_解答.pdf (scan) p1-p3, transcribed by hand",
+  "slots": {
+    "1": {"answer_type": "number", "answer": "4"},
+    "2": {"answer_type": "number", "answer": "15", "unit": "本"},
+    "3": {"answer_type": "number", "answer": "6", "unit": "通り"},
+    "4": {"answer_type": "number", "answer": "3"},
+    "5": {"answer_type": "number", "answer": "8", "unit": "人以上"},
+    "6": {"answer_type": "number", "answer": "600", "unit": "cm³"},
+    "7": {"answer_type": "number", "answer": "31400", "unit": "m²"},
+    "8": {"answer_type": "number", "answer": "127", "unit": "個"},
+    "9": {"answer_type": "multi", "parts": ["ア", "イ"], "answer": ["2", "3"]},
+    "10": {"answer_type": "number", "answer": "18", "unit": "cm²"},
+    "11": {"answer_type": "number", "answer": "10.5", "unit": "km"},
+    "12": {"answer_type": "fraction", "answer": "13/15", "variants": ["13"], "note": "分母15は印字済み。分子のみでも可"},
+    "13": {"answer_type": "text", "answer": "B"},
+    "14": {"answer_type": "number", "answer": "4", "unit": "室"},
+    "15": {"answer_type": "number", "answer": "25600", "unit": "円"},
+    "16": {"answer_type": "number", "answer": "78", "unit": "°"},
+    "17": {"answer_type": "text", "answer": "木", "variants": ["木曜", "木曜日"], "unit": "曜日"},
+    "18": {"answer_type": "number", "answer": "50", "unit": "秒"},
+    "19": {"answer_type": "number", "answer": "22", "unit": "人以上"},
+    "20": {"answer_type": "number", "answer": "28.26", "unit": "cm²"},
+    "21": {"answer_type": "number", "answer": "64", "unit": "点"},
+    "22": {"answer_type": "number", "answer": "5", "unit": "個"},
+    "23": {"answer_type": "number", "answer": "9"},
+    "24-1": {"answer_type": "text", "answer": "B"},
+    "24-2": {"answer_type": "text", "answer": "D"}
+  }
+}

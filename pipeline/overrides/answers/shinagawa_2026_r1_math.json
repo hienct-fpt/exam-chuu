@@ -1,0 +1,25 @@
+{
+  "_source": "第１回_解答.pdf (scan) p3-p4, transcribed by hand",
+  "slots": {
+    "1-1": {"answer_type": "number", "answer": "10"},
+    "1-2": {"answer_type": "fraction", "answer": "2/3"},
+    "1-3": {"answer_type": "number", "answer": "1000"},
+    "1-4": {"answer_type": "number", "answer": "4"},
+    "2-1": {"answer_type": "number", "answer": "5000", "unit": "倍"},
+    "2-2": {"answer_type": "number", "answer": "260", "unit": "m"},
+    "2-3": {"answer_type": "fraction", "answer": "13/30"},
+    "2-4": {"answer_type": "number", "answer": "2499"},
+    "2-5": {"answer_type": "number", "answer": "324", "unit": "cm²"},
+    "2-6": {"answer_type": "number", "answer": "16", "unit": "枚"},
+    "2-7": {"answer_type": "number", "answer": "14", "unit": "人"},
+    "2-8": {"answer_type": "number", "answer": "162.8", "unit": "cm"},
+    "2-9": {"answer_type": "number", "answer": "540", "unit": "cm³"},
+    "2-10": {"answer_type": "multi", "parts": ["ア", "イ"], "answer": ["②", "①"]},
+    "3-1": {"answer_type": "number", "answer": "6"},
+    "3-2": {"answer_type": "number", "answer": "8"},
+    "3-3": {"answer_type": "number", "answer": "9", "unit": "通り"},
+    "4-1": {"answer_type": "number", "answer": "8"},
+    "4-2": {"answer_type": "manual", "answer": null, "note": "作図問題 (解答は図)"},
+    "4-3": {"answer_type": "number", "answer": "16.56", "unit": "cm²"}
+  }
+}

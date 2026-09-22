@@ -81,7 +81,9 @@ Result and email show 分野別 correctness so weak topics stand out. Edit tags,
 
 ## 6. Subjects and answer types
 
-All 24 kyoritsu exams (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語) are processed. Question types:
+38 exams are processed: all 24 kyoritsu exams (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語) and 14 shinagawa
+exams (2018 + 2026 × 第1回/第2回 × 算数・理科・社会, plus 算数1教科). The home page has a school filter
+(すべて / 共立女子 / 品川女子学院). Question types:
 
 | answer_type | input | grading |
 |---|---|---|
@@ -94,6 +96,12 @@ All 24 kyoritsu exams (2024–2026 × 2-1/2-2 × 算数・理科・社会・国�
 | essay / manual | textarea | **pending** — parent marks ○/× on the result page (admin claim), Cloud Function regrades |
 
 国語 shows each 大問 as page images (no per-問 crops yet); answers are entered per 問 in the sheet order.
+
+**Shinagawa (品川女子学院)**: only 2018 and 2026 include 問題 PDFs (other years are blank answer sheets, no 国語 at all).
+The 模範解答 are scanned handwriting, so `pipeline/answer_key_tree.py` derives one slot per leaf of the question tree
+and the answers are transcribed by hand into `pipeline/overrides/answers/shinagawa_*.json` (drawings → `manual`).
+社会・理科 share one PDF (`page_range` in `out/exams.json` selects the pages); 理科 大問1 has Ⅰ/Ⅱ sections
+(`1-Ⅰ-2-1` style ids).
 
 ## 7. Dashboard, weak-topic practice, weekly digest (P3)
 

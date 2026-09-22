@@ -1,0 +1,31 @@
+{
+  "_source": "第２回_解答.pdf (scan) p6, transcribed by hand",
+  "slots": {
+    "1-Ⅰ-1-1": {"answer_type": "number", "answer": "50", "unit": "g"},
+    "1-Ⅰ-1-2": {"answer_type": "number", "answer": "12", "unit": "cm"},
+    "1-Ⅰ-1-3": {"answer_type": "choice", "answer": "ア"},
+    "1-Ⅰ-2-1": {"answer_type": "choice", "answer": "ア"},
+    "1-Ⅰ-2-2": {"answer_type": "text", "answer": "C"},
+    "1-Ⅰ-2-3": {"answer_type": "choice", "answer": "ア"},
+    "1-Ⅱ-1": {"answer_type": "choice", "answer": "イ"},
+    "1-Ⅱ-2": {"answer_type": "choice", "answer": "イ"},
+    "1-Ⅱ-3": {"answer_type": "choice", "answer": "ウ"},
+    "1-Ⅱ-4": {"answer_type": "set", "answer": ["ア", "ウ", "オ"]},
+    "1-Ⅱ-5": {"answer_type": "choice", "answer": "イ"},
+    "1-Ⅱ-6": {"answer_type": "choice", "answer": "ア"},
+    "2-1": {"answer_type": "multi", "parts": ["①", "②", "③"], "answer": ["固", "液", "気"]},
+    "2-2": {"answer_type": "choice", "answer": "イ"},
+    "2-3-1": {"answer_type": "text", "answer": "内えん", "variants": ["内炎"]},
+    "2-3-2": {"answer_type": "choice", "answer": "ウ"},
+    "2-4": {"answer_type": "essay", "answer": "無重力の空間では重さがなく、空気の移動が起きにくいため。"},
+    "2-5": {"answer_type": "essay", "answer": "ろうそくの燃えているところに酸素が流れこみにくいため。"},
+    "2-6": {"answer_type": "number", "answer": "2.4", "unit": "g"},
+    "3-1": {"answer_type": "choice", "answer": "エ"},
+    "3-2": {"answer_type": "number", "answer": "6.25", "unit": "km (秒速)"},
+    "3-3": {"answer_type": "number", "answer": "10", "unit": "km (秒速)"},
+    "3-4-1": {"answer_type": "manual", "answer": null, "note": "グラフ作図: 震源距離 0→300km で 0→40秒 の直線 (10秒始点の破線と 150km 付近で交わる)"},
+    "3-4-2": {"answer_type": "choice", "answer": "イ"},
+    "3-5": {"answer_type": "choice", "answer": "エ"},
+    "3-6": {"answer_type": "choice", "answer": "ア"}
+  }
+}

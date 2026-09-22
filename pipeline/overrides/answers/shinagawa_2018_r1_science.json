@@ -1,0 +1,33 @@
+{
+  "_source": "第１回_解答.pdf (scan) p6, transcribed by hand",
+  "slots": {
+    "1-Ⅰ-1": {"answer_type": "multi", "parts": ["a", "b", "c", "d"], "answer": ["直進", "反射", "くっ折", "イ"], "note": "c は「屈折」も可"},
+    "1-Ⅰ-2-1": {"answer_type": "choice", "answer": "ウ"},
+    "1-Ⅰ-2-2": {"answer_type": "choice", "answer": "イ"},
+    "1-Ⅰ-2-3": {"answer_type": "choice", "answer": "イ"},
+    "1-Ⅱ-1": {"answer_type": "choice", "answer": "イ"},
+    "1-Ⅱ-2": {"answer_type": "set", "answer": ["ア", "ウ"]},
+    "1-Ⅱ-3": {"answer_type": "choice", "answer": "ア"},
+    "1-Ⅱ-4": {"answer_type": "choice", "answer": "ア"},
+    "1-Ⅱ-5-1": {"answer_type": "choice", "answer": "ア"},
+    "1-Ⅱ-5-2": {"answer_type": "text", "answer": "ヨウ素液", "variants": ["ヨウ素溶液", "ようそ液"]},
+    "2-1": {"answer_type": "sequence", "answer": "イ→ア→ウ"},
+    "2-2": {"answer_type": "text", "answer": "えい星", "variants": ["衛星"]},
+    "2-3": {"answer_type": "choice", "answer": "ウ"},
+    "2-4": {"answer_type": "choice", "answer": "ア"},
+    "2-5-2": {"delete": true},
+    "2-5": {"label": "(5)", "answer_type": "text", "answer": "く", "variants": ["(く)"]},
+    "2-6": {"answer_type": "text", "answer": "D"},
+    "2-7": {"answer_type": "multi", "parts": ["④", "⑤", "⑦"], "answer": ["午後6時", "午前6時", "午後6時"]},
+    "2-8": {"answer_type": "multi", "parts": ["⑥", "⑧"], "answer": ["東", "西"]},
+    "2-9": {"answer_type": "manual", "answer": null, "note": "月の形の作図: 左側が光る (下弦に近い) 形"},
+    "2-10": {"answer_type": "manual", "answer": null, "note": "月の形の作図: 右側が光る (上弦に近い) 形"},
+    "3-1": {"answer_type": "choice", "answer": "イ"},
+    "3-2": {"answer_type": "number", "answer": "1"},
+    "3-3-1": {"answer_type": "number", "answer": "2", "unit": "g"},
+    "3-3-2": {"answer_type": "multi", "parts": ["…億", "…千万つぶつぶ"], "answer": ["1", "5"]},
+    "3-4-1": {"answer_type": "number", "answer": "3", "unit": "g"},
+    "3-4-2": {"answer_type": "number", "answer": "24", "unit": "g"},
+    "3-4-3": {"answer_type": "multi", "parts": ["1 (g)", "2 (億つぶつぶ)", "3 炭素原子:酸素原子"], "answer": ["8/3", "3", "1:2"], "note": "1 は 2と2/3 g"}
+  }
+}

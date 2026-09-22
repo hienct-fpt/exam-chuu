@@ -1,0 +1,31 @@
+{
+  "_source": "第２回_解答.pdf (scan) p6, transcribed by hand",
+  "slots": {
+    "1-Ⅰ-1-1": {"answer_type": "text", "answer": "ガスバーナー"},
+    "1-Ⅰ-1-2": {"answer_type": "set", "answer": ["イ", "エ"]},
+    "1-Ⅰ-2-1": {"answer_type": "choice", "answer": "イ"},
+    "1-Ⅰ-2-2": {"answer_type": "choice", "answer": "エ"},
+    "1-Ⅰ-3": {"answer_type": "choice", "answer": "エ"},
+    "1-Ⅱ-1-1": {"answer_type": "text", "answer": "図5", "variants": ["5"]},
+    "1-Ⅱ-1-2": {"answer_type": "set", "answer": ["ウ", "オ", "カ"]},
+    "1-Ⅱ-2": {"answer_type": "manual", "answer": null, "note": "火山の形の作図 (なだらかなドーム状)"},
+    "1-Ⅱ-3-1": {"answer_type": "text", "answer": "火山灰"},
+    "1-Ⅱ-3-2": {"answer_type": "choice", "answer": "ウ"},
+    "1-Ⅱ-4": {"answer_type": "choice", "answer": "イ"},
+    "2-1": {"answer_type": "text", "answer": "たん水魚", "variants": ["淡水魚"]},
+    "2-2-1": {"answer_type": "text", "answer": "食物連さ", "variants": ["食物連鎖"]},
+    "2-2-2": {"answer_type": "multi", "parts": ["A", "B"], "answer": ["ウ", "エ"]},
+    "2-2-3": {"answer_type": "essay", "answer": "記号: イ／説明: Aの数が減ると、食べる物が減ってしまい、それにともなってヘビの数も減ってしまうから。"},
+    "2-3-1": {"answer_type": "text", "answer": "ふ化", "variants": ["孵化"]},
+    "2-3-2": {"answer_type": "number", "answer": "120", "unit": "個"},
+    "2-3-3": {"answer_type": "number", "answer": "4", "unit": "世代目"},
+    "3-1": {"answer_type": "number", "answer": "1", "unit": "倍"},
+    "3-2": {"answer_type": "number", "answer": "3", "unit": "倍"},
+    "3-3": {"answer_type": "choice", "answer": "ク"},
+    "3-4": {"answer_type": "number", "answer": "2", "unit": "倍"},
+    "3-5": {"answer_type": "set", "answer": ["カ", "ク", "コ"]},
+    "3-6": {"answer_type": "ratio", "answer": "2:3:4", "unit": "キ:コ:ケ"},
+    "3-7": {"answer_type": "number", "answer": "2", "unit": "倍"},
+    "3-8": {"answer_type": "ratio", "answer": "7:8", "unit": "図3:図4"}
+  }
+}
