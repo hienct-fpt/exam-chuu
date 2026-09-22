@@ -1,19 +1,16 @@
-"""Step 2: detect 大問 / 小問 regions in 問題 PDF -> out/segments/{exam_id}.json
+"""Step 2: detect 大問 / 問 / 小問 regions in 問題 PDF -> out/segments/{exam_id}.json
 
-Kyoritsu layout facts (B5, 516x729pt):
-  - 大問 marker: digit, font size >= 12, x < 70
-  - 小問 marker: ①②③ / ⑴⑵ at x ~ 79
-  - Page header "− n −" at top, no footer
-Output per exam:
-  {
-    "exam_id": ...,
-    "bigs": [
-      {"no": 1, "regions": [{"page":1,"y0":..,"y1":..}],        # whole 大問 (all pages)
-       "stem": {"page":1,"y0":..,"y1":..} | null,               # text before first 小問
-       "subs": [{"no":1,"label":"①","regions":[...]}, ...]}
-    ]
-  }
-Manual fixes: pipeline/overrides/segments/{exam_id}.json (deep-merged by big no / sub no).
+Layout facts (kyoritsu, B5 516x729pt, horizontal subjects):
+  - 大問 marker: single digit, font size >= 12, x < 70
+  - sub markers at the left margin (x < 95): 問１． / （１） / ⑴ / ①
+  - page number "− n −" at the bottom; "（問題はこれで終わりです）" trailer
+Output (nested tree):
+  {"exam_id": ..., "bigs": [
+     {"no": 1, "regions": [...], "stem": {...}|null,
+      "subs": [{"key": "1", "label": "問1", "rank": 1, "regions": [...], "stem": {...}|null,
+                "subs": [{"key": "1", "label": "(1)", "rank": 2, "regions": [...], "subs": []}]}]}]}
+A region = {"page": p, "y0": .., "y1": ..}. Multi-page nodes have several regions.
+Manual fixes: pipeline/overrides/segments/{exam_id}.json  (replaces the node with the same path, e.g. {"bigs": {"3": {...}}})
 """
 from __future__ import annotations
 
@@ -21,38 +18,18 @@ import re
 
 import fitz
 
-from common import OUT, OVERRIDES, ROOT, Span, iter_spans, sub_index, load_json, dump_json
+from common import OUT, OVERRIDES, ROOT, iter_spans, load_json, dump_json
+from labels import parse_label, is_big_digit
 
 BIG_MIN_SIZE = 12.0
 BIG_MAX_X = 70
 SUB_MAX_X = 95
-TOP_MARGIN = 30      # skip page header "− 1 −"
-PAD_TOP = 6
+TOP_MARGIN = 30
+PAD_TOP = 1.5
 PAD_BOTTOM = 4
-LEFT = 40
-RIGHT = 480
-
-
-def find_markers(doc: fitz.Document) -> tuple[list[tuple[int, int, float]], list[tuple[int, int, float]]]:
-    """Return (bigs, subs) as lists of (page, no, y)."""
-    bigs: list[tuple[int, int, float]] = []
-    subs: list[tuple[int, int, float]] = []
-    for s in iter_spans(doc):
-        if s.page == 0:  # cover page
-            continue
-        if s.y0 < TOP_MARGIN:
-            continue
-        if s.size >= BIG_MIN_SIZE and s.x0 < BIG_MAX_X and s.text.isdigit():
-            bigs.append((s.page, int(s.text), s.y0))
-        elif s.x0 < SUB_MAX_X and (idx := sub_index(s.text[0])) is not None:
-            subs.append((s.page, idx, s.y0))
-    bigs.sort(key=lambda t: (t[0], t[2]))
-    subs.sort(key=lambda t: (t[0], t[2]))
-    return bigs, subs
-
 
 RE_FOOTER = re.compile(r"^[−\-–—]\s*\d+\s*[−\-–—]$")
-NOISE_TEXT = ("（問題はこれで終わりです）",)
+NOISE_TEXT = ("（問題はこれで終わりです）", "【問題は次のページにもあります】")
 
 
 def _is_noise_block(text: str) -> bool:
@@ -61,7 +38,7 @@ def _is_noise_block(text: str) -> bool:
 
 
 def page_content_bottom(page: fitz.Page, y_from: float, y_to: float | None = None) -> float:
-    """Lowest y of real content in [y_from, y_to) (text, drawings, images), ignoring page-number footer."""
+    """Lowest y of real content in [y_from, y_to), ignoring page-number footer and page-sized frames."""
     y_to = y_to if y_to is not None else page.rect.height
     bottom = y_from
     clip = fitz.Rect(0, y_from, page.rect.width, y_to)
@@ -73,7 +50,7 @@ def page_content_bottom(page: fitz.Page, y_from: float, y_to: float | None = Non
     ph, pw = page.rect.height, page.rect.width
     for d in page.get_drawings():
         r = fitz.Rect(d["rect"])
-        if r.height > 0.5 * ph or r.width > 0.9 * pw:  # page frame / background, not content
+        if r.height > 0.5 * ph or r.width > 0.9 * pw:
             continue
         if r.y1 > y_from and r.y0 < y_to and r.width > 1:
             bottom = max(bottom, min(r.y1, y_to))
@@ -88,84 +65,139 @@ def is_blank_page(page: fitz.Page) -> bool:
     return not page.get_text().strip() and not page.get_image_info()
 
 
-def segment(doc: fitz.Document) -> list[dict]:
-    bigs, subs = find_markers(doc)
-    n_pages = len(doc)
-    # usable pages: 1..last non-blank
-    last_page = n_pages - 1
+# which marker ranks a subject uses, and which ranks may appear directly under a 大問
+SUBJECT_RULES = {
+    "math":    {"ranks": {3}, "top": {3}},          # ①②③ directly under 大問; （１）lists are text, not questions
+    "science": {"ranks": {2, 3}, "top": {2}},       # （１）（２） then ①② inside
+    "social":  {"ranks": {1, 2, 3}, "top": {1, 2}}, # 問１ then （１） then ①
+}
+
+
+def find_markers(doc: fitz.Document, subject: str = "math") -> list[dict]:
+    """All markers in reading order: [{page, y, rank, key, label, big}]; rank 0 = 大問.
+    Kana (あいう) are never markers here: they are fill-in slots inside the text."""
+    rules = SUBJECT_RULES.get(subject, SUBJECT_RULES["science"])
+    raw = []
+    for s in iter_spans(doc):
+        if s.page == 0 or s.y0 < TOP_MARGIN:
+            continue
+        if s.size >= BIG_MIN_SIZE and s.x0 < BIG_MAX_X and (n := is_big_digit(s.text)) is not None:
+            raw.append({"page": s.page, "y": s.y0, "rank": 0, "key": str(n), "label": str(n), "no": n})
+            continue
+        if s.x0 < SUB_MAX_X:
+            lab = parse_label(s.text)
+            if lab and lab.rank in rules["ranks"] and lab.kind != "K":
+                raw.append({"page": s.page, "y": s.y0, "rank": lab.rank, "key": lab.key, "label": lab.text})
+    raw.sort(key=lambda m: (m["page"], m["y"]))
+    # structural filter: a marker is valid only if its would-be parent is a 大問 (and rank allowed at top)
+    # or a marker of exactly one rank higher (no skipping levels) -> drops list bullets in passages
+    out = []
+    stack: list[int] = []  # ranks of open nodes
+    for m in raw:
+        r = m["rank"]
+        if r == 0:
+            out.append(m)
+            stack = [0]
+            continue
+        if not stack:
+            continue
+        while len(stack) > 1 and stack[-1] >= r:
+            stack.pop()
+        parent = stack[-1]
+        ok = (parent == 0 and r in rules["top"]) or (parent > 0 and r > parent and (r - parent == 1 or parent == 1 and r == 2))
+        if not ok:
+            continue
+        out.append(m)
+        stack.append(r)
+    return out
+
+
+def _regions(doc: fitz.Document, start: dict, end: dict | None, last_page: int) -> list[dict]:
+    """Regions from start marker down to end marker (exclusive) or to content end."""
+    sp, sy = start["page"], start["y"]
+    ep = end["page"] if end else last_page
+    ey = end["y"] if end else None
+    regions = []
+    for p in range(sp, ep + 1):
+        y0 = sy - PAD_TOP if p == sp else TOP_MARGIN
+        limit = ey - PAD_TOP if (p == ep and ey is not None) else None
+        if limit is not None and limit - y0 < 8 and p == ep:
+            continue
+        y1 = page_content_bottom(doc[p], y0, limit)
+        if y1 - y0 > 8:
+            regions.append({"page": p, "y0": round(y0, 1), "y1": round(y1, 1)})
+    return regions
+
+
+def build_tree(doc: fitz.Document, markers: list[dict], last_page: int) -> list[dict]:
+    """Nest markers by rank; a marker closes every open node with rank >= its own."""
+    # first pass: node list with next-marker (any rank) for leaf regions
+    nodes = []
+    for i, m in enumerate(markers):
+        nxt = markers[i + 1] if i + 1 < len(markers) else None
+        nodes.append({**m, "_next_any": nxt, "subs": []})
+    # end marker for each node = next marker with rank <= own rank
+    for i, n in enumerate(nodes):
+        end = None
+        for m in markers[i + 1:]:
+            if m["rank"] <= n["rank"]:
+                end = m
+                break
+        n["_end"] = end
+    bigs: list[dict] = []
+    stack: list[dict] = []
+    for n in nodes:
+        while stack and stack[-1]["rank"] >= n["rank"]:
+            stack.pop()
+        node = {"key": n["key"], "label": n["label"], "rank": n["rank"],
+                "regions": _regions(doc, n, n["_end"], last_page), "stem": None, "subs": []}
+        if n["rank"] == 0:
+            node["no"] = n["no"]
+            bigs.append(node)
+        elif stack:
+            stack[-1]["subs"].append(node)
+        else:
+            # sub marker before any big marker (rare) -> attach to last big
+            if bigs:
+                bigs[-1]["subs"].append(node)
+        # stem = from this marker to its first child marker
+        first_child = n["_next_any"] if (n["_next_any"] and n["_next_any"]["rank"] > n["rank"]) else None
+        if first_child and node["regions"]:
+            stem_regions = _regions(doc, n, first_child, last_page)
+            node["stem"] = stem_regions[0] if len(stem_regions) == 1 else (stem_regions or None)
+            if isinstance(node["stem"], dict) and node["stem"]["y1"] - node["stem"]["y0"] < 8:
+                node["stem"] = None
+        stack.append(node)
+    return bigs
+
+
+def segment(doc: fitz.Document, subject: str = "math") -> list[dict]:
+    markers = find_markers(doc, subject)
+    last_page = len(doc) - 1
     while last_page > 0 and is_blank_page(doc[last_page]):
         last_page -= 1
-
-    # Build ordered cut points: each big marker is a hard cut; each big spans until next big marker.
-    result = []
-    for i, (bp, bno, by) in enumerate(bigs):
-        if i + 1 < len(bigs):
-            ep, _, ey = bigs[i + 1]
-        else:
-            ep, ey = last_page, None
-        regions = []
-        for p in range(bp, ep + 1):
-            y0 = by - PAD_TOP if p == bp else TOP_MARGIN
-            limit = ey - PAD_TOP if (p == ep and ey is not None) else None
-            y1 = page_content_bottom(doc[p], y0, limit)
-            if y1 - y0 > 8:
-                regions.append({"page": p, "y0": round(y0, 1), "y1": round(y1, 1)})
-        # subs inside this big
-        my_subs = [(sp, sno, sy) for (sp, sno, sy) in subs
-                   if (sp, sy) > (bp, by) and (ey is None or (sp, sy) < (ep, ey))]
-        sub_entries = []
-        for j, (sp, sno, sy) in enumerate(my_subs):
-            if j + 1 < len(my_subs):
-                nep, _, ney = my_subs[j + 1]
-            else:
-                nep, ney = ep, ey
-            sregions = []
-            for p in range(sp, nep + 1):
-                y0 = sy - PAD_TOP if p == sp else TOP_MARGIN
-                limit = ney - PAD_TOP if (p == nep and ney is not None) else None
-                y1 = page_content_bottom(doc[p], y0, limit)
-                if y1 - y0 > 8:
-                    sregions.append({"page": p, "y0": round(y0, 1), "y1": round(y1, 1)})
-            sub_entries.append({"no": sno, "label": _label(sno), "regions": sregions})
-        stem = None
-        if my_subs:
-            sp, _, sy = my_subs[0]
-            limit = sy - PAD_TOP if sp == bp else None
-            stem = {"page": bp, "y0": round(by - PAD_TOP, 1),
-                    "y1": round(page_content_bottom(doc[bp], by - PAD_TOP, limit), 1)}
-            if stem["y1"] - stem["y0"] < 8:
-                stem = None
-        result.append({"no": bno, "regions": regions, "stem": stem, "subs": sub_entries})
-    return result
-
-
-def _label(n: int) -> str:
-    return "①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮"[n - 1]
+    return build_tree(doc, markers, last_page)
 
 
 def apply_overrides(exam_id: str, bigs: list[dict]) -> list[dict]:
     ov = load_json(OVERRIDES / "segments" / f"{exam_id}.json")
     if not ov:
         return bigs
-    by_no = {b["no"]: b for b in bigs}
-    for ob in ov.get("bigs", []):
-        b = by_no.get(ob["no"])
-        if b is None:
-            by_no[ob["no"]] = ob
-            continue
-        for k in ("regions", "stem"):
-            if k in ob:
-                b[k] = ob[k]
-        if "subs" in ob:
-            sub_by_no = {s["no"]: s for s in b["subs"]}
-            for os_ in ob["subs"]:
-                if os_.get("delete"):
-                    sub_by_no.pop(os_["no"], None)
-                    continue
-                s = sub_by_no.setdefault(os_["no"], {"no": os_["no"], "label": _label(os_["no"]), "regions": []})
-                s.update({k: v for k, v in os_.items() if k != "no"})
-            b["subs"] = sorted(sub_by_no.values(), key=lambda s: s["no"])
+    by_no = {str(b["no"]): b for b in bigs}
+    for no, patch in (ov.get("bigs") or {}).items():
+        if patch is None:
+            by_no.pop(no, None)
+        elif no in by_no:
+            by_no[no].update(patch)
+        else:
+            by_no[no] = {"no": int(no), "key": no, "label": no, "rank": 0, "regions": [], "stem": None, "subs": [], **patch}
     return sorted(by_no.values(), key=lambda b: b["no"])
+
+
+def _summary(node: dict) -> str:
+    if not node["subs"]:
+        return ""
+    return "(" + ",".join(f"{s['label']}{_summary(s)}" for s in node["subs"]) + ")"
 
 
 def main() -> None:
@@ -176,10 +208,15 @@ def main() -> None:
             print(f"[segment] {eid}: no question pdf, skip")
             continue
         doc = fitz.open(ROOT / qpath)
-        bigs = apply_overrides(eid, segment(doc))
+        if ex["subject"] == "japanese":
+            import japanese
+            bigs = apply_overrides(eid, japanese.segment(doc))
+            dump_json(OUT / "segments" / f"{eid}.json", {"exam_id": eid, "bigs": bigs})
+            print(f"[segment] {eid}: " + " ".join(f"{b['no']}[{len(b['regions'])}p]" for b in bigs))
+            continue
+        bigs = apply_overrides(eid, segment(doc, ex["subject"]))
         dump_json(OUT / "segments" / f"{eid}.json", {"exam_id": eid, "bigs": bigs})
-        summary = ", ".join(f"{b['no']}({len(b['subs'])})" for b in bigs)
-        print(f"[segment] {eid}: 大問 x{len(bigs)} -> {summary}")
+        print(f"[segment] {eid}: " + " ".join(f"{b['no']}{_summary(b)}" for b in bigs))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,14 @@
+{
+  "slots": {
+    "2-1": {"answer": "C", "answer_type": "choice"},
+    "2-3": {"answer": "B", "answer_type": "choice"},
+    "2-4": {"answer": "A", "answer_type": "choice"},
+    "3-1": {"answer": "オ", "answer_type": "choice"},
+    "3-2": {"answer": "もとの形", "answer_type": "text"},
+    "3-3": {"answer": "うすい膜", "answer_type": "text"},
+    "4-1": {"answer": "ウ", "answer_type": "choice"},
+    "4-2": {"answer": ["イ", "オ"], "answer_type": "multi", "parts": ["和泉", "遊晴"]},
+    "4-3": {"answer": "オ", "answer_type": "choice"},
+    "4-4": {"answer": ["意識を無心にする", "次のラリーで生じうる可能性について検討し、行動を最適化"], "answer_type": "multi", "parts": ["A", "B"], "note": "記述 A(8字)/B(24字): 保護者が採点"}
+  }
+}

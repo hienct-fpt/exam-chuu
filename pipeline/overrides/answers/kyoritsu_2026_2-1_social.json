@@ -1,0 +1,12 @@
+{
+  "slots": {
+    "2-5-2-1": {
+      "answer": "製糸",
+      "answer_type": "text",
+      "variants": [
+        "製糸業"
+      ],
+      "unit": "業"
+    }
+  }
+}

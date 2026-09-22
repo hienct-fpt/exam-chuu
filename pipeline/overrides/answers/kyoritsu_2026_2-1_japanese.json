@@ -1,0 +1,25 @@
+{
+  "slots": {
+    "1-2": {
+      "answer": "差金",
+      "answer_type": "text",
+      "variants": [
+        "差し金"
+      ]
+    },
+    "1-8": {
+      "answer": "いた",
+      "answer_type": "text",
+      "variants": [
+        "いたる"
+      ]
+    },
+    "1-7": {
+      "answer": "あ",
+      "answer_type": "text",
+      "variants": [
+        "あむ"
+      ]
+    }
+  }
+}

@@ -12,6 +12,6 @@ export async function loadExam(examId) {
 }
 
 const impl = MOCK ? await import('./api.mock.js') : await import('./api.firebase.js');
-export const { onAuth, signIn, signOut, currentUser, createAttempt, saveAnswers, submitAttempt,
+export const { onAuth, signIn, signOut, currentUser, createAttempt, saveAnswers, submitAttempt, setManualGrade,
   watchAttempt, getAttempt, listAttempts, findInProgress } = impl;
 export const isMock = MOCK;

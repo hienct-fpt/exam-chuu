@@ -1,0 +1,26 @@
+{
+  "slots": {
+    "4-1": {
+      "answer": "体",
+      "answer_type": "text",
+      "variants": []
+    },
+    "4-2": {
+      "answer": "人生の休符",
+      "answer_type": "text",
+      "variants": []
+    },
+    "5-5": {
+      "answer": [
+        "ヒトが生きるための仕組みである",
+        "中毒性があり、死からの距離を縮めてしまうようになる"
+      ],
+      "answer_type": "multi",
+      "parts": [
+        "A",
+        "B"
+      ],
+      "note": "記述: 保護者が採点"
+    }
+  }
+}

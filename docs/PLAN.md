@@ -230,3 +230,27 @@ Student is in 小5 now; app must let them practise 小5-level questions first.
 - Web: home has 「小5までの問題 / 全問」 toggle (remembered), tiles show 小5/小6 counts; `#/exam/{id}?g=5` filters items, hides empty 大問, scales time limit (∝ items, 5-min steps, min 5); attempt stores `itemIds`, `gradeFilter`, `timeLimitMin`, `mode: practice`; result shows scope badge + 分野別 (weak rows highlighted); history shows 範囲.
 - Tests: pytest 23, vitest 5 (vmThreads, serial — threads/forks workers time out on this PC).
 This is also the first half of P3 (topic tags exist; mastery/trend/recommendation still to do).
+
+## 10. P2 status (2026-09-23) — DONE (all 24 kyoritsu exams)
+
+Pipeline generalised beyond math:
+- `labels.py` rank hierarchy (問N > ⑴ > ①/あ > ア/AD parts); `segment.py` nested tree with per-subject marker rules
+  (math ①; science （N）→①; social 問N→（N）→①); crops per leaf + stem chain; padding 1.5pt (dense 社会 layout).
+- `sheet.py`: 解答用紙 cells from table rules (merged dashed borders), parent by cell extent, multi-row parts
+  (日の出/日の入り), 完答/順不同 annotations, circled 正/誤 (drawing or 〇 mark), three model modes
+  (overlay / retypeset / sheet-tree for scanned 2024 理科).
+- `japanese.py`: 国語 vertical text — 大問 page images (no per-問 crops yet), column cells from label row +
+  vertical rules, wide 記述 cells, part labels (Ⅰ/Ⅱ, A/B, はじめ/終わり), per-character model parsing.
+- Answer types added: `choice` (options), `set` (順不同), `sequence` (並べかえ), `essay`, `manual` (graph/drawing).
+  Essay/manual are **pending** until the parent marks ○/× in the result page (admin claim); the Cloud Function
+  regrades on `manualGrades` change and sends a 採点確定 mail when nothing is pending.
+- Overrides: 26 math + 60 science/social + 28 国語 manual corrections; every sheet verified visually.
+- Tags: grade/topic per 大問 for all subjects (社会: 日本地理=小5, 歴史/公民/世界=小6; 理科 by unit; 国語 漢字・語句=小5, 読解=小6).
+
+Totals: 24 exams, 704 items (math 134 / science 162 / social 216 / 国語 192), 806 crops.
+Tests: pytest 24, vitest 5, `npm run build` OK.
+
+Known gaps -> P3/P4:
+- 国語 items share whole-page images (per-問 vertical cropping not implemented).
+- Points are 1 per item; 配点 unknown.
+- Vertical-text sheets with stacked multi-character answers occasionally spill into the neighbour cell -> fixed by overrides.

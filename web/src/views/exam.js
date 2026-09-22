@@ -3,16 +3,36 @@ import { loadExam, createAttempt, saveAnswers, submitAttempt, findInProgress } f
 const slotId = (itemId) => itemId.split('#')[1];
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+const HINTS = {
+  fraction: '分数は 3/4、帯分数は 1 3/4 のように',
+  ratio: '比は 2:3 のように',
+  set: '順不同。A・D のように「・」で区切る',
+  sequence: '順番に A→C→D のように「→」で区切る',
+  essay: '文章で答える（保護者が採点します）',
+  manual: '作図・グラフの問題。紙にかいてから、答えの説明を書いてください（保護者が採点します）',
+};
+
 function inputFor(item, sid, value) {
-  const unit = item.unit ? `<span class="unit">${esc(item.unit)}</span>` : '';
+  const unit = item.unit && !item.unit.includes('・') ? `<span class="unit">${esc(item.unit)}</span>` : '';
+  const lbl = `<span class="lbl">${esc(item.label)}</span>`;
   if (item.parts && item.parts.length) {
     const vals = Array.isArray(value) ? value : [];
-    return `<div class="answer-row"><span class="lbl">${esc(item.label)}</span>${item.parts.map((p, i) => `
-      <span class="part"><small>${esc(p)}</small><input type="text" data-sid="${sid}" data-part="${i}" value="${esc(vals[i] || '')}" autocomplete="off"></span>`).join('')}${unit}</div>`;
+    const pu = item.part_units || [];
+    return `<div class="answer-row">${lbl}${item.parts.map((p, i) => `
+      <span class="part"><small>${esc(p)}</small><input type="text" data-sid="${sid}" data-part="${i}" value="${esc(vals[i] || '')}" autocomplete="off">${pu[i] ? `<small>${esc(pu[i])}</small>` : ''}</span>`).join('')}${unit}</div>`;
   }
-  const hint = { fraction: '分数は 3/4、帯分数は 1 3/4 のように', ratio: '比は 2:3 のように', text: '' }[item.answer_type] || '';
-  return `<div class="answer-row"><span class="lbl">${esc(item.label)}</span>
-    <input type="text" data-sid="${sid}" class="${item.answer_type === 'fraction' || item.answer_type === 'ratio' ? 'wide' : ''}" value="${esc(value || '')}" autocomplete="off">${unit}</div>
+  if (item.answer_type === 'choice' && item.options && item.options.length) {
+    return `<div class="answer-row">${lbl}${item.options.map((o) => `
+      <label class="opt"><input type="radio" name="r-${sid}" data-sid="${sid}" data-radio="1" value="${esc(o)}" ${value === o ? 'checked' : ''}> ${esc(o)}</label>`).join('')}</div>`;
+  }
+  if (item.answer_type === 'essay' || item.answer_type === 'manual') {
+    return `<div class="answer-row">${lbl}<textarea data-sid="${sid}" rows="3" class="essay">${esc(value || '')}</textarea></div>
+      <div class="hint">${HINTS[item.answer_type]}</div>`;
+  }
+  const hint = HINTS[item.answer_type] || '';
+  const wide = ['fraction', 'ratio', 'set', 'sequence', 'text'].includes(item.answer_type);
+  return `<div class="answer-row">${lbl}
+    <input type="text" data-sid="${sid}" class="${wide ? 'wide' : ''}" value="${esc(value || '')}" autocomplete="off">${unit}</div>
     ${hint ? `<div class="hint">${hint}</div>` : ''}`;
 }
 
@@ -52,6 +72,38 @@ export async function renderExam({ app }, arg) {
   for (const it of items) (byBig[it.big] ||= []).push(it);
   const bigs = exam.bigs.filter((b) => byBig[b.no]);
 
+  function renderBig(b) {
+    const bitems = byBig[b.no];
+    const shown = new Set();
+    const topic = bitems[0].topic ? `<span class="badge">${esc(bitems[0].topic)}</span>` : '';
+    const allShared = bitems.every((i) => i.shared_image);
+    let html = `<div class="card big" id="big-${b.no}">
+      <div class="big-head"><span class="big-no">${b.no}</span><span class="muted">${bitems.length} 問</span>${topic}</div>`;
+    if (allShared && bitems.every((i) => i.image === bitems[0].image)) {
+      // fill-in slots sharing one crop (あ〜く etc.)
+      html += `<img class="qimg" src="/${bitems[0].image}" loading="lazy">
+        <div class="item shared"><div>${bitems.map((it) => inputFor(it, slotId(it.id), answers[slotId(it.id)])).join('')}</div></div>`;
+      return html + '</div>';
+    }
+    if (b.stem_image) { html += `<img class="qimg" src="/${b.stem_image}" loading="lazy">`; shown.add(b.stem_image); }
+    let lastImage = null;
+    for (const it of bitems) {
+      for (const st of it.stem_images || []) {
+        if (!shown.has(st)) { html += `<img class="qimg stem" src="/${st}" loading="lazy">`; shown.add(st); }
+      }
+      const sid = slotId(it.id);
+      if (it.shared_image && it.image === lastImage) {
+        html += `<div class="item shared"><div>${inputFor(it, sid, answers[sid])}</div></div>`;
+      } else if (it.shared_image) {
+        html += `<img class="qimg" src="/${it.image}" loading="lazy"><div class="item shared"><div>${inputFor(it, sid, answers[sid])}</div></div>`;
+      } else {
+        html += `<div class="item"><img class="qimg" src="/${it.image}" loading="lazy"><div>${inputFor(it, sid, answers[sid])}</div></div>`;
+      }
+      lastImage = it.image;
+    }
+    return html + '</div>';
+  }
+
   app.innerHTML = `
     <div class="card">
       <h1>${esc(exam.school_name)} ${exam.year}年度 ${esc(exam.session_label)} ${esc(exam.subject_label)}
@@ -59,20 +111,7 @@ export async function renderExam({ app }, arg) {
       <div class="muted">${items.length} 問${gradeFilter ? ` <small>(全 ${exam.item_count} 問中)</small>` : ''} · 制限時間 ${timeLimit} 分 · 答えは解答欄に入力（単位は不要）</div>
     </div>
     <form id="sheet" autocomplete="off">
-      ${bigs.map((b) => {
-        const bitems = byBig[b.no];
-        const shared = bitems.length && bitems.every((i) => i.shared_image);
-        const topic = bitems[0].topic ? `<span class="badge">${esc(bitems[0].topic)}</span>` : '';
-        return `<div class="card big" id="big-${b.no}">
-          <div class="big-head"><span class="big-no">${b.no}</span><span class="muted">${bitems.length} 問</span>${topic}</div>
-          ${b.stem_image && !shared ? `<img class="qimg" src="/${b.stem_image}" loading="lazy">` : ''}
-          ${shared ? `<img class="qimg" src="/${b.image}" loading="lazy">
-            <div class="item shared"><div>${bitems.map((it) => inputFor(it, slotId(it.id), answers[slotId(it.id)])).join('')}</div></div>`
-            : bitems.map((it) => `<div class="item">
-                <img class="qimg" src="/${it.image}" loading="lazy">
-                <div>${inputFor(it, slotId(it.id), answers[slotId(it.id)])}</div></div>`).join('')}
-        </div>`;
-      }).join('')}
+      ${bigs.map(renderBig).join('')}
       <div class="card"><div class="sticky-bar">
         <span class="timer" id="timer">--:--</span>
         <span class="muted" id="progress"></span>
@@ -87,8 +126,9 @@ export async function renderExam({ app }, arg) {
   const savestate = app.querySelector('#savestate');
 
   function collect() {
-    for (const inp of form.querySelectorAll('input[data-sid]')) {
+    for (const inp of form.querySelectorAll('input[data-sid], textarea[data-sid]')) {
       const sid = inp.dataset.sid;
+      if (inp.dataset.radio) { if (inp.checked) answers[sid] = inp.value; continue; }
       if (inp.dataset.part !== undefined) {
         const arr = Array.isArray(answers[sid]) ? answers[sid] : [];
         arr[Number(inp.dataset.part)] = inp.value.trim();
@@ -108,16 +148,18 @@ export async function renderExam({ app }, arg) {
     await saveAnswers(attemptId, answers);
     savestate.textContent = '保存済み';
   }
-  form.addEventListener('input', () => {
+  const onChange = () => {
     collect();
     savestate.textContent = '保存中…';
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => persist().catch((e) => { savestate.textContent = '保存失敗'; console.error(e); }), 800);
-  });
+  };
+  form.addEventListener('input', onChange);
+  form.addEventListener('change', onChange);
   form.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
       e.preventDefault();
-      const all = [...form.querySelectorAll('input[data-sid]')];
+      const all = [...form.querySelectorAll('input[data-sid]:not([data-radio]), textarea[data-sid]')];
       const i = all.indexOf(e.target);
       if (all[i + 1]) all[i + 1].focus();
     }

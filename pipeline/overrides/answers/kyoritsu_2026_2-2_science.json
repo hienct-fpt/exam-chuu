@@ -1,0 +1,21 @@
+{
+  "slots": {
+    "1-5": {
+      "answer_type": "manual",
+      "answer": null,
+      "note": "グラフ: 空気の温度 15→7℃, 高さ0→800m"
+    },
+    "2-2": {
+      "answer": [
+        "A",
+        "B"
+      ],
+      "answer_type": "set"
+    },
+    "4-4": {
+      "answer_type": "manual",
+      "answer": null,
+      "note": "作図: 円の位置"
+    }
+  }
+}

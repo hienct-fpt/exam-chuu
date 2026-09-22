@@ -1,0 +1,30 @@
+{
+  "slots": {
+    "1-8": {
+      "answer": [
+        "A",
+        "C"
+      ],
+      "answer_type": "multi",
+      "parts": [
+        "2番目",
+        "4番目"
+      ],
+      "unit": ""
+    },
+    "1-10": {
+      "answer": "中央銀行",
+      "answer_type": "text",
+      "variants": [
+        "発券銀行"
+      ]
+    },
+    "1-12": {
+      "answer": "聖徳太子",
+      "answer_type": "text",
+      "variants": [
+        "厩戸王"
+      ]
+    }
+  }
+}

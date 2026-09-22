@@ -44,11 +44,11 @@ beforeAll(() => {
 });
 
 describe('mock api + views', () => {
-  it('home lists 6 exams', async () => {
+  it('home lists all exams', async () => {
     const { renderHome } = await import('../src/views/home.js');
     const app = document.createElement('main');
     await renderHome({ app });
-    expect(app.querySelectorAll('.exam-tile').length).toBe(6);
+    expect(app.querySelectorAll('.exam-tile').length).toBe(24);
     expect(app.textContent).toContain('2026年度');
   });
 

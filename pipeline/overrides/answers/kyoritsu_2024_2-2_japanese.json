@@ -1,0 +1,13 @@
+{
+  "slots": {
+    "5-1": {
+      "answer": "イ",
+      "answer_type": "choice"
+    },
+    "5-2": {
+      "answer": "方程式",
+      "answer_type": "text",
+      "variants": []
+    }
+  }
+}

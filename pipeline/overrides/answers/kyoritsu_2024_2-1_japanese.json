@@ -1,0 +1,58 @@
+{
+  "slots": {
+    "2-5": {
+      "answer": "きいろい",
+      "answer_type": "text",
+      "variants": []
+    },
+    "4-1": {
+      "answer": "オ",
+      "answer_type": "choice"
+    },
+    "4-2": {
+      "answer": [
+        "温め",
+        "る膜"
+      ],
+      "answer_type": "multi",
+      "parts": [
+        "はじめ",
+        "終わり"
+      ]
+    },
+    "4-4": {
+      "answer": [
+        "ぬか袋で肌が白くなったことではなく、",
+        "祖母がいつも自信満々で自己肯定感が高いこと"
+      ],
+      "answer_type": "multi",
+      "parts": [
+        "A",
+        "B"
+      ],
+      "note": "記述 A(8字)/B(16字): 保護者が採点"
+    },
+    "4-7": {
+      "answer": [
+        "家事に",
+        "と尊敬"
+      ],
+      "answer_type": "multi",
+      "parts": [
+        "はじめ",
+        "終わり"
+      ]
+    },
+    "5-2": {
+      "answer": [
+        "ア",
+        "オ"
+      ],
+      "answer_type": "multi",
+      "parts": [
+        "1",
+        "2"
+      ]
+    }
+  }
+}

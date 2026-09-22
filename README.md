@@ -78,3 +78,19 @@ Answer keys are never readable from the client (`firestore.rules`); the bank jso
 Each question is tagged with `grade` (5 = 小5までの内容で解ける, 6 = 小6内容が必要) and `topic` in `pipeline/tags/`.
 Home screen toggle 「小5までの問題」 opens `#/exam/{id}?g=5`: only 小5 items, shorter time limit, graded on that subset.
 Result and email show 分野別 correctness so weak topics stand out. Edit tags, then `python pipeline/build.py && python scripts/sync_assets.py`.
+
+## 6. Subjects and answer types
+
+All 24 kyoritsu exams (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語) are processed. Question types:
+
+| answer_type | input | grading |
+|---|---|---|
+| number / fraction / ratio | text | exact rational, 全角/単位/帯分数 tolerant |
+| choice | radio (正・誤) or text (ア, A) | normalized equality |
+| set | text `A・D` | order-free |
+| sequence | text `C→B→A` | order matters |
+| text | text | normalized equality + variants (別解, 読み) |
+| multi | one input per part (AD/BC, Ⅰ/Ⅱ, はじめ/終わり) | all parts |
+| essay / manual | textarea | **pending** — parent marks ○/× on the result page (admin claim), Cloud Function regrades |
+
+国語 shows each 大問 as page images (no per-問 crops yet); answers are entered per 問 in the sheet order.

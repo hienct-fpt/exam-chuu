@@ -1,0 +1,54 @@
+{
+  "slots": {
+    "1-5": {
+      "answer_type": "manual",
+      "answer": null,
+      "note": "グラフ: 水素750cm3で一定 (塩酸25cm3から)"
+    },
+    "2-2-2": {
+      "answer": [
+        "A",
+        "D"
+      ],
+      "answer_type": "set"
+    },
+    "3-3": {
+      "answer_type": "manual",
+      "answer": null,
+      "note": "作図: バイメタルの曲がり"
+    },
+    "4-4": {
+      "answer": [
+        "15",
+        "84"
+      ],
+      "answer_type": "multi",
+      "parts": [
+        "g",
+        "円"
+      ],
+      "unit": ""
+    },
+    "4-5": {
+      "answer": [
+        "40",
+        "120"
+      ],
+      "answer_type": "multi",
+      "parts": [
+        "g",
+        "円"
+      ],
+      "unit": ""
+    },
+    "5-1": {
+      "answer": "示準化石",
+      "answer_type": "text",
+      "variants": []
+    },
+    "5-2": {
+      "answer": "あたたかく浅い海",
+      "answer_type": "essay"
+    }
+  }
+}

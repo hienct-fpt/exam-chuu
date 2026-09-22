@@ -1,0 +1,39 @@
+{
+  "slots": {
+    "1-9": {
+      "answer": "聖武",
+      "answer_type": "text",
+      "variants": [
+        "聖武天皇"
+      ],
+      "unit": "天皇"
+    },
+    "1-11": {
+      "answer": "山梨",
+      "answer_type": "text",
+      "variants": [
+        "山梨県"
+      ],
+      "unit": "県"
+    },
+    "2-3": {
+      "answer": "ロシア",
+      "answer_type": "text",
+      "variants": [
+        "ロシア連邦"
+      ]
+    },
+    "4-2": {
+      "answer": [
+        "ア",
+        "ウ"
+      ],
+      "answer_type": "multi",
+      "parts": [
+        "A",
+        "B"
+      ],
+      "unit": ""
+    }
+  }
+}

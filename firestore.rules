@@ -45,7 +45,7 @@ service cloud.firestore {
         allow update: if isAdmin() || (isOwner(uid)
           && resource.data.status == 'in_progress'
           && request.resource.data.status in ['in_progress', 'submitted']
-          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['result', 'score', 'gradedAt', 'examId', 'startedAt']));
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['result', 'score', 'gradedAt', 'examId', 'startedAt', 'manualGrades', 'itemIds', 'gradeFilter']));
         allow delete: if isAdmin();
       }
 

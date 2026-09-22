@@ -80,6 +80,9 @@ def test_all_bank_answers_grade_themselves():
     keys = json.loads(p.read_text(encoding="utf-8"))
     bad = []
     for iid, k in keys.items():
+        if k.get("answer_type") in ("essay", "manual"):
+            assert grade(k, k["answer"] or "x").pending
+            continue
         r = grade(k, k["answer"])
         if not r.correct:
             bad.append((iid, k["answer"]))

@@ -1,0 +1,37 @@
+{
+  "slots": {
+    "1-5": {
+      "answer": "八",
+      "answer_type": "text",
+      "variants": [
+        "8"
+      ],
+      "unit": "条"
+    },
+    "2-7": {
+      "answer": "A",
+      "answer_type": "choice",
+      "unit": ""
+    },
+    "3-4-2": {
+      "answer": [
+        "生産年齢人口",
+        "過疎"
+      ],
+      "answer_type": "multi",
+      "parts": [
+        "X",
+        "Y"
+      ],
+      "unit": ""
+    },
+    "4-6": {
+      "answer": "民事",
+      "answer_type": "text",
+      "variants": [
+        "民事裁判"
+      ],
+      "unit": "裁判"
+    }
+  }
+}

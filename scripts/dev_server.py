@@ -1,6 +1,7 @@
 """Local stand-in for the Cloud Function so the SPA can be tested without Firebase.
 
-POST /api/grade   {examId, answers, studentName?, attemptId?}  -> {result, emailSubject, emailHtml}
+POST /api/grade   {examId, answers, itemIds?, gradeFilter?, manualGrades?, studentName?, attemptId?}
+                  -> {result, emailSubject, emailHtml}
 GET  /api/health
 
 usage: python scripts/dev_server.py [port=8790]     (Vite proxies /api here when VITE_MOCK=1)
@@ -27,6 +28,7 @@ def keys_for(exam_id: str) -> dict:
 
 class H(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"  # keep-alive, needed for the Vite proxy agent
+
     def _json(self, code: int, obj) -> None:
         body = json.dumps(obj, ensure_ascii=False).encode("utf-8")
         self.send_response(code)
@@ -38,7 +40,8 @@ class H(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:  # noqa: N802
         if self.path.startswith("/api/health"):
-            return self._json(200, {"ok": True, "exams": len(json.loads((OUT / 'bank' / 'index.json').read_text(encoding='utf-8')))})
+            n = len(json.loads((OUT / "bank" / "index.json").read_text(encoding="utf-8")))
+            return self._json(200, {"ok": True, "exams": n})
         self._json(404, {"error": "not found"})
 
     def do_POST(self) -> None:  # noqa: N802
@@ -48,9 +51,11 @@ class H(BaseHTTPRequestHandler):
         req = json.loads(self.rfile.read(n) or b"{}")
         exam_id = req["examId"]
         exam = json.loads((OUT / "bank" / f"{exam_id}.json").read_text(encoding="utf-8"))
-        result = grade_submission(req.get("answers") or {}, keys_for(exam_id), exam, req.get("itemIds"))
+        result = grade_submission(req.get("answers") or {}, keys_for(exam_id), exam,
+                                  req.get("itemIds"), req.get("manualGrades"))
         subject, html = render_report(req.get("studentName") or "テスト", exam, result,
-                                      "http://localhost:5173", req.get("attemptId") or "local", grade_filter=req.get("gradeFilter"))
+                                      "http://localhost:5173", req.get("attemptId") or "local",
+                                      grade_filter=req.get("gradeFilter"))
         self._json(200, {"result": result, "emailSubject": subject, "emailHtml": html})
 
     def log_message(self, fmt, *args) -> None:

@@ -73,6 +73,28 @@ def test_subset_grade5_only(exam_and_keys):
     assert all(v["items"] > 0 for v in r["perTopic"].values())
 
 
+def test_manual_grading_of_essays():
+    """Essay / manual items are pending until the parent grades them; set/sequence auto-grade."""
+    exam = {"items": [
+        {"id": "x#1-1", "big": 1, "sub": 1, "label": "問1", "answer_type": "essay", "points": 1},
+        {"id": "x#1-2", "big": 1, "sub": 2, "label": "問2", "answer_type": "set", "points": 1},
+        {"id": "x#1-3", "big": 1, "sub": 3, "label": "問3", "answer_type": "sequence", "points": 1},
+        {"id": "x#1-4", "big": 1, "sub": 4, "label": "問4", "answer_type": "manual", "points": 1},
+    ]}
+    keys = {"1-1": {"answer_type": "essay", "answer": "水が豊富なため。"},
+            "1-2": {"answer_type": "set", "answer": ["A", "D"]},
+            "1-3": {"answer_type": "sequence", "answer": "C→B→A"},
+            "1-4": {"answer_type": "manual", "answer": None}}
+    answers = {"1-1": "水がたくさんあるから", "1-2": "D・A", "1-3": "C, B, A", "1-4": ""}
+    r = grade_submission(answers, keys, exam)
+    assert r["perItem"]["1-2"]["correct"] and r["perItem"]["1-3"]["correct"]
+    assert r["perItem"]["1-1"]["pending"] and r["pending"] == ["1-1"] and r["pendingCount"] == 1
+    assert not r["perItem"]["1-4"]["pending"]  # blank drawing answer is just unanswered
+    assert r["score"] == 2
+    r2 = grade_submission(answers, keys, exam, manual_grades={"1-1": True})
+    assert r2["pendingCount"] == 0 and r2["score"] == 3 and r2["perItem"]["1-1"]["manual"]
+
+
 def test_report_scope_and_topics(exam_and_keys):
     exam, keys = exam_and_keys
     g5 = [it["id"].split("#", 1)[1] for it in exam["items"] if it.get("grade") == 5]
