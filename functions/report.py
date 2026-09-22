@@ -79,3 +79,43 @@ def render_report(student_name: str, exam: dict, result: dict, app_url: str, att
 <p><a href="{link}">アプリで結果を見る</a></p>
 </body></html>"""
     return subject, body
+
+
+def render_digest(student_name: str, summary: dict, suggestions: dict, app_url: str) -> tuple[str, str]:
+    """Weekly digest: per-subject accuracy, topic table (weakest first), weekly trend, suggested practice."""
+    esc = html.escape
+    app_url = app_url.rstrip("/")
+    SUBJ = {"math": "算数", "japanese": "国語", "science": "理科", "social": "社会"}
+    weekly = summary.get("weekly") or []
+    this_week = weekly[-1] if weekly else {"attempts": 0, "correct": 0}
+    subject = f"[週報] {student_name} – 今週 {this_week['attempts']}問 正解{this_week['correct']} · 弱点 " + \
+              "、".join(t for s in suggestions.values() for t in s["topics"][:1]) if suggestions else f"[週報] {student_name} – 今週 {this_week['attempts']}問"
+    trend = "".join(
+        f"<tr><td style='padding:3px 8px;border:1px solid #ddd'>{w['weekStart']}〜</td>"
+        f"<td style='padding:3px 8px;border:1px solid #ddd;text-align:right'>{w['attempts']}</td>"
+        f"<td style='padding:3px 8px;border:1px solid #ddd;text-align:right'>{('%d%%' % round(100 * w['accuracy'])) if w['accuracy'] is not None else '—'}</td></tr>"
+        for w in weekly)
+    sections = []
+    for subj, d in sorted(summary.get("subjects", {}).items()):
+        rows = [(t, s) for t, s in summary["topics"].items() if s["subject"] == subj]
+        rows.sort(key=lambda ts: (ts[1]["mastery"] if ts[1]["mastery"] is not None else 2))
+        trs = "".join(
+            f"<tr style='{'background:#fef2f2' if s['weak'] else ''}'><td style='padding:3px 8px;border:1px solid #ddd'>{esc(t)}</td>"
+            f"<td style='padding:3px 8px;border:1px solid #ddd;text-align:right'>{s['correct']} / {s['attempts']}</td>"
+            f"<td style='padding:3px 8px;border:1px solid #ddd;text-align:right'>{('%d%%' % round(100 * s['mastery'])) if s['mastery'] is not None else '—'}"
+            f"{'' if s['confident'] else ' <small>(少)</small>'}</td></tr>" for t, s in rows)
+        sug = suggestions.get(subj)
+        sug_html = (f"<p>おすすめ練習: <b>{esc('、'.join(sug['topics']))}</b> ({sug['count']}問) "
+                    f"<a href='{app_url}/#/practice/{subj}?weak=1'>開く</a></p>") if sug else "<p>弱点なし 🎉</p>"
+        acc = d.get("accuracy")
+        sections.append(f"<h3>{SUBJ.get(subj, subj)} · 正答率 {('%d%%' % round(100 * acc)) if acc is not None else '—'} ({d['attempts']}問)</h3>"
+                        f"<table style='border-collapse:collapse;font-size:14px'><tr><th style='border:1px solid #ddd;padding:3px 8px'>分野</th>"
+                        f"<th style='border:1px solid #ddd;padding:3px 8px'>正解</th><th style='border:1px solid #ddd;padding:3px 8px'>習熟度</th></tr>{trs}</table>{sug_html}")
+    body = f"""<!doctype html><html><body style="font-family:sans-serif;color:#222;max-width:720px">
+<h2>週間レポート — {esc(student_name)}</h2>
+<p>今週: {this_week['attempts']} 問 / 正解 {this_week['correct']}。累計 {summary.get('attemptCount', 0)} 回受験。</p>
+<h3>週ごとの推移</h3><table style="border-collapse:collapse;font-size:14px">{trend}</table>
+{''.join(sections)}
+<p><a href="{app_url}/#/dashboard">ダッシュボードを見る</a></p>
+</body></html>"""
+    return subject, body

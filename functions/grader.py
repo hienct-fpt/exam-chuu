@@ -24,8 +24,10 @@ def _answered(v) -> bool:
 
 
 def grade_submission(answers: dict, keys: dict, exam: dict, item_ids: list[str] | None = None,
-                     manual_grades: dict | None = None) -> dict:
-    subset = {slot_id(i) for i in item_ids} if item_ids else None
+                     manual_grades: dict | None = None, full_ids: bool = False) -> dict:
+    """full_ids=True: items/keys/answers are keyed by the full item id "exam#slot" (cross-exam practice sets)."""
+    key_of = (lambda it: it["id"]) if full_ids else (lambda it: slot_id(it["id"]))
+    subset = set(item_ids) if (item_ids and full_ids) else ({slot_id(i) for i in item_ids} if item_ids else None)
     manual_grades = manual_grades or {}
     per_item: dict[str, dict] = {}
     per_big: dict[str, dict] = {}
@@ -35,7 +37,7 @@ def grade_submission(answers: dict, keys: dict, exam: dict, item_ids: list[str] 
     graded_items = 0
     pending: list[str] = []
     for it in exam["items"]:
-        sid = slot_id(it["id"])
+        sid = key_of(it)
         if subset is not None and sid not in subset:
             continue
         graded_items += 1
@@ -66,6 +68,7 @@ def grade_submission(answers: dict, keys: dict, exam: dict, item_ids: list[str] 
             "big": it["big"], "sub": it.get("sub", 0), "path": it.get("path"), "label": it.get("label", ""),
             "unit": it.get("unit", ""), "parts": it.get("parts"), "image": it.get("image"),
             "grade": it.get("grade"), "topic": it.get("topic"), "answerType": atype,
+            "examId": it.get("exam_id"), "sid": slot_id(it["id"]), "subject": it.get("subject"),
             "answered": answered, "correct": correct, "pending": is_pending,
             "manual": sid in manual_grades,
             "student": student if student is not None else "",
@@ -75,7 +78,8 @@ def grade_submission(answers: dict, keys: dict, exam: dict, item_ids: list[str] 
             "partsCorrect": list(res.parts_correct) if res else [],
             "points": points, "earned": points if correct else 0,
         }
-        for bucket, k in ((per_big, str(it["big"])), (per_topic, it.get("topic") or "未分類"),
+        big_key = f"{it['exam_id']}#{it['big']}" if full_ids else str(it["big"])
+        for bucket, k in ((per_big, big_key), (per_topic, it.get("topic") or "未分類"),
                           (per_grade, str(it.get("grade") or "?"))):
             b = bucket.setdefault(k, {"items": 0, "correct": 0, "answered": 0, "points": 0, "earned": 0, "pending": 0})
             b["items"] += 1
@@ -87,10 +91,25 @@ def grade_submission(answers: dict, keys: dict, exam: dict, item_ids: list[str] 
                 b["earned"] += points
             if is_pending:
                 b["pending"] += 1
-        per_big[str(it["big"])]["big"] = it["big"]
+        per_big[big_key]["big"] = it["big"]
+        per_big[big_key]["examId"] = it.get("exam_id")
     return {
         "score": earned, "max": total, "percent": round(100 * earned / total) if total else 0,
         "correctCount": correct_n, "answeredCount": answered_n, "itemCount": graded_items,
         "pendingCount": len(pending), "pending": pending,
         "perBig": per_big, "perItem": per_item, "perTopic": per_topic, "perGrade": per_grade,
     }
+
+
+def virtual_exam(banks: dict[str, dict], item_ids: list[str]) -> tuple[dict, list[dict]]:
+    """Cross-exam practice set: items from several banks, tagged with subject. Returns (exam, items)."""
+    items = []
+    for iid in item_ids:
+        eid = iid.split("#", 1)[0]
+        bank = banks.get(eid)
+        if not bank:
+            continue
+        it = next((x for x in bank["items"] if x["id"] == iid), None)
+        if it:
+            items.append({**it, "subject": bank.get("subject")})
+    return {"items": items, "subject_label": "練習"}, items

@@ -94,3 +94,12 @@ All 24 kyoritsu exams (2024–2026 × 2-1/2-2 × 算数・理科・社会・国�
 | essay / manual | textarea | **pending** — parent marks ○/× on the result page (admin claim), Cloud Function regrades |
 
 国語 shows each 大問 as page images (no per-問 crops yet); answers are entered per 問 in the sheet order.
+
+## 7. Dashboard, weak-topic practice, weekly digest (P3)
+
+- Every graded attempt updates `students/{uid}/topicStats/summary` (topic mastery = recency-weighted accuracy,
+  weak = mastery < 60% after 3+ outcomes). The dashboard (`#/dashboard`) shows weekly accuracy, weak topics,
+  per-subject tables and topics not yet practised.
+- 練習 (`#/practice/{subject}?weak=1|topic=...&g=5`) builds a set across all exams: wrong-before first, then
+  unseen, then previously-correct; the attempt stores the item ids and is graded against several answer keys.
+- Sunday 20:00 JST the `weekly_digest` function mails a per-subject report with suggested practice links.

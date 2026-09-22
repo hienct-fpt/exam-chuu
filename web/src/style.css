@@ -56,3 +56,14 @@ textarea.essay { font: inherit; font-size: 15px; width: min(100%, 420px); paddin
 .qimg.stem { margin-bottom: 6px; }
 .warn { color: var(--warn); font-weight: 600; }
 .grade-btns { margin-top: 6px; display: flex; gap: 6px; } .grade-btns button { padding: 3px 10px; font-size: 13px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0; }
+.chip { display: inline-block; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 14px; cursor: pointer; }
+.chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.chip.weak { border-color: #fca5a5; } .chip.weak.on { background: var(--ng); border-color: var(--ng); }
+.bar { display: inline-block; width: 90px; height: 8px; background: #e5e7eb; border-radius: 4px; vertical-align: middle; overflow: hidden; }
+.bar div { height: 100%; background: var(--accent); }
+tr.weak .bar div { background: var(--ng); }
+.small { font-size: 13px; }
+a.button { display: inline-block; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--line); }
+a.button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+#topbar nav a.on { font-weight: 700; color: var(--ink); }

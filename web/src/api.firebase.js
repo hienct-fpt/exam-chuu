@@ -22,7 +22,6 @@ export function onAuth(cb) {
     if (u) {
       const token = await u.getIdTokenResult();
       user = { uid: u.uid, name: u.displayName || u.email, email: u.email, photo: u.photoURL, admin: token.claims.admin === true };
-      // upsert profile (role/parentEmail are admin-managed; rules block the student from changing them)
       const ref = doc(db, 'students', u.uid);
       const snap = await getDoc(ref);
       if (!snap.exists()) await setDoc(ref, { name: u.displayName || u.email, email: u.email, createdAt: serverTimestamp() });
@@ -44,11 +43,12 @@ function norm(snap) {
   return { id: snap.id, ...d, startedAt: ts(d.startedAt), submittedAt: ts(d.submittedAt), gradedAt: ts(d.gradedAt) };
 }
 
-/** extra: { itemIds: string[]|null, gradeFilter: number|null, timeLimitMin: number|null } */
+/** extra: { itemIds, gradeFilter, timeLimitMin, items (practice: full item ids), topics, title, subject } */
 export async function createAttempt(examId, mode = 'exam', extra = {}) {
   const ref = await addDoc(attempts(), {
-    examId, mode, status: 'in_progress', answers: {}, manualGrades: {},
+    examId: examId || null, mode, status: 'in_progress', answers: {}, manualGrades: {},
     itemIds: extra.itemIds || null, gradeFilter: extra.gradeFilter || null, timeLimitMin: extra.timeLimitMin || null,
+    items: extra.items || null, topics: extra.topics || null, title: extra.title || null, subject: extra.subject || null,
     startedAt: serverTimestamp(), updatedAt: serverTimestamp(),
   });
   return ref.id;
@@ -59,7 +59,6 @@ export async function saveAnswers(attemptId, answers) {
 export async function submitAttempt(attemptId, answers) {
   await updateDoc(attemptRef(attemptId), { answers, status: 'submitted', submittedAt: serverTimestamp(), updatedAt: serverTimestamp() });
 }
-/** Parent (admin claim) marks an essay / drawing item; the Cloud Function regrades on this change. */
 export async function setManualGrade(attemptId, sid, correct) {
   await updateDoc(attemptRef(attemptId), { [`manualGrades.${sid}`]: correct, updatedAt: serverTimestamp() });
 }
@@ -77,5 +76,12 @@ export async function listAttempts(max = 50) {
 export async function findInProgress(examId, gradeFilter = null) {
   const q = query(attempts(), where('examId', '==', examId), where('status', '==', 'in_progress'), limit(10));
   const s = await getDocs(q);
-  return s.docs.map(norm).find((a) => (a.gradeFilter || null) === (gradeFilter || null)) || null;
+  return s.docs.map(norm).find((a) => (a.gradeFilter || null) === (gradeFilter || null) && a.mode !== 'practice') || null;
+}
+/** students/{uid}/topicStats/summary, maintained by the Cloud Function after every grading. */
+export async function getTopicStats() {
+  const snap = await getDoc(doc(db, 'students', user.uid, 'topicStats', 'summary'));
+  if (!snap.exists()) return { topics: {}, subjects: {}, weekly: [], itemHistory: {}, attemptCount: 0, suggestions: {} };
+  const d = snap.data();
+  return { suggestions: {}, ...d };
 }

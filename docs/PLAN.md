@@ -254,3 +254,21 @@ Known gaps -> P3/P4:
 - 国語 items share whole-page images (per-問 vertical cropping not implemented).
 - Points are 1 per item; 配点 unknown.
 - Vertical-text sheets with stacked multi-character answers occasionally spill into the neighbour cell -> fixed by overrides.
+
+## 11. P3 status (2026-09-23) — DONE
+
+- `functions/analytics.py` (pure): outcomes flattening, per-topic stats (attempts, accuracy, recency-weighted
+  mastery with decay 0.85, confident at >= 3 outcomes, weak < 0.6), weak_topics, item_history, practice_set
+  (wrong before > never seen > correct long ago; shared-image siblings pulled in; essays/drawings excluded),
+  weekly_series, subject_summary.
+- Cloud Function: after every grading recompute `students/{uid}/topicStats/summary` from all graded attempts
+  (topics, subjects, weekly, itemHistory). Practice attempts (`mode: practice`, `items: [exam#slot...]`) are graded
+  across several answerKeys via `grader.virtual_exam` + `full_ids`. `weekly_digest` scheduled Sunday 20:00 JST:
+  per-subject topic table (weakest first), weekly trend, suggested practice with deep links.
+- Web: ダッシュボード (weekly SVG bar chart, weak-topic chips, per-subject mastery tables, untouched topics),
+  練習 (topic chips, count, live preview of the picked set, JS mirror `pickPractice`), `#/attempt/{id}` renders a
+  cross-exam sheet grouped by (exam, 大問) with exam labels; result/history handle practice attempts.
+- Mock mode: dev_server `/api/stats` computes the same summary + digest HTML from localStorage attempts.
+- Tests: pytest 29 (analytics, cross-exam grading, dev_server end-to-end), vitest 8.
+
+Deferred: 国語 per-問 crops, 配点, P4 shinagawa.
