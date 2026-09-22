@@ -45,7 +45,7 @@ def grade_attempt(event: firestore_fn.Event[firestore_fn.Change[firestore_fn.Doc
         after.reference.update({"status": "error", "error": f"missing exam or answer key for {exam_id}"})
         return
 
-    result = grade_submission(data.get("answers") or {}, keys_doc["items"], exam)
+    result = grade_submission(data.get("answers") or {}, keys_doc["items"], exam, data.get("itemIds"))
     now = dt.datetime.now(dt.timezone.utc)
     after.reference.update({
         "status": "graded", "result": result, "score": result["score"], "max": result["max"],
@@ -60,7 +60,8 @@ def grade_attempt(event: firestore_fn.Event[firestore_fn.Change[firestore_fn.Doc
     duration = None
     if isinstance(submitted_at, dt.datetime) and isinstance(started_at, dt.datetime):
         duration = int((submitted_at - started_at).total_seconds())
-    subject, html = render_report(name, exam, result, APP_URL.value, aid, submitted_at, duration)
+    subject, html = render_report(name, exam, result, APP_URL.value, aid, submitted_at, duration,
+                                  grade_filter=data.get("gradeFilter"))
     db.collection("mail").add({
         "to": [to],
         "message": {"subject": subject, "html": html},

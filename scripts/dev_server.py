@@ -48,9 +48,9 @@ class H(BaseHTTPRequestHandler):
         req = json.loads(self.rfile.read(n) or b"{}")
         exam_id = req["examId"]
         exam = json.loads((OUT / "bank" / f"{exam_id}.json").read_text(encoding="utf-8"))
-        result = grade_submission(req.get("answers") or {}, keys_for(exam_id), exam)
+        result = grade_submission(req.get("answers") or {}, keys_for(exam_id), exam, req.get("itemIds"))
         subject, html = render_report(req.get("studentName") or "テスト", exam, result,
-                                      "http://localhost:5173", req.get("attemptId") or "local")
+                                      "http://localhost:5173", req.get("attemptId") or "local", grade_filter=req.get("gradeFilter"))
         self._json(200, {"result": result, "emailSubject": subject, "emailHtml": html})
 
     def log_message(self, fmt, *args) -> None:

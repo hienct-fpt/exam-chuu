@@ -16,31 +16,59 @@ function inputFor(item, sid, value) {
     ${hint ? `<div class="hint">${hint}</div>` : ''}`;
 }
 
-export async function renderExam({ app }, examId) {
+/** arg = "exam_id" or "exam_id?g=5" */
+export function parseExamArg(arg) {
+  const [examId, qs] = String(arg || '').split('?');
+  const g = new URLSearchParams(qs || '').get('g');
+  return { examId, gradeFilter: g && g !== 'all' ? Number(g) : null };
+}
+
+export function selectItems(exam, gradeFilter) {
+  if (!gradeFilter) return exam.items;
+  return exam.items.filter((it) => it.grade != null && it.grade <= gradeFilter);
+}
+
+export function scaledTimeLimit(exam, items) {
+  if (items.length === exam.items.length) return exam.time_limit_min;
+  return Math.max(5, Math.ceil((exam.time_limit_min * items.length / exam.items.length) / 5) * 5);
+}
+
+export async function renderExam({ app }, arg) {
+  const { examId, gradeFilter } = parseExamArg(arg);
   const exam = await loadExam(examId);
-  let attempt = await findInProgress(examId);
+  const items = selectItems(exam, gradeFilter);
+  if (!items.length) {
+    app.innerHTML = `<div class="card">この試験には該当する問題がありません。<a href="#/">一覧へ</a></div>`;
+    return;
+  }
+  const itemIds = items.map((it) => slotId(it.id));
+  const timeLimit = scaledTimeLimit(exam, items);
+  let attempt = await findInProgress(examId, gradeFilter);
   let attemptId = attempt ? attempt.id : null;
   const answers = attempt ? { ...(attempt.answers || {}) } : {};
   const startedAt = attempt ? new Date(attempt.startedAt) : new Date();
 
   const byBig = {};
-  for (const it of exam.items) (byBig[it.big] ||= []).push(it);
+  for (const it of items) (byBig[it.big] ||= []).push(it);
+  const bigs = exam.bigs.filter((b) => byBig[b.no]);
 
   app.innerHTML = `
     <div class="card">
-      <h1>${esc(exam.school_name)} ${exam.year}年度 ${esc(exam.session_label)} ${esc(exam.subject_label)}</h1>
-      <div class="muted">${exam.item_count} 問 · 制限時間 ${exam.time_limit_min} 分 · 答えは解答欄に入力（単位は不要）</div>
+      <h1>${esc(exam.school_name)} ${exam.year}年度 ${esc(exam.session_label)} ${esc(exam.subject_label)}
+        ${gradeFilter ? `<span class="badge">小${gradeFilter}までの問題</span>` : ''}</h1>
+      <div class="muted">${items.length} 問${gradeFilter ? ` <small>(全 ${exam.item_count} 問中)</small>` : ''} · 制限時間 ${timeLimit} 分 · 答えは解答欄に入力（単位は不要）</div>
     </div>
     <form id="sheet" autocomplete="off">
-      ${exam.bigs.map((b) => {
-        const items = byBig[b.no] || [];
-        const shared = items.length && items.every((i) => i.shared_image);
+      ${bigs.map((b) => {
+        const bitems = byBig[b.no];
+        const shared = bitems.length && bitems.every((i) => i.shared_image);
+        const topic = bitems[0].topic ? `<span class="badge">${esc(bitems[0].topic)}</span>` : '';
         return `<div class="card big" id="big-${b.no}">
-          <div class="big-head"><span class="big-no">${b.no}</span><span class="muted">${items.length} 問</span></div>
+          <div class="big-head"><span class="big-no">${b.no}</span><span class="muted">${bitems.length} 問</span>${topic}</div>
           ${b.stem_image && !shared ? `<img class="qimg" src="/${b.stem_image}" loading="lazy">` : ''}
           ${shared ? `<img class="qimg" src="/${b.image}" loading="lazy">
-            <div class="item shared"><div>${items.map((it) => inputFor(it, slotId(it.id), answers[slotId(it.id)])).join('')}</div></div>`
-            : items.map((it) => `<div class="item">
+            <div class="item shared"><div>${bitems.map((it) => inputFor(it, slotId(it.id), answers[slotId(it.id)])).join('')}</div></div>`
+            : bitems.map((it) => `<div class="item">
                 <img class="qimg" src="/${it.image}" loading="lazy">
                 <div>${inputFor(it, slotId(it.id), answers[slotId(it.id)])}</div></div>`).join('')}
         </div>`;
@@ -54,7 +82,7 @@ export async function renderExam({ app }, examId) {
     </form>`;
 
   const form = app.querySelector('#sheet');
-  const total = exam.items.length;
+  const total = items.length;
   const progress = app.querySelector('#progress');
   const savestate = app.querySelector('#savestate');
 
@@ -67,15 +95,16 @@ export async function renderExam({ app }, examId) {
         answers[sid] = arr;
       } else answers[sid] = inp.value.trim();
     }
-    const done = exam.items.filter((it) => { const v = answers[slotId(it.id)]; return Array.isArray(v) ? v.some(Boolean) : Boolean(v); }).length;
+    const done = items.filter((it) => { const v = answers[slotId(it.id)]; return Array.isArray(v) ? v.some(Boolean) : Boolean(v); }).length;
     progress.textContent = `回答 ${done} / ${total}`;
     return done;
   }
   collect();
 
+  const extra = { itemIds, gradeFilter, timeLimitMin: timeLimit };
   let saveTimer = null;
   async function persist() {
-    if (!attemptId) attemptId = await createAttempt(examId);
+    if (!attemptId) attemptId = await createAttempt(examId, gradeFilter ? 'practice' : 'exam', extra);
     await saveAnswers(attemptId, answers);
     savestate.textContent = '保存済み';
   }
@@ -85,7 +114,6 @@ export async function renderExam({ app }, examId) {
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => persist().catch((e) => { savestate.textContent = '保存失敗'; console.error(e); }), 800);
   });
-  // Enter moves to next input instead of submitting
   form.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
       e.preventDefault();
@@ -96,7 +124,7 @@ export async function renderExam({ app }, examId) {
   });
 
   const timerEl = app.querySelector('#timer');
-  const limitMs = exam.time_limit_min * 60 * 1000;
+  const limitMs = timeLimit * 60 * 1000;
   const tick = setInterval(() => {
     const left = Math.max(0, startedAt.getTime() + limitMs - Date.now());
     const m = Math.floor(left / 60000), s = Math.floor((left % 60000) / 1000);
@@ -113,7 +141,7 @@ export async function renderExam({ app }, examId) {
     btn.disabled = true; btn.textContent = '提出中…';
     try {
       clearTimeout(saveTimer);
-      if (!attemptId) attemptId = await createAttempt(examId);
+      if (!attemptId) attemptId = await createAttempt(examId, gradeFilter ? 'practice' : 'exam', extra);
       await submitAttempt(attemptId, answers);
       clearInterval(tick);
       location.hash = `#/result/${attemptId}`;

@@ -11,10 +11,11 @@ export function onAuth(cb) { setTimeout(() => cb(user), 0); return () => {}; }
 export async function signIn() {}
 export async function signOut() {}
 
-export async function createAttempt(examId, mode = 'exam') {
+export async function createAttempt(examId, mode = 'exam', extra = {}) {
   const all = load();
-  const id = 'a' + Date.now().toString(36);
-  all[id] = { id, examId, mode, status: 'in_progress', answers: {}, startedAt: new Date().toISOString() };
+  const id = 'a' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+  all[id] = { id, examId, mode, status: 'in_progress', answers: {}, startedAt: new Date().toISOString(),
+    itemIds: extra.itemIds || null, gradeFilter: extra.gradeFilter || null, timeLimitMin: extra.timeLimitMin || null };
   save(all);
   return id;
 }
@@ -25,9 +26,10 @@ export async function submitAttempt(id, answers) {
   const all = load();
   Object.assign(all[id], { answers, status: 'submitted', submittedAt: new Date().toISOString() });
   save(all); notify(id);
+  const a = all[id];
   const r = await fetch('/api/grade', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ examId: all[id].examId, answers, attemptId: id, studentName: user.name }),
+    body: JSON.stringify({ examId: a.examId, answers, attemptId: id, studentName: user.name, itemIds: a.itemIds, gradeFilter: a.gradeFilter }),
   });
   const cur = load();
   if (!r.ok) { cur[id].status = 'error'; cur[id].error = `dev_server ${r.status}`; save(cur); notify(id); return; }
@@ -45,6 +47,7 @@ export async function getAttempt(id) { return load()[id] || null; }
 export async function listAttempts() {
   return Object.values(load()).sort((a, b) => (b.startedAt || '').localeCompare(a.startedAt || ''));
 }
-export async function findInProgress(examId) {
-  return Object.values(load()).find((a) => a.examId === examId && a.status === 'in_progress') || null;
+export async function findInProgress(examId, gradeFilter = null) {
+  return Object.values(load()).find((a) => a.examId === examId && a.status === 'in_progress'
+    && (a.gradeFilter || null) === (gradeFilter || null)) || null;
 }

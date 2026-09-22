@@ -41,8 +41,13 @@ function norm(snap) {
   return { id: snap.id, ...d, startedAt: ts(d.startedAt), submittedAt: ts(d.submittedAt), gradedAt: ts(d.gradedAt) };
 }
 
-export async function createAttempt(examId, mode = 'exam') {
-  const ref = await addDoc(attempts(), { examId, mode, status: 'in_progress', answers: {}, startedAt: serverTimestamp(), updatedAt: serverTimestamp() });
+/** extra: { itemIds: string[]|null, gradeFilter: number|null, timeLimitMin: number|null } */
+export async function createAttempt(examId, mode = 'exam', extra = {}) {
+  const ref = await addDoc(attempts(), {
+    examId, mode, status: 'in_progress', answers: {},
+    itemIds: extra.itemIds || null, gradeFilter: extra.gradeFilter || null, timeLimitMin: extra.timeLimitMin || null,
+    startedAt: serverTimestamp(), updatedAt: serverTimestamp(),
+  });
   return ref.id;
 }
 export async function saveAnswers(attemptId, answers) {
@@ -62,8 +67,8 @@ export async function listAttempts(max = 50) {
   const q = query(attempts(), orderBy('startedAt', 'desc'), limit(max));
   return (await getDocs(q)).docs.map(norm);
 }
-export async function findInProgress(examId) {
-  const q = query(attempts(), where('examId', '==', examId), where('status', '==', 'in_progress'), limit(1));
+export async function findInProgress(examId, gradeFilter = null) {
+  const q = query(attempts(), where('examId', '==', examId), where('status', '==', 'in_progress'), limit(10));
   const s = await getDocs(q);
-  return s.empty ? null : norm(s.docs[0]);
+  return s.docs.map(norm).find((a) => (a.gradeFilter || null) === (gradeFilter || null)) || null;
 }

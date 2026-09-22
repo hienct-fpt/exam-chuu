@@ -14,10 +14,12 @@ def _fmt(v) -> str:
 
 
 def render_report(student_name: str, exam: dict, result: dict, app_url: str, attempt_id: str,
-                  submitted_at: datetime | None = None, duration_sec: int | None = None) -> tuple[str, str]:
+                  submitted_at: datetime | None = None, duration_sec: int | None = None,
+                  grade_filter: int | str | None = None) -> tuple[str, str]:
     """Return (subject, html)."""
     title = f"{exam.get('school_name', '')} {exam.get('year', '')}年度 {exam.get('session_label', '')} {exam.get('subject_label', '')}"
-    subject = f"[採点結果] {student_name} – {title} {result['score']}/{result['max']} ({result['percent']}%)"
+    scope = f" [小{grade_filter}まで]" if grade_filter else ""
+    subject = f"[採点結果] {student_name} – {title}{scope} {result['score']}/{result['max']} ({result['percent']}%)"
     esc = html.escape
     app_url = app_url.rstrip("/")
     when = submitted_at.strftime("%Y-%m-%d %H:%M") if submitted_at else ""
@@ -42,6 +44,12 @@ def render_report(student_name: str, exam: dict, result: dict, app_url: str, att
                 f"<td style='padding:4px 8px;border:1px solid #ddd'>{esc(_fmt(it['student']))} {esc(it.get('unit') or '')}</td>"
                 f"<td style='padding:4px 8px;border:1px solid #ddd'>{esc(exp)}</td></tr>")
 
+    topic_rows = "".join(
+        f"<tr><td style='padding:4px 10px;border:1px solid #ddd'>{esc(t)}</td>"
+        f"<td style='padding:4px 10px;border:1px solid #ddd;text-align:right'>{v['correct']} / {v['items']}</td>"
+        f"<td style='padding:4px 10px;border:1px solid #ddd;text-align:right'>{round(100 * v['correct'] / v['items']) if v['items'] else 0}%</td></tr>"
+        for t, v in sorted(result.get("perTopic", {}).items(), key=lambda kv: (kv[1]['correct'] / max(kv[1]['items'], 1), kv[0]))
+    )
     items_sorted = sorted(result["perItem"].items(), key=lambda kv: (kv[1]["big"], kv[1]["sub"]))
     item_rows = "".join(item_row(sid, it) for sid, it in items_sorted)
     wrong = [(sid, it) for sid, it in items_sorted if not it["correct"]]
@@ -53,12 +61,14 @@ def render_report(student_name: str, exam: dict, result: dict, app_url: str, att
     )
     link = f"{app_url}/#/result/{attempt_id}"
     body = f"""<!doctype html><html><body style="font-family:sans-serif;color:#222;max-width:720px">
-<h2 style="margin-bottom:4px">{esc(title)}</h2>
+<h2 style="margin-bottom:4px">{esc(title)}{esc(scope)}</h2>
 <div style="color:#666">{esc(student_name)} · {esc(when)} {('· 所要 ' + esc(dur)) if dur else ''}</div>
 <p style="font-size:28px;margin:16px 0"><b>{result['score']} / {result['max']}</b> 点 ({result['percent']}%) ·
 正解 {result['correctCount']} / {result['itemCount']} 問 · 未回答 {result['itemCount'] - result['answeredCount']} 問</p>
 <h3>大問別</h3>
 <table style="border-collapse:collapse">{big_rows}</table>
+<h3>分野別（正答率の低い順）</h3>
+<table style="border-collapse:collapse">{topic_rows}</table>
 <h3>全問</h3>
 <table style="border-collapse:collapse;font-size:14px">
 <tr><th style="border:1px solid #ddd;padding:4px 8px"></th><th style="border:1px solid #ddd;padding:4px 8px">問</th>

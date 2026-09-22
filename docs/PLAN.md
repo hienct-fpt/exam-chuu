@@ -220,3 +220,13 @@ Blocked on user (cannot be done from this machine):
 2. Gmail app password for `firestore-send-email` (SMTP_PASSWORD secret).
 3. Run: `firebase deploy`, `python scripts/import_bank.py`, `python scripts/set_admin.py <parent email>`.
 Notes: Java 8 on this PC -> Firebase emulators unavailable (need Java 11+). Points are 1 per item (no 配点 in PDFs).
+
+## 9. Grade filter (2026-09-22) — DONE
+
+Student is in 小5 now; app must let them practise 小5-level questions first.
+- `pipeline/tags/{exam}.json`: hand-assigned `grade` (5 = solvable with 小5 までの内容, 6 = needs 小6 内容) + `topic` per 大問 with per-item overrides. Criteria in `pipeline/tags/README.md`. Result: 74 of 134 math items are 小5.
+- `build.py` merges tags into bank items (`grade`, `topic`) and `grade_counts` per exam.
+- `grader.grade_submission(..., item_ids)` grades a subset; result adds `perTopic` / `perGrade`. Function + dev_server pass `attempt.itemIds`; email subject/title carry `[小5まで]`, body gains 分野別 table (weakest first).
+- Web: home has 「小5までの問題 / 全問」 toggle (remembered), tiles show 小5/小6 counts; `#/exam/{id}?g=5` filters items, hides empty 大問, scales time limit (∝ items, 5-min steps, min 5); attempt stores `itemIds`, `gradeFilter`, `timeLimitMin`, `mode: practice`; result shows scope badge + 分野別 (weak rows highlighted); history shows 範囲.
+- Tests: pytest 23, vitest 5 (vmThreads, serial — threads/forks workers time out on this PC).
+This is also the first half of P3 (topic tags exist; mastery/trend/recommendation still to do).

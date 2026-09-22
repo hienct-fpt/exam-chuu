@@ -72,3 +72,9 @@ web (Hosting)  --Auth--> students/{uid}/attempts/{aid}  {status: in_progress -> 
 ```
 
 Answer keys are never readable from the client (`firestore.rules`); the bank json on Hosting has no answers.
+
+## 5. 学年フィルタ (小5 / 全問)
+
+Each question is tagged with `grade` (5 = 小5までの内容で解ける, 6 = 小6内容が必要) and `topic` in `pipeline/tags/`.
+Home screen toggle 「小5までの問題」 opens `#/exam/{id}?g=5`: only 小5 items, shorter time limit, graded on that subset.
+Result and email show 分野別 correctness so weak topics stand out. Edit tags, then `python pipeline/build.py && python scripts/sync_assets.py`.
