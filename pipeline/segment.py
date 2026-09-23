@@ -35,20 +35,20 @@ NOISE_TEXT = ("（問題はこれで終わりです）", "【問題は次のペ�
 
 
 def _is_footer(t: str) -> bool:
-    """Page number decorated with any dash/punctuation: '− 4 −', '－ 理4 －', '‒ 12 ‒' ..."""
+    """Page number decorated with dashes/symbols: '− 4 −', '－ 理4 －', '━ 00 ━4' (2018 shinagawa: hidden digits)."""
     if RE_FOOTER.match(t):
         return True
-    core = t
-    while core and unicodedata.category(core[0])[0] in "PS":
-        core = core[1:].lstrip()
-    while core and unicodedata.category(core[-1])[0] in "PS":
-        core = core[:-1].rstrip()
-    return core != t and bool(re.fullmatch(r"(?:社|理|算|国)?\s*\d{1,3}", core))
+    core = "".join(c for c in t if not c.isspace() and unicodedata.category(c)[0] not in "PS")
+    return core != t.replace(" ", "").replace("\u3000", "") and bool(re.fullmatch(r"(?:社|理|算|国)?\d{1,4}", core))
 
 
-def _is_noise_block(text: str) -> bool:
+def _is_noise_block(text: str, y0: float | None = None, page_h: float | None = None) -> bool:
+    """Footer test only near the page bottom (a '(1)' label block elsewhere must never count as noise)."""
     t = text.strip()
-    return _is_footer(t) or t in NOISE_TEXT
+    if t in NOISE_TEXT:
+        return True
+    near_bottom = y0 is None or page_h is None or y0 > page_h - 60
+    return near_bottom and _is_footer(t)
 
 
 def page_content_bottom(page: fitz.Page, y_from: float, y_to: float | None = None) -> float:
@@ -59,14 +59,14 @@ def page_content_bottom(page: fitz.Page, y_from: float, y_to: float | None = Non
     blocks = [(b, "".join(s["text"] for l in b.get("lines", []) for s in l["spans"]))
               for b in page.get_text("dict", clip=clip)["blocks"]]
     # nothing meaningful sits below the page number / "次のページに続きます" trailer (stray ruby glyphs do)
+    ph, pw = page.rect.height, page.rect.width
     for b, txt in blocks:
-        if _is_noise_block(txt) and b["bbox"][1] > y_from + 20:
+        if _is_noise_block(txt, b["bbox"][1], ph) and b["bbox"][1] > y_from + 20:
             y_to = min(y_to, b["bbox"][1])
     for b, txt in blocks:
-        if _is_noise_block(txt) or b["bbox"][1] >= y_to:
+        if _is_noise_block(txt, b["bbox"][1], ph) or b["bbox"][1] >= y_to:
             continue
         bottom = max(bottom, min(b["bbox"][3], y_to))
-    ph, pw = page.rect.height, page.rect.width
     for d in page.get_drawings():
         r = fitz.Rect(d["rect"])
         if r.height > 0.5 * ph or r.width > 0.9 * pw:
