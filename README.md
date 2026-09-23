@@ -61,8 +61,10 @@ firebase deploy --only firestore:rules,firestore:indexes,functions,hosting,exten
 gcloud auth application-default login
 python scripts/import_bank.py --project REPLACE_WITH_FIREBASE_PROJECT_ID
 
-# after the parent signs in once with Google:
-python scripts/set_admin.py parent@gmail.com --project REPLACE_WITH_FIREBASE_PROJECT_ID
+# after the parent signs in once with Google (use that Google account's email):
+python scripts/set_admin.py <parent-google-email> --project REPLACE_WITH_FIREBASE_PROJECT_ID
+# (both scripts set GOOGLE_CLOUD_QUOTA_PROJECT=<project> for gcloud user credentials; a service-account key via
+#  GOOGLE_APPLICATION_CREDENTIALS works too)
 ```
 
 Result emails go to `students/{uid}.parentEmail` if set (admin edits in console), else `PARENT_EMAIL`.

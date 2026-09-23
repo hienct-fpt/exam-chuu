@@ -10,6 +10,7 @@ usage: python scripts/import_bank.py [--project PROJECT_ID] [exam_id ...]
 from __future__ import annotations
 
 import argparse
+import os
 import json
 from pathlib import Path
 
@@ -27,6 +28,8 @@ def main() -> None:
     args = ap.parse_args()
 
     opts = {"projectId": args.project} if args.project else None
+    if args.project:  # user ADC (gcloud login) needs a quota project for identitytoolkit / firestore
+        os.environ.setdefault("GOOGLE_CLOUD_QUOTA_PROJECT", args.project)
     firebase_admin.initialize_app(credentials.ApplicationDefault(), opts)
     db = firestore.client()
 

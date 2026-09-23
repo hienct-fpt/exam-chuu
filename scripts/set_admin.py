@@ -6,6 +6,7 @@ The user must have signed in to the app at least once.
 from __future__ import annotations
 
 import argparse
+import os
 
 import firebase_admin
 from firebase_admin import auth, credentials
@@ -17,6 +18,8 @@ def main() -> None:
     ap.add_argument("--revoke", action="store_true")
     ap.add_argument("--project", default=None)
     args = ap.parse_args()
+    if args.project:  # user ADC (gcloud login) needs a quota project for identitytoolkit / firestore
+        os.environ.setdefault("GOOGLE_CLOUD_QUOTA_PROJECT", args.project)
     firebase_admin.initialize_app(credentials.ApplicationDefault(), {"projectId": args.project} if args.project else None)
     user = auth.get_user_by_email(args.email)
     claims = dict(user.custom_claims or {})
