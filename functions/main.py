@@ -20,7 +20,7 @@ from report import render_report, render_digest
 initialize_app()
 options.set_global_options(region="asia-northeast1", max_instances=5)
 
-PARENT_EMAIL = params.StringParam("PARENT_EMAIL", default="hienct@fpt.com",
+PARENT_EMAIL = params.StringParam("PARENT_EMAIL", default="parent@example.com",  # real value: functions/.env (git-ignored)
                                   description="Fallback recipient for result emails")
 APP_URL = params.StringParam("APP_URL", default="https://REPLACE.web.app",
                              description="Public URL of the hosted web app (for image links)")

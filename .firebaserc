@@ -1,5 +1,13 @@
 {
   "projects": {
-    "default": "REPLACE_WITH_FIREBASE_PROJECT_ID"
+    "default": "juken2028"
+  },
+  "targets": {},
+  "etags": {
+    "juken2028": {
+      "extensionInstances": {
+        "firestore-send-email": "00d0ec939126ba540253204cf4bad65e11e746d18747d3885e339ecd67dab2f9"
+      }
+    }
   }
 }

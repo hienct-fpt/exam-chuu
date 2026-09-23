@@ -85,7 +85,7 @@ Data model (SQLite):
 ### 2.4 Email (`mailer.py`)
 - Trigger: attempt submit (exam mode) + weekly digest (cron)
 - Body: score / 満点, per-大問 table, wrong list (question thumbnail + student answer + model answer), topic radar (inline SVG), pending 記述 count + grade link
-- Provider: Gmail SMTP app password (`SMTP_USER/SMTP_PASS`, recipient `hienct@fpt.com`). Fallback: Resend API.
+- Provider: Gmail SMTP app password (`SMTP_USER/SMTP_PASS`, recipient = parent's email from `functions/.env`). Fallback: Resend API.
 
 ### 2.5 Web UI
 - Exam mode: left = question crop (zoom/pan), right = inputs mirroring 解答用紙 cells; timer; autosave localStorage; submit → grade → result.
