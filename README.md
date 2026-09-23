@@ -39,9 +39,12 @@ firebase use REPLACE_WITH_FIREBASE_PROJECT_ID
 # Console: Project settings > Your apps > Add web app -> copy config into web/.env.local (see web/env.example)
 cp functions/env.example functions/.env          # PARENT_EMAIL, APP_URL=https://<project>.web.app
 
-# email extension (SMTP via Gmail app password)
-firebase ext:install firebase/firestore-send-email --params=extensions/firestore-send-email.env
-#   -> when prompted: SMTP_PASSWORD = Gmail app password. MAIL_COLLECTION must be "mail".
+# email extension (SMTP via Gmail app password) — already declared in firebase.json ("extensions" block),
+# its params live in extensions/firestore-send-email.env. No ext:install needed:
+#   1. edit extensions/firestore-send-email.env: replace REPLACE_SENDER with the sending Gmail address
+#   2. deploy the extension; the CLI prompts for the secret SMTP_PASSWORD (Gmail app password, Secret Manager)
+firebase deploy --only extensions
+#   later changes: edit the .env then re-run the same command (or `firebase ext:configure firestore-send-email`)
 ```
 
 ## 3. Deploy
