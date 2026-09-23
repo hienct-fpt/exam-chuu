@@ -252,9 +252,48 @@ def estimate(model: str) -> None:
         print(f"[ai] {len(todo)} problems x ({n} in + ~{out_tok} out) tokens -> ~${cost:.0f} ({model}, batch rate)")
 
 
+def chunks(size: int, only_missing: bool) -> None:
+    """Write out/minsan/ai/chunks/chunk_NNN.json work lists for solving inside Claude Code (agents) instead of
+    the Batches API. Each agent writes out/minsan/ai/parts/chunk_NNN.json in the SCHEMA shape (+ ok, model)."""
+    todo = problems(only_missing)
+    d = AI / "chunks"
+    d.mkdir(parents=True, exist_ok=True)
+    for f in d.glob("chunk_*.json"):
+        f.unlink()
+    for n, i in enumerate(range(0, len(todo), size)):
+        rows = [{"id": it["id"], "png": str(PNG / f"{it['id']}.png"), "school": it.get("school"), "year": it.get("year"),
+                 "topic": it.get("topic"), "tags": it.get("tags") or []} for it in todo[i:i + size]]
+        dump_json(d / f"chunk_{n:03d}.json", rows)
+    print(f"[ai] {len(todo)} problems -> {(len(todo) + size - 1) // size} chunks of <= {size} in {d}")
+    (AI / "SCHEMA.json").write_text(json.dumps(SCHEMA, ensure_ascii=False, indent=2), encoding="utf-8")
+    (AI / "PROMPT.md").write_text(SYSTEM, encoding="utf-8")
+
+
+def merge() -> None:
+    """Merge out/minsan/ai/parts/*.json (agent output) into results.json; validates against SCHEMA keys."""
+    results = load_json(AI / "results.json", {}) or {}
+    n_new = n_bad = 0
+    for f in sorted((AI / "parts").glob("*.json")):
+        part = load_json(f, {}) or {}
+        for rid, r in part.items():
+            missing = [k for k in SCHEMA["required"] if k not in r]
+            if missing:
+                n_bad += 1
+                print(f"  {f.name} {rid}: missing {missing}")
+                continue
+            r["ok"] = bool(r.get("solvable")) and r.get("answer_type") != "essay"
+            r.setdefault("model", "claude-code")
+            results[rid] = r
+            n_new += 1
+    dump_json(AI / "results.json", results)
+    print(f"[ai] merged {n_new} results ({n_bad} rejected) -> {len(results)} total")
+    report()
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["submit", "fetch", "report", "estimate"])
+    ap.add_argument("cmd", choices=["submit", "fetch", "report", "estimate", "chunks", "merge"])
+    ap.add_argument("--size", type=int, default=25, help="chunks: problems per agent work list")
     ap.add_argument("--model", default="claude-sonnet-5")
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--only-missing", action="store_true", help="skip problems that already have an ok result")
@@ -266,6 +305,10 @@ def main() -> None:
         fetch(a.wait)
     elif a.cmd == "report":
         report()
+    elif a.cmd == "chunks":
+        chunks(a.size, a.only_missing)
+    elif a.cmd == "merge":
+        merge()
     else:
         estimate(a.model)
 
