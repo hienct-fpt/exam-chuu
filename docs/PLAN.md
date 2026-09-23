@@ -178,7 +178,7 @@ exam-chuu/
 npm i -g firebase-tools
 firebase login
 firebase init hosting firestore functions   # functions: Python
-firebase ext:install firebase/firestore-send-email   # SMTP: smtps://user@gmail.com:APP_PASSWORD@smtp.gmail.com:465, collection: mail
+firebase deploy --only extensions   # firestore-send-email@0.2.x declared in firebase.json; params in extensions/*.env; prompts SMTP_PASSWORD
 python pipeline/06_build.py && cp -r pipeline/out/q web/public/q && cp -r pipeline/out/bank web/public/bank
 python scripts/import_bank.py            # Admin SDK → answerKeys, questionMeta, exams
 cd web && npm run build && cd ..
