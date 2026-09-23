@@ -329,8 +329,9 @@ def apply_overrides(exam_id: str, slots: list[dict]) -> list[dict]:
             continue
         s = by_id.get(sid)
         if s is None:
-            big, sub = sid.split("-")
+            big, sub, *_ = sid.split("-")
             s = _slot(int(big), int(sub), patch.get("label", ""), patch.get("unit", ""), patch.get("parts"), False)
+            s["id"] = sid
             by_id[sid] = s
         s.update(patch)
         s["confidence"] = "manual"
@@ -341,6 +342,8 @@ def main() -> None:
     exams = load_json(OUT / "exams.json", {})
     for eid, ex in exams.items():
         f = ex["files"]
+        if ex["subject"] != "math" or ex["school"] != "kyoritsu":
+            continue  # other subjects: answer_key_generic.py; shinagawa: answer_key_tree.py
         if "sheet" not in f or "answer" not in f:
             print(f"[answers] {eid}: missing sheet/answer, skip")
             continue
