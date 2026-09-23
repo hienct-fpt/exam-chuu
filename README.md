@@ -52,6 +52,9 @@ firebase deploy --only extensions
 ```bash
 python pipeline/run_all.py && python scripts/sync_assets.py
 (cd web && npm run build)
+# the Firebase CLI analyzes functions/main.py locally with functions/venv (Python 3.11) — create it once:
+py -3.11 -m venv functions/venv && functions/venv/Scripts/pip install -r functions/requirements.txt   # Windows
+# python3.11 -m venv functions/venv && functions/venv/bin/pip install -r functions/requirements.txt    # mac/linux
 firebase deploy --only firestore:rules,firestore:indexes,functions,hosting,extensions
 
 # upload catalog + answer keys (Admin SDK; needs gcloud ADC or GOOGLE_APPLICATION_CREDENTIALS)
