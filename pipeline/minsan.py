@@ -179,8 +179,43 @@ def pack_sets(items: list[dict], size: int = SET_SIZE) -> list[list[dict]]:
     return sets
 
 
+AI_THRESHOLD = 0.8
+
+
+def ai_key(it: dict, ai: dict | None) -> tuple[dict, dict]:
+    """(public item fields, secret key) for one problem. AI result with confidence >= AI_THRESHOLD -> auto-graded;
+    otherwise manual (parent grades) with the AI answer as a hint in `note` when one exists."""
+    manual_pub = {"answer_type": "manual", "unit": "", "parts": None, "part_units": None, "note": None}
+    manual_key = {"answer": None, "variants": [], "answer_type": "manual", "parts": None, "unit": "", "options": None,
+                  "note": None}
+    if not ai or not ai.get("ok"):
+        return manual_pub, manual_key
+    conf = float(ai.get("confidence") or 0)
+    atype = ai.get("answer_type") or "text"
+    unit = ai.get("unit") or ""
+    parts = ai.get("parts") or []
+    if atype == "multi" and not parts:
+        atype = "text"
+    if conf < AI_THRESHOLD:
+        ans = ai.get("answer") or " / ".join(f"{p['label']}={p['answer']}" for p in parts)
+        note = f"AI解答（確度{conf:.0%}・要確認）: {ans} {unit}".strip()
+        return {**manual_pub, "note": note}, {**manual_key, "note": note}
+    if atype == "multi":
+        labels = [p["label"] for p in parts]
+        answers = [p["answer"] for p in parts]
+        pub = {"answer_type": "multi", "unit": unit, "parts": labels, "part_units": None, "note": None}
+        key = {"answer": answers, "variants": [], "answer_type": "multi", "parts": labels, "unit": unit,
+               "options": None, "note": None}
+        return pub, key
+    pub = {"answer_type": atype, "unit": unit, "parts": None, "part_units": None, "note": None}
+    key = {"answer": ai.get("answer"), "variants": list(ai.get("variants") or []), "answer_type": atype,
+           "parts": None, "unit": unit, "options": None, "note": None}
+    return pub, key
+
+
 def build() -> None:
     items: dict[str, dict] = load_json(MS / "items.json", {}) or {}
+    ai_results: dict[str, dict] = load_json(MS / "ai" / "results.json", {}) or {}
     usable = [it for it in items.values() if it.get("grade") and (PNG / f"{it['id']}.png").exists()]
     skipped = len(items) - len(usable)
     for f in (OUT / "bank").glob("minsan_*.json"):   # regrouping changes exam ids -> drop stale sets
@@ -197,20 +232,21 @@ def build() -> None:
             for i, it in enumerate(src, 1):
                 iid = f"{eid}#{it['id']}"
                 img = f"q/minsan/{it['id']}.png"
+                pub_fields, key = ai_key(it, ai_results.get(it["id"]))
                 its.append({
                     "id": iid, "exam_id": eid, "big": i, "sub": 0, "path": [], "label": "",
                     "image": img, "stem_images": [], "stem_image": None, "shared_image": False,
-                    "unit": "", "parts": None, "part_units": None, "frame": None, "width": None,
-                    "answer_type": "manual", "options": None, "work_required": False, "points": 1,
-                    "grade": it["grade"], "topic": it["topic"], "difficulty": it["stars"], "note": None,
+                    "unit": pub_fields["unit"], "parts": pub_fields["parts"], "part_units": pub_fields["part_units"],
+                    "frame": None, "width": None,
+                    "answer_type": pub_fields["answer_type"], "options": None, "work_required": False, "points": 1,
+                    "grade": it["grade"], "topic": it["topic"], "difficulty": it["stars"], "note": pub_fields["note"],
                     "source": {"site": "みんなの算数オンライン", "school": it["school"], "year": it["year"],
                                "category": CATS[it["cat"]]["label"], "stars": it["stars"], "tags": it["tags"],
                                "topics": it.get("topics", [it["topic"]]), "comment": it["comment"], "url": it["url"]},
                 })
                 bigs.append({"no": i, "image": img, "stem_image": None, "sub_count": 0, "items": [iid],
                              "grade": it["grade"], "topic": it["topic"]})
-                answers[iid] = {"answer": None, "variants": [], "answer_type": "manual", "parts": None,
-                                "unit": "", "options": None, "note": None}
+                answers[iid] = key
             schools = list(dict.fromkeys(it["school"] for it in src))
             pub = {
                 "id": eid, "school": "minsan", "school_name": "みんなの算数オンライン",
@@ -219,7 +255,8 @@ def build() -> None:
                 "title": f"{ylabel} 第{k}回", "schools": schools,
                 "time_limit_min": SET_MINUTES if len(its) >= 16 else max(10, math.ceil(len(its) * 2.5 / 5) * 5),
                 "bigs": bigs, "items": its, "item_count": len(its),
-                "grade_counts": dict(Counter(str(i["grade"]) for i in its)), "manual_count": len(its),
+                "grade_counts": dict(Counter(str(i["grade"]) for i in its)),
+                "manual_count": sum(1 for i in its if i["answer_type"] in ("manual", "essay")),
             }
             dump_json(OUT / "bank" / f"{eid}.json", pub)
             n_sets += 1
