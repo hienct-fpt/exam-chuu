@@ -1,4 +1,4 @@
-import { loadExam, loadAllItems, createAttempt, saveAnswers, submitAttempt, findInProgress, getAttempt } from '../api.js';
+import { loadExam, loadAllItems, createAttempt, saveAnswers, submitAttempt, findInProgress, getAttempt, examTitle } from '../api.js';
 
 const slotId = (itemId) => itemId.split('#')[1];
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -26,8 +26,9 @@ function inputFor(item, key, value) {
       <label class="opt"><input type="radio" name="r-${key}" data-sid="${key}" data-radio="1" value="${esc(o)}" ${value === o ? 'checked' : ''}> ${esc(o)}</label>`).join('')}</div>`;
   }
   if (item.answer_type === 'essay' || item.answer_type === 'manual') {
-    return `<div class="answer-row">${lbl}<textarea data-sid="${key}" rows="3" class="essay">${esc(value || '')}</textarea></div>
-      <div class="hint">${HINTS[item.answer_type]}</div>`;
+    const hint = item.source ? '答えを入力してください（保護者が採点します。解説は下のリンク）' : HINTS[item.answer_type];
+    return `<div class="answer-row">${lbl}<textarea data-sid="${key}" rows="${item.source ? 1 : 3}" class="essay">${esc(value || '')}</textarea></div>
+      <div class="hint">${hint}</div>`;
   }
   const hint = HINTS[item.answer_type] || '';
   const wide = ['fraction', 'ratio', 'set', 'sequence', 'text'].includes(item.answer_type);
@@ -36,7 +37,7 @@ function inputFor(item, key, value) {
     ${hint ? `<div class="hint">${hint}</div>` : ''}`;
 }
 
-/** arg = "exam_id" or "exam_id?g=5" */
+/** arg = "exam_id" or "exam_id?g=4|5" (items with grade <= g) */
 export function parseExamArg(arg) {
   const [examId, qs] = String(arg || '').split('?');
   const g = new URLSearchParams(qs || '').get('g');
@@ -62,11 +63,22 @@ function blocks(items, banks) {
       const bank = banks[it.exam_id];
       const big = bank?.bigs.find((b) => b.no === it.big) || {};
       map.set(k, { key: k, examId: it.exam_id, big: it.big, stem_image: big.stem_image, image: big.image,
-        examLabel: bank ? `${bank.year}年度 ${bank.session_label} ${bank.subject_label}` : it.exam_id, items: [] });
+        examLabel: bank ? `${examTitle(bank)} ${bank.subject_label}` : it.exam_id, items: [] });
     }
     map.get(k).items.push(it);
   }
   return [...map.values()];
+}
+
+/** Provenance line for imported items (min-san): school · year · ★ · tags · link to the site's 解説. */
+function sourceLine(it) {
+  const s = it.source;
+  if (!s) return '';
+  const stars = s.stars ? `<span class="stars">${'★'.repeat(s.stars)}${'☆'.repeat(Math.max(0, 6 - s.stars))}</span>` : '';
+  const tags = (s.tags || []).map((t) => `<span class="badge">${esc(t)}</span>`).join(' ');
+  return `<div class="hint source">${esc(s.school || '')} ${s.year || ''} ${stars} ${tags}
+    ${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">解説 (${esc(s.site || 'source')})</a>` : ''}
+    ${s.comment ? `<div class="muted small">${esc(s.comment)}</div>` : ''}</div>`;
 }
 
 function renderBlock(b, answers, keyOf, showExam) {
@@ -88,7 +100,7 @@ function renderBlock(b, answers, keyOf, showExam) {
     const k = keyOf(it);
     if (it.shared_image && it.image === lastImage) html += `<div class="item shared"><div>${inputFor(it, k, answers[k])}</div></div>`;
     else if (it.shared_image) html += `<img class="qimg" src="/${it.image}" loading="lazy"><div class="item shared"><div>${inputFor(it, k, answers[k])}</div></div>`;
-    else html += `<div class="item"><img class="qimg" src="/${it.image}" loading="lazy"><div>${inputFor(it, k, answers[k])}</div></div>`;
+    else html += `<div class="item"><img class="qimg" src="/${it.image}" loading="lazy"><div>${inputFor(it, k, answers[k])}${sourceLine(it)}</div></div>`;
     lastImage = it.image;
   }
   return html + '</div>';
@@ -183,7 +195,7 @@ async function renderSheet(app, sheet) {
   return () => { clearInterval(tick); clearTimeout(saveTimer); };
 }
 
-/** Full exam (optionally filtered to 小5 items): #/exam/{examId}[?g=5] */
+/** Full exam (optionally filtered to 小N以下 items): #/exam/{examId}[?g=4|5] */
 export async function renderExam({ app }, arg) {
   const { examId, gradeFilter } = parseExamArg(arg);
   const exam = await loadExam(examId);
@@ -193,7 +205,7 @@ export async function renderExam({ app }, arg) {
   const timeLimit = scaledTimeLimit(exam, items);
   const attempt = await findInProgress(examId, gradeFilter);
   return renderSheet(app, {
-    title: `${esc(exam.school_name)} ${exam.year}年度 ${esc(exam.session_label)} ${esc(exam.subject_label)} ${gradeFilter ? `<span class="badge">小${gradeFilter}までの問題</span>` : ''}`,
+    title: `${esc(exam.school_name)} ${esc(examTitle(exam))} ${esc(exam.subject_label)} ${gradeFilter ? `<span class="badge">小${gradeFilter}までの問題</span>` : ''}`,
     subtitle: `${items.length} 問${gradeFilter ? ` <small>(全 ${exam.item_count} 問中)</small>` : ''} · 制限時間 ${timeLimit} 分 · 答えは解答欄に入力（単位は不要）`,
     items, banks: { [examId]: exam }, keyOf: (it) => slotId(it.id), timeLimit, showExam: false,
     attemptId: attempt ? attempt.id : null, answers: attempt?.answers, startedAt: attempt ? new Date(attempt.startedAt) : null,

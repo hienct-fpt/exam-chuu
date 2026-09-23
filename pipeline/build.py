@@ -130,6 +130,17 @@ def main() -> None:
         shared = sum(1 for i in pub["items"] if i["shared_image"])
         print(f"[build] {eid}: {pub['item_count']} items, grades={pub['grade_counts']}, shared_img={shared}, manual={pub['manual_count']}"
               + (f"  NO ANSWER: {missing}" if missing else "") + (f"  untagged={untagged}" if untagged else ""))
+    # min-san offline copy (pipeline/minsan.py build) -> appended to index; its manual "keys" join answers_all
+    ms_answers = load_json(OUT / "minsan" / "answers.json", {}) or {}
+    for f in sorted((OUT / "bank").glob("minsan_*.json")):
+        pub = load_json(f)
+        if not pub or not pub.get("items"):
+            continue
+        index.append({k: pub.get(k) for k in ("id", "school", "school_name", "year", "year_label", "session",
+                                              "session_label", "subject", "subject_label", "title", "schools",
+                                              "time_limit_min", "item_count", "grade_counts", "manual_count")})
+        all_secret.update({i["id"]: ms_answers.get(i["id"], {"answer": None, "answer_type": "manual"}) for i in pub["items"]})
+        print(f"[build] {pub['id']}: {pub['item_count']} items (min-san, manual grading)")
     dump_json(OUT / "bank" / "index.json", index)
     dump_json(OUT / "answers_all.json", all_secret)
     print(f"[build] index: {len(index)} exams, {len(all_secret)} answers -> {OUT / 'bank'}")

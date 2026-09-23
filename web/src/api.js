@@ -15,13 +15,15 @@ export async function loadExam(examId) {
   }
   return bankCache.get(examId);
 }
+/** Display name of an exam / index entry: real past papers "2024年度 2/1入試", min-san sets carry their own title. */
+export const examTitle = (b) => b.title || `${b.year}年度 ${b.session_label}`;
 /** All items of all exams of a subject (or all subjects), each tagged with exam meta. */
 export async function loadAllItems(subject = null) {
   const index = await loadIndex();
   const exams = index.filter((e) => !subject || e.subject === subject);
   const banks = await Promise.all(exams.map((e) => loadExam(e.id)));
   const items = [];
-  for (const b of banks) for (const it of b.items) items.push({ ...it, subject: b.subject, examLabel: `${b.year}年度 ${b.session_label}` });
+  for (const b of banks) for (const it of b.items) items.push({ ...it, subject: b.subject, examLabel: examTitle(b) });
   return { items, banks: Object.fromEntries(banks.map((b) => [b.id, b])) };
 }
 

@@ -67,7 +67,7 @@ export async function renderResult({ app }, attemptId) {
           <td>${esc(fmt(it.student))} <span class="muted">${esc(it.unit && !it.unit.includes('・') ? it.unit : '')}</span>
             ${(it.pending || it.manual) && isAdmin ? `<div class="grade-btns"><button data-mg="1" data-sid="${sid}" class="${it.manual && it.correct ? 'primary' : ''}">○ 正解</button><button data-mg="0" data-sid="${sid}" class="${it.manual && !it.correct ? 'danger' : ''}">× 不正解</button></div>` : ''}
             ${it.pending && !isAdmin ? '<div class="hint warn">採点待ち</div>' : ''}</td>
-          <td>${esc(fmt(it.expected))}${it.variants && it.variants.length ? ` <small class="muted">(${it.variants.map(esc).join(', ')})</small>` : ''}${it.note ? `<div class="hint">${esc(it.note)}</div>` : ''}</td>
+          <td>${esc(fmt(it.expected))}${it.variants && it.variants.length ? ` <small class="muted">(${it.variants.map(esc).join(', ')})</small>` : ''}${it.note ? `<div class="hint">${esc(it.note)}</div>` : ''}${it.source?.url ? `<div class="hint"><a href="${esc(it.source.url)}" target="_blank" rel="noopener">解説 (${esc(it.source.site || 'source')})</a> <small class="muted">${esc(it.source.school || '')} ${it.source.year || ''}</small></div>` : ''}</td>
           <td>${it.image ? `<img class="thumb" src="/${it.image}" loading="lazy" onclick="this.classList.toggle('open')">` : ''}</td>
         </tr>`).join('')}</table></div>
       <div class="card" id="mailbox" style="display:none"><h2>メールプレビュー</h2><div id="mailhtml"></div></div>`;

@@ -1,5 +1,5 @@
 import { getTopicStats, loadAllItems } from '../api.js';
-import { getGradePref } from './home.js';
+import { gradeFilterFromPref } from './home.js';
 
 const SUBJ = { math: '算数', science: '理科', social: '社会', japanese: '国語' };
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -24,12 +24,12 @@ function weeklyChart(weekly) {
 export async function renderDashboard({ app }) {
   app.innerHTML = '<div class="card">読み込み中…</div>';
   const [stats, all] = await Promise.all([getTopicStats(), loadAllItems()]);
-  const grade = getGradePref();
-  const gradeQ = grade === '5' ? '&g=5' : '';
+  const gf = gradeFilterFromPref(); // number | null
+  const gradeQ = gf ? `&g=${gf}` : '';
   // items per topic (pool size), respecting the grade preference
   const pool = {};
   for (const it of all.items) {
-    if (grade === '5' && !(it.grade && it.grade <= 5)) continue;
+    if (gf && !(it.grade && it.grade <= gf)) continue;
     const k = `${it.subject}|${it.topic || '未分類'}`;
     pool[k] = (pool[k] || 0) + 1;
   }
@@ -44,7 +44,7 @@ export async function renderDashboard({ app }) {
   app.innerHTML = `
     <div class="card"><h1>ダッシュボード</h1>
       <div class="muted">受験 ${stats.attemptCount} 回 · 解答 ${done} 問 · 弱点分野 ${weakAll.length}
-        ${grade === '5' ? '· <span class="badge">小5までの問題で練習</span>' : ''}</div>
+        ${gf ? `· <span class="badge">小${gf}までの問題で練習</span>` : ''}</div>
       <h3>週ごとの正答率</h3>${weeklyChart(stats.weekly)}
       ${weakAll.length ? `<h3>いま弱い分野</h3><div class="chips">${weakAll.slice(0, 6).map(([t, s]) =>
         `<a class="chip weak" href="#/practice/${s.subject}?topic=${encodeURIComponent(t)}${gradeQ}">${esc(t)} <small>${pct(s.mastery)}</small></a>`).join('')}</div>` : '<p class="ok">弱点分野はありません 🎉</p>'}

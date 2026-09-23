@@ -48,13 +48,14 @@ describe('mock api + views', () => {
     const { renderHome } = await import('../src/views/home.js');
     const app = document.createElement('main');
     await renderHome({ app });
-    expect(app.querySelectorAll('.exam-tile').length).toBe(38);
+    const index = JSON.parse(readFileSync(resolve(PUB, 'bank', 'index.json'), 'utf-8'));
+    expect(app.querySelectorAll('.exam-tile').length).toBe(index.length);
     expect(app.textContent).toContain('2026年度');
     expect(app.textContent).toContain('品川女子学院');
     // school filter narrows the list
     app.querySelector('#schoolseg button[data-s="shinagawa"]').click();
     await new Promise((r) => setTimeout(r, 50));
-    expect(app.querySelectorAll('.exam-tile').length).toBe(14);
+    expect(app.querySelectorAll('.exam-tile').length).toBe(index.filter((e) => e.school === 'shinagawa').length);
     app.querySelector('#schoolseg button[data-s="all"]').click();
     await new Promise((r) => setTimeout(r, 50));
   });

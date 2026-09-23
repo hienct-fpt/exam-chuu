@@ -10,6 +10,7 @@ auto-grading, email report to parent, topic-level weakness analysis.
 | kyoritsu_past | 2024–2026, 2 sessions (2-1, 2-2) × 4 subjects | 問題 / 模範解答 / 解答用紙, all vector PDF, text extractable | **Full use — 24 exams** |
 | shinagawa_past 2018, 2026 | 第1回/第2回/算数1教科/表現力総合型 | 問題 (算数, 社会理科 only; **no 国語 問題**), 解答 = **scanned image** (2026 has garbage OCR layer) | Use 算数/理科/社会; answer key needs vision/manual |
 | shinagawa_past 2015–2017, 2019–2025 | all | **解答用紙 only** (blank answer sheets, no questions, no answers) | Not usable for practice |
+| min-san.com DB (added 2026-09-23) | 2013–2026, many schools | 文章題 / 図形 / 計算 problem SVGs, 学年 4–6, ★ difficulty, 分野 + tags; **no answers** (解説 login-only). Site terms forbid download — user decided on a private offline copy | `pipeline/minsan.py` → `minsan_*_g{4,5,6}` exams, all `manual` grading; gives the grade-4 pool |
 
 Extraction facts:
 - Page size 516×729pt (B5). 大問 marker = digit, font 12.8pt, x≈60. 小問 marker = ①②/⑴⑵, font 9.9pt, x≈79.

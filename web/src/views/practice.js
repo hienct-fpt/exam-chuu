@@ -1,5 +1,5 @@
 import { getTopicStats, loadAllItems, createAttempt } from '../api.js';
-import { getGradePref } from './home.js';
+import { gradeFilterFromPref } from './home.js';
 
 const SUBJ = { math: '算数', science: '理科', social: '社会', japanese: '国語' };
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -34,7 +34,7 @@ export function pickPractice(items, topics, hist, { n = 10, gradeFilter = null, 
 export async function renderPractice({ app }, arg) {
   const [subject, qs] = String(arg || 'math').split('?');
   const params = new URLSearchParams(qs || '');
-  const gradeFilter = params.get('g') ? Number(params.get('g')) : (getGradePref() === '5' ? 5 : null);
+  const gradeFilter = params.get('g') ? (params.get('g') === 'all' ? null : Number(params.get('g'))) : gradeFilterFromPref();
   const wantWeak = params.get('weak') === '1';
   const topicParam = params.get('topic');
   app.innerHTML = '<div class="card">読み込み中…</div>';
@@ -44,9 +44,10 @@ export async function renderPractice({ app }, arg) {
   const allTopics = [...new Set(all.items.map((it) => it.topic || '未分類'))].sort();
   const selected = new Set(topicParam ? [topicParam] : (wantWeak && weak.length ? weak : []));
   let n = 10;
+  let includePending = false; // manual/essay items (e.g. min-san imports) need a parent to grade them
 
   function preview() {
-    const picked = pickPractice(all.items, selected.size ? selected : null, stats.itemHistory || {}, { n, gradeFilter });
+    const picked = pickPractice(all.items, selected.size ? selected : null, stats.itemHistory || {}, { n, gradeFilter, includePending });
     const el = app.querySelector('#preview');
     el.innerHTML = picked.length
       ? `<div class="muted">${picked.length} 問 · ${[...new Set(picked.map((p) => p.examLabel))].join(' / ')}</div>
@@ -60,7 +61,8 @@ export async function renderPractice({ app }, arg) {
     <div class="card">
       <h1>練習セット · ${SUBJ[subject] || subject}</h1>
       <div class="muted">分野を選ぶと、その分野の問題から「前回まちがえた → まだ解いていない → 前に正解した」の順に出題します。
-        ${gradeFilter ? `<span class="badge">小${gradeFilter}までの問題</span>` : '<span class="badge">全学年</span>'} 記述・作図は除外。</div>
+        ${gradeFilter ? `<span class="badge">小${gradeFilter}までの問題</span>` : '<span class="badge">全学年</span>'}
+        <label><input type="checkbox" id="pending"> 手採点の問題も含む（記述・作図・みんなの算数の問題）</label></div>
       <h3>分野</h3>
       <div class="chips" id="topics">${allTopics.map((t) => {
         const st = stats.topics?.[t];
@@ -79,6 +81,7 @@ export async function renderPractice({ app }, arg) {
     e.target.closest('[data-t]').classList.toggle('on');
     preview();
   };
+  app.querySelector('#pending').onchange = (e) => { includePending = e.target.checked; preview(); };
   app.querySelector('#count').onclick = (e) => {
     const k = e.target.dataset.n; if (!k) return;
     n = Number(k);

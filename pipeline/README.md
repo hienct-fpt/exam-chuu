@@ -22,5 +22,18 @@ Outputs in `pipeline/out/`:
 | `bank/{exam}.json`, `bank/index.json` | PUBLIC bank (no answers) -> Firebase Hosting |
 | `answers_all.json` | SECRET answer keys -> Firestore `answerKeys` |
 
+## min-san.com offline copy (`minsan.py`)
+
+```bash
+python pipeline/minsan.py all          # scrape (throttled, resumable) -> render (node svg2png.mjs) -> build
+python pipeline/build.py               # merges out/bank/minsan_*.json into index.json / answers_all.json
+```
+
+Public listing pages of みんなの算数オンライン (文章題 / 図形問題 / 計算問題, grades 4–6) and their public problem SVGs.
+No login, no 解説, no answers -> every item is `answer_type: manual` (parent grades in the result view; the item's
+`source` block links to the site's 解説). Exams are `minsan_{bunsho|zukei|keisan}_g{4|5|6}`, topic = site 分野,
+`difficulty` = ★ count (1–6). Raw data in `out/minsan/` (items.json, svg/), PNGs in `out/q/minsan/`.
+Rendering needs `@resvg/resvg-js` (web devDependency; PyMuPDF drops the SVG clip paths).
+
 Manual fixes: `pipeline/overrides/segments/{exam}.json`, `pipeline/overrides/answers/{exam}.json`
 (`{"slots": {"4-3": {"answer": [...], "parts": [...], "answer_type": "multi"}, "4-4": {"delete": true}}}`).

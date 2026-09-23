@@ -16,6 +16,7 @@ tests/      pytest (grading + grader + report)
 ```bash
 pip install -r requirements.txt
 python pipeline/run_all.py              # builds pipeline/out (crops, bank, answers)
+python pipeline/minsan.py all && python pipeline/build.py   # optional: min-san.com offline copy (grade 4–6 pool, manual grading)
 python scripts/sync_assets.py           # -> web/public/bank, web/public/q
 python -m pytest tests -q
 
