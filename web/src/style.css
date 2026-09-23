@@ -67,5 +67,4 @@ tr.weak .bar div { background: var(--ng); }
 a.button { display: inline-block; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--line); }
 a.button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 #topbar nav a.on { font-weight: 700; color: var(--ink); }
-.hint.source { margin-top: 6px; }
-.hint.source .stars { color: #f59e0b; letter-spacing: 1px; }
+.big-head .origin { font-weight: 600; }

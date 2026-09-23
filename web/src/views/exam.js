@@ -26,7 +26,7 @@ function inputFor(item, key, value) {
       <label class="opt"><input type="radio" name="r-${key}" data-sid="${key}" data-radio="1" value="${esc(o)}" ${value === o ? 'checked' : ''}> ${esc(o)}</label>`).join('')}</div>`;
   }
   if (item.answer_type === 'essay' || item.answer_type === 'manual') {
-    const hint = item.source ? '答えを入力してください（保護者が採点します。解説は下のリンク）' : HINTS[item.answer_type];
+    const hint = item.source ? '答えを入力してください（保護者が採点します）' : HINTS[item.answer_type];
     return `<div class="answer-row">${lbl}<textarea data-sid="${key}" rows="${item.source ? 1 : 3}" class="essay">${esc(value || '')}</textarea></div>
       <div class="hint">${hint}</div>`;
   }
@@ -70,24 +70,24 @@ function blocks(items, banks) {
   return [...map.values()];
 }
 
-/** Provenance line for imported items (min-san): school · year · ★ · tags · link to the site's 解説. */
-function sourceLine(it) {
-  const s = it.source;
-  if (!s) return '';
-  const stars = s.stars ? `<span class="stars">${'★'.repeat(s.stars)}${'☆'.repeat(Math.max(0, 6 - s.stars))}</span>` : '';
-  const tags = (s.tags || []).map((t) => `<span class="badge">${esc(t)}</span>`).join(' ');
-  return `<div class="hint source">${esc(s.school || '')} ${s.year || ''} ${stars} ${tags}
-    ${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">解説 (${esc(s.site || 'source')})</a>` : ''}
-    ${s.comment ? `<div class="muted small">${esc(s.comment)}</div>` : ''}</div>`;
+/** Imported items (min-san): tag badges next to the 問 count, "school year" above the question. No ★ / 解説 link here
+ * (the result view carries the link for the parent who grades). */
+function sourceHead(items) {
+  const srcs = items.map((i) => i.source).filter(Boolean);
+  if (!srcs.length) return { tags: '', origin: '' };
+  const tags = [...new Set(srcs.flatMap((s) => s.tags || []))].map((t) => `<span class="badge">${esc(t)}</span>`).join('');
+  const origin = [...new Set(srcs.map((s) => `${s.school || ''} ${s.year || ''}`.trim()).filter(Boolean))].join(' / ');
+  return { tags, origin: origin ? `<span class="muted small origin">${esc(origin)}</span>` : '' };
 }
 
 function renderBlock(b, answers, keyOf, showExam) {
   const shown = new Set();
   const topic = b.items[0].topic ? `<span class="badge">${esc(b.items[0].topic)}</span>` : '';
+  const { tags, origin } = sourceHead(b.items);
   const allShared = b.items.every((i) => i.shared_image);
   let html = `<div class="card big" id="big-${b.big}" data-block="${esc(b.key)}">
-    <div class="big-head"><span class="big-no">${b.big}</span><span class="muted">${b.items.length} 問</span>${topic}
-      ${showExam ? `<span class="muted small" style="margin-left:auto">${esc(b.examLabel)}</span>` : ''}</div>`;
+    <div class="big-head"><span class="big-no">${b.big}</span><span class="muted">${b.items.length} 問</span>${topic}${tags}
+      ${origin || showExam ? `<span style="margin-left:auto">${origin}${showExam ? ` <span class="muted small">${esc(b.examLabel)}</span>` : ''}</span>` : ''}</div>`;
   if (allShared && b.items.every((i) => i.image === b.items[0].image)) {
     html += `<img class="qimg" src="/${b.items[0].image}" loading="lazy">
       <div class="item shared"><div>${b.items.map((it) => inputFor(it, keyOf(it), answers[keyOf(it)])).join('')}</div></div>`;
@@ -100,7 +100,7 @@ function renderBlock(b, answers, keyOf, showExam) {
     const k = keyOf(it);
     if (it.shared_image && it.image === lastImage) html += `<div class="item shared"><div>${inputFor(it, k, answers[k])}</div></div>`;
     else if (it.shared_image) html += `<img class="qimg" src="/${it.image}" loading="lazy"><div class="item shared"><div>${inputFor(it, k, answers[k])}</div></div>`;
-    else html += `<div class="item"><img class="qimg" src="/${it.image}" loading="lazy"><div>${inputFor(it, k, answers[k])}${sourceLine(it)}</div></div>`;
+    else html += `<div class="item"><img class="qimg" src="/${it.image}" loading="lazy"><div>${inputFor(it, k, answers[k])}</div></div>`;
     lastImage = it.image;
   }
   return html + '</div>';
