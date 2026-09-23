@@ -9,3 +9,6 @@ kyoritsu_past/
 node_modules/
 pipeline/out/
 shinagawa_past/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
