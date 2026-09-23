@@ -15,6 +15,7 @@ Manual fixes: pipeline/overrides/segments/{exam_id}.json  (replaces the node wit
 from __future__ import annotations
 
 import re
+import unicodedata
 
 import fitz
 
@@ -33,9 +34,21 @@ NOISE_TEXT = ("（問題はこれで終わりです）", "【問題は次のペ�
               "【計算用紙】", "【問題はこれで終わりです】")
 
 
+def _is_footer(t: str) -> bool:
+    """Page number decorated with any dash/punctuation: '− 4 −', '－ 理4 －', '‒ 12 ‒' ..."""
+    if RE_FOOTER.match(t):
+        return True
+    core = t
+    while core and unicodedata.category(core[0])[0] in "PS":
+        core = core[1:].lstrip()
+    while core and unicodedata.category(core[-1])[0] in "PS":
+        core = core[:-1].rstrip()
+    return core != t and bool(re.fullmatch(r"(?:社|理|算|国)?\s*\d{1,3}", core))
+
+
 def _is_noise_block(text: str) -> bool:
     t = text.strip()
-    return bool(RE_FOOTER.match(t)) or t in NOISE_TEXT
+    return _is_footer(t) or t in NOISE_TEXT
 
 
 def page_content_bottom(page: fitz.Page, y_from: float, y_to: float | None = None) -> float:

@@ -15,8 +15,8 @@ import fitz
 from common import OUT, ROOT, load_json
 
 ZOOM = 2.5
-LEFT = 40
-RIGHT = 480
+LEFT = 36          # left edge of the crop (pt)
+RIGHT_MARGIN = 30  # crop up to page width - this (B5 516pt and B4 728pt pages: shinagawa 算数1教科 is B4)
 GAP = 12
 
 
@@ -25,8 +25,9 @@ def render_regions(doc: fitz.Document, regions, out_png: Path) -> None:
         regions = [regions]
     pix_list = []
     for r in regions:
-        clip = fitz.Rect(LEFT, r["y0"], RIGHT, r["y1"])
-        pix_list.append(doc[r["page"]].get_pixmap(matrix=fitz.Matrix(ZOOM, ZOOM), clip=clip, alpha=False))
+        page = doc[r["page"]]
+        clip = fitz.Rect(LEFT, r["y0"], page.rect.width - RIGHT_MARGIN, r["y1"])
+        pix_list.append(page.get_pixmap(matrix=fitz.Matrix(ZOOM, ZOOM), clip=clip, alpha=False))
     if not pix_list:
         return
     if len(pix_list) == 1:
