@@ -16,6 +16,7 @@ from collections import Counter
 
 from common import OUT, ROOT, load_json, dump_json
 from render import node_name
+from bunya_map import bunya_for
 
 TAGS = ROOT / "pipeline" / "tags"
 
@@ -77,6 +78,8 @@ def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
                 "answer_type": s.get("answer_type") or "text", "options": s.get("options"),
                 "work_required": bool(s.get("work_required")), "points": 1,
                 "grade": tag.get("grade"), "topic": tag.get("topic"), "difficulty": tag.get("difficulty"),
+                # min-san-compatible 分野 (math only; see pipeline/bunya_map.py) for cross-source comparison
+                "bunya": bunya_for(tag.get("topic")) if ex.get("subject") == "math" else None,
                 "note": s.get("note"),
             })
             secret[iid] = {"answer": s.get("answer"), "variants": s.get("variants", []),
@@ -85,7 +88,8 @@ def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
             item_ids.append(iid)
         bigs_out.append({"no": bno, "image": big_img, "stem_image": big_stem,
                          "sub_count": len(b.get("subs", [])), "items": item_ids,
-                         "grade": bt.get("grade"), "topic": bt.get("topic")})
+                         "grade": bt.get("grade"), "topic": bt.get("topic"),
+                         "bunya": bunya_for(bt.get("topic")) if ex.get("subject") == "math" else None})
     grade_counts = Counter(str(i["grade"] or "?") for i in items)
     pub = {**{k: v for k, v in ex.items() if k != "files"}, "bigs": bigs_out, "items": items,
            "item_count": len(items), "grade_counts": dict(grade_counts),
