@@ -1,0 +1,373 @@
+{
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "label": "I(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "label": "I(2)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "80",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "label": "I(3)①",
+      "unit": "%",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "20",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "label": "I(3)②",
+      "unit": "杯目",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "8",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "label": "I(3)③",
+      "unit": "",
+      "answer_type": "multi",
+      "answer": [
+        "水よう液は、ガラス棒を伝わらせて注ぐ。",
+        "ろうとの先のとがった方をビーカーの壁につける。"
+      ],
+      "variants": [],
+      "note": null,
+      "parts": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "label": "I(3)④",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "label": "II(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "れき",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "label": "II(2)",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "132",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "label": "II(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-10",
+      "big": 1,
+      "label": "II(4)",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "5",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-11",
+      "big": 1,
+      "label": "II(5)",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "6",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-12",
+      "big": 1,
+      "label": "II(6)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "label": "(1)",
+      "unit": "cm³",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "30",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "label": "(2)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "30",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "label": "(3)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "70",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "label": "(4)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "50",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "label": "(5)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "450",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "label": "(6)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "480",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "label": "(7)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "50",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "label": "(8)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "530",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "えら",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "1心房1心室",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "label": "(3)①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ"
+      ],
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "label": "(3)②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ"
+      ],
+      "answer": "ア・イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ",
+        "カ"
+      ],
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "label": "(5)",
+      "unit": "",
+      "answer_type": "multi",
+      "answer": [
+        "ア",
+        "イ",
+        "エ"
+      ],
+      "variants": [],
+      "note": null,
+      "parts": [
+        "①",
+        "②",
+        "矢印"
+      ]
+    },
+    {
+      "id": "3-7",
+      "big": 3,
+      "label": "(6)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ"
+      ],
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-8",
+      "big": 3,
+      "label": "(7)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "answer": null,
+      "variants": [],
+      "note": "「利益」「労力」の語句を必ず使い35字以内で、なわばりをもつアユの割合が低くなる理由を説明する。模範解答例: なわばりを守る労力が、なわばりによる利益を大きく上回るようになるから。"
+    }
+  ]
+}

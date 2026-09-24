@@ -7,6 +7,7 @@ functions/.env
 functions/venv/
 kyoritsu_past/
 node_modules/
+pipeline/in/
 pipeline/out/
 shinagawa_past/
 firebase-debug.log

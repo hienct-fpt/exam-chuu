@@ -1,0 +1,369 @@
+{
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "label": "I(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "label": "I(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "こう星",
+      "variants": [
+        "恒星"
+      ],
+      "note": null
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "label": "I(3)①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "シリウス",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "label": "I(3)②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "冬の大三角形",
+      "variants": [
+        "冬の大三角"
+      ],
+      "note": null
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "label": "I(3)③",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ"
+      ],
+      "answer": "オ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "label": "I(3)④",
+      "unit": "時",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "10",
+      "variants": [],
+      "note": "設問は「午後　時頃」の空欄補充。解答は「午後10時頃」。"
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "label": "II(1)あ",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "反射",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "label": "II(1)い",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "くっ折",
+      "variants": [
+        "屈折"
+      ],
+      "note": null
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "label": "II(2)①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "作図問題。図2で、Lから鏡上の点に向かう入射光(矢印)が反射した後の光の道すじを描く。模範解答では、入射点から鏡の法線(垂直線)に対して入射角と反射角が等しくなるように、入射点からほぼ真上よりやや左寄りの方向へ直線を延ばしている(位置アの方向へ向かう)。"
+    },
+    {
+      "id": "1-10",
+      "big": 1,
+      "label": "II(2)②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ",
+        "カ"
+      ],
+      "answer": "ウ・エ・カ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-11",
+      "big": 1,
+      "label": "II(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-12",
+      "big": 1,
+      "label": "II(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "label": "(1)①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "石灰水",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "label": "(1)②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "純すいな気体を集めることができる",
+      "variants": [
+        "空気(の他の気体)が混ざらずに気体を集めることができる",
+        "気体の水へのとけ方によらず集められる"
+      ],
+      "note": null
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "label": "(1)③",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "下方置かん法",
+      "variants": [
+        "下方置換法"
+      ],
+      "note": null
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "label": "(2)①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "表1のデータをもとにした折れ線グラフの作図。横軸:炭酸水素ナトリウムの重さ(g)、縦軸:気体の体積(cm³)。0gから12gまでは原点から比例で増加し(3gごとに800cm³ずつ増加、12gで3200cm³)、12g以降18gまでは3200cm³で横ばいの折れ線になる。"
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "label": "(2)②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "反応できるクエン酸がなくなったため。",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "label": "(2)③",
+      "unit": "cm³",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "100",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "ア・ウ・エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "双子葉類",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "label": "(3)①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ"
+      ],
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "label": "(3)②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "作図問題。(3)①で選んだ図ア(維管束が輪状に並ぶ双子葉類の茎の断面)について、各維管束の外側にある師部をすべて塗りつぶす。図イ・ウには何も記入しない。"
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ",
+        "カ"
+      ],
+      "answer": "ア・オ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-7",
+      "big": 3,
+      "label": "(6)",
+      "unit": "",
+      "answer_type": "multi",
+      "answer": [
+        "4は夜の長さを連続14時間以上にした部分に葉がなく、花芽をつくる物質がつくられないから。",
+        "5は師管がなくなったので、花芽をつくる物質がaの枝からbの枝に移動しないから。"
+      ],
+      "variants": [],
+      "note": null,
+      "parts": [
+        "4",
+        "5"
+      ]
+    }
+  ]
+}

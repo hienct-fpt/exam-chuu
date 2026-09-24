@@ -1,0 +1,573 @@
+{
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "label": "問1(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "近郊農業",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "label": "問1(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "label": "問2(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "扇状地",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "label": "問2(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. もも",
+        "イ. さくらんぼ",
+        "ウ. メロン",
+        "エ. かき"
+      ],
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "label": "問3(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 自動車産業",
+        "イ. 造船業",
+        "ウ. 石油化学工業",
+        "エ. 製紙・パルプ工業"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "label": "問3(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": null,
+      "variants": [],
+      "note": "部品を作る工場と組み立てる工場が近くにある長所を説明する記述問題"
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "label": "問4(1)",
+      "unit": "",
+      "parts": [
+        "A",
+        "B",
+        "C"
+      ],
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "ア",
+        "イ",
+        "オ"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "label": "問4(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 堺市",
+        "イ. 静岡市",
+        "ウ. 松山市",
+        "エ. 熊本市"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 山梨県",
+        "イ. 静岡県",
+        "ウ. 長野県",
+        "エ. 埼玉県"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-10",
+      "big": 1,
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": null,
+      "variants": [],
+      "note": "過疎地域が人口を増やすために行う政策を一つ答える記述問題(例: 移住者を増やすための補助金制度)"
+    },
+    {
+      "id": "1-11",
+      "big": 1,
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. X:正 Y:正",
+        "イ. X:正 Y:誤",
+        "ウ. X:誤 Y:正",
+        "エ. X:誤 Y:誤"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-12",
+      "big": 1,
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-13",
+      "big": 1,
+      "label": "問9(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 「清武川」の左岸には、荒れ地は見られない。",
+        "イ. 南北に通っているJR線は3本の川を渡っている。",
+        "ウ. 「宮崎大」と「加江田川」には、10m以上の標高差がある。",
+        "エ. 「運動公園駅」の真東には税務署がある。"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-14",
+      "big": 1,
+      "label": "問9(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 0.5625km²",
+        "イ. 5.625km²",
+        "ウ. 0.225km²",
+        "エ. 2.25km²"
+      ],
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-15",
+      "big": 1,
+      "label": "問9(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. A:水田 B:図書館",
+        "イ. A:水田 B:老人ホーム",
+        "ウ. A:畑 B:図書館",
+        "エ. A:畑 B:老人ホーム"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "土偶",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "壬申の乱",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 位置ア・平安京・桓武天皇",
+        "イ. 位置イ・大津宮・元明天皇",
+        "ウ. 位置ウ・藤原京・持統天皇",
+        "エ. 位置エ・平城京・天武天皇"
+      ],
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "label": "問4(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 平将門が反乱を起こした。",
+        "イ. 菅原道真が遣唐使の停止を提言した。",
+        "ウ. 白河上皇が院政を始めた。",
+        "エ. 法然が浄土宗をひらいた。"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "label": "問4(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": null,
+      "variants": [],
+      "note": "娘を天皇に嫁がせることが政治の実権につながる理由を説明する記述問題(摂政・関白として政治を行えるから、という趣旨)"
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. X:正 Y:正",
+        "イ. X:正 Y:誤",
+        "ウ. X:誤 Y:正",
+        "エ. X:誤 Y:誤"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "label": "問6(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ア",
+      "variants": [],
+      "note": "雪舟が描いた作品を4枚の絵ア~エから選ぶ(絵は画像のみで文字による選択肢説明なし)"
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "label": "問6(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 天草四郎を指導者として島原・天草一揆が起きた。",
+        "イ. 南北朝が合一された。",
+        "ウ. 運慶・快慶らによって金剛力士像がつくられた。",
+        "エ. 日宋貿易が行われた。"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-9",
+      "big": 2,
+      "label": "問7(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 口分田を配り、税を徴収した。",
+        "イ. 都市に出ていた農民を強制的に村へ帰らせた。",
+        "ウ. 大仏をつくる名目で刀狩を行った。",
+        "エ. 大名の妻子を江戸に住まわせた。"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-10",
+      "big": 2,
+      "label": "問7(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "武家諸法度",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-11",
+      "big": 2,
+      "label": "問8(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 長崎での貿易を拡大して、幕府の財政を安定させようとした。",
+        "イ. 大名に対し、米を納めさせる代わりに参勤交代をゆるめた。",
+        "ウ. 物価を引き下げるため、株仲間を解散させた。",
+        "エ. 幕府の学問所において、朱子学以外の学問を禁止した。"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-12",
+      "big": 2,
+      "label": "問8(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "東海道",
+      "variants": [],
+      "note": "判じ絵(はしご→皮の刀/侍、富士山とかな「そ」→歯の黒い口)から街道名を答える問題。個々の絵の読み方は確信が持てなかったが、解答は東海道と確認できた。"
+    },
+    {
+      "id": "2-13",
+      "big": 2,
+      "label": "問9(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "津田梅子",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-14",
+      "big": 2,
+      "label": "問9(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 太陽暦が採用された。",
+        "イ. 郵便制度が始まった。",
+        "ウ. 鹿鳴館などの洋館が建てられた。",
+        "エ. 地下鉄が開通した。"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-15",
+      "big": 2,
+      "label": "問9(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 護憲運動で桂内閣が三度目の総辞職をした頃、中学校の生徒数は高等女学校の生徒数の約半分であった。",
+        "イ. 第一次世界大戦が終わる頃には、実業学校へ進む生徒数は日露戦争が終わった頃に比べて少なくなった。",
+        "ウ. 普通選挙法が成立した頃、高等女学校の生徒数が中学校の生徒数にほぼ並んだ。",
+        "エ. 満州事変が起こった頃、高等女学校の生徒数は中学校の生徒数よりも少なかった。"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "健康で文化的な最低限度",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 法律を公布する。",
+        "イ. 国会を召集する。",
+        "ウ. 衆議院を解散する。",
+        "エ. 最高裁判所の長官と裁判官を指名する。"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 自由権",
+        "イ. 社会権",
+        "ウ. 請求権",
+        "エ. 請願権"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "label": "問4(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 法律案は、必ず衆議院で先に審議・議決が行われる。",
+        "イ. 法律案の議決が衆議院と参議院で異なる場合は、衆議院の議決がそのまま国会の議決とされる。",
+        "ウ. 国会に法律案を提出できるのは、国会議員と裁判官のみである。",
+        "エ. 委員会での法律案の審議期間中、公聴会を開催することができる。"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "label": "問4(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": null,
+      "variants": [],
+      "note": "島根県と鳥取県が一つの選挙区となった理由を、有権者数の表を参考に説明する記述問題(一票の格差是正の趣旨)"
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "こども家庭庁",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-7",
+      "big": 3,
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. X:7月15日 Y:臨時国会",
+        "イ. X:7月15日 Y:特別国会",
+        "ウ. X:7月22日 Y:臨時国会",
+        "エ. X:7月22日 Y:特別国会"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-8",
+      "big": 3,
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア. 地方議会は、首長に対する不信任決議権をもたない。",
+        "イ. 地方公共団体の首長は、議会が議決した条例の拒否権をもつ。",
+        "ウ. 市町村議会議員の被選挙権をもつのは、満25歳以上の男女である。",
+        "エ. 都道府県知事を選出する選挙の選挙権をもつのは、満18歳以上の男女である。"
+      ],
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    }
+  ]
+}

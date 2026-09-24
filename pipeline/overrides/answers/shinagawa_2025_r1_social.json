@@ -1,0 +1,605 @@
+{
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "label": "問1(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "label": "問1(2)i",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "黒潮",
+      "variants": [
+        "日本海流"
+      ],
+      "note": null
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "label": "問1(2)ii",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "label": "問1(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "ラムサール条約",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "label": "問2(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": null,
+      "variants": [],
+      "note": "模範解答: 日本国内で、この分野の労働力が不足しているため。"
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "label": "問2(2)",
+      "unit": "",
+      "parts": [
+        "X",
+        "Y"
+      ],
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "ア",
+        "イ"
+      ],
+      "variants": [],
+      "note": "選択肢: ア.ベトナム イ.ブラジル ウ.タイ エ.インド"
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "label": "問3(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "淀川",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "label": "問3(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "label": "問3(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-10",
+      "big": 1,
+      "label": "問3(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-11",
+      "big": 1,
+      "label": "問3(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-12",
+      "big": 1,
+      "label": "問4(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": null,
+      "variants": [],
+      "note": "模範解答: 奈良から短時間で移動できる大阪や京都に宿泊施設が多くあるため。"
+    },
+    {
+      "id": "1-13",
+      "big": 1,
+      "label": "問4(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "吉野すぎ",
+      "variants": [
+        "吉野杉"
+      ],
+      "note": null
+    },
+    {
+      "id": "1-14",
+      "big": 1,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-15",
+      "big": 1,
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "国土交通省",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "磨製",
+      "variants": [
+        "磨製石器"
+      ],
+      "note": "解答らんは「＿＿＿石器」の形式(空欄の後ろに「石器」が印刷済み)。空欄には「磨製」が入る。"
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "label": "問2(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "label": "問2(2)",
+      "unit": "",
+      "parts": [
+        "X",
+        "Y"
+      ],
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "朱雀大路",
+        "寺(院)"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "栄西",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "label": "問4(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "label": "問4(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "label": "問5(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "甘みが足りない",
+      "variants": [
+        "甘さが足りない味",
+        "甘くない味"
+      ],
+      "note": null
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "label": "問5(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-9",
+      "big": 2,
+      "label": "問5(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-10",
+      "big": 2,
+      "label": "問5(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "20歳以上の男子",
+      "variants": [
+        "満20歳以上の男子",
+        "平民(20歳以上の男子)"
+      ],
+      "note": null
+    },
+    {
+      "id": "2-11",
+      "big": 2,
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-12",
+      "big": 2,
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-13",
+      "big": 2,
+      "label": "問8(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "台湾",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-14",
+      "big": 2,
+      "label": "問8(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "ベルサイユ条約",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-15",
+      "big": 2,
+      "label": "問9(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-16",
+      "big": 2,
+      "label": "問9(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "label": "問1(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "公共の福祉",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "label": "問1(2)i",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": null,
+      "variants": [],
+      "note": "模範解答: 憲法制定後に主張されるようになった権利だから。"
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "label": "問1(2)ii",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ",
+        "カ"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "label": "問1(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ",
+        "カ",
+        "キ"
+      ],
+      "answer": "オ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "options": [
+        "ア",
+        "イ",
+        "ウ"
+      ],
+      "answer": "ア・イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-7",
+      "big": 3,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-8",
+      "big": 3,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": null,
+      "variants": [],
+      "note": "模範解答: Bの道はAの道に比べて交通量が多く、危険なため。"
+    }
+  ]
+}
