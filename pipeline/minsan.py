@@ -28,6 +28,9 @@ from collections import Counter, defaultdict
 
 from common import OUT, ROOT, load_json, dump_json
 
+sys.path.insert(0, str(ROOT / "functions"))
+from examcore.grading import grade as grading_grade  # noqa: E402
+
 BASE = "https://min-san.com"
 UA = "Mozilla/5.0 (exam-chuu offline practice copy; personal use)"
 MS = OUT / "minsan"
@@ -206,10 +209,30 @@ def ai_key(it: dict, ai: dict | None) -> tuple[dict, dict]:
         pub = {"answer_type": "multi", "unit": unit, "parts": labels, "part_units": None, "note": None}
         key = {"answer": answers, "variants": [], "answer_type": "multi", "parts": labels, "unit": unit,
                "options": None, "note": None}
-        return pub, key
-    pub = {"answer_type": atype, "unit": unit, "parts": None, "part_units": None, "note": None}
-    key = {"answer": ai.get("answer"), "variants": list(ai.get("variants") or []), "answer_type": atype,
-           "parts": None, "unit": unit, "options": None, "note": None}
+    else:
+        pub = {"answer_type": atype, "unit": unit, "parts": None, "part_units": None, "note": None}
+        key = {"answer": ai.get("answer"), "variants": list(ai.get("variants") or []), "answer_type": atype,
+               "parts": None, "unit": unit, "options": None, "note": None}
+    # Self-check: an AI answer the grader itself would mark wrong (bad decimal notation, embedded unit,
+    # malformed ratio/set/sequence...) must not ship as an auto-grader -> fall back to manual with a hint.
+    # A bad *variant* (e.g. a "0.0166..." alongside a fine "1/60") is just dropped, not the whole item.
+    try:
+        ok = grading_grade(key, key["answer"]).correct
+    except Exception:  # noqa: BLE001 - any parse failure is itself a "doesn't self-grade"
+        ok = False
+    if ok and key.get("variants"):
+        good_variants = []
+        for v in key["variants"]:
+            try:
+                if grading_grade(key, v).correct:
+                    good_variants.append(v)
+            except Exception:  # noqa: BLE001
+                pass
+        key["variants"] = good_variants
+    if not ok:
+        ans = ai.get("answer") or " / ".join(f"{p['label']}={p['answer']}" for p in parts)
+        note = f"AI解答（自己採点チェック失敗・要確認）: {ans} {unit}".strip()
+        return {**manual_pub, "note": note}, {**manual_key, "note": note}
     return pub, key
 
 
