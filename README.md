@@ -51,18 +51,24 @@ firebase deploy --only extensions
 ## 3. Deploy
 
 ```bash
-python pipeline/run_all.py && python scripts/sync_assets.py
-(cd web && npm run build)
 # the Firebase CLI analyzes functions/main.py locally with functions/venv (Python 3.11) — create it once:
 py -3.11 -m venv functions/venv && functions/venv/Scripts/pip install -r functions/requirements.txt   # Windows
 # python3.11 -m venv functions/venv && functions/venv/bin/pip install -r functions/requirements.txt    # mac/linux
-firebase deploy --only firestore:rules,firestore:indexes,functions,hosting,extensions
 
-# upload catalog + answer keys (Admin SDK; needs gcloud ADC or GOOGLE_APPLICATION_CREDENTIALS)
-gcloud auth application-default login
-python scripts/import_bank.py --project REPLACE_WITH_FIREBASE_PROJECT_ID
+scripts/deploy.sh          # sync pipeline output -> build web -> firestore/functions/hosting -> import data
+# scripts/deploy.sh --full    # also regenerate pipeline output first (pipeline/run_all.py; slow, needs source PDFs)
+# scripts/deploy.sh --minsan  # also refresh the min-san bank first (pipeline/minsan.py build + pipeline/build.py)
+# scripts/deploy.sh --help    # all options (--skip-import, --skip-tests, --project)
+```
 
-# after the parent signs in once with Google (use that Google account's email):
+Two things `deploy.sh` doesn't do, both one-time/rare:
+
+```bash
+# extension change (edited extensions/firestore-send-email.env, or first setup):
+firebase deploy --only extensions
+
+# after a new parent signs in once with Google (use that Google account's email):
+gcloud auth application-default login   # needed once for import_bank.py / set_admin.py (Admin SDK)
 python scripts/set_admin.py <parent-google-email> --project REPLACE_WITH_FIREBASE_PROJECT_ID
 # (both scripts set GOOGLE_CLOUD_QUOTA_PROJECT=<project> for gcloud user credentials; a service-account key via
 #  GOOGLE_APPLICATION_CREDENTIALS works too)
