@@ -4,11 +4,11 @@ const SUBJ = { math: '算数', japanese: '国語', science: '理科', social: '�
 const GRADE_KEY = 'exam-chuu.grade';
 const SCHOOL_KEY = 'exam-chuu.school';
 const SCHOOLS = [['all', 'すべて'], ['kyoritsu', '共立女子'], ['shinagawa', '品川女子学院'], ['minsan', 'みんなの算数']];
-/** Grade scope options: pref value -> [label, description]. 'all' = 全問. */
+/** Grade scope options: pref value -> label. 'all' = 全問. */
 export const GRADES = [
-  ['4', '小4までの問題', '小4までに習う内容だけを出題します（計算・角度・植木算・周期など）'],
-  ['5', '小5までの問題', '小5までに習う内容だけを出題します（小6の比・相似・点の移動などは除外）'],
-  ['all', '全問（小6含む）', '本番と同じ全問を出題します'],
+  ['4', '小4までの問題'],
+  ['5', '小5までの問題'],
+  ['all', '全問（小6含む）'],
 ];
 
 export function getGradePref() {
@@ -66,7 +66,6 @@ export async function renderHome({ app }) {
   const q = gf ? `?g=${gf}` : '';
   const scopeKey = (id) => `${id}|${gf || 'all'}`;
   const count = (e) => countUpTo(e, gf);
-  const desc = GRADES.find(([g]) => g === grade)[2];
 
   app.innerHTML = `
     <div class="card" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
@@ -74,7 +73,6 @@ export async function renderHome({ app }) {
       <div class="seg" id="gradeseg">
         ${GRADES.map(([g, label]) => `<button data-g="${g}" class="${grade === g ? 'on' : ''}">${label}</button>`).join('')}
       </div>
-      <span class="muted">${desc}</span>
       <div class="seg" id="schoolseg">
         ${SCHOOLS.map(([id, label]) => `<button data-s="${id}" class="${school === id ? 'on' : ''}">${label}</button>`).join('')}
       </div>
