@@ -89,6 +89,8 @@ function renderBlock(b, answers, keyOf, showExam) {
     <div class="big-head"><span class="big-no">${b.big}</span><span class="muted">${b.items.length} 問</span>${topic}${tags}
       ${origin || showExam ? `<span style="margin-left:auto">${origin}${showExam ? ` <span class="muted small">${esc(b.examLabel)}</span>` : ''}</span>` : ''}</div>`;
   if (allShared && b.items.every((i) => i.image === b.items[0].image)) {
+    if (b.stem_image) html += `<img class="qimg" src="/${b.stem_image}" loading="lazy">`;
+    for (const st of b.items[0].stem_images || []) html += `<img class="qimg stem" src="/${st}" loading="lazy">`;
     html += `<img class="qimg" src="/${b.items[0].image}" loading="lazy">
       <div class="item shared"><div>${b.items.map((it) => inputFor(it, keyOf(it), answers[keyOf(it)])).join('')}</div></div>`;
     return html + '</div>';
