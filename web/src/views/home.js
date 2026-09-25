@@ -3,7 +3,7 @@ import { loadIndex, listAttempts, examTitle } from '../api.js';
 const SUBJ = { math: '算数', japanese: '国語', science: '理科', social: '社会' };
 const GRADE_KEY = 'exam-chuu.grade';
 const SCHOOL_KEY = 'exam-chuu.school';
-const SCHOOLS = [['all', 'すべて'], ['kyoritsu', '共立女子'], ['shinagawa', '品川女子学院'], ['minsan', 'みんなの算数']];
+const SCHOOLS = [['all', 'すべて'], ['kyoritsu', '共立女子'], ['shinagawa', '品川女子学院中等部'], ['sakaehigashi', '栄東中学校'], ['minsan', 'みんなの算数']];
 /** Grade scope options: pref value -> label. 'all' = 全問. */
 export const GRADES = [
   ['4', '小4までの問題'],
