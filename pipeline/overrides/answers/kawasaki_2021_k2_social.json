@@ -1,0 +1,10 @@
+{
+  "slots": [
+    {"id": "3-1", "big": 3, "label": "(1)", "unit": "", "parts": null, "answer_type": "choice", "answer": "エ", "variants": [], "points": 5},
+    {"id": "3-2", "big": 3, "label": "(2)", "unit": "", "parts": null, "answer_type": "manual", "answer": "少ない量のメニューを作る／ご飯の量を注文するときに聞く", "variants": [], "points": 10, "note": "記述: 飲食店の店長として食べ残しを減らすために取り組む内容を2つ"},
+    {"id": "3-3", "big": 3, "label": "(3)", "unit": "", "parts": null, "answer_type": "manual", "answer": "海外からの輸入に頼っている", "variants": [], "points": 10, "note": "記述（あ）: 日本では食べるのに必要な食料の約62％を（あ）"},
+    {"id": "3-4", "big": 3, "label": "(4)", "unit": "", "parts": null, "answer_type": "choice", "answer": "ウ", "variants": [], "points": 10},
+    {"id": "3-5", "big": 3, "label": "(5)", "unit": "", "parts": null, "answer_type": "manual", "answer": "本を読むときに字が読めなくて困る／商売をするときに計算ができなくて困る", "variants": [], "points": 10, "note": "記述: 勉強する時間が少なくなることで子どもたちが将来、何をするときどのように困るか2つ"},
+    {"id": "3-6", "big": 3, "label": "(6)", "unit": "", "parts": ["カード", "理由"], "answer_type": "manual", "answer": "カード: 4／理由: 子どもの労働が減り、勉強する時間がふえるから", "variants": [], "points": 15, "note": "記述: フェアトレードのチョコレートを買うことで10番以外に達成できそうなSDGsカードを1つ選び番号と理由を書く（解答例は一例）"}
+  ]
+}

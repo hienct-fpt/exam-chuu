@@ -2,6 +2,8 @@
 .flezi-emt/
 .pytest_cache/
 __pycache__/
+chuo_past/
+kawasaki_past/
 extensions/*.secret.local
 functions/.env
 functions/venv/

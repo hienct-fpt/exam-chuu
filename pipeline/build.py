@@ -76,7 +76,7 @@ def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
                 "unit": s.get("unit", ""), "parts": s.get("parts"), "part_units": s.get("part_units"),
                 "frame": s.get("frame"), "width": s.get("width"),
                 "answer_type": s.get("answer_type") or "text", "options": s.get("options"),
-                "work_required": bool(s.get("work_required")), "points": 1,
+                "work_required": bool(s.get("work_required")), "points": s.get("points") or 1,
                 "grade": tag.get("grade"), "topic": tag.get("topic"), "difficulty": tag.get("difficulty"),
                 # min-san-compatible 分野 (math only; see pipeline/bunya_map.py) for cross-source comparison
                 "bunya": bunya_for(tag.get("topic")) if ex.get("subject") == "math" else None,

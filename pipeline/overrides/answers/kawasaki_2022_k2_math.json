@@ -1,0 +1,13 @@
+{
+  "slots": [
+    {"id": "2-1", "big": 2, "label": "(1)", "unit": "", "parts": null, "answer_type": "manual", "answer": "直角二等辺三角形の右下の鋭角の頂点部分を、底辺に垂直な線で小さな直角二等辺三角形として切り取る（その部分を黒くぬる）", "variants": [], "points": 10, "note": "作図: 4回折った直角二等辺三角形のどこを切り取ると【図3】になるか、切り取る部分を黒くぬる"},
+    {"id": "2-2", "big": 2, "label": "(2)", "unit": "", "parts": null, "answer_type": "choice", "answer": "イ", "variants": [], "points": 10},
+    {"id": "2-3", "big": 2, "label": "(3)", "unit": "", "parts": null, "answer_type": "choice", "answer": "カ", "variants": [], "points": 10},
+    {"id": "2-4-1", "big": 2, "label": "(4)い", "unit": "cm", "parts": null, "answer_type": "number", "answer": "123", "variants": [], "points": 5, "note": "輪40個のときの全体の長さ"},
+    {"id": "2-4-2", "big": 2, "label": "(4)う", "unit": "枚", "parts": null, "answer_type": "number", "answer": "165", "variants": [], "points": 10, "note": "2mの輪飾りを10本作るのに必要な折り紙の枚数"},
+    {"id": "2-5", "big": 2, "label": "(5)え", "unit": "本", "parts": null, "answer_type": "number", "answer": "255", "variants": [], "points": 10, "note": "8回折ったときの折り目の本数"},
+    {"id": "2-6-1", "big": 2, "label": "(6)図", "unit": "", "parts": null, "answer_type": "manual", "answer": "点Cを点Eに重ねる折り目の線（点Bから辺DC上の点まで引いた直線）をかく（解答例図参照）", "variants": [], "points": 5, "note": "作図: あと1回折ったときの折り目の線を解答用紙の図にかく（(6)の配点20＝図5・お10・か5）"},
+    {"id": "2-6-2", "big": 2, "label": "(6)お", "unit": "", "parts": null, "answer_type": "manual", "answer": "点Dと点Eを重ねたので、辺ADと辺AEの長さは等しい。また、点Cを点Eに重ねたので、辺BCと辺BEの長さは等しい。折り紙は正方形なので、辺ADと辺BCと辺ABの長さは等しい。", "variants": [], "points": 10, "note": "記述: 三角形ABEが正三角形になる理由"},
+    {"id": "2-6-3", "big": 2, "label": "(6)か", "unit": "度", "parts": null, "answer_type": "number", "answer": "15", "variants": [], "points": 5, "note": "角④を何度折り返せば正三角形ができるか"}
+  ]
+}

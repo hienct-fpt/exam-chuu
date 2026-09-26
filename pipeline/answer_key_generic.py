@@ -2,6 +2,7 @@
 
 Same output shape as answer_key.py (math). Overrides: pipeline/overrides/answers/{exam_id}.json
   {"slots": {"1-7-1": {"answer": "...", "answer_type": "text"}, "1-4": {"answer_type": "manual", "note": "graph"}}}
+Exams without a 解答用紙 (kawasaki, chuo) keep the whole key there as a list: {"slots": [{"id": "2-1", ...}, ...]}.
 """
 from __future__ import annotations
 
@@ -33,8 +34,20 @@ def apply_overrides(exam_id: str, slots: list[dict]) -> list[dict]:
     return sorted(by_id.values(), key=lambda s: (s["big"], [int(p) if p.isdigit() else 99 for p in s["path"]]))
 
 
+def manual_slots(eid: str) -> list[dict] | None:
+    """Override file holding the full slot list (`"slots": [...]`, transcribed by hand -- no sheet to read)."""
+    ov = load_json(OVERRIDES / "answers" / f"{eid}.json")
+    if not ov or not isinstance(ov.get("slots"), list):
+        return None
+    return [{"path": s["id"].split("-")[1:], "confidence": "manual", **s} for s in ov["slots"]]
+
+
 def process(eid: str, ex: dict, verbose: bool = True) -> list[dict] | None:
     f = ex["files"]
+    if "sheet" not in f and (slots := manual_slots(eid)) is not None:
+        dump_json(OUT / "answers" / f"{eid}.json", {"exam_id": eid, "slots": slots})
+        print(f"[answers] {eid}: mode=manual {len(slots)} slots (overrides)")
+        return slots
     if "sheet" not in f or "answer" not in f:
         print(f"[answers] {eid}: missing sheet/answer, skip")
         return None
@@ -69,8 +82,8 @@ def main(only: set[str] | None = None, verbose: bool = False) -> None:
             import answer_key_tree
             answer_key_tree.process(eid, verbose)
             continue
-        if ex["subject"] == "math":
-            continue
+        if ex["subject"] == "math" and ex["school"] == "kyoritsu":
+            continue  # answer_key.py
         process(eid, ex, verbose)
 
 

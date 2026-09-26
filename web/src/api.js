@@ -29,5 +29,8 @@ export async function loadAllItems(subject = null) {
 
 const impl = MOCK ? await import('./api.mock.js') : await import('./api.firebase.js');
 export const { onAuth, signIn, signOut, currentUser, createAttempt, saveAnswers, submitAttempt, setManualGrade,
-  watchAttempt, getAttempt, listAttempts, findInProgress, getTopicStats } = impl;
+  watchAttempt, getAttempt, listAttempts, findInProgress, getTopicStats,
+  listChildren, listMyParents, listStudentAttempts, listPendingAttempts,
+  createInvite, listInvites, deleteInvite, redeemInvite, unlinkChild,
+  signInWithLoginId, createChildAccount, resetChildPassword } = impl;
 export const isMock = MOCK;

@@ -26,7 +26,7 @@ def render_regions(doc: fitz.Document, regions, out_png: Path) -> None:
     pix_list = []
     for r in regions:
         page = doc[r["page"]]
-        clip = fitz.Rect(LEFT, r["y0"], page.rect.width - RIGHT_MARGIN, r["y1"])
+        clip = fitz.Rect(r.get("x0", LEFT), r["y0"], r.get("x1", page.rect.width - RIGHT_MARGIN), r["y1"])
         pix_list.append(page.get_pixmap(matrix=fitz.Matrix(ZOOM, ZOOM), clip=clip, alpha=False))
     if not pix_list:
         return

@@ -1,6 +1,7 @@
 // Mock backend: attempts in localStorage, grading + analytics via scripts/dev_server.py.
 const KEY = 'exam-chuu.attempts';
-const user = { uid: 'local', name: 'テスト生徒', email: 'local@example.com', admin: true };
+// VITE_MOCK_ADMIN=0 runs as a plain student (no ○/× buttons, no 保護者 page); default = parent view too.
+const user = { uid: 'local', name: 'テスト生徒', email: 'local@example.com', admin: import.meta.env.VITE_MOCK_ADMIN !== '0' };
 const load = () => JSON.parse(localStorage.getItem(KEY) || '{}');
 const save = (all) => localStorage.setItem(KEY, JSON.stringify(all));
 const watchers = new Map();
@@ -51,6 +52,42 @@ export async function setManualGrade(id, sid, correct) {
   all[id].manualGrades = { ...(all[id].manualGrades || {}), [sid]: correct };
   save(all);
   await gradeNow(id);
+}
+// Mock has a single local student; the `uid` args of the parent views are accepted and ignored.
+// Invite codes + the link flag live in localStorage, so dev:mock (parent) and dev:mock:student share them.
+const INV = 'exam-chuu.invites', LINK = 'exam-chuu.linked';
+const invites = () => JSON.parse(localStorage.getItem(INV) || '{}');
+const linked = () => localStorage.getItem(LINK) === '1';
+export async function listChildren() { return linked() ? [{ uid: user.uid, name: user.name, email: user.email }] : []; }
+export async function listMyParents() { return linked() ? [{ uid: 'mock-parent', name: '保護者 (mock)' }] : []; }
+export async function createInvite() {
+  const code = Math.random().toString(36).slice(2, 8).toUpperCase();
+  localStorage.setItem(INV, JSON.stringify({ ...invites(), [code]: new Date(Date.now() + 24 * 3600 * 1000).toISOString() }));
+  return code;
+}
+export async function listInvites() {
+  const now = new Date().toISOString();
+  return Object.entries(invites()).filter(([, exp]) => exp > now).map(([code, expiresAt]) => ({ code, expiresAt }));
+}
+export async function deleteInvite(code) {
+  const all = invites(); delete all[code]; localStorage.setItem(INV, JSON.stringify(all));
+}
+export async function redeemInvite(code) {
+  const exp = invites()[String(code).trim().toUpperCase()];
+  if (!exp) throw new Error('招待コードが見つかりません');
+  if (exp < new Date().toISOString()) throw new Error('招待コードの有効期限が切れています');
+  await deleteInvite(String(code).trim().toUpperCase());
+  localStorage.setItem(LINK, '1');
+  return { parentName: '保護者 (mock)' };
+}
+export async function unlinkChild() { localStorage.removeItem(LINK); }
+// Mock is always signed in, so the signed-out sign-up screen never shows; these keep the API surface identical.
+export async function signInWithLoginId() {}
+export async function createChildAccount({ code }) { return redeemInvite(code); }
+export async function resetChildPassword() {}
+export async function listStudentAttempts(_uid, max = 100) { return (await listAttempts()).slice(0, max); }
+export async function listPendingAttempts() {
+  return Object.values(load()).filter((a) => a.status === 'graded' && a.pendingCount > 0);
 }
 export function watchAttempt(id, cb) {
   const list = watchers.get(id) || []; list.push(cb); watchers.set(id, list);

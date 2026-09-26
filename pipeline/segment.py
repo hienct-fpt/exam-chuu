@@ -290,6 +290,28 @@ def apply_overrides(exam_id: str, bigs: list[dict]) -> list[dict]:
     return sorted(by_no.values(), key=lambda b: b["no"])
 
 
+PAGE_MARGIN = 20
+RE_EMPTY_PAGE = re.compile(r"^このページ(?:より先)?には問題は印刷されていません。?$")
+
+
+def page_only_bigs(doc: fitz.Document, page_bigs: dict[str, list[int]]) -> list[dict]:
+    """kawasaki: each 問題 = its whole pages (scans have no text to find markers in; 資料 span pages).
+    Pages that only say 「このページには問題は印刷されていません」 are dropped."""
+    bigs = []
+    for no, (p0, p1) in sorted(page_bigs.items(), key=lambda kv: int(kv[0])):
+        regions = []
+        for p in range(p0, p1 + 1):
+            page = doc[p]
+            if RE_EMPTY_PAGE.match(re.sub(r"\s+", "", page.get_text())):
+                continue
+            w, h = page.rect.width, page.rect.height
+            regions.append({"page": p, "x0": PAGE_MARGIN, "x1": round(w - PAGE_MARGIN, 1),
+                            "y0": PAGE_MARGIN, "y1": round(h - PAGE_MARGIN, 1)})
+        bigs.append({"no": int(no), "key": str(no), "label": f"問題{no}", "rank": 0, "regions": regions,
+                     "page_regions": regions, "stem": None, "subs": []})
+    return bigs
+
+
 def _summary(node: dict) -> str:
     if not node["subs"]:
         return ""
@@ -304,6 +326,11 @@ def main() -> None:
             print(f"[segment] {eid}: no question pdf, skip")
             continue
         doc = fitz.open(ROOT / qpath)
+        if ex.get("page_bigs"):
+            bigs = apply_overrides(eid, page_only_bigs(doc, ex["page_bigs"]))
+            dump_json(OUT / "segments" / f"{eid}.json", {"exam_id": eid, "bigs": bigs})
+            print(f"[segment] {eid}: " + " ".join(f"{b['no']}[{len(b['regions'])}p]" for b in bigs))
+            continue
         if ex["subject"] == "japanese":
             import japanese
             bigs = apply_overrides(eid, japanese.segment(doc))

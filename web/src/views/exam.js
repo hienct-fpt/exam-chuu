@@ -80,7 +80,15 @@ function sourceHead(items) {
   return { tags, origin: origin ? `<span class="muted small origin">${esc(origin)}</span>` : '' };
 }
 
-function renderBlock(b, answers, keyOf, showExam) {
+/** Page-image blocks still show questions the grade filter left out -> say so instead of a silent missing input. */
+function skippedNote(b, skipped, gradeFilter) {
+  const sk = (skipped || []).filter((s) => s.exam_id === b.examId && s.big === b.big && s.shared_image);
+  if (!sk.length) return '';
+  return `<div class="hint skipped">${sk.map((s) => esc(s.label)).join('・')} は小${gradeFilter}までの範囲外のため解答不要です</div>`;
+}
+
+function renderBlock(b, answers, keyOf, showExam, skipped = [], gradeFilter = null) {
+  const note = skippedNote(b, skipped, gradeFilter);
   const shown = new Set();
   const topic = b.items[0].topic ? `<span class="badge">${esc(b.items[0].topic)}</span>` : '';
   const { tags, origin } = sourceHead(b.items);
@@ -93,7 +101,7 @@ function renderBlock(b, answers, keyOf, showExam) {
     for (const st of b.items[0].stem_images || []) html += `<img class="qimg stem" src="/${st}" loading="lazy">`;
     html += `<img class="qimg" src="/${b.items[0].image}" loading="lazy">
       <div class="item shared"><div>${b.items.map((it) => inputFor(it, keyOf(it), answers[keyOf(it)])).join('')}</div></div>`;
-    return html + '</div>';
+    return html + note + '</div>';
   }
   if (b.stem_image) { html += `<img class="qimg" src="/${b.stem_image}" loading="lazy">`; shown.add(b.stem_image); }
   let lastImage = null;
@@ -105,7 +113,7 @@ function renderBlock(b, answers, keyOf, showExam) {
     else html += `<div class="item"><img class="qimg" src="/${it.image}" loading="lazy"><div>${inputFor(it, k, answers[k])}</div></div>`;
     lastImage = it.image;
   }
-  return html + '</div>';
+  return html + note + '</div>';
 }
 
 /**
@@ -121,7 +129,7 @@ async function renderSheet(app, sheet) {
   app.innerHTML = `
     <div class="card"><h1>${sheet.title}</h1><div class="muted">${sheet.subtitle}</div></div>
     <form id="sheet" autocomplete="off">
-      ${blocks(items, banks).map((b) => renderBlock(b, answers, keyOf, sheet.showExam)).join('')}
+      ${blocks(items, banks).map((b) => renderBlock(b, answers, keyOf, sheet.showExam, sheet.skipped, sheet.gradeFilter)).join('')}
       <div class="card"><div class="sticky-bar">
         <span class="timer" id="timer">--:--</span>
         <span class="muted" id="progress"></span>
@@ -210,6 +218,7 @@ export async function renderExam({ app }, arg) {
     title: `${esc(exam.school_name)} ${esc(examTitle(exam))} ${esc(exam.subject_label)} ${gradeFilter ? `<span class="badge">小${gradeFilter}までの問題</span>` : ''}`,
     subtitle: `${items.length} 問${gradeFilter ? ` <small>(全 ${exam.item_count} 問中)</small>` : ''} · 制限時間 ${timeLimit} 分 · 答えは解答欄に入力（単位は不要）`,
     items, banks: { [examId]: exam }, keyOf: (it) => slotId(it.id), timeLimit, showExam: false,
+    skipped: exam.items.filter((it) => !items.includes(it)), gradeFilter,
     attemptId: attempt ? attempt.id : null, answers: attempt?.answers, startedAt: attempt ? new Date(attempt.startedAt) : null,
     createExtra: () => [examId, gradeFilter ? 'practice' : 'exam', { itemIds, gradeFilter, timeLimitMin: timeLimit }],
   });

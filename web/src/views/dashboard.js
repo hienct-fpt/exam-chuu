@@ -6,7 +6,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<
 const pct = (v) => (v == null ? '—' : `${Math.round(v * 100)}%`);
 
 /** Inline SVG bar chart of weekly accuracy (no external library). */
-function weeklyChart(weekly) {
+export function weeklyChart(weekly) {
   if (!weekly || !weekly.length) return '';
   const W = 480, H = 120, pad = 24, bw = (W - pad * 2) / weekly.length;
   const bars = weekly.map((w, i) => {

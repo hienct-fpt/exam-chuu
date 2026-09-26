@@ -1,0 +1,9 @@
+{
+  "bigs": {"1": {"grade": 6, "topic": "読解"}, "2": {"grade": 6, "topic": "作文"}},
+  "items": {
+    "1-3": {"grade": 6, "topic": "読解"},
+    "1-4": {"grade": 6, "topic": "記述"},
+    "1-5": {"grade": 6, "topic": "読解"},
+    "2-1": {"grade": 6, "topic": "作文"}
+  }
+}

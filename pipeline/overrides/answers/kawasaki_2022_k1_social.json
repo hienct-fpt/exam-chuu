@@ -1,0 +1,12 @@
+{
+  "slots": [
+    {"id": "2-1", "big": 2, "label": "(1)", "unit": "", "parts": ["あ", "い"], "answer_type": "multi", "answer": ["B", "A"], "variants": [], "points": 5, "note": "(あ)=1966年ごろ、(い)=2021年の写真を資料1のA・Bから選ぶ"},
+    {"id": "2-2", "big": 2, "label": "(2)", "unit": "", "parts": null, "answer_type": "manual", "answer": "市：公害を防止する条例の制定／会社：公害の研究／市民：請願", "variants": [], "points": 15, "note": "記述（市・会社・市民の3欄）: 公害が改善された理由として、市・会社・市民がそれぞれ行ったことを資料2から1つずつ書く。表現が多様なため manual"},
+    {"id": "2-3", "big": 2, "label": "(3)", "unit": "", "parts": null, "answer_type": "choice", "answer": "ア", "variants": [], "points": 5},
+    {"id": "2-4", "big": 2, "label": "(4)", "unit": "", "parts": ["県1", "県2"], "answer_type": "set", "answer": ["静岡", "愛知"], "variants": ["静岡県・愛知県"], "points": 10, "note": "東海道新幹線で新横浜→名古屋で通る神奈川以外の県名2つ（順不同。解答欄に（県）印字済み）"},
+    {"id": "2-5", "big": 2, "label": "(5)", "unit": "", "parts": null, "answer_type": "choice", "answer": "オ", "variants": [], "points": 5},
+    {"id": "2-6", "big": 2, "label": "(6)", "unit": "", "parts": null, "answer_type": "choice", "answer": "ウ", "variants": [], "points": 5},
+    {"id": "2-7", "big": 2, "label": "(7)", "unit": "", "parts": null, "answer_type": "choice", "answer": "エ", "variants": [], "points": 5},
+    {"id": "2-8", "big": 2, "label": "(8)", "unit": "", "parts": null, "answer_type": "text", "answer": "工場を観光資源", "variants": ["観光資源", "工場を観光資源として"], "points": 10, "note": "(か)にあてはまることば 10字以内"}
+  ]
+}

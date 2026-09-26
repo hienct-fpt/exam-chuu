@@ -1,10 +1,13 @@
-import { onAuth, signIn, signOut, isMock } from './api.js';
+import { onAuth, signOut, isMock } from './api.js';
+import { renderLogin } from './views/login.js';
 import { renderHome } from './views/home.js';
 import { renderExam, renderAttempt } from './views/exam.js';
 import { renderResult } from './views/result.js';
 import { renderHistory } from './views/history.js';
 import { renderDashboard } from './views/dashboard.js';
 import { renderPractice } from './views/practice.js';
+import { renderParent } from './views/parent.js';
+import { renderJoin } from './views/join.js';
 
 const app = document.getElementById('app');
 const userBox = document.getElementById('user');
@@ -12,18 +15,13 @@ let user = null;
 let cleanup = null;
 
 const ROUTES = { '': renderHome, exam: renderExam, attempt: renderAttempt, result: renderResult, history: renderHistory,
-  dashboard: renderDashboard, practice: renderPractice };
+  dashboard: renderDashboard, practice: renderPractice, parent: renderParent, join: renderJoin };
 
 function route() {
   if (cleanup) { cleanup(); cleanup = null; }
   const hash = location.hash.replace(/^#/, '') || '/';
   const [, page, arg] = hash.match(/^\/([^/]*)\/?(.*)$/) || [];
-  if (!user) {
-    app.innerHTML = `<div class="card"><h1>過去問練習</h1><p>Google アカウントでログインしてください。</p>
-      <button class="primary" id="login">ログイン</button></div>`;
-    document.getElementById('login').onclick = () => signIn().catch((e) => alert(e.message));
-    return;
-  }
+  if (!user) { renderLogin(app, page, arg); return; }
   document.querySelectorAll('#topbar nav a').forEach((a) => a.classList.toggle('on', a.getAttribute('href') === `#/${page || ''}`));
   const run = ROUTES[page || ''];
   if (!run) { app.innerHTML = '<div class="card">ページが見つかりません。<a href="#/">一覧へ</a></div>'; return; }
@@ -34,6 +32,8 @@ function route() {
 onAuth((u) => {
   user = u;
   userBox.innerHTML = u ? `<span>${u.name}${u.admin ? ' <span class="badge">保護者</span>' : ''}${isMock ? ' (mock)' : ''}</span><button id="logout">ログアウト</button>` : '';
+  document.getElementById('nav-parent').hidden = !u?.admin;
+  document.getElementById('nav-join').hidden = !u || u.admin;
   const lo = document.getElementById('logout');
   if (lo) lo.onclick = () => signOut();
   route();

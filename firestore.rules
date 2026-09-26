@@ -25,28 +25,45 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // Parent <-> child links live on the profiles (students/{child}.parents, students/{parent}.children) and are
+    // written only by the redeem_invite / unlink_child Cloud Functions. A parent sees and grades linked children only.
+    function isParentOf(uid) {
+      return signedIn() && request.auth.uid in get(/databases/$(database)/documents/students/$(uid)).data.get('parents', []);
+    }
+
+    // Invite codes: a parent (admin claim) creates one, the child redeems it through redeem_invite.
+    match /invites/{code} {
+      allow read, delete: if signedIn() && resource.data.parentUid == request.auth.uid;
+      allow create: if isAdmin()
+        && request.resource.data.parentUid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['parentUid', 'parentName', 'createdAt', 'expiresAt'])
+        && request.resource.data.expiresAt is timestamp;
+    }
+
     // Student profile + attempts.
     match /students/{uid} {
-      allow read: if isOwner(uid) || isAdmin();
-      allow create: if isOwner(uid);
-      allow update: if (isOwner(uid) && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role'])) || isAdmin();
+      allow read: if isOwner(uid) || (signedIn() && request.auth.uid in resource.data.get('parents', []));
+      allow create: if isOwner(uid) && !request.resource.data.keys().hasAny(['role', 'parents', 'parentNames', 'children', 'loginId']);
+      allow update: if isOwner(uid) && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'parents', 'parentNames', 'children', 'loginId']);
 
       match /attempts/{attemptId} {
-        allow read: if isOwner(uid) || isAdmin();
+        allow read: if isOwner(uid) || isParentOf(uid);
         // Student may create and edit an attempt only while it is in progress, then submit it once.
         allow create: if isOwner(uid)
           && request.resource.data.status == 'in_progress'
           && request.resource.data.examId is string;
-        allow update: if isAdmin() || (isOwner(uid)
+        allow update: if (isOwner(uid)
           && resource.data.status == 'in_progress'
           && request.resource.data.status in ['in_progress', 'submitted']
-          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['result', 'score', 'gradedAt', 'examId', 'startedAt', 'manualGrades', 'itemIds', 'gradeFilter']));
-        allow delete: if isAdmin();
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['result', 'score', 'gradedAt', 'examId', 'startedAt', 'manualGrades', 'itemIds', 'gradeFilter']))
+          // Linked parent: ○/× on 記述・作図 only; the Cloud Function regrades.
+          || (isParentOf(uid) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['manualGrades', 'updatedAt']));
+        allow delete: if false;
       }
 
       match /topicStats/{topicId} {
-        allow read: if isOwner(uid) || isAdmin();
-        allow write: if isAdmin();
+        allow read: if isOwner(uid) || isParentOf(uid);
+        allow write: if false; // Cloud Function (Admin SDK) only
       }
     }
   }

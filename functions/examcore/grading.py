@@ -8,7 +8,8 @@ answer_type:
   choice   : single option (A / ウ / 正)
   set      : several options, order free ("A・D" == "D, A")
   sequence : ordered ("A→C→D" ; arrows / separators ignored)
-  multi    : list of parts, each graded as number when parseable else text; all parts must match
+  multi    : list of parts, each graded as number when parseable, set when it lists options ("ア・ウ"),
+             else text; "a|b" in a part = accepted alternatives; all parts must match
   essay    : free text; not auto-gradable -> pending (manual grade)
   manual   : drawing / graph; pending (manual grade)
 Student input tolerated: 全角 digits/symbols, spaces, thousands commas, trailing unit text,
@@ -186,16 +187,28 @@ def grade(key: dict, student) -> GradeResult:
         exp_list = list(expected)
         stu_list = list(student) if isinstance(student, (list, tuple)) else _split_multi(student, len(exp_list))
         stu_list = (stu_list + [""] * len(exp_list))[: len(exp_list)]
-        results = []
-        for e, s in zip(exp_list, stu_list):
-            sub_type = "number" if parse_number(str(e)) is not None else "text"
-            results.append(_grade_scalar(sub_type, e, [], s))
+        results = [_grade_part(str(e), s) for e, s in zip(exp_list, stu_list)]
         return GradeResult(all(r.correct for r in results), [r.normalized for r in results],
                            parts_correct=[r.correct for r in results])
     if isinstance(student, (list, tuple)):
         student = "・".join(str(x) for x in student) if atype == "set" else "→".join(str(x) for x in student)
     return _grade_scalar(atype, expected if isinstance(expected, list) else str(expected),
                          variants, str(student) if student is not None else "")
+
+
+def _grade_part(expected: str, student: str) -> GradeResult:
+    """One part of a multi answer. "a|b" = accepted alternatives (answer keys live in Firestore, which has no
+    nested arrays); a part listing several choice letters ("ア・ウ") is order-free like a set."""
+    alts = [a for a in expected.split("|") if a] or [expected]
+    res = None
+    for a in alts:
+        opts = split_set(a)
+        is_set = len(opts) > 1 and all(re.fullmatch(r"[ア-ンA-Z]", o) for o in opts)
+        sub_type = "number" if parse_number(a) is not None else ("set" if is_set else "text")
+        res = _grade_scalar(sub_type, a, [], student)
+        if res.correct:
+            return res
+    return res
 
 
 def _split_multi(s: str, n: int) -> list[str]:

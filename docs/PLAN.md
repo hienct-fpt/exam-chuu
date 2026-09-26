@@ -363,3 +363,29 @@ as before, just without an emailed copy.
   if the `firestore-send-email` extension instance is still installed on the Firebase project, removing it
   from `firebase.json` does not uninstall it — run `firebase ext:uninstall firestore-send-email` (or remove
   it in the Console) to actually stop it, or it'll keep billing/running orphaned.
+
+## 16. P8 (2026-09-26) — kawasaki (川崎市立川崎高等学校附属中) 適性検査 2021–2026
+
+- Source: `kawasaki_past/` (git-ignored like the other PDFs) — 適性検査Ⅰ/Ⅱ × 令和3–8年度 + 解答例 (with 配点).
+  Each 検査 mixes subjects (2021–23: Ⅰ = 国語読解+作文 / 社会資料, Ⅱ = 算数・理科・社会; 2024–26 flipped:
+  Ⅰ = 社会・理科・算数, Ⅱ = 国語+作文), so it is split **by 問題** into subject exams
+  `kawasaki_{year}_{k1|k2}_{subject}` → 27 exams, 203 items (65 manual). Table: `pipeline/kawasaki_exams.json`,
+  read by `inventory.scan_kawasaki()`.
+- Every 問題 = one page-only 大問 (`segment.page_only_bigs`, `x0/x1` full-page regions in `render.py`); pages
+  that only say 「このページには問題は印刷されていません」 are skipped. 2021 検査Ⅰ and 2026 検査Ⅱ are scans.
+- Answer keys transcribed from the 解答例 PDFs (one agent per year, then reviewed): full slot lists in
+  `overrides/answers/kawasaki_*.json` with `points` = 配点 (`build.py` now passes slot `points` through; every
+  other school still defaults to 1). Slots needing a 「著作権の関係により省略」 passage were dropped (2021 検査Ⅰ:
+  5 slots / 46点, 2026 検査Ⅱ: 5 slots / 80点); 作文 are manual with `answer: null` (解答例 <省略>).
+- Grader: a multi part listing choice letters (`ア・ウ`) is order-free; `a|b` inside a part = accepted
+  alternatives (Firestore has no nested arrays). Pure extension — existing min-san parts like `××・○×` keep
+  exact order (test added).
+- Pipeline fixes along the way: `inventory.main()` keeps hand-maintained entries (chuo, sakaehigashi,
+  shinagawa 2023–25 from `pipeline/in/`) instead of wiping them; `answer_key_generic.py` writes full-list
+  overrides to `out/answers/` for exams without a 解答用紙 (verified identical to the existing hand-copied
+  chuo/sakaehigashi/shinagawa-2023–25 answer files).
+- Web: `kawasaki` school chip on the home page.
+- Totals: 88 school exams + min-san 114 sets = 202. pytest 32, vitest 12.
+
+Deferred: per-(n) crops for kawasaki's horizontal 問題 (page view kept on purpose — 資料 span pages), 配点 for
+the other schools, hand-checking kawasaki manual items' 解答例 descriptions of drawings/graphs.

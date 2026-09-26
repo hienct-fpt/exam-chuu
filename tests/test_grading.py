@@ -72,6 +72,18 @@ def test_grade_multi():
     assert grade(key2, ["１", "12秒"]).correct
 
 
+def test_grade_multi_part_set_and_alternatives():
+    key = {"answer_type": "multi", "answer": ["イ", "ア・ウ"], "parts": ["変えた条件", "同じにした条件"]}
+    assert grade(key, ["イ", "ウ・ア"]).correct          # choice-letter list is order-free
+    assert not grade(key, ["イ", "ア"]).correct
+    key2 = {"answer_type": "multi", "answer": ["360÷24|360/24", "15"], "parts": ["く", "け"]}
+    assert grade(key2, ["360/24", "15"]).correct
+    assert grade(key2, ["360÷24", "15"]).correct
+    assert not grade(key2, ["24", "15"]).correct
+    key3 = {"answer_type": "multi", "answer": ["××・○×", "1"], "parts": ["a", "b"]}
+    assert not grade(key3, ["○×・××", "1"]).correct      # non-choice lists keep their order
+
+
 def test_all_bank_answers_grade_themselves():
     """Every extracted answer must be accepted when the student types it verbatim."""
     p = ROOT / "pipeline" / "out" / "answers_all.json"
@@ -83,7 +95,10 @@ def test_all_bank_answers_grade_themselves():
         if k.get("answer_type") in ("essay", "manual"):
             assert grade(k, k["answer"] or "x").pending
             continue
-        r = grade(k, k["answer"])
+        typed = k["answer"]
+        if k.get("answer_type") == "multi" and isinstance(typed, list):
+            typed = [str(e).split("|")[0] for e in typed]  # "a|b" = accepted alternatives
+        r = grade(k, typed)
         if not r.correct:
             bad.append((iid, k["answer"]))
         for v in k.get("variants") or []:

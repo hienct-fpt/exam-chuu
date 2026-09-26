@@ -1,0 +1,21 @@
+{
+  "bigs": {"1": {"grade": 6, "topic": "読解"}, "2": {"grade": 6, "topic": "作文"}},
+  "items": {
+    "1-1": {"grade": 6, "topic": "読解"},
+    "1-2": {"grade": 6, "topic": "記述"},
+    "1-3": {"grade": 6, "topic": "読解"},
+    "1-4": {"grade": 6, "topic": "読解"},
+    "1-5": {"grade": 6, "topic": "読解"},
+    "1-6": {"grade": 6, "topic": "読解"},
+    "1-7": {"grade": 6, "topic": "読解"},
+    "1-8": {"grade": 6, "topic": "読解"},
+    "1-9": {"grade": 6, "topic": "読解"},
+    "1-10": {"grade": 6, "topic": "読解"},
+    "1-11": {"grade": 6, "topic": "記述"},
+    "1-12": {"grade": 6, "topic": "記述"},
+    "1-13-1": {"grade": 6, "topic": "記述"},
+    "1-13-2": {"grade": 6, "topic": "記述"},
+    "1-13-3": {"grade": 6, "topic": "記述"},
+    "2-1": {"grade": 6, "topic": "作文"}
+  }
+}

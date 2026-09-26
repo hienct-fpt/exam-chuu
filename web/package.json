@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:mock": "cross-env VITE_MOCK=1 vite",
+    "dev:mock:student": "cross-env VITE_MOCK=1 VITE_MOCK_ADMIN=0 vite",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run"

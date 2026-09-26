@@ -1,0 +1,8 @@
+{
+  "slots": [
+    {"id": "1-1", "big": 1, "label": "(1)", "unit": "", "parts": null, "answer_type": "choice", "answer": "イ", "variants": [], "points": 10},
+    {"id": "1-2", "big": 1, "label": "(2)", "unit": "", "parts": null, "answer_type": "choice", "answer": "ウ", "variants": [], "points": 10},
+    {"id": "1-3", "big": 1, "label": "(3)", "unit": "", "parts": null, "answer_type": "choice", "answer": "ウ", "variants": [], "points": 10},
+    {"id": "1-4", "big": 1, "label": "(4)", "unit": "", "parts": null, "answer_type": "manual", "answer": "ごみを焼却する量を減らす必要があるので、「ミックスペーパーは資源だよ」とクラスで声をかけるとともに、ノートの切れ端の紙を分別して出します。", "variants": [], "points": 20, "note": "記述 50字以内（「ごみを焼却する量を減らす必要があるので、」に続けて）: 〔資料２〕～〔資料４〕をもとに二酸化炭素の発生を減らすために自分ができる具体的な取り組み"}
+  ]
+}

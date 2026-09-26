@@ -1,0 +1,20 @@
+{
+  "slots": [
+    {"id": "1-1", "big": 1, "label": "(1)", "unit": "", "parts": ["1", "2", "3", "4", "5", "6"], "answer_type": "multi", "answer": ["五十年", "黒い太陽", "四", "三", "所在不明", "マスク"], "variants": [], "points": 18, "note": "会話文の空欄1〜6に入る言葉を あ/い から四字以内で抜き出し（3点×6）"},
+    {"id": "1-2", "big": 1, "label": "(2)", "unit": "", "parts": null, "answer_type": "manual", "answer": "川崎市に つながりを感じた 岡本と、岡本を ほこりに思った 川崎市の両者の思い。", "variants": [], "points": 8, "note": "記述 各八字以内: 筆者は何が「強いつながり」を強くしたと考えているか（解答用紙「川崎市に（　）岡本と」「岡本を（　）川崎市の両者の思い。」）"},
+    {"id": "1-3", "big": 1, "label": "(3)", "unit": "", "parts": ["①", "②", "③", "④", "⑤"], "answer_type": "multi", "answer": ["幸", "高津", "空の散歩", "川崎市市民ミュージアム", "川崎市岡本太郎美術館"], "variants": [], "points": 15, "note": "地図の①〜⑤を あ/い から抜き出し（①②は「区」印字済み）。3点×5"},
+    {"id": "1-4", "big": 1, "label": "(4)", "unit": "", "parts": null, "answer_type": "text", "answer": "三百五十二点の作品を川崎市におくった", "variants": ["352点の作品を川崎市におくった"], "points": 6, "note": "十八字で抜き出し"},
+    {"id": "1-5", "big": 1, "label": "(5)", "unit": "", "parts": null, "answer_type": "choice", "answer": "2", "variants": [], "points": 3},
+    {"id": "1-6", "big": 1, "label": "(6)", "unit": "", "parts": null, "answer_type": "choice", "answer": "3", "variants": [], "points": 3},
+    {"id": "1-7", "big": 1, "label": "(7)", "unit": "", "parts": null, "answer_type": "choice", "answer": "4", "variants": [], "points": 3},
+    {"id": "1-8", "big": 1, "label": "(8)", "unit": "", "parts": null, "answer_type": "choice", "answer": "Ⅱ", "variants": ["II", "2"], "points": 3},
+    {"id": "1-9", "big": 1, "label": "(9)", "unit": "", "parts": null, "answer_type": "text", "answer": "精神世界", "variants": [], "points": 4, "note": "四字以内で抜き出し"},
+    {"id": "1-10", "big": 1, "label": "(10)", "unit": "", "parts": null, "answer_type": "choice", "answer": "2", "variants": [], "points": 3},
+    {"id": "1-11", "big": 1, "label": "(11)", "unit": "", "parts": null, "answer_type": "manual", "answer": "未来のことだけでなく、過去、現在のこともともに考える", "variants": [], "points": 8, "note": "記述 30字以内: 「進歩とは何かを考えること」について岡本太郎が考えていたことを「未来」「現在」「過去」を使って（解答用紙末尾「こと。」）"},
+    {"id": "1-12", "big": 1, "label": "(12)", "unit": "", "parts": null, "answer_type": "manual", "answer": "岡本太郎が川崎市出身", "variants": [], "points": 6, "note": "記述 11字以内: あ と い に共通して書かれている内容（解答用紙末尾「であること。」）"},
+    {"id": "1-13-1", "big": 1, "label": "(13)①", "unit": "", "parts": null, "answer_type": "manual", "answer": "太陽の塔を作ったのはだれですか。", "variants": [], "points": 10, "note": "記述: 答え「『太陽の塔』は、岡本太郎が制作しました。」から考えられる質問。(13) 配点30を①②③で10点ずつ均等割"},
+    {"id": "1-13-2", "big": 1, "label": "(13)②", "unit": "", "parts": null, "answer_type": "manual", "answer": "大阪以外で万博が開さいされた場所はありますか。また、それはいつですか。", "variants": [], "points": 10, "note": "記述: 答え「万博は、二〇〇五年に愛知県でも開さいされました。」から考えられる質問。(13) 配点30を10点ずつ均等割"},
+    {"id": "1-13-3", "big": 1, "label": "(13)③", "unit": "", "parts": null, "answer_type": "manual", "answer": "関西国際空港までの行き方とかかる時間を教えてください。", "variants": [], "points": 10, "note": "記述: 答え「万博会場から関西国際空港までは、直通バスが出ています。所要時間は約一時間です。」から考えられる質問。(13) 配点30を10点ずつ均等割"},
+    {"id": "2-1", "big": 2, "label": "作文", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "points": 90, "note": "作文 300字以上400字以内・3段落以上・縦書き: 学習発表会のクラスのリーダーとして、意見が割れた2案（A 6年間の成長を劇に / B 最高学年1年間の成長を劇に）からおたがいが納得して決めるための声かけ・具体的な行動とその理由。解答例＜省略＞"}
+  ]
+}

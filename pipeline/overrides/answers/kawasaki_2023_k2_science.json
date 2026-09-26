@@ -1,0 +1,11 @@
+{
+  "slots": [
+    {"id": "3-1", "big": 3, "label": "(1)", "unit": "㎡", "parts": null, "answer_type": "number", "answer": "1300", "variants": [], "points": 5},
+    {"id": "3-2", "big": 3, "label": "(2)①", "unit": "", "parts": null, "answer_type": "choice", "answer": "オ", "variants": [], "points": 5},
+    {"id": "3-3", "big": 3, "label": "(3)", "unit": "", "parts": ["い", "う", "え"], "answer_type": "multi", "answer": ["あたま，むね，はら|頭，胸，腹|あたま・むね・はら|頭・胸・腹", "むね|胸", "6"], "variants": [], "points": 10, "note": "い・う・えで10点。い は「頭、胸、腹」の漢字表記も可と思われる"},
+    {"id": "3-4", "big": 3, "label": "(4)", "unit": "㎡", "parts": null, "answer_type": "number", "answer": "4.8", "variants": [], "points": 15, "note": "四捨五入して上から2けたのがい数"},
+    {"id": "3-5", "big": 3, "label": "(5)", "unit": "", "parts": ["か", "き"], "answer_type": "multi", "answer": ["日光", "熱"], "variants": [], "points": 15, "note": "か・きで15点。か「光」、き「温度」等の同義表現は要人手確認"},
+    {"id": "3-6", "big": 3, "label": "(6)②", "unit": "", "parts": ["図", "表"], "answer_type": "multi", "answer": ["エ", "コ"], "variants": [], "points": 5, "note": "プレパラートを動かす方向（図ア〜ク）とけんび鏡の操作（表ケ〜シ）"},
+    {"id": "3-7", "big": 3, "label": "(7)", "unit": "", "parts": null, "answer_type": "manual", "answer": "「食べる」「食べられる」という関係がある", "variants": [], "points": 10, "note": "記述: 生物どうしは、(く)からです — 食物連鎖の関係"}
+  ]
+}

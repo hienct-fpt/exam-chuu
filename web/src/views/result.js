@@ -5,7 +5,9 @@ const fmt = (v) => (Array.isArray(v) ? v.map((x) => x || '—').join(' / ') : (v
 const pct = (c, n) => (n ? Math.round(100 * c / n) : 0);
 const TYPE_LABEL = { set: '順不同', sequence: '並べかえ', essay: '記述', manual: '作図' };
 
-export async function renderResult({ app }, attemptId) {
+export async function renderResult({ app }, arg) {
+  const [attemptId, qs] = String(arg || '').split('?');
+  const uid = new URLSearchParams(qs || '').get('uid'); // set when the parent opens a child's attempt from #/parent
   let title = null;
   let examLabel = () => '';
   const isAdmin = Boolean(currentUser()?.admin);
@@ -46,7 +48,8 @@ export async function renderResult({ app }, attemptId) {
         <div class="muted">正解 ${r.correctCount} / ${r.itemCount} 問 · 未回答 ${r.itemCount - r.answeredCount} 問
           ${pending ? ` · <span class="warn">採点待ち ${pending} 問（記述・作図は保護者が採点）</span>` : ''}
           · 提出 ${a.submittedAt ? new Date(a.submittedAt).toLocaleString('ja-JP') : ''}</div>
-        <p><a href="${retry}">${isPractice ? '同じ分野でもう一度' : 'もう一度挑戦'}</a> · <a href="#/dashboard">ダッシュボード</a> · <a href="#/">一覧へ</a></p>
+        <p>${uid ? `<a href="#/parent/${encodeURIComponent(uid)}">← 生徒の記録へ</a> · <a href="#/parent">保護者ページ</a>`
+          : `<a href="${retry}">${isPractice ? '同じ分野でもう一度' : 'もう一度挑戦'}</a> · <a href="#/dashboard">ダッシュボード</a> · <a href="#/">一覧へ</a>`}</p>
       </div>
       <div class="two-col">
         <div class="card"><h2>${isPractice ? '過去問別' : '大問別'}</h2><table><tr><th>${isPractice ? '出典' : '大問'}</th><th>正解</th><th>正答率</th></tr>
@@ -75,10 +78,10 @@ export async function renderResult({ app }, attemptId) {
     for (const btn of app.querySelectorAll('button[data-mg]')) {
       btn.onclick = async () => {
         btn.disabled = true;
-        try { await setManualGrade(attemptId, btn.dataset.sid, btn.dataset.mg === '1'); }
+        try { await setManualGrade(attemptId, btn.dataset.sid, btn.dataset.mg === '1', uid); }
         catch (e) { alert('採点の保存に失敗: ' + e.message); btn.disabled = false; }
       };
     }
-  });
+  }, uid);
   return unsub;
 }

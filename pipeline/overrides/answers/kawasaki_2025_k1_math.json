@@ -1,0 +1,12 @@
+{
+  "slots": [
+    {"id": "3-1", "big": 3, "label": "(1)", "unit": "", "parts": ["①", "②"], "answer_type": "multi", "answer": ["1.18", "1.23"], "variants": [], "points": 10, "note": "① 直径の倍率(M→L)、② 値段の倍率(M→L)。小数第3位四捨五入"},
+    {"id": "3-2", "big": 3, "label": "(2)", "unit": "", "parts": null, "answer_type": "text", "answer": "面積", "variants": ["ピザの面積"], "points": 10},
+    {"id": "3-3", "big": 3, "label": "(3)", "unit": "", "parts": null, "answer_type": "manual", "answer": "４×４－３×３＝７", "variants": [], "points": 10, "note": "式: ④ にあてはまる式"},
+    {"id": "3-4", "big": 3, "label": "(4)", "unit": "", "parts": null, "answer_type": "manual", "answer": "図において増えたマスのたてが元の正方形の１辺と同じで横が1 つ大きい正方形の１辺と同じだから（図: 増えたL字部分を、元の正方形の1辺分のたて列と1つ大きい正方形の1辺分の横列に分けて囲む）", "variants": [], "points": 15, "note": "記述+図: 元の正方形の1辺と1つ大きい正方形の1辺を足すと増えたマスの数になる理由"},
+    {"id": "3-5", "big": 3, "label": "(5)", "unit": "", "parts": null, "answer_type": "manual", "answer": "2．51×2．51×2．51×2．51×2．51", "variants": [], "points": 10, "note": "式: 6等星から1等星まで約2.51倍を5回かけて約100倍になることを確かめる式"},
+    {"id": "3-6", "big": 3, "label": "(6)", "unit": "倍", "parts": null, "answer_type": "number", "answer": "39.8", "variants": ["39.7"], "points": 10, "note": "解答例「39．8 または39．7」"},
+    {"id": "3-7", "big": 3, "label": "(7)", "unit": "", "parts": null, "answer_type": "manual", "answer": "左側は低い音を出すために長い弦が必要なので奥行きが長くなり、右側は高い音を出すために短い弦となるため奥行きが短くなっているから", "variants": [], "points": 15, "note": "記述: グランドピアノの形がそうなる理由を会話からわかったことを用いて説明"},
+    {"id": "3-8", "big": 3, "label": "(8)", "unit": "", "parts": null, "answer_type": "manual", "answer": "0．125×ｘ", "variants": [], "points": 10, "note": "式: 一番低いドの弦がxmのとき3オクターブ高いドの弦の長さ（x×1/2×1/2×1/2、x/8 なども同値）"}
+  ]
+}

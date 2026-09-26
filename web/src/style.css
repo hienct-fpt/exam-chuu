@@ -68,3 +68,6 @@ a.button { display: inline-block; padding: 8px 16px; border-radius: 8px; border:
 a.button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 #topbar nav a.on { font-weight: 700; color: var(--ink); }
 .big-head .origin { font-weight: 600; }
+.invite-code { font-family: ui-monospace, monospace; font-size: 18px; letter-spacing: 3px; text-transform: uppercase; }
+#join-form { display: flex; gap: 8px; align-items: center; }
+.stack { display: grid; gap: 8px; max-width: 360px; } .stack label { display: grid; gap: 2px; }

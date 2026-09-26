@@ -5,6 +5,7 @@ Exam id: {school}_{year}_{session}_{subject}
   shinagawa_2026_r1_science       shinagawa: r1 / r2 (第1回 / 第2回), m1 (算数1教科)
 Shinagawa 社会・理科 share one 問題 PDF; `page_range` (0-based, inclusive) selects the subject's pages.
 Shinagawa 解答 are scanned images (answers are transcribed into pipeline/overrides/answers/*.json).
+  kawasaki_2026_k1_social         kawasaki: k1 / k2 (適性検査Ⅰ / Ⅱ), one exam per subject (table: kawasaki_exams.json)
 """
 from __future__ import annotations
 
@@ -13,7 +14,7 @@ from pathlib import Path
 
 import fitz
 
-from common import ROOT, OUT, SUBJECT_MAP, KIND_MAP, nfkc, dump_json
+from common import ROOT, OUT, SUBJECT_MAP, KIND_MAP, nfkc, dump_json, load_json
 
 KYORITSU = ROOT / "kyoritsu_past"
 SHINAGAWA = ROOT / "shinagawa_past"
@@ -134,14 +135,43 @@ def scan_shinagawa() -> dict[str, dict]:
     return {k: v for k, v in exams.items() if "question" in v["files"]}
 
 
-def main(subjects: tuple[str, ...] | None = None, schools: tuple[str, ...] = ("kyoritsu", "shinagawa")) -> dict:
-    exams = {}
-    if "kyoritsu" in schools:
-        exams.update(scan_kyoritsu())
-    if "shinagawa" in schools:
-        exams.update(scan_shinagawa())
-    if subjects:
-        exams = {k: v for k, v in exams.items() if v["subject"] in subjects}
+# --------------------------------------------------------------- kawasaki
+
+KAWASAKI_CONFIG = ROOT / "pipeline" / "kawasaki_exams.json"
+KENSA_LABEL = {"k1": "適性検査Ⅰ", "k2": "適性検査Ⅱ"}
+
+
+def scan_kawasaki() -> dict[str, dict]:
+    """川崎市立川崎高等学校附属中 適性検査: each 45-min 検査 mixes subjects, so it is split by 問題 into subject
+    exams (hand-made table in kawasaki_exams.json). `page_bigs` = {問題no: [first, last]} (0-based, inclusive):
+    every 問題 is delivered as page images (scans, 縦書き, 資料 spread over pages), see segment.page_only_bigs."""
+    cfg = load_json(KAWASAKI_CONFIG, {}) or {}
+    exams: dict[str, dict] = {}
+    for e in cfg.get("exams", []):
+        if not (ROOT / e["pdf"]).exists():
+            continue
+        files = {"question": e["pdf"]}
+        if e.get("answer_pdf"):
+            files["answer"] = e["answer_pdf"]
+        exams[e["id"]] = {
+            "id": e["id"], "school": "kawasaki", "school_name": "川崎市立川崎高等学校附属中学校",
+            "year": e["year"], "session": e["kensa"], "session_label": KENSA_LABEL[e["kensa"]],
+            "subject": e["subject"], "subject_label": SUBJECT_LABEL[e["subject"]],
+            "time_limit_min": e["time_limit_min"], "files": files, "page_bigs": e["bigs"],
+        }
+    return exams
+
+
+SCANNERS = {"kyoritsu": scan_kyoritsu, "shinagawa": scan_shinagawa, "kawasaki": scan_kawasaki}
+
+
+def main(subjects: tuple[str, ...] | None = None, schools: tuple[str, ...] = tuple(SCANNERS)) -> dict:
+    # hand-maintained entries survive a re-scan: schools without a scanner (chuo, sakaehigashi) and anything
+    # imported from pipeline/in/ (shinagawa 2023-25)
+    exams = {k: v for k, v in (load_json(OUT / "exams.json", {}) or {}).items()
+             if v.get("school") not in schools or v.get("files", {}).get("question", "").startswith("pipeline/in/")}
+    for school in schools:
+        exams.update({k: v for k, v in SCANNERS[school]().items() if not subjects or v["subject"] in subjects})
     ordered = dict(sorted(exams.items()))
     dump_json(OUT / "exams.json", ordered)
     print(f"[inventory] {len(ordered)} exams -> {OUT / 'exams.json'}")

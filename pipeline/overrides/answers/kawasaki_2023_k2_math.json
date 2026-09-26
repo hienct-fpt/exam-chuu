@@ -1,0 +1,15 @@
+{
+  "slots": [
+    {"id": "2-1", "big": 2, "label": "(1)", "unit": "", "parts": null, "answer_type": "manual", "answer": "40×（18＋23）", "variants": [], "points": 4, "note": "式: 分配のきまりを使ったことが分かる式 (あ)"},
+    {"id": "2-2", "big": 2, "label": "(2)", "unit": "", "parts": null, "answer_type": "manual", "answer": "各クラス、30人より何人多いか調べて、その枚数だけ、103枚の束や120枚の束から取り、30枚の束に増やしていけばよい", "variants": [], "points": 7, "note": "記述: 送ったチラシの束を先生がどのように使って配付するか (い)"},
+    {"id": "2-3", "big": 2, "label": "(3)", "unit": "", "parts": null, "answer_type": "choice", "answer": "ア", "variants": [], "points": 6},
+    {"id": "2-4", "big": 2, "label": "(4)", "unit": "", "parts": null, "answer_type": "manual", "answer": "人数が一番少ないクラス", "variants": [], "points": 4, "note": "文章: 基準にする枚数の見つけ方 (え)"},
+    {"id": "2-5", "big": 2, "label": "(5)", "unit": "", "parts": null, "answer_type": "manual", "answer": "（30＋3）×23", "variants": [], "points": 8, "note": "式: 33×23＝(お)＝30×23＋3×23"},
+    {"id": "2-6-1", "big": 2, "label": "(6)か", "unit": "", "parts": null, "answer_type": "manual", "answer": "32×18", "variants": [], "points": 8, "note": "式: さいわい小の枚数を (か)＋67 と表す"},
+    {"id": "2-6-2", "big": 2, "label": "(6)き・く", "unit": "", "parts": ["き", "く"], "answer_type": "set", "answer": ["2", "18"], "variants": [], "points": 8, "note": "67＝103−(き)×(く)。き・くで8点。き18・く2 も式としては成り立つ（解答例は き2・く18）"},
+    {"id": "2-7", "big": 2, "label": "(7)", "unit": "", "parts": null, "answer_type": "choice", "answer": "ウ", "variants": [], "points": 6},
+    {"id": "2-8-1", "big": 2, "label": "(8)こ・さ", "unit": "", "parts": ["こ", "さ"], "answer_type": "multi", "answer": ["2", "5"], "variants": [], "points": 8, "note": "こ・さで8点"},
+    {"id": "2-8-2", "big": 2, "label": "(8)し", "unit": "", "parts": null, "answer_type": "number", "answer": "1.4", "variants": [], "points": 8},
+    {"id": "2-9", "big": 2, "label": "(9)", "unit": "", "parts": null, "answer_type": "number", "answer": "1.412", "variants": [], "points": 8}
+  ]
+}

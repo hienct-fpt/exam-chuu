@@ -1,0 +1,488 @@
+{
+  "_doc": "川崎市立川崎高等学校附属中 適性検査: 検査 (45分) split by 問題 into subject exams. bigs = {問題no: [first, last]} 0-based inclusive question pages. time_limit_min = 45 x this exam's share of the 検査 points. Answer keys: pipeline/overrides/answers/{id}.json (full slot lists), tags: pipeline/tags/{id}.json.",
+  "exams": [
+    {
+      "id": "kawasaki_2021_k1_japanese",
+      "year": 2021,
+      "kensa": "k1",
+      "subject": "japanese",
+      "pdf": "kawasaki_past/R03examination1.pdf",
+      "answer_pdf": "kawasaki_past/R03-kaitou.pdf",
+      "bigs": {
+        "1": [
+          1,
+          8
+        ]
+      },
+      "notes": "Scan (no text layer), 縦書き. 文章あ・い と記事A本文2つが著作権省略。145点中46点分をdrop、残り99点。(4)ⅱは会話文の「史上初『4冠』」から解答可能と判断して残した。(5)作文は解答例＜省略＞→answer null.",
+      "dropped": [
+        "1-1 (1) 8点: 文章あ（省略）",
+        "1-2 (2) 4点: 文章い（省略）",
+        "1-3-1 (3)ⅰ ③④ 10点: 文章い（省略）",
+        "1-4-1 (4)ⅰ 10点: 地方紙「4」記事A（省略）",
+        "1-4-3 (4)ⅲ ⑧⑨ 14点: 全国紙「1」・地方紙「4」記事A（省略）"
+      ],
+      "time_limit_min": 30
+    },
+    {
+      "id": "kawasaki_2021_k1_social",
+      "year": 2021,
+      "kensa": "k1",
+      "subject": "social",
+      "pdf": "kawasaki_past/R03examination1.pdf",
+      "answer_pdf": "kawasaki_past/R03-kaitou.pdf",
+      "bigs": {
+        "2": [
+          9,
+          13
+        ]
+      },
+      "notes": "Scan. 川崎市の外国人住民・図書館貸出の資料読み取り（割合計算含む）。",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2021_k2_math",
+      "year": 2021,
+      "kensa": "k2",
+      "subject": "math",
+      "pdf": "kawasaki_past/R03-tekisi-2.pdf",
+      "answer_pdf": "kawasaki_past/R03-kaitou.pdf",
+      "bigs": {
+        "2": [
+          7,
+          12
+        ]
+      },
+      "notes": "一輪車の円周・スピログラフ定規（最小公倍数・サイクロイド）。(3)作図、(5)え/おは配点15を1スロットにまとめた。",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2021_k2_science",
+      "year": 2021,
+      "kensa": "k2",
+      "subject": "science",
+      "pdf": "kawasaki_past/R03-tekisi-2.pdf",
+      "answer_pdf": "kawasaki_past/R03-kaitou.pdf",
+      "bigs": {
+        "1": [
+          1,
+          6
+        ]
+      },
+      "notes": "食塩水の浮き沈み・炭酸（二酸化炭素）の溶け方・水蒸気の実験。",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2021_k2_social",
+      "year": 2021,
+      "kensa": "k2",
+      "subject": "social",
+      "pdf": "kawasaki_past/R03-tekisi-2.pdf",
+      "answer_pdf": "kawasaki_past/R03-kaitou.pdf",
+      "bigs": {
+        "3": [
+          13,
+          18
+        ]
+      },
+      "notes": "食品ロス・食料自給率・フェアトレード・SDGs（家庭科/公民/時事の混合、socialに分類）。",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2022_k1_japanese",
+      "year": 2022,
+      "kensa": "k1",
+      "subject": "japanese",
+      "pdf": "kawasaki_past/R04fuzoku-kensa1.pdf",
+      "answer_pdf": "kawasaki_past/R04fuzoku-kaitourei.pdf",
+      "bigs": {
+        "1": [
+          1,
+          5
+        ]
+      },
+      "notes": "Vertical 国語: 三姉妹の視点別文章(書き下ろし, no copyright omission) + 作文(5) 300-400字, 解答例<省略> -> manual null. (4)(ア)(イ)(ウ) split as 1-4-1..3 (separate 配点). Cover p0.",
+      "dropped": [],
+      "time_limit_min": 30
+    },
+    {
+      "id": "kawasaki_2022_k1_social",
+      "year": 2022,
+      "kensa": "k1",
+      "subject": "social",
+      "pdf": "kawasaki_past/R04fuzoku-kensa1.pdf",
+      "answer_pdf": "kawasaki_past/R04fuzoku-kaitourei.pdf",
+      "bigs": {
+        "2": [
+          6,
+          11
+        ]
+      },
+      "notes": "Horizontal: 川崎の公害・年表・新幹線経路・駅前地図・産業別グラフ・図表. (2) 市/会社/市民 記述 kept as one manual slot (free phrasing). (4) 県名 order-free multi.",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2022_k2_math",
+      "year": 2022,
+      "kensa": "k2",
+      "subject": "math",
+      "pdf": "kawasaki_past/R04fuzoku-kensa2.pdf",
+      "answer_pdf": "kawasaki_past/R04fuzoku-kaitourei.pdf",
+      "bigs": {
+        "2": [
+          5,
+          10
+        ]
+      },
+      "notes": "折り紙: 切り紙・輪飾り(円周/規則性)・折り目本数・正三角形の証明. (6) split 図5/お10/か5 per 解答例; (4) い/う split (5/10).",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2022_k2_science",
+      "year": 2022,
+      "kensa": "k2",
+      "subject": "science",
+      "pdf": "kawasaki_past/R04fuzoku-kensa2.pdf",
+      "answer_pdf": "kawasaki_past/R04fuzoku-kaitourei.pdf",
+      "bigs": {
+        "3": [
+          11,
+          16
+        ]
+      },
+      "notes": "打ち水(実験条件・温度グラフ・気化熱/粒子図)・光電池・CO2資料. (1) 変えない条件 short 記述 -> manual. Answer sheets p17-19 excluded.",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2022_k2_social",
+      "year": 2022,
+      "kensa": "k2",
+      "subject": "social",
+      "pdf": "kawasaki_past/R04fuzoku-kensa2.pdf",
+      "answer_pdf": "kawasaki_past/R04fuzoku-kaitourei.pdf",
+      "bigs": {
+        "1": [
+          1,
+          4
+        ]
+      },
+      "notes": "Mixed: 世界の文化・気候・災害資料 (social dominant) + (5)(6) 条件整理/課題解決の流れ. Cover p0.",
+      "dropped": [],
+      "time_limit_min": 10
+    },
+    {
+      "id": "kawasaki_2023_k1_japanese",
+      "year": 2023,
+      "kensa": "k1",
+      "subject": "japanese",
+      "pdf": "kawasaki_past/R05Fuzoku-kensa1.pdf",
+      "answer_pdf": "kawasaki_past/R05Fuzoku-kaitourei.pdf",
+      "bigs": {
+        "1": [
+          1,
+          6
+        ]
+      },
+      "notes": "問題1 節分/大豆/鬼の3文章（適性検査のために作成した文章, 著作権省略なし）. (7) 作文300-400字 75点, 解答例<省略> -> manual answer null. (6)-1/(6)-2 are separate numbered boxes -> ids 1-6-1/1-6-2.",
+      "dropped": [],
+      "time_limit_min": 30
+    },
+    {
+      "id": "kawasaki_2023_k1_social",
+      "year": 2023,
+      "kensa": "k1",
+      "subject": "social",
+      "pdf": "kawasaki_past/R05Fuzoku-kensa1.pdf",
+      "answer_pdf": "kawasaki_past/R05Fuzoku-kaitourei.pdf",
+      "bigs": {
+        "2": [
+          7,
+          13
+        ]
+      },
+      "notes": "問題2 川崎市の財政（歳入・歳出, 観光客数, 家計簿換算, 扶助費）. 資料読み取り中心; (4)(5) involve arithmetic.",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2023_k2_math",
+      "year": 2023,
+      "kensa": "k2",
+      "subject": "math",
+      "pdf": "kawasaki_past/R05Fuzoku-kensa2.pdf",
+      "answer_pdf": "kawasaki_past/R05Fuzoku-kaitourei.pdf",
+      "bigs": {
+        "2": [
+          8,
+          12
+        ]
+      },
+      "notes": "問題2 チラシの束（分配法則）と B判の縦横比. (6) scored as か | き・く and (8) as こ・さ | し on the sheet -> nested ids 2-6-1/2-6-2, 2-8-1/2-8-2. Expressions (1)(5)(6)か -> manual.",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2023_k2_science",
+      "year": 2023,
+      "kensa": "k2",
+      "subject": "science",
+      "pdf": "kawasaki_past/R05Fuzoku-kensa2.pdf",
+      "answer_pdf": "kawasaki_past/R05Fuzoku-kaitourei.pdf",
+      "bigs": {
+        "3": [
+          13,
+          18
+        ]
+      },
+      "notes": "問題3 SDGs/ビオトープ（昆虫, 発芽条件, 顕微鏡, 食物連鎖）. Mixed: (1) 割合計算 and (4) 規則性/面積 are math-like (20点), dominant science.",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2023_k2_social",
+      "year": 2023,
+      "kensa": "k2",
+      "subject": "social",
+      "pdf": "kawasaki_past/R05Fuzoku-kensa2.pdf",
+      "answer_pdf": "kawasaki_past/R05Fuzoku-kaitourei.pdf",
+      "bigs": {
+        "1": [
+          1,
+          7
+        ]
+      },
+      "notes": "問題1 高齢化社会・いこいの家・乗合い実証実験（資料読み取り）. (7) う/え two 10字 blanks share 15点 -> one manual slot.",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2024_k1_math",
+      "year": 2024,
+      "kensa": "k1",
+      "subject": "math",
+      "pdf": "kawasaki_past/R06_kensa_1(080119syusei).pdf",
+      "answer_pdf": "kawasaki_past/R06_kaitourei_haiten.pdf",
+      "bigs": {
+        "3": [
+          16,
+          20
+        ]
+      },
+      "notes": "問題3 市制100周年ロゴ(図形の長さ・面積、文字位置の条件整理)。(4)は配点が(え)(お)5/(か)10/(き)5、(7)は(し)(す)5/(せ)(そ)5と別配点のため3-4-1..3, 3-7-1..2に分割。",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2024_k1_science",
+      "year": 2024,
+      "kensa": "k1",
+      "subject": "science",
+      "pdf": "kawasaki_past/R06_kensa_1(080119syusei).pdf",
+      "answer_pdf": "kawasaki_past/R06_kaitourei_haiten.pdf",
+      "bigs": {
+        "2": [
+          11,
+          15
+        ]
+      },
+      "notes": "問題2 サマーキャンプ(太陽・川・地層・状態変化・星・月)。(6)は計算を含むが理科(天体)に分類。(8)作図はmanual。",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2024_k1_social",
+      "year": 2024,
+      "kensa": "k1",
+      "subject": "social",
+      "pdf": "kawasaki_past/R06_kensa_1(080119syusei).pdf",
+      "answer_pdf": "kawasaki_past/R06_kaitourei_haiten.pdf",
+      "bigs": {
+        "1": [
+          1,
+          10
+        ]
+      },
+      "notes": "問題1 川崎宿・街道・川崎港貿易・統計。地理/資料読み取り中心、(4)のみ歴史(学童疎開)。R06から検査Ⅰ=横書き教科横断。",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2024_k2_japanese",
+      "year": 2024,
+      "kensa": "k2",
+      "subject": "japanese",
+      "pdf": "kawasaki_past/R06_kensa_2.pdf",
+      "answer_pdf": "kawasaki_past/R06_kaitourei_haiten.pdf",
+      "bigs": {
+        "1": [
+          1,
+          6
+        ],
+        "2": [
+          7,
+          8
+        ]
+      },
+      "notes": "問題1 俳句「梅一輪」を題材にした3つの文章(適性検査用作成文、著作権省略なし)+会話。問題2 作文(p7資料, p8設問)300-400字、解答例<省略>。PDFに解答用紙なし(9ページ)。",
+      "dropped": [],
+      "time_limit_min": 45
+    },
+    {
+      "id": "kawasaki_2025_k1_math",
+      "year": 2025,
+      "kensa": "k1",
+      "subject": "math",
+      "pdf": "kawasaki_past/R07_Fuzoku-kensa1(080119syusei).pdf",
+      "answer_pdf": "kawasaki_past/R07_fuzoku_kaitourei.pdf",
+      "bigs": {
+        "3": [
+          13,
+          16
+        ]
+      },
+      "notes": "問題3: ピザの倍率・正方形数の規則・星の等級(2.51倍)・ピアノ弦長。(7)ピアノ形状の説明は理科寄りだが全体は算数(倍・規則性)が支配的。",
+      "dropped": [],
+      "time_limit_min": 15
+    },
+    {
+      "id": "kawasaki_2025_k1_science",
+      "year": 2025,
+      "kensa": "k1",
+      "subject": "science",
+      "pdf": "kawasaki_past/R07_Fuzoku-kensa1(080119syusei).pdf",
+      "answer_pdf": "kawasaki_past/R07_fuzoku_kaitourei.pdf",
+      "bigs": {
+        "2": [
+          6,
+          12
+        ]
+      },
+      "notes": "問題2: もののとけ方(実験A-C)+てこ(実験D-G)。(8)配点15を(く)(け)(こ)で5点ずつ均等割(2-8-1..3)。もののとけ方は小5単元のためgrade5で付与(水溶液→6規則より実態優先)。",
+      "dropped": [],
+      "time_limit_min": 20
+    },
+    {
+      "id": "kawasaki_2025_k1_social",
+      "year": 2025,
+      "kensa": "k1",
+      "subject": "social",
+      "pdf": "kawasaki_past/R07_Fuzoku-kensa1(080119syusei).pdf",
+      "answer_pdf": "kawasaki_past/R07_fuzoku_kaitourei.pdf",
+      "bigs": {
+        "1": [
+          1,
+          5
+        ]
+      },
+      "notes": "問題1: 時差・雨温図・川崎の工業/水素/通勤・工業地帯の資料読み取り。全6問選択。",
+      "dropped": [],
+      "time_limit_min": 10
+    },
+    {
+      "id": "kawasaki_2025_k2_japanese",
+      "year": 2025,
+      "kensa": "k2",
+      "subject": "japanese",
+      "pdf": "kawasaki_past/R07_fuzoku_kensa2.pdf",
+      "answer_pdf": "kawasaki_past/R07_fuzoku_kaitourei.pdf",
+      "bigs": {
+        "1": [
+          1,
+          7
+        ],
+        "2": [
+          8,
+          8
+        ]
+      },
+      "notes": "問題1: 岡本太郎と川崎市(適性検査用作成文章、著作権省略なし)。(13)配点30を①②③で10点ずつ均等割。問題2: 作文300-400字、解答例＜省略＞→answer null。",
+      "dropped": [],
+      "time_limit_min": 45
+    },
+    {
+      "id": "kawasaki_2026_k1_math",
+      "year": 2026,
+      "kensa": "k1",
+      "subject": "math",
+      "pdf": "kawasaki_past/R08examination1.pdf",
+      "answer_pdf": "kawasaki_past/R08answer.pdf",
+      "bigs": {
+        "3": [
+          11,
+          13
+        ]
+      },
+      "notes": "問題3: まんじゅうの箱詰め（正方形/正三角形配置、正三角形の高さ）。(4) は数16＋理由で25点のため1つの manual slot。",
+      "dropped": [],
+      "time_limit_min": 20
+    },
+    {
+      "id": "kawasaki_2026_k1_science",
+      "year": 2026,
+      "kensa": "k1",
+      "subject": "science",
+      "pdf": "kawasaki_past/R08examination1.pdf",
+      "answer_pdf": "kawasaki_past/R08answer.pdf",
+      "bigs": {
+        "2": [
+          7,
+          10
+        ]
+      },
+      "notes": "問題2: 洗たく物の乾き方の実験計画＋電熱線の発熱実験。(1) は問題点/改善方法の2組（各20点）を 2-1-1/2-1-2、(3)(あ)(い)（各20点）を 2-3-1/2-3-2 に分割。すべて manual。",
+      "dropped": [],
+      "time_limit_min": 20
+    },
+    {
+      "id": "kawasaki_2026_k1_social",
+      "year": 2026,
+      "kensa": "k1",
+      "subject": "social",
+      "pdf": "kawasaki_past/R08examination1.pdf",
+      "answer_pdf": "kawasaki_past/R08answer.pdf",
+      "bigs": {
+        "1": [
+          1,
+          6
+        ]
+      },
+      "notes": "問題1: 気温上昇・ごみ・再生可能エネルギーの資料読み取り（環境）。p4 は interior の「問題は印刷されていません」ページ。",
+      "dropped": [],
+      "time_limit_min": 10
+    },
+    {
+      "id": "kawasaki_2026_k2_japanese",
+      "year": 2026,
+      "kensa": "k2",
+      "subject": "japanese",
+      "pdf": "kawasaki_past/R08examination2.pdf",
+      "answer_pdf": "kawasaki_past/R08answer.pdf",
+      "bigs": {
+        "1": [
+          1,
+          4
+        ],
+        "2": [
+          6,
+          6
+        ]
+      },
+      "notes": "スキャンPDF。文章1・2（菅野仁『友だち幻想』）は著作権で省略、文章3（物語）は掲載。(1)(2) は文章1・2の空らん→drop。(6)①②③ は文章1〜3をふまえる条件（①は文章1と2、②は文章1か2の言葉を使う、③は①②をふまえる）→すべて drop（③は文章3のみでもある程度書けるが①②に依存するため drop）。問題2 は400字作文、解答例＜省略＞、answer null。p5 は「問題1は反対側から始まります」の注記ページで範囲外。",
+      "dropped": [
+        "1-1",
+        "1-2",
+        "1-6-1",
+        "1-6-2",
+        "1-6-3"
+      ],
+      "time_limit_min": 45
+    }
+  ]
+}
