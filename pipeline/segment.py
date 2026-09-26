@@ -19,7 +19,7 @@ import unicodedata
 
 import fitz
 
-from common import OUT, OVERRIDES, ROOT, iter_spans, load_json, dump_json
+from common import OUT, OVERRIDES, ROOT, Span, iter_spans, load_json, dump_json
 from labels import parse_label, is_big_digit, RE_Q
 
 BIG_MIN_SIZE = 12.0
@@ -94,6 +94,11 @@ SUBJECT_RULES = {
     "shinagawa_math":    {"ranks": {2, 3}, "top": {2}},                   # ⑴⑵ then ①
     "shinagawa_science": {"ranks": {1, 2, 3}, "top": {1, 2}, "roman": True},  # Ⅰ/Ⅱ sections, ⑴, ①
     "shinagawa_social":  {"ranks": {1, 2, 3}, "top": {1, 2}},
+    # chuo: 大問 box-digit sits at x0 up to ~76pt (kyoritsu's is <70); （１）（２） render as 3 spans
+    # ("（" / digit / "）" in different fonts, since the digit reuses the equation-numeral font) -> merge them.
+    "chuo_math":    {"ranks": {2}, "top": {2}, "big_max_x": 80, "merge_paren_digit": True},
+    "chuo_science": {"ranks": {1}, "top": {1}, "big_max_x": 80},   # 〔問１〕 leaf questions, no sub-parts
+    "chuo_social":  {"ranks": {1}, "top": {1}, "roman_big": True}, # 大問 = boxed Ⅰ/Ⅱ; 問１．leaf questions
 }
 
 
@@ -109,18 +114,52 @@ def _is_big_marker(s) -> bool:
     return fullwidth and s.size >= 9 and any(h in s.font for h in BOLD_HINTS)
 
 
+ROMAN_BIG = "ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ"
+RE_BARE_DIGIT = re.compile(r"^[0-9０-９]{1,2}$")
+
+
+def _merge_split_parens(spans: list) -> list:
+    """chuo: "（１）" prints as 3 spans ("（", "１", "）") because the digit reuses the equation-numeral
+    font. Splice them into one synthetic span so parse_label sees the whole marker, like elsewhere."""
+    out = []
+    i = 0
+    while i < len(spans):
+        s = spans[i]
+        if s.text in ("(", "（") and s.x0 < 100 and i + 2 < len(spans):
+            d, c = spans[i + 1], spans[i + 2]
+            starts_close = c.text.startswith(")") or c.text.startswith("）")  # closing paren may run on into trailing prose in the same span
+            if (d.page == s.page and c.page == s.page and starts_close
+                    and RE_BARE_DIGIT.match(d.text) and abs(d.y0 - s.y0) < 3 and abs(c.y0 - s.y0) < 3
+                    and -1 <= d.x0 - s.x1 < 15 and -1 <= c.x0 - d.x1 < 15):
+                merged = Span(s.page, s.x0, s.y0, d.x1 + 2, max(s.y1, d.y1, c.y1), d.size, d.font, f"（{d.text}）")
+                out.append(merged)
+                i += 3
+                continue
+        out.append(s)
+        i += 1
+    return out
+
+
 def find_markers(doc: fitz.Document, subject: str = "math", page_range: tuple[int, int] | None = None) -> list[dict]:
     """All markers in reading order: [{page, y, rank, key, label, big}]; rank 0 = 大問.
     Kana (あいう) are never markers here: they are fill-in slots inside the text.
     page_range (inclusive) restricts to a subject's pages inside a combined PDF (its first page is content)."""
     rules = SUBJECT_RULES.get(subject, SUBJECT_RULES["science"])
+    big_max_x = rules.get("big_max_x", BIG_MAX_X)
     first, last = page_range if page_range else (1, len(doc) - 1)
+    spans = list(iter_spans(doc))
+    if rules.get("merge_paren_digit"):
+        spans = _merge_split_parens(spans)
     raw = []
-    for s in iter_spans(doc):
+    for s in spans:
         if s.page < first or s.page > last or s.y0 < TOP_MARGIN:
             continue
-        if s.x0 < BIG_MAX_X and (n := is_big_digit(s.text)) is not None and _is_big_marker(s):
+        if s.x0 < big_max_x and (n := is_big_digit(s.text)) is not None and _is_big_marker(s):
             raw.append({"page": s.page, "y": s.y0, "rank": 0, "key": str(n), "label": str(n), "no": n})
+            continue
+        if rules.get("roman_big") and s.x0 < big_max_x and s.text.strip() in ROMAN_BIG and s.size >= BIG_MIN_SIZE:
+            n = ROMAN_BIG.index(s.text.strip()) + 1
+            raw.append({"page": s.page, "y": s.y0, "rank": 0, "key": str(n), "label": s.text.strip(), "no": n})
             continue
         if s.x0 < SUB_MAX_X:
             lab = parse_label(s.text)
@@ -237,6 +276,9 @@ def apply_overrides(exam_id: str, bigs: list[dict]) -> list[dict]:
     ov = load_json(OVERRIDES / "segments" / f"{exam_id}.json")
     if not ov:
         return bigs
+    if isinstance(ov.get("bigs"), list):
+        # full manual replacement (no per-big patch merge) -- used when auto-detection can't run at all
+        return sorted(ov["bigs"], key=lambda b: b["no"])
     by_no = {str(b["no"]): b for b in bigs}
     for no, patch in (ov.get("bigs") or {}).items():
         if patch is None:

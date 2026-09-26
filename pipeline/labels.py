@@ -21,6 +21,7 @@ KANJI_NUM = {"一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 
              "十一": 11, "十二": 12, "十三": 13, "十四": 14, "十五": 15}
 
 RE_Q = re.compile(r"^問\s*([0-9０-９]{1,2}|[一二三四五六七八九十]{1,2})\s*[．.、]?")
+RE_Q_BRACKET = re.compile(r"^〔\s*問\s*([0-9０-９]{1,2}|[一二三四五六七八九十]{1,2})\s*〕")  # chuo: 〔問１〕
 RE_PAREN = re.compile(r"^[（(]\s*([0-9０-９]{1,2})\s*[）)]")
 RE_ALPHA_PART = re.compile(r"^[A-Z]{1,3}$")
 RE_ROMAN = re.compile(r"^[ⅠⅡⅢⅣⅤⅰⅱⅲⅳⅴ]$")
@@ -56,6 +57,10 @@ def parse_label(text: str) -> Label | None:
         return None
     ch = t[0]
     m = RE_Q.match(t)
+    if m:
+        n = to_int(m.group(1))
+        return Label(1, "Q", n, f"問{n}", t) if n else None
+    m = RE_Q_BRACKET.match(t)
     if m:
         n = to_int(m.group(1))
         return Label(1, "Q", n, f"問{n}", t) if n else None

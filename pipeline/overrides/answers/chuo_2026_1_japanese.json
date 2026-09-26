@@ -1,0 +1,235 @@
+{
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "label": "問一",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "波線部a～eのカタカナ（シュジ・スジガネ・ヒョウホン・シンケイ・ルス）を楷書で丁寧に漢字に改める書き取り問題。"
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "label": "問二",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部①「待合室の長椅子は、山盛りのお年寄りで埋まっていた」とはどういうことか、（ア）～（エ）から最も適当なものを選ぶ選択問題。"
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "label": "問三",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部②「ノリオは肩をすくめて、やれやれ……と大人みたいな首の振り方をした」とあるが、このときのノリオの様子として最も適当なものを（ア）～（エ）から選ぶ選択問題。"
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "label": "問四",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "会話文中の空欄A～Dに当てはまるせりふを（ア）～（エ）からそれぞれ選ぶ選択問題（同じ記号を2度以上用いない）。"
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "label": "問五",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部③「僕らは黙っていた」に関する説明文中の空欄a～dに当てはまる言葉を（ア）～（ク）からそれぞれ選ぶ選択問題。"
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "label": "問六",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "空欄E～Hに入る擬音語・擬態語（グルグル・ズルズル・ボロボロ・クスクス・ポツポツ・ズブズブ）を（ア）～（カ）からそれぞれ選ぶ選択問題（同じ記号を2度以上用いない）。"
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "label": "問七",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部④「理屈に合わない感じ」に関する説明文中の空欄a～dに当てはまる語句を（ア）～（コ）からそれぞれ選ぶ選択問題。"
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "label": "問八",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部⑤「ものすごくいやな感じが僕を襲った」とはどういうことか、（ア）～（エ）から最も適当なものを選ぶ選択問題。"
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "label": "問九",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "空欄I～Kに当てはまる語の組み合わせ（きっぱり／さっぱり・わざわざ／いちいち・どのくらい／どうすれば）として最も適当なものを（ア）～（エ）から選ぶ選択問題。"
+    },
+    {
+      "id": "1-10",
+      "big": 1,
+      "label": "問十",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部⑥「僕らは、気まずく目をそらした」に関する説明文中の空欄(1)～(3)について、それぞれ適当なものを（ア）～（カ）から選ぶ選択問題。"
+    },
+    {
+      "id": "1-11",
+      "big": 1,
+      "label": "問十一",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部⑦「見たこともないほどきれいな夕焼けだった」に関する説明文中の空欄(1)～(4)について、それぞれ適当なものを（ア）～（シ）から選ぶ選択問題。"
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "label": "問一",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部①「『ここまでやる』という決まりを破ってまで」とはどういうことか、（ア）～（エ）から最も適当なものを選ぶ選択問題。"
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "label": "問二",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "本文中の空欄Aに入る、筆者が詠んだあぜ道と赤とんぼを詠んだ俳句を（ア）～（エ）から選ぶ選択問題（本文内容をふまえて判断）。"
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "label": "問三",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部②「百姓の方が生きものを差別している」に関する説明文中の空欄(1)～(4)について、それぞれ適当なものを（ア）～（サ）から選ぶ選択問題。"
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "label": "問四",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部③「ほんとうの答え」に関する説明文中の空欄a～dに当てはまる語句を（ア）～（ク）からそれぞれ選ぶ選択問題（同じ記号を2度以上用いない）。"
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "label": "問五",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部④「取引できないもの＝めぐみ」を生み出しているに関する説明文中の空欄a～dに当てはまる語句を（ア）～（ク）からそれぞれ選ぶ選択問題。"
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "label": "問六",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "空欄B～Eに当てはまる接続語（しかし／また／では／したがって等）の組み合わせとして最も適当なものを（ア）～（エ）から選ぶ選択問題。"
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "label": "問七",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部⑤「毎年同じ花がそこで咲き続けることは、ほんとうは『不自然』なことなのです」とはどういうことか、（ア）～（エ）から最も適当なものを選ぶ選択問題。"
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "label": "問八",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部⑥「皮肉なことに」とあるが、ここでの「皮肉」とはどういうことか、（ア）～（エ）から最も適当なものを選ぶ選択問題。"
+    },
+    {
+      "id": "2-9",
+      "big": 2,
+      "label": "問九",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "傍線部⑦「『農業』から『農』への転換は世界各地で始まっています」に関する説明文中の空欄(1)～(4)について、それぞれ適当なものを（ア）～（サ）から選ぶ選択問題。"
+    },
+    {
+      "id": "2-10",
+      "big": 2,
+      "label": "問十",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "本文の内容や筆者の意見について述べた（ア）～（エ）の記述それぞれが本文と合致するか（○）合致しないか（×）を答える正誤判定問題（4項目）。"
+    }
+  ]
+}

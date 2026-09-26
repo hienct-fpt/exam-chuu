@@ -1,0 +1,180 @@
+{
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "実験1(図1・表1)の結果からわかるダイオードの性質として最もふさわしいものをア~エから選ぶ"
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "図2の回路⑦で切り替えスイッチを1秒ごとに切り替えたときの検流計の針の振れ方(空らん1)をア~カから選ぶ"
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "図2の回路⑦で切り替えスイッチを1秒ごとに切り替えたときの豆電球A・Bの光り方(空らん2)をア~クから選ぶ"
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "図3の半波整流回路で豆電球に流れる電流の様子(空らん3)をア~エから選ぶ"
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "図4のPQ間に点Pから点Qへ直流を流し続けるために、空らんA~Dにダイオードをどの向き(ア・イ)でつなぐか、それぞれ答える(4つの空欄をまとめて1問として扱う)"
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "ヒトの卵(卵子)がメダカの卵に比べてとても小さい理由として最もふさわしいものをア~エから選ぶ"
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "受精後10週から生まれてくるまでの残りの週数(会話文の空らん①)をア~エ(18/28/38/48)から選ぶ"
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "心臓が手足より早い時期から動き始める理由(下線部②)として最もふさわしいものをア~エから選ぶ"
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "赤ちゃんが浸かっている液体の名前(会話文の空らん③)を漢字で答える"
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "赤ちゃんが酸素を取り込む方法(会話文の空らん④)として最もふさわしいものをア~オから選ぶ"
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "label": "問6",
+      "unit": "cm3",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "1回300cm3・1分間20回の呼吸をするとき、表(吸う空気とはき出した息の酸素割合)を使って1分間に肺から体内に取り込む酸素の体積を求める計算問題"
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "南極大陸の氷と北極海の氷がそれぞれすべて溶けたときの海面変化の違いについて最もふさわしいものをア~ウから選ぶ"
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "現在420ppmの二酸化炭素濃度に対し、80万年前(現在の約2/3)の濃度を百分率で表したものをア~クから選ぶ"
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "ドライアイスと水を使った実験1・実験2の結果を踏まえ、二酸化炭素の性質として正しい文をア~オから全て選ぶ"
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "実験1後のメスシリンダー内の水溶液をリトマス紙・BTB溶液で調べた結果として正しいものをア~クから全て選ぶ"
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "「①ドライアイスが気体になると体積が750倍以上に増加した」「②水が氷になると体積が約8%増加した」という2文の正誤の組み合わせをア~エから選ぶ"
+    }
+  ]
+}

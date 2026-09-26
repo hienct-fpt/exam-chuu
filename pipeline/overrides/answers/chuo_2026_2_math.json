@@ -1,0 +1,180 @@
+{
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "1-2÷{3-4÷(5-6÷7)}の四則混合計算(整数)の値を求める"
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "125-{(□+5÷6)×60-24×(5/6+2/3)}=96の□にあてはまる数を求める逆算"
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "label": "(3)",
+      "unit": "ページ",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "本を3日間で読み終える場面で、1日目は全体の2/5より35ページ多く、2日目は残りの半分、3日目は全体の2/9を読んだときの本の全ページ数を求める分配算"
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "label": "(4)",
+      "unit": "個",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "1から400までの整数のうち、4でも6でも割り切れて、かつ16では割り切れない数の個数を求める"
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "label": "(5)",
+      "unit": "点",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "A~Fの6人の平均点72点、D・E・Fの3人の平均点78点、AはBより17点高く、BはCより2点高いという条件からCの得点を求める"
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "label": "(6)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "1/A+2/B=1/2となる整数A,Bの組み合わせのうち、Bが最も大きくなるときのA,Bの値をそれぞれ求める"
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "label": "(7)",
+      "unit": "度",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "長方形の紙を点線で折ってできた図で、12°の角の情報から角xの大きさを求める(折り紙と角度)"
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "label": "(8)",
+      "unit": "cm2",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "正方形と円を重ね、接する4点のうち2点(8cmの線分)を結んだ図の斜線部分の面積を求める(円周率3.14使用)"
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "label": "(1)",
+      "unit": "番目",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "1,3,1,5,3,1,7,5,3,1,…と並ぶ数列で、はじめて15が出てくるのは最初から数えて何番目かを求める"
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "同じ数列で、はじめから数えて80番目の数を求める"
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "label": "(1)",
+      "unit": "倍",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "正四面体OABCで辺OAを3:4に分ける点D、辺OB・OCを2:3に分ける点E・Fを結んでできる四面体ODEFの体積が、正四面体OABCの体積の何倍かを求める"
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "label": "(2)",
+      "unit": "cm3",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "正四面体OABCの体積が350cm3のとき、辺の分点・中点D,E,F,L,M,Nを結んでできる八面体の体積を求める"
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "label": "(1)",
+      "unit": "km/時",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "A-C間を往復する船X(静水時速14km)とB-C間を往復する船Yの位置を表すグラフから、船Yの静水での速さ(時速)を求める"
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "label": "(2)",
+      "unit": "km",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "B-C間の距離8kmとグラフの時間の情報から、A地点からC地点までの距離を求める"
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "label": "(3)",
+      "unit": "分",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "船X・Yの往復の様子を表すグラフ中の時刻(あ)にあたる分の値を求める"
+    },
+    {
+      "id": "4-4",
+      "big": 4,
+      "label": "(4)",
+      "unit": "km",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "船Xと船Yがそれぞれ A地点・B地点を同時に出発してから2回目にすれ違う地点が、B地点から何km離れているかを求める"
+    }
+  ]
+}
