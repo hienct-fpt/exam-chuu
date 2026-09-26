@@ -1,0 +1,100 @@
+{
+  "exam_id": "kawasaki_2022_k2_social",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "1-1",
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 5,
+      "note": "すそが長い服装の理由としてあてはまらないもの"
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "1-2",
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "海に近いところでは新鮮な魚が手に入るので、刺身にして食べる文化が広まった",
+      "variants": [],
+      "points": 15,
+      "note": "記述: (あ) 地域の自然環境によって食文化が異なる具体的な例"
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "1-3",
+      "big": 1,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "洪水",
+      "variants": [
+        "こうずい"
+      ],
+      "points": 10,
+      "note": "(い) アジアで回数の多い自然災害（資料4）"
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "1-4",
+      "big": 1,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 5
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "1-5",
+      "big": 1,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "オ",
+      "variants": [],
+      "points": 10
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "1-6",
+      "big": 1,
+      "label": "(6)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 10
+    }
+  ]
+}

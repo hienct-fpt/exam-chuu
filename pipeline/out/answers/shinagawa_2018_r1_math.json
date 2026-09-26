@@ -1,0 +1,251 @@
+{
+  "exam_id": "shinagawa_2018_r1_math",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "7",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "3/20",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "km (時速)",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "25",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "60",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "226.08",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "40",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "42",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "個",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "15",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "円",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "2100",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "の方角",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "南西",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "5/6",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "40",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "枚",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "18",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "5-1",
+      "big": 5,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "cm³",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "4396",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "5-2",
+      "big": 5,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "15",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "6-1",
+      "big": 6,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "人",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "16",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "6-2",
+      "big": 6,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "人",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "29",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    }
+  ]
+}

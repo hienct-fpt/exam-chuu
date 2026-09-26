@@ -1,0 +1,155 @@
+{
+  "exam_id": "kawasaki_2023_k1_japanese",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "1-1",
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "parts": [
+        "あ",
+        "い",
+        "う"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "この中学校の受検生",
+        "小学五年生",
+        "子育て中の保護者"
+      ],
+      "variants": [],
+      "points": 15,
+      "note": "文章あ・い・うがそれぞれだれに向けて書かれたか、本文から5字以上10字以内でぬき出す（各5点）"
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "1-2",
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "6",
+      "variants": [],
+      "points": 6,
+      "note": "1〜8から番号を1つ選ぶ"
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "1-3",
+      "big": 1,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "2・3",
+      "variants": [],
+      "points": 6,
+      "note": "語呂合わせの例として1〜4からすべて選ぶ"
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "1-4",
+      "big": 1,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "3",
+      "variants": [],
+      "points": 6,
+      "note": "1〜4から番号を1つ選ぶ"
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "1-5",
+      "big": 1,
+      "label": "(5)",
+      "unit": "",
+      "parts": [
+        "あ",
+        "う"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "季節が変わ",
+        "人間の力で"
+      ],
+      "variants": [],
+      "points": 12,
+      "note": "文章あ・うから十九字で探し最初の五字をぬき出す（各6点）"
+    },
+    {
+      "path": [
+        "6",
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "1-6-1",
+      "big": 1,
+      "label": "(6)-1",
+      "unit": "",
+      "parts": [
+        "A",
+        "B"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "福は内",
+        "内"
+      ],
+      "variants": [],
+      "points": 10,
+      "note": "作文の空らんA（三字）・B（一字）をぬき出す（各5点）"
+    },
+    {
+      "path": [
+        "6",
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "1-6-2",
+      "big": 1,
+      "label": "(6)-2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "当たり前ではなく、異なるかけ声があり、それにもよさがある",
+      "variants": [],
+      "points": 10,
+      "note": "記述 20字以上30字以内: 「当たり前」「よさ」を使い、「『鬼は外』『福は内』というかけ声が〜ということ。」に合うように、たろうさんが最も伝えたいこと"
+    },
+    {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
+      "id": "1-7",
+      "big": 1,
+      "label": "(7)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "points": 75,
+      "note": "作文 300字以上400字以内・三段落以上（解答用紙2）: 文章あ・い・うのどれに興味をもったか、初めて知ったこと・特に強く興味をもったこと、なぜ興味をもったか、さらに知りたくなったこと。解答例＜省略＞"
+    }
+  ]
+}

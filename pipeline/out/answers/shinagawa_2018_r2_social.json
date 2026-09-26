@@ -1,0 +1,579 @@
+{
+  "exam_id": "shinagawa_2018_r2_social",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "じゃがいも",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "ジャガイモ",
+        "馬鈴薯",
+        "ばれいしょ"
+      ]
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-5-1",
+      "big": 1,
+      "path": [
+        "5",
+        "1"
+      ],
+      "label": "問5 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-5-2",
+      "big": 1,
+      "path": [
+        "5",
+        "2"
+      ],
+      "label": "問5 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-6-1",
+      "big": 1,
+      "path": [
+        "6",
+        "1"
+      ],
+      "label": "問6 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "消防署",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-6-2",
+      "big": 1,
+      "path": [
+        "6",
+        "2"
+      ],
+      "label": "問6 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-6-3",
+      "big": 1,
+      "path": [
+        "6",
+        "3"
+      ],
+      "label": "問6 (3)",
+      "unit": "メートル",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "500",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-6-4",
+      "big": 1,
+      "path": [
+        "6",
+        "4"
+      ],
+      "label": "問6 (4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "answer": "冬に乾燥した風がふくため。",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "path": [
+        "9"
+      ],
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-10-1",
+      "big": 1,
+      "path": [
+        "10",
+        "1"
+      ],
+      "label": "問10 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "千島海流",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "親潮",
+        "千島海流(親潮)"
+      ]
+    },
+    {
+      "id": "1-10-2",
+      "big": 1,
+      "path": [
+        "10",
+        "2"
+      ],
+      "label": "問10 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "潮目",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "潮境"
+      ]
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": [
+        "(1)",
+        "(2)"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "平清盛",
+        "山田長政"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "板付遺跡",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "板付"
+      ]
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "すえ器",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "須恵器"
+      ]
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "answer": "日本の天皇と中国の皇帝を対等にあつかっていたから。",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-9-1",
+      "big": 2,
+      "path": [
+        "9",
+        "1"
+      ],
+      "label": "問9 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "臨済宗",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-9-2",
+      "big": 2,
+      "path": [
+        "9",
+        "2"
+      ],
+      "label": "問9 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-10",
+      "big": 2,
+      "path": [
+        "10"
+      ],
+      "label": "問10",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-11",
+      "big": 2,
+      "path": [
+        "11"
+      ],
+      "label": "問11",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "answer": "アメリカで英語を学び、通訳ができたから。",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-12",
+      "big": 2,
+      "path": [
+        "12"
+      ],
+      "label": "問12",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-13",
+      "big": 2,
+      "path": [
+        "13"
+      ],
+      "label": "問13",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "最低限度",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "GDP",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "国内総生産"
+      ]
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-4-1",
+      "big": 3,
+      "path": [
+        "4",
+        "1"
+      ],
+      "label": "問4 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "男女共同参画社会基本法",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-4-2",
+      "big": 3,
+      "path": [
+        "4",
+        "2"
+      ],
+      "label": "問4 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "ホームヘルパー",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "訪問介護員"
+      ]
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-7",
+      "big": 3,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-8",
+      "big": 3,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "プレミアムフライデー",
+      "confidence": "manual",
+      "raw_values": []
+    }
+  ]
+}

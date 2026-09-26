@@ -1,0 +1,665 @@
+{
+  "exam_id": "kyoritsu_2025_2-1_social",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "卑弥呼",
+      "confidence": "high",
+      "raw_values": [
+        "卑弥呼@(145,102)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(348,102)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "藤原道長",
+      "confidence": "high",
+      "raw_values": [
+        "藤原道長@(475,102)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "金剛力士像",
+      "confidence": "high",
+      "raw_values": [
+        "金剛力士像@(151,135)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(348,135)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "6",
+      "confidence": "high",
+      "raw_values": [
+        "6@(476,135)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(597,135)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(136,167)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "path": [
+        "9"
+      ],
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "えた",
+      "confidence": "high",
+      "raw_values": [
+        "えた@(225,163)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-10",
+      "big": 1,
+      "path": [
+        "10"
+      ],
+      "label": "問10",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "竪穴住居",
+      "confidence": "high",
+      "raw_values": [
+        "竪穴住居@(383,167)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-11",
+      "big": 1,
+      "path": [
+        "11"
+      ],
+      "label": "問11",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "滝廉太郎",
+      "confidence": "high",
+      "raw_values": [
+        "滝廉太郎@(158,200)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-12",
+      "big": 1,
+      "path": [
+        "12"
+      ],
+      "label": "問12",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "士族",
+      "confidence": "high",
+      "raw_values": [
+        "士族@(364,200)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-13",
+      "big": 1,
+      "path": [
+        "13"
+      ],
+      "label": "問13",
+      "unit": "",
+      "parts": [
+        "3番目",
+        "5番目"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "う",
+        "え"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "う@(167,233)",
+        "え@(279,233)"
+      ]
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "オーバーツーリズム",
+      "confidence": "high",
+      "raw_values": [
+        "オー@(100,294)",
+        "バーツー@(175,294)",
+        "リ@(325,294)",
+        "ズ@(363,294)",
+        "ム@(400,294)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(498,298)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "和歌山",
+      "confidence": "high",
+      "raw_values": [
+        "和歌山@(145,331)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "焼津",
+      "confidence": "high",
+      "raw_values": [
+        "焼津@(364,331)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "essay",
+      "answer": "山梨県は海に面していないから(内陸の県だから)。",
+      "confidence": "high",
+      "raw_values": [
+        "山梨県は海に面していないから（内陸の県だから）。@(127,359)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｄ@(136,396)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(260,396)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｄ@(385,396)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(136,461)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(260,461)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "high",
+      "raw_values": [
+        "イ@(385,461)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(510,461)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "イギリス",
+      "confidence": "high",
+      "raw_values": [
+        "イギリス@(158,494)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｄ@(348,494)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-7-1",
+      "big": 3,
+      "path": [
+        "7",
+        "1"
+      ],
+      "label": "問7(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "オ",
+      "confidence": "high",
+      "raw_values": [
+        "オ@(160,526)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-7-2",
+      "big": 3,
+      "path": [
+        "7",
+        "2"
+      ],
+      "label": "問7(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "essay",
+      "answer": "経度がほぼ同じ国同士だから。",
+      "confidence": "high",
+      "raw_values": [
+        "経度がほぼ同じ国同士だから。@(349,526)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "弾劾裁判所",
+      "confidence": "high",
+      "raw_values": [
+        "弾劾裁判所@(151,592)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(347,592)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "sequence",
+      "answer": "B→A→C→D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ　→　Ａ　→　Ｃ　→　Ｄ@(132,624)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-4",
+      "big": 4,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(423,624)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-5",
+      "big": 4,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(548,624)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-6-1",
+      "big": 4,
+      "path": [
+        "6",
+        "1"
+      ],
+      "label": "問6(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(161,657)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-6-2",
+      "big": 4,
+      "path": [
+        "6",
+        "2"
+      ],
+      "label": "問6(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "essay",
+      "answer": "1人1票という公平な条件なので、多数決の結果にしたがって決定するのがよい。",
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "採点基準: ①公平・公正の点から理由 ②決め方"
+    }
+  ]
+}

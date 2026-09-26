@@ -1,0 +1,31 @@
+{
+  "slots": [
+    {"id": "1-1", "big": 1, "label": "問1", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "日本とロシア(ソ連)の関係について述べた文から正しいものを選ぶ4択(歴史)"},
+    {"id": "1-2", "big": 1, "label": "問2", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "絵に描かれた馬借(運送業者)が徳政令を求めて起こした事件を選ぶ4択(正長の土一揆など)"},
+    {"id": "1-3", "big": 1, "label": "問3", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "会話文中の空欄★に入る、船で荷物を運ぶことが道路輸送に比べて優れている点を説明する記述問題"},
+    {"id": "1-4", "big": 1, "label": "問4", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "遣唐使船で唐へ渡り新しい仏教を学んだ人物を選ぶ4択(最澄など)"},
+    {"id": "1-5", "big": 1, "label": "問5", "unit": "", "parts": ["イ", "ロ", "ハ", "ニ"], "answer_type": "manual", "answer": null, "variants": [], "note": "イ: 利根川河口の港(地図中A=銚子)で水揚げ量が最も少ない魚を選ぶ4択(地理) ／ ロ: 地図中B・Cの沼地について、江戸時代に干拓を計画した人物を選ぶ4択(田沼意次など) ／ ハ: 地図中D(加曽利貝塚)に関連して、縄文時代の遺跡について正しい文を選ぶ4択 ／ ニ: 地図中E(海ほたる)から海底トンネルで結ばれている都市の組み合わせを選ぶ4択(地理)"},
+    {"id": "1-6", "big": 1, "label": "問6", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "京都と関わりが深い人物(第8代将軍、応仁の乱に関わる)の名前を漢字で答える"},
+    {"id": "1-7", "big": 1, "label": "問7", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "川とその河口の平野の組み合わせとして誤っているものを選ぶ4択(地理)"},
+    {"id": "1-8", "big": 1, "label": "問8", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "江戸時代に瀬戸内地方の海岸(絵・写真=塩田)で生産されていたものを答える"},
+    {"id": "1-9", "big": 1, "label": "問9", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "旧軍港4市(横須賀・舞鶴・呉・佐世保)がある府県の中にはない世界文化遺産・重要文化財を選ぶ4択"},
+    {"id": "1-10", "big": 1, "label": "問10", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "警察予備隊または自衛隊について述べた文としてふさわしいものを選ぶ4択(歴史/公民)"},
+    {"id": "1-11", "big": 1, "label": "問11", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "2024年の国籍・地域別入国者数の表から福岡空港にあたるものを選ぶ4択(統計読み取り)"},
+    {"id": "1-12", "big": 1, "label": "問12", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "東京都の人口変化グラフの時期A~Dについて述べた文で誤っているものを選ぶ4択(歴史)"},
+
+    {"id": "2-1", "big": 2, "label": "問1", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "1925年の普通選挙法と現在の参政権について述べた文として正しいものを選ぶ4択(公民)"},
+    {"id": "2-2", "big": 2, "label": "問2", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "治安維持法のもとで1920~30年代に行われたことについて誤っているものを選ぶ4択(歴史)"},
+    {"id": "2-3", "big": 2, "label": "問3", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "前原一誠が反乱を起こした空欄Aの都市(萩)の位置を地図から選ぶ4択(歴史・地理)"},
+    {"id": "2-4", "big": 2, "label": "問4", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "江戸時代に盛岡藩を治めた藩主の苗字(南部)を漢字2字で答える"},
+    {"id": "2-5", "big": 2, "label": "問5", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "空欄★に入る人物(新渡戸稲造、写真あり)が行ったことについて正しい文を選ぶ4択"},
+    {"id": "2-6", "big": 2, "label": "問6", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "日独伊三国同盟と第二次世界大戦について述べた文(あ)(い)の正誤の組み合わせを選ぶ4択"},
+    {"id": "2-7", "big": 2, "label": "問7", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "荻外荘で撮られた写真に写る、近衛文麿の次の首相となった人物の名前を選ぶ4択(東条英機など)"},
+    {"id": "2-8", "big": 2, "label": "問8", "unit": "", "parts": ["イ", "ロ"], "answer_type": "manual", "answer": null, "variants": [], "note": "イ: 1930~40年代の出来事(あ)~(え)を年代の古い順にならべたものを選ぶ4択(歴史) ／ ロ: 表1(日米国力比較)の空欄アと表2(戦没者数)の空欄イにあてはまる語の組み合わせを選ぶ4択"},
+    {"id": "2-9", "big": 2, "label": "問9", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "古代の日本と朝鮮に関わる出来事について正しい文を選ぶ4択(歴史)"},
+    {"id": "2-10", "big": 2, "label": "問10", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "日本国憲法の空欄ア(基本的人権)・イ(教育の義務)にあてはまる語の組み合わせを選ぶ4択(公民)"},
+    {"id": "2-11", "big": 2, "label": "問11", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "訪日外国人増加に関する文(あ)(い)についての説明として正しいものを選ぶ4択(円安・インバウンド・オーバーツーリズム、時事)"},
+    {"id": "2-12", "big": 2, "label": "問12", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "住民の署名により首長・地方議会議員などの解職を求める制度の名称をカタカナ4字で答える(公民)"},
+    {"id": "2-13", "big": 2, "label": "問13", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "道県庁所在地の人口と畜産物生産量の表から鹿児島県にあてはまるものを選ぶ4択(地理・統計)"},
+    {"id": "2-14", "big": 2, "label": "問14", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "盛岡出身の朝鮮ルーツの人物が広めた郷土料理の写真を手がかりに、空欄★に入る語を選ぶ4択(冷麺など)"}
+  ]
+}

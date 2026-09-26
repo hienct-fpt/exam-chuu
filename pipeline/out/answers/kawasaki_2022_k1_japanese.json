@@ -1,0 +1,146 @@
+{
+  "exam_id": "kawasaki_2022_k1_japanese",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "1-1",
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "4",
+      "variants": [],
+      "points": 4,
+      "note": "三姉妹の構成（長女・次女・三女）の組み合わせを1〜6から選ぶ"
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "1-2",
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "3",
+      "variants": [],
+      "points": 4,
+      "note": "あ・い・うの内容として正しいものを1〜4から選ぶ"
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "1-3",
+      "big": 1,
+      "label": "(3)",
+      "unit": "",
+      "parts": [
+        "①い",
+        "①う",
+        "②い",
+        "②う"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "バタンと大きな音がした",
+        "部屋を閉める大きな音がした",
+        "わたしは二階へ行った",
+        "姉が二階へ上がっていった"
+      ],
+      "variants": [],
+      "points": 20,
+      "note": "線①・線②と同じ時間に起こっていることを文章い・うから15字以内で書きぬき（配点20は4欄合計）"
+    },
+    {
+      "path": [
+        "4",
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "1-4-1",
+      "big": 1,
+      "label": "(4)(ア)",
+      "unit": "",
+      "parts": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ようこ",
+        "はなこ",
+        "けいこ",
+        "ようこ"
+      ],
+      "variants": [],
+      "points": 20,
+      "note": "空らんA〜Dに入る人物名を三字で書きぬき（配点20は4欄合計）"
+    },
+    {
+      "path": [
+        "4",
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "1-4-2",
+      "big": 1,
+      "label": "(4)(イ)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "楽しく話をしている",
+      "variants": [],
+      "points": 7,
+      "note": "空らん1に入る、い・うに共通する内容を十字以内で書きぬき"
+    },
+    {
+      "path": [
+        "4",
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "1-4-3",
+      "big": 1,
+      "label": "(4)(ウ)",
+      "unit": "",
+      "parts": [
+        "2",
+        "3"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "自分",
+        "素直"
+      ],
+      "variants": [],
+      "points": 10,
+      "note": "線③「三人は[2]の気持ちに[3]になれないところが似ている」の空らん2・3（配点10は2欄合計）"
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "1-5",
+      "big": 1,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "points": 75,
+      "note": "作文 300字以上400字以内・3段落以上（解答例＜省略＞）: 線④「性格のちがう相手と人間関係を築くにはどうしたらよいか」について、性格のちがう相手と接する場合どう接するか。あ・い・うから読み取れるはなこ・けいこ・ようこの行動や考え方に触れ、どのような気持ちで接するか、具体的にどのような行動をするかも書く"
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "exam_id": "kyoritsu_2025_2-1_math",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "sub": 1,
+      "label": "①",
+      "unit": "",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "3",
+      "confidence": "high",
+      "raw_values": [
+        "3@(208,139)"
+      ]
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "sub": 2,
+      "label": "②",
+      "unit": "",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "1",
+      "confidence": "high",
+      "raw_values": [
+        "1@(370,139)"
+      ]
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "sub": 1,
+      "label": "①",
+      "unit": "円",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "1200",
+      "confidence": "high",
+      "raw_values": [
+        "1200@(205,224)"
+      ]
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "sub": 2,
+      "label": "②",
+      "unit": "",
+      "parts": [
+        "分",
+        "秒"
+      ],
+      "work_required": false,
+      "answer_type": "multi",
+      "answer": [
+        "1",
+        "12"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "1@(289,224)",
+        "12@(342,224)"
+      ]
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "sub": 3,
+      "label": "③",
+      "unit": "回",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "120",
+      "confidence": "high",
+      "raw_values": [
+        "120@(458,224)"
+      ]
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "sub": 4,
+      "label": "④",
+      "unit": "度",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "54",
+      "confidence": "high",
+      "raw_values": [
+        "54@(587,224)"
+      ]
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "sub": 1,
+      "label": "①",
+      "unit": "cm2",
+      "parts": null,
+      "work_required": true,
+      "answer_type": "number",
+      "answer": "36.56",
+      "confidence": "high",
+      "raw_values": [
+        "36.56@(225,310)"
+      ]
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "sub": 2,
+      "label": "②",
+      "unit": "",
+      "parts": null,
+      "work_required": true,
+      "answer_type": "number",
+      "answer": "7.44",
+      "confidence": "high",
+      "raw_values": [
+        "7.44@(609,403)"
+      ]
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "sub": 1,
+      "label": "①",
+      "unit": "個",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "120",
+      "confidence": "high",
+      "raw_values": [
+        "120@(242,478)"
+      ]
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "sub": 2,
+      "label": "②",
+      "unit": "個",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "50",
+      "confidence": "high",
+      "raw_values": [
+        "50@(410,478)"
+      ]
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "sub": 3,
+      "label": "③",
+      "unit": "",
+      "parts": [
+        "段目",
+        "番目"
+      ],
+      "work_required": false,
+      "answer_type": "multi",
+      "answer": [
+        "17",
+        "6"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "17@(525,478)",
+        "6@(638,478)"
+      ]
+    },
+    {
+      "id": "5-1",
+      "big": 5,
+      "sub": 1,
+      "label": "①",
+      "unit": "毎分       cm3",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "300",
+      "confidence": "high",
+      "raw_values": [
+        "300@(184,563)"
+      ]
+    },
+    {
+      "id": "5-2",
+      "big": 5,
+      "sub": 2,
+      "label": "②",
+      "unit": "cm",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "12",
+      "confidence": "high",
+      "raw_values": [
+        "12@(315,562)"
+      ]
+    },
+    {
+      "id": "5-3",
+      "big": 5,
+      "sub": 3,
+      "label": "③",
+      "unit": "cm",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "20",
+      "confidence": "high",
+      "raw_values": [
+        "20@(441,562)"
+      ]
+    },
+    {
+      "id": "5-4",
+      "big": 5,
+      "sub": 4,
+      "label": "④",
+      "unit": "",
+      "parts": null,
+      "work_required": false,
+      "answer_type": "number",
+      "answer": "15.4",
+      "confidence": "high",
+      "raw_values": [
+        "15.4@(561,562)"
+      ]
+    },
+    {
+      "id": "6-1",
+      "big": 6,
+      "sub": 1,
+      "label": "①",
+      "unit": "%",
+      "parts": null,
+      "work_required": true,
+      "answer_type": "number",
+      "answer": "6.4",
+      "confidence": "high",
+      "raw_values": [
+        "6.4@(221,647)"
+      ]
+    },
+    {
+      "id": "6-2",
+      "big": 6,
+      "sub": 2,
+      "label": "②",
+      "unit": "%",
+      "parts": null,
+      "work_required": true,
+      "answer_type": "number",
+      "answer": "5.12",
+      "confidence": "high",
+      "raw_values": [
+        "5.12@(342,647)"
+      ]
+    },
+    {
+      "id": "6-3",
+      "big": 6,
+      "sub": 3,
+      "label": "③",
+      "unit": "倍",
+      "parts": null,
+      "work_required": true,
+      "answer_type": "number",
+      "answer": "0.512",
+      "confidence": "high",
+      "raw_values": [
+        "0.512@(446,647)"
+      ]
+    },
+    {
+      "id": "6-4",
+      "big": 6,
+      "sub": 4,
+      "label": "④",
+      "unit": "",
+      "parts": null,
+      "work_required": true,
+      "answer_type": "number",
+      "answer": "4",
+      "confidence": "high",
+      "raw_values": [
+        "4@(620,740)"
+      ]
+    }
+  ]
+}

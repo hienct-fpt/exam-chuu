@@ -10,7 +10,10 @@ functions/venv/
 kyoritsu_past/
 node_modules/
 pipeline/in/
-pipeline/out/
+pipeline/out/*
+!pipeline/out/exams.json
+!pipeline/out/segments/
+!pipeline/out/answers/
 shinagawa_past/
 firebase-debug.log
 firestore-debug.log

@@ -1,0 +1,353 @@
+{
+  "exam_id": "chuo_2026_1_math",
+  "bigs": [
+    {
+      "key": "1",
+      "label": "1",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 2,
+          "y0": 46.7,
+          "y1": 437.6
+        },
+        {
+          "page": 3,
+          "y0": 30,
+          "y1": 412.6
+        },
+        {
+          "page": 4,
+          "y0": 30,
+          "y1": 556.6
+        }
+      ],
+      "stem": {
+        "page": 2,
+        "y0": 46.7,
+        "y1": 96.5
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 96.5,
+              "y1": 123.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 369.6,
+              "y1": 437.6
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 3,
+              "y0": 52.2,
+              "y1": 110.4
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "4",
+          "label": "(4)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 3,
+              "y0": 371.1,
+              "y1": 412.6
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "5",
+          "label": "(5)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 52.2,
+              "y1": 371.1
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "6",
+          "label": "(6)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 371.1,
+              "y1": 556.6
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 1
+    },
+    {
+      "key": "2",
+      "label": "2",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 5,
+          "y0": 46.2,
+          "y1": 357.4
+        }
+      ],
+      "stem": {
+        "page": 5,
+        "y0": 46.2,
+        "y1": 234.1
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 282.9,
+              "y1": 304.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 336.0,
+              "y1": 357.4
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 2
+    },
+    {
+      "key": "3",
+      "label": "3",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 6,
+          "y0": 46.2,
+          "y1": 409.8
+        }
+      ],
+      "stem": {
+        "page": 6,
+        "y0": 46.2,
+        "y1": 223.7
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 6,
+              "y0": 247.1,
+              "y1": 285.8
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 6,
+              "y0": 318.0,
+              "y1": 338.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 6,
+              "y0": 371.1,
+              "y1": 409.8
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 3
+    },
+    {
+      "key": "4",
+      "label": "4",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 7,
+          "y0": 46.6,
+          "y1": 552.3
+        }
+      ],
+      "stem": {
+        "page": 7,
+        "y0": 46.6,
+        "y1": 410.1
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 7,
+              "y0": 424.6,
+              "y1": 446.0
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 7,
+              "y0": 477.8,
+              "y1": 498.7
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 7,
+              "y0": 530.9,
+              "y1": 552.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 4
+    },
+    {
+      "key": "5",
+      "label": "5",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 8,
+          "y0": 46.2,
+          "y1": 462.9
+        }
+      ],
+      "stem": {
+        "page": 8,
+        "y0": 46.2,
+        "y1": 299.6
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 8,
+              "y0": 318.0,
+              "y1": 339.4
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 8,
+              "y0": 371.1,
+              "y1": 392.5
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 8,
+              "y0": 424.3,
+              "y1": 462.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 5
+    }
+  ]
+}

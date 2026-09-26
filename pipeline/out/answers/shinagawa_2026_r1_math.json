@@ -1,0 +1,292 @@
+{
+  "exam_id": "shinagawa_2026_r1_math",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "10",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "2/3",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "1000",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "4",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "倍",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "5000",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "260",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "13/30",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "2499",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "324",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "path": [
+        "6"
+      ],
+      "label": "(6)",
+      "unit": "枚",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "16",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "path": [
+        "7"
+      ],
+      "label": "(7)",
+      "unit": "人",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "14",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "path": [
+        "8"
+      ],
+      "label": "(8)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "162.8",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-9",
+      "big": 2,
+      "path": [
+        "9"
+      ],
+      "label": "(9)",
+      "unit": "cm³",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "540",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-10",
+      "big": 2,
+      "path": [
+        "10"
+      ],
+      "label": "(10)",
+      "unit": "",
+      "parts": [
+        "ア",
+        "イ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "②",
+        "①"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "6",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "8",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "9",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "8",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "作図問題 (解答は図)"
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "16.56",
+      "confidence": "manual",
+      "raw_values": []
+    }
+  ]
+}

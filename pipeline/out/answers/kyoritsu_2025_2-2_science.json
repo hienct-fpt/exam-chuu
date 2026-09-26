@@ -1,0 +1,558 @@
+{
+  "exam_id": "kyoritsu_2025_2-2_science",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "正   ・   誤",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "正",
+      "confidence": "manual",
+      "raw_values": [
+        "正@(156,118)",
+        "・@(211,118)",
+        "誤@(267,118)"
+      ],
+      "variants": [],
+      "options": [
+        "正",
+        "誤"
+      ]
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "正   ・   誤",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "誤",
+      "confidence": "manual",
+      "raw_values": [
+        "正@(156,151)",
+        "・@(211,151)",
+        "誤@(267,151)"
+      ],
+      "variants": [],
+      "options": [
+        "正",
+        "誤"
+      ]
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "正   ・   誤",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "誤",
+      "confidence": "manual",
+      "raw_values": [
+        "正@(156,183)",
+        "・@(211,183)",
+        "誤@(267,183)"
+      ],
+      "variants": [],
+      "options": [
+        "正",
+        "誤"
+      ]
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "正   ・   誤",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "誤",
+      "confidence": "manual",
+      "raw_values": [
+        "正@(156,215)",
+        "・@(211,215)",
+        "誤@(267,215)"
+      ],
+      "variants": [],
+      "options": [
+        "正",
+        "誤"
+      ]
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "",
+      "parts": [
+        "0",
+        "13",
+        "0"
+      ],
+      "part_units": null,
+      "answer_type": "manual",
+      "answer": null,
+      "confidence": "manual",
+      "raw_values": [
+        "〔℃〕@(124,307)",
+        "0@(156,321)",
+        "-13@(146,354)",
+        "0 1                     13@(161,362)",
+        "16     20@(326,362)",
+        "時間〔分〕@(225,379)"
+      ],
+      "note": "グラフ: 温度 -13→0(1分)→0(13分)→20(16分)→20(20分)"
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": [
+        "A",
+        "C"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "Ａ　・　Ｃ@(176,425)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(211,457)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(211,489)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "通り",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "3通り",
+      "confidence": "high",
+      "raw_values": [
+        "３　　　　　通り@(203,521)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": [
+        "エ",
+        "キ"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "エ　・　キ@(183,554)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "食塩",
+      "confidence": "high",
+      "raw_values": [
+        "食塩@(204,602)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "色",
+      "parts": [
+        "X",
+        "Y"
+      ],
+      "part_units": [
+        "色",
+        "色"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "黄",
+        "青"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "Ｘ@(132,636)",
+        "黄　　　　　色@(217,634)",
+        "Ｙ@(132,668)",
+        "青　　　　　色@(217,667)"
+      ]
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "cm3",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "50",
+      "confidence": "manual",
+      "raw_values": [
+        "５０　　　　　　　㎤@(205,700)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "6.4",
+      "confidence": "manual",
+      "raw_values": [
+        "６．４　　　　　　　ｇ@(194,733)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "10.7",
+      "confidence": "manual",
+      "raw_values": [
+        "１０．７　　　　　　　ｇ@(183,765)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": [
+        "光",
+        "水",
+        "二酸化炭素"
+      ],
+      "confidence": "high",
+      "raw_values": [
+        "光・水・二酸化炭素@(489,118)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "類",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "双子葉",
+      "confidence": "manual",
+      "raw_values": [
+        "双子葉@(519,151)",
+        "類@(632,151)"
+      ],
+      "variants": [
+        "双子葉類"
+      ]
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": [
+        "C",
+        "E"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "Ｃ・Ｅ@(531,183)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-4",
+      "big": 4,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": [
+        "A",
+        "D"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "Ａ・Ｄ@(531,215)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-5-1",
+      "big": 4,
+      "path": [
+        "5",
+        "1"
+      ],
+      "label": "(5)①",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(557,247)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-5-2",
+      "big": 4,
+      "path": [
+        "5",
+        "2"
+      ],
+      "label": "(5)②",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(557,280)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-1",
+      "big": 5,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "い",
+      "confidence": "high",
+      "raw_values": [
+        "い@(545,328)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-2",
+      "big": 5,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "E",
+      "confidence": "high",
+      "raw_values": [
+        "Ｅ@(545,360)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-3",
+      "big": 5,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｄ@(545,392)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-4-1",
+      "big": 5,
+      "path": [
+        "4",
+        "1"
+      ],
+      "label": "(4)①",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｄ@(557,425)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-4-2",
+      "big": 5,
+      "path": [
+        "4",
+        "2"
+      ],
+      "label": "(4)②",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "H",
+      "confidence": "high",
+      "raw_values": [
+        "Ｈ@(557,457)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-5",
+      "big": 5,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "う",
+      "confidence": "high",
+      "raw_values": [
+        "う@(545,489)"
+      ],
+      "variants": []
+    }
+  ]
+}

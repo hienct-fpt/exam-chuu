@@ -1,0 +1,409 @@
+{
+  "exam_id": "shinagawa_2026_r2_math",
+  "bigs": [
+    {
+      "key": "1",
+      "label": "1",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 1,
+          "y0": 118.7,
+          "y1": 456.1
+        }
+      ],
+      "stem": {
+        "page": 1,
+        "y0": 118.7,
+        "y1": 143.5
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 1,
+              "y0": 146.5,
+              "y1": 182.7
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 1,
+              "y0": 209.9,
+              "y1": 264.0
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 1,
+              "y0": 303.4,
+              "y1": 326.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "4",
+          "label": "(4)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 1,
+              "y0": 363.7,
+              "y1": 456.1
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 1
+    },
+    {
+      "key": "2",
+      "label": "2",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 2,
+          "y0": 52.8,
+          "y1": 603.1
+        },
+        {
+          "page": 3,
+          "y0": 30,
+          "y1": 499.8
+        },
+        {
+          "page": 4,
+          "y0": 30,
+          "y1": 77.2
+        }
+      ],
+      "stem": {
+        "page": 2,
+        "y0": 52.8,
+        "y1": 77.6
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 87.7,
+              "y1": 110.5
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 138.7,
+              "y1": 201.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 242.1,
+              "y1": 279.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "4",
+          "label": "(4)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 310.2,
+              "y1": 429.2
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "5",
+          "label": "(5)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 429.2,
+              "y1": 456.0
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "6",
+          "label": "(6)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 480.2,
+              "y1": 518.0
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "7",
+          "label": "(7)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 548.3,
+              "y1": 603.1
+            },
+            {
+              "page": 3,
+              "y0": 30,
+              "y1": 55.1
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "8",
+          "label": "(8)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 3,
+              "y0": 55.1,
+              "y1": 140.1
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "9",
+          "label": "(9)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 3,
+              "y0": 140.1,
+              "y1": 220.8
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "10",
+          "label": "(10)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 3,
+              "y0": 242.1,
+              "y1": 499.8
+            },
+            {
+              "page": 4,
+              "y0": 30,
+              "y1": 77.2
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 2
+    },
+    {
+      "key": "3",
+      "label": "3",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 4,
+          "y0": 86.8,
+          "y1": 375.6
+        },
+        {
+          "page": 5,
+          "y0": 30,
+          "y1": 77.2
+        }
+      ],
+      "stem": {
+        "page": 4,
+        "y0": 86.8,
+        "y1": 227.5
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 235.7,
+              "y1": 273.5
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 286.8,
+              "y1": 324.6
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 337.8,
+              "y1": 375.6
+            },
+            {
+              "page": 5,
+              "y0": 30,
+              "y1": 77.2
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 3
+    },
+    {
+      "key": "4",
+      "label": "4",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 5,
+          "y0": 86.8,
+          "y1": 545.6
+        }
+      ],
+      "stem": {
+        "page": 5,
+        "y0": 86.8,
+        "y1": 369.0
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 371.8,
+              "y1": 409.6
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 422.8,
+              "y1": 443.6
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 456.8,
+              "y1": 494.6
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "4",
+          "label": "(4)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 507.9,
+              "y1": 545.6
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 4
+    }
+  ]
+}

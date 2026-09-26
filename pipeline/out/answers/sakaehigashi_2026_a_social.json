@@ -1,0 +1,397 @@
+{
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "label": "問1",
+      "unit": "",
+      "options": null,
+      "parts": [
+        {
+          "label": "A",
+          "answer": null
+        },
+        {
+          "label": "B",
+          "answer": null
+        },
+        {
+          "label": "C",
+          "answer": null
+        },
+        {
+          "label": "D",
+          "answer": null
+        }
+      ],
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "地図中のA(平野)・B(河川)・C(山地)・D(島)の名称をそれぞれ漢字で答える(北海道の地形)。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "label": "問2",
+      "unit": "",
+      "options": null,
+      "parts": [
+        {
+          "label": "あ",
+          "answer": null
+        },
+        {
+          "label": "い",
+          "answer": null
+        }
+      ],
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "A平野(石狩平野)の土壌改良に関する説明文中の空欄「あ」「い」にあてはまる語句を漢字で答える。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "label": "問3",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "留萌・旭川・釧路のいずれかの雨温図(ア~ウ)のうち「留萌」にあてはまるものを記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "label": "問4",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ",
+        "カ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "カレーライスに使う野菜(たまねぎ・にんじん・ばれいしょ)の収穫量上位県の表からE・Fの組み合わせを記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "label": "問5",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "都道府県別製造品出荷額等割合のグラフ(ア~エ)のうち「北海道」にあてはまるものを記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "label": "問6",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ",
+        "カ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "漁港別水揚げ量の移り変わりグラフのあ~う(釧路・銚子・焼津)の組み合わせを記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "label": "問7",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "都道府県別の鉄道輸送・自動車保有台数・国内線旅客数の表(ア~エ)のうち「北海道」にあてはまるものを記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "label": "問8",
+      "unit": "",
+      "options": null,
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "東京都に本社を置く企業Aが北海道でワーケーションを実施することで期待できるメリットを説明する記述問題。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "label": "問9",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "サミット・ワシントン条約・京都議定書・世界遺産条約など国際会議や条約に関する文のうち正しいものを記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "1-10",
+      "big": 1,
+      "label": "問10",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "ふるさと納税受入額上位10自治体の【資料I】【資料II】から読み取れる内容として最もふさわしいものを記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "label": "問1",
+      "unit": "議席",
+      "options": null,
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "令和7年7月20日投開票の第27回参議院議員通常選挙で争われた議席数(空欄A)を算用数字で答える。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "label": "問2",
+      "unit": "",
+      "options": null,
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "参議院議員の定数を定めている法律の名前を漢字で答える。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "label": "問3",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "「衆議院の優越」の一例として空欄Bにあてはまる文を記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "label": "問4",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "下線部②ヤマト政権に関する文として正しいものを記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "label": "問5",
+      "unit": "",
+      "options": null,
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "下線部③に関して、埼玉県秩父から献上された銅で朝廷がつくった貨幣の名前を漢字で答える。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "label": "問6",
+      "unit": "",
+      "options": null,
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "下線部④の和歌がおさめられている和歌集の名前を漢字で答える。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "label": "問7",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "1220年著の歴史書の資料と現代語訳から、下線部『日本国の乱逆』が示すできごとを記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "label": "問8",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "下線部⑥後醍醐天皇がおこなった建武の新政について正しい文を記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-9",
+      "big": 2,
+      "label": "問9",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "下線部⑦明治新政府の政策について正しい文を記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-10",
+      "big": 2,
+      "label": "問10",
+      "unit": "",
+      "options": null,
+      "parts": [
+        {
+          "label": "2番目",
+          "answer": null
+        },
+        {
+          "label": "4番目",
+          "answer": null
+        }
+      ],
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "大日本帝国憲法制定前後のできごとア~エを年代の古い順に並べたとき、2番目と4番目にくる記号をそれぞれ答える。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-11",
+      "big": 2,
+      "label": "問11",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "沖縄戦での戦死者数の資料から読み取れることとして最もふさわしいものを記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-12",
+      "big": 2,
+      "label": "問12",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "下線部⑩GHQによる日本の民主化政策について正しい文を記号で選ぶ。模範解答なしのため保護者採点。"
+    },
+    {
+      "id": "2-13",
+      "big": 2,
+      "label": "問13",
+      "unit": "",
+      "options": null,
+      "parts": [
+        {
+          "label": "2番目",
+          "answer": null
+        },
+        {
+          "label": "4番目",
+          "answer": null
+        }
+      ],
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "note": "戦後の日本に関するア~エを年代の古い順に並べたとき、2番目と4番目にくる記号をそれぞれ答える。模範解答なしのため保護者採点。"
+    }
+  ]
+}

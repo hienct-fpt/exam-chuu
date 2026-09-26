@@ -1,0 +1,32 @@
+{
+  "slots": [
+    {"id": "1-1", "big": 1, "label": "問1", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "長崎ちゃんぽんの具材(キャベツ・たまねぎ・にんじん・ねぎ)の都道府県別収穫量順位表(2023年)から「ねぎ」にあてはまるものを①~④の中から選ぶ選択問題。"},
+    {"id": "1-2", "big": 1, "label": "問2", "unit": "", "parts": ["イ", "ロ"], "answer_type": "manual", "answer": null, "variants": [], "note": "イ: 伝統工芸品「有田焼」の産地である県(佐賀県)について述べた文としてふさわしいものを①~④から選ぶ選択問題。 ／ ロ: 熊本県に位置し、世界最大級のカルデラがあることで知られる火山の名前を漢字で答える問題(阿蘇山)。"},
+    {"id": "1-3", "big": 1, "label": "問3", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "九州に関わる出来事(高松塚古墳・元寇・八幡製鉄所・イタイイタイ病)について述べた文のうち正しいものを①~④から選ぶ選択問題。"},
+    {"id": "1-4", "big": 1, "label": "問4", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "邪馬台国の女王(卑弥呼)が使節を送った中国の王朝を①秦②漢③魏④隋から選ぶ選択問題。"},
+    {"id": "1-5", "big": 1, "label": "問5", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "都を追われ大宰府へ左遷された政治家(菅原道真)が詠んだ和歌としてふさわしいものを①~④から選ぶ選択問題。"},
+    {"id": "1-6", "big": 1, "label": "問6", "unit": "", "parts": ["イ", "ロ"], "answer_type": "manual", "answer": null, "variants": [], "note": "イ: 1582年、天正遣欧少年使節の派遣をすすめた、キリスト教布教を目的としたカトリックの組織の名前を5字で答える問題(イエズス会)。 ／ ロ: 2025年5月に第267代ローマ教皇に選ばれた人物の名前(レオ14世)を①~④から選ぶ選択問題(時事問題)。"},
+    {"id": "1-7", "big": 1, "label": "問7", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "江戸時代の出来事(あ:島原・天草一揆、い:レザノフ来航、う:オランダ商館の出島移転、え:朱印船貿易開始)を年代の古い順に並べたものを①~④から選ぶ選択問題。"},
+    {"id": "1-8", "big": 1, "label": "問8", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "鹿児島城の御楼門の石垣に銃弾・砲弾の破片跡を残した、明治時代の反乱(西南戦争)を率いた人物の名前を漢字4字で答える問題(西郷隆盛)。"},
+    {"id": "1-9", "big": 1, "label": "問9", "unit": "", "parts": ["イ", "ロ"], "answer_type": "manual", "answer": null, "variants": [], "note": "イ: 太平洋戦争中の日本について述べた文(あ:グアムの真珠湾攻撃で開戦、い:B-29の空襲で京都の南禅寺・金閣などが焼失)の正誤の組み合わせを①~④から選ぶ選択問題。 ／ ロ: 1945年7~8月に米英ソの首脳が日本の降伏条件などを話し合った、ベルリン郊外の都市名をカタカナ4字で答える問題(ポツダム)。"},
+    {"id": "1-10", "big": 1, "label": "問10", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "日本国憲法第9条の条文の空欄(ア:正義と自由/秩序、イ:威嚇/牽制、ウ:交戦権/自衛権)に入る語の組み合わせを①~④から選ぶ選択問題。"},
+    {"id": "1-11", "big": 1, "label": "問11", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "北海道・愛知県・山口県・長崎県の製造品出荷額等の割合(2022年)の表から「長崎県」にあてはまるものを①~④から選ぶ選択問題。"},
+    {"id": "1-12", "big": 1, "label": "問12", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "2025年8月に横浜で開催された国際会議として正しいものを①TICAD②G7③COP④G20から選ぶ選択問題(時事問題)。"},
+
+    {"id": "2-1", "big": 2, "label": "問1", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "江戸時代のまちのようすを描いた絵について述べた文としてふさわしいものを①~④から選ぶ選択問題(参勤交代の大名行列など)。"},
+    {"id": "2-2", "big": 2, "label": "問2", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "全国各地の「○○富士」という愛称とその山の名前の組み合わせとして正しいものを①~④から選ぶ選択問題(会津富士-磐梯山など)。"},
+    {"id": "2-3", "big": 2, "label": "問3", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "世界地図で黒く塗られた国(アメリカ・ブラジル・ドイツ・インド)のうち、人口が1億人以下の国を①~④から選ぶ選択問題。"},
+    {"id": "2-4", "big": 2, "label": "問4", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "「丙午」にあたる1906年に起きた出来事としてふさわしいものを①夏目漱石『坊っちゃん』②伊藤博文③湯川秀樹④犬養毅の中から選ぶ選択問題。"},
+    {"id": "2-5", "big": 2, "label": "問5", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "室町時代に中国(明)から幕府に与えられた貿易許可証を何というか、漢字2字で答える問題(勘合)。"},
+    {"id": "2-6", "big": 2, "label": "問6", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "江戸時代末期に描かれた、日米修好通商条約で開かれ外国人居留地が設けられた港の絵の場所を①横浜②箱館③神戸④新潟から選ぶ選択問題。"},
+    {"id": "2-7", "big": 2, "label": "問7", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "カツオが「県の魚」に指定され一本釣りで有名な県(あ)と、カツオの水揚げ量が全国1位でブランド化されている県(い)の組み合わせを①~④から選ぶ選択問題(高知県・静岡県)。"},
+    {"id": "2-8", "big": 2, "label": "問8", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "衆議院議員総選挙(小選挙区比例代表並立制)について述べた文として正しいものを①~④から選ぶ選択問題。"},
+    {"id": "2-9", "big": 2, "label": "問9", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "平安時代の出来事として正しいものを①白河天皇の院政②桓武天皇と坂上田村麻呂③藤原道長④空海と延暦寺の中から選ぶ選択問題。"},
+    {"id": "2-10", "big": 2, "label": "問10", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "彗星の記録(639年・684年・989年)をまとめた文章から読み取れることとしてふさわしいものを①~④から選ぶ選択問題。"},
+    {"id": "2-11", "big": 2, "label": "問11", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "石油産出国の利益を守るために設立され、産出量や価格の調整をおこなう組織の略称を①APEC②OECD③OPEC④UNEPから選ぶ選択問題。"},
+    {"id": "2-12", "big": 2, "label": "問12", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "明治政府がおこなった米をめぐる政策として正しいものを①減反政策②配給制③備蓄米放出④地租改正の中から選ぶ選択問題。"},
+    {"id": "2-13", "big": 2, "label": "問13", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "関東大震災の際、偏見にもとづくデマによってどのような悲劇が起きたのかを簡単に説明する記述問題。"},
+    {"id": "2-14", "big": 2, "label": "問14", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "性的指向やジェンダー・アイデンティティについて社会の理解を深めるために制定された法律を①女性活躍推進法②LGBT理解増進法③男女雇用機会均等法④男女共同参画社会基本法から選ぶ選択問題。"},
+    {"id": "2-15", "big": 2, "label": "問15", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "SNSが広がる現代で「情報が事実かどうかを調べること」を指す言葉を①データクリーニング②コンテンツフィルター③ファクトチェック④ディープラーニングから選ぶ選択問題。"}
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "exam_id": "kawasaki_2026_k2_japanese",
+  "slots": [
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "1-3",
+      "big": 1,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 10
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "1-4",
+      "big": 1,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "ひかるには班長の責任があるから",
+      "variants": [],
+      "points": 10,
+      "note": "記述 15字以内: 文章3の線部①（自分がどうにかしないといけない）とひかるが思う理由"
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "1-5",
+      "big": 1,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 10
+    },
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "2-1",
+      "big": 2,
+      "label": "作文",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "variants": [],
+      "points": 90,
+      "note": "作文 300字以上400字以内・たて書き・2段落以上（解答例＜省略＞）: 自然教室の二つの目的（「クラスのみんなと仲良くなる」「おたがいのよさを認めあう」）を達成するため、〈自然教室中の主な活動〉からそれぞれ場面を選び、どのような行動をするか、なぜその行動で目的が達成されるかをけいこ先生の話をふまえて書く"
+    }
+  ]
+}

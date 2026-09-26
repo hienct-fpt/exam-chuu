@@ -1,0 +1,111 @@
+{
+  "exam_id": "kawasaki_2023_k1_social",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "2-1",
+      "big": 2,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 8
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "2-2",
+      "big": 2,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "イ・ウ・エ",
+      "variants": [],
+      "points": 12,
+      "note": "ア〜オからすべて選ぶ"
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "2-3",
+      "big": 2,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 8
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "2-4",
+      "big": 2,
+      "label": "(4)",
+      "unit": "円",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "355800",
+      "variants": [],
+      "points": 8
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "2-5",
+      "big": 2,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 8
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "2-6",
+      "big": 2,
+      "label": "(6)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 8
+    },
+    {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
+      "id": "2-7",
+      "big": 2,
+      "label": "(7)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 8
+    }
+  ]
+}

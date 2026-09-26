@@ -1,0 +1,522 @@
+{
+  "exam_id": "kyoritsu_2024_2-2_science",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "正   ・   誤",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "誤",
+      "confidence": "high",
+      "raw_values": [
+        "〇@(124,75)"
+      ],
+      "options": [
+        "正",
+        "誤"
+      ]
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "正   ・   誤",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "誤",
+      "confidence": "high",
+      "raw_values": [
+        "〇@(124,107)"
+      ],
+      "options": [
+        "正",
+        "誤"
+      ]
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "正   ・   誤",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "誤",
+      "confidence": "high",
+      "raw_values": [
+        "〇@(124,139)"
+      ],
+      "options": [
+        "正",
+        "誤"
+      ]
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "正   ・   誤",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "正",
+      "confidence": "high",
+      "raw_values": [
+        "〇@(124,171)"
+      ],
+      "options": [
+        "正",
+        "誤"
+      ]
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "manual",
+      "answer": null,
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "グラフ: 水素750cm3で一定 (塩酸25cm3から)"
+    },
+    {
+      "id": "2-1-1",
+      "big": 2,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "(1)①",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "じん臓",
+      "confidence": "high",
+      "raw_values": [
+        "じん臓@(153,386)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-1-2",
+      "big": 2,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "(1)②",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "D@(153,419)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-1-3",
+      "big": 2,
+      "path": [
+        "1",
+        "3"
+      ],
+      "label": "(1)③",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "B@(153,452)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-2-1",
+      "big": 2,
+      "path": [
+        "2",
+        "1"
+      ],
+      "label": "(2)①",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "B@(153,485)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-2-2",
+      "big": 2,
+      "path": [
+        "2",
+        "2"
+      ],
+      "label": "(2)②",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": [
+        "A",
+        "D"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "AD@(153,518)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "C@(153,551)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "cm",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "100.036",
+      "confidence": "high",
+      "raw_values": [
+        "100.036@(473,77)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "cm",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "99.983",
+      "confidence": "high",
+      "raw_values": [
+        "99.983@(475,110)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "manual",
+      "answer": null,
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "作図: バイメタルの曲がり"
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "B@(526,270)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "essay",
+      "answer": "(気温が高くなると)レールが伸びて線路がゆがんでしまう。",
+      "confidence": "high",
+      "raw_values": [
+        "(気温が高くなると)@(442,309)",
+        "レールが伸びて線路が@(442,344)",
+        "ゆがんでしまう。@(442,379)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "path": [
+        "6"
+      ],
+      "label": "(6)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "D@(525,401)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "4",
+      "confidence": "high",
+      "raw_values": [
+        "４@(513,450)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "cm",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "2.8",
+      "confidence": "high",
+      "raw_values": [
+        "2.8@(513,483)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "cm",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "12",
+      "confidence": "high",
+      "raw_values": [
+        "12@(513,516)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-4",
+      "big": 4,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": [
+        "g",
+        "円"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "15",
+        "84"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "15@(465,546)",
+        "84@(565,546)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-5",
+      "big": 4,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "",
+      "parts": [
+        "g",
+        "円"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "40",
+        "120"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "40@(465,579)",
+        "120@(557,579)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-1",
+      "big": 5,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "示準化石",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": []
+    },
+    {
+      "id": "5-2",
+      "big": 5,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "essay",
+      "answer": "あたたかく浅い海",
+      "confidence": "manual",
+      "raw_values": [
+        "あたたかく@(452,662)",
+        "浅い海@(452,695)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-3",
+      "big": 5,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "A@(526,726)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-4",
+      "big": 5,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "B@(526,759)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-5",
+      "big": 5,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "D@(526,792)"
+      ],
+      "variants": []
+    }
+  ]
+}

@@ -1,0 +1,692 @@
+{
+  "exam_id": "kyoritsu_2025_2-2_japanese",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "text",
+      "answer": "復路",
+      "confidence": "high",
+      "raw_values": [
+        "復@(617,130)",
+        "路@(617,160)"
+      ]
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "text",
+      "answer": "固辞",
+      "confidence": "high",
+      "raw_values": [
+        "固@(569,130)",
+        "辞@(569,160)"
+      ]
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "text",
+      "answer": "延焼",
+      "confidence": "high",
+      "raw_values": [
+        "延@(522,130)",
+        "焼@(522,160)"
+      ]
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "text",
+      "answer": "俵",
+      "confidence": "high",
+      "raw_values": [
+        "俵@(474,145)"
+      ]
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "text",
+      "answer": "片付か",
+      "confidence": "high",
+      "raw_values": [
+        "片@(426,114)",
+        "付@(426,144)",
+        "か@(426,187)"
+      ]
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "text",
+      "answer": "はおり",
+      "confidence": "high",
+      "raw_values": [
+        "は@(378,114)",
+        "お@(378,145)",
+        "り@(378,176)"
+      ]
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": "って",
+      "width": 1,
+      "answer_type": "text",
+      "answer": "かま",
+      "confidence": "high",
+      "raw_values": [
+        "か@(331,114)",
+        "ま@(331,144)"
+      ]
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "text",
+      "answer": "さっぷうけい",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": []
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "high",
+      "raw_values": [
+        "エ@(626,250)"
+      ]
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "オ",
+      "confidence": "high",
+      "raw_values": [
+        "オ@(594,250)"
+      ]
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "high",
+      "raw_values": [
+        "エ@(563,250)"
+      ]
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "high",
+      "raw_values": [
+        "イ@(531,250)"
+      ]
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "high",
+      "raw_values": [
+        "エ@(499,250)"
+      ]
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "オ",
+      "confidence": "high",
+      "raw_values": [
+        "オ@(372,250)"
+      ]
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "high",
+      "raw_values": [
+        "ア@(340,250)"
+      ]
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "high",
+      "raw_values": [
+        "ウ@(308,250)"
+      ]
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "high",
+      "raw_values": [
+        "ア@(276,250)"
+      ]
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "high",
+      "raw_values": [
+        "イ@(244,250)"
+      ]
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": "シンサクは、から",
+      "width": 6,
+      "answer_type": "essay",
+      "answer": "貧しくて行ったことのない遠足に行くために、自分の力で金をかせごうと決心していた",
+      "confidence": "manual",
+      "raw_values": [
+        "と@(499,441)",
+        "力@(531,441)",
+        "い@(467,345)",
+        "せ@(499,345)",
+        "自@(531,345)",
+        "足@(563,345)",
+        "っ@(592,342)",
+        "た@(467,377)",
+        "ご@(499,377)",
+        "分@(531,377)",
+        "に@(563,377)",
+        "た@(594,377)",
+        "う@(499,409)",
+        "の@(531,409)",
+        "行@(563,409)",
+        "こ@(594,409)",
+        "く@(563,441)",
+        "と@(594,441)",
+        "貧@(626,441)",
+        "決@(499,472)",
+        "で@(531,472)",
+        "た@(563,472)",
+        "の@(594,472)",
+        "し@(626,472)",
+        "心@(499,504)",
+        "金@(531,504)",
+        "め@(563,504)",
+        "な@(594,504)",
+        "く@(626,504)",
+        "し@(499,536)",
+        "を@(531,536)",
+        "に@(563,536)",
+        "い@(594,536)",
+        "て@(626,536)",
+        "て@(499,568)",
+        "か@(531,568)",
+        "、@(560,565)",
+        "遠@(594,568)",
+        "行@(626,568)"
+      ]
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "オ",
+      "confidence": "high",
+      "raw_values": [
+        "オ@(435,345)"
+      ]
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "オ",
+      "confidence": "high",
+      "raw_values": [
+        "オ@(403,345)"
+      ]
+    },
+    {
+      "id": "4-4",
+      "big": 4,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "オ",
+      "confidence": "high",
+      "raw_values": [
+        "オ@(372,345)"
+      ]
+    },
+    {
+      "id": "4-5",
+      "big": 4,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "high",
+      "raw_values": [
+        "ウ@(340,345)"
+      ]
+    },
+    {
+      "id": "4-6",
+      "big": 4,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "high",
+      "raw_values": [
+        "エ@(308,345)"
+      ]
+    },
+    {
+      "id": "4-7",
+      "big": 4,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "E",
+      "confidence": "high",
+      "raw_values": [
+        "Ｅ@(276,345)"
+      ]
+    },
+    {
+      "id": "5-1",
+      "big": 5,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "high",
+      "raw_values": [
+        "ア@(626,632)"
+      ]
+    },
+    {
+      "id": "5-2",
+      "big": 5,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "high",
+      "raw_values": [
+        "ウ@(594,632)"
+      ]
+    },
+    {
+      "id": "5-3",
+      "big": 5,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "text",
+      "answer": "合理的",
+      "confidence": "manual",
+      "raw_values": [
+        "合@(563,632)",
+        "理@(563,663)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "5-4",
+      "big": 5,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": [
+        "A",
+        "B"
+      ],
+      "part_units": null,
+      "frame": "現代のみなさんならばからだと説明するところを、アザンデ人はからだと説明する。",
+      "width": 9,
+      "answer_type": "multi",
+      "answer": [
+        "倉庫が偶然こわれてしまった",
+        "男が倉庫の下にいるちょうどその時に、妖術によって倉庫がこわれた"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "ょ@(369,645)",
+        "こ@(308,679)",
+        "う@(372,679)",
+        "的@(563,695)",
+        "に@(403,775)",
+        "ち@(403,870)",
+        "が@(435,870)",
+        "い@(403,807)",
+        "る@(403,839)",
+        "男@(435,839)",
+        "の@(403,711)",
+        "下@(403,743)",
+        "た@(308,775)",
+        "の@(372,775)",
+        "時@(372,807)",
+        "に@(372,839)",
+        "、@(369,868)",
+        "わ@(308,711)",
+        "ど@(372,711)",
+        "れ@(308,743)",
+        "が@(308,648)",
+        "妖@(340,648)",
+        "倉@(403,648)",
+        "庫@(403,679)",
+        "っ@(465,645)",
+        "偶@(499,648)",
+        "そ@(372,743)",
+        "術@(340,679)",
+        "た@(467,679)",
+        "然@(499,679)",
+        "に@(340,711)",
+        "こ@(499,711)",
+        "よ@(340,743)",
+        "わ@(499,743)",
+        "っ@(337,772)",
+        "れ@(499,775)",
+        "て@(340,807)",
+        "て@(499,807)",
+        "倉@(531,807)",
+        "倉@(340,839)",
+        "し@(499,839)",
+        "庫@(531,839)",
+        "庫@(340,870)",
+        "ま@(499,870)",
+        "が@(531,870)"
+      ],
+      "note": "記述: 保護者が採点"
+    },
+    {
+      "id": "5-5",
+      "big": 5,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "high",
+      "raw_values": [
+        "エ@(244,632)"
+      ]
+    },
+    {
+      "id": "5-6",
+      "big": 5,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "frame": null,
+      "width": 1,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "high",
+      "raw_values": [
+        "イ@(212,632)"
+      ]
+    }
+  ]
+}

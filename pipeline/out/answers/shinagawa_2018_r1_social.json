@@ -1,0 +1,586 @@
+{
+  "exam_id": "shinagawa_2018_r1_social",
+  "slots": [
+    {
+      "id": "1-1-1",
+      "big": 1,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "問1 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "阿蘇山",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "阿蘇"
+      ]
+    },
+    {
+      "id": "1-1-2",
+      "big": 1,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "問1 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "二毛作",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-2-1",
+      "big": 1,
+      "path": [
+        "2",
+        "1"
+      ],
+      "label": "問2 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "日本なし",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "日本梨",
+        "なし",
+        "梨"
+      ]
+    },
+    {
+      "id": "1-2-2",
+      "big": 1,
+      "path": [
+        "2",
+        "2"
+      ],
+      "label": "問2 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "伝統的工芸品",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "伝統工芸品"
+      ]
+    },
+    {
+      "id": "1-2-3",
+      "big": 1,
+      "path": [
+        "2",
+        "3"
+      ],
+      "label": "問2 (3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "answer": "税収が減って公的サービスの質が低下する。",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-3-1",
+      "big": 1,
+      "path": [
+        "3",
+        "1"
+      ],
+      "label": "問3 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "近郊農業",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-3-2",
+      "big": 1,
+      "path": [
+        "3",
+        "2"
+      ],
+      "label": "問3 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-4-1",
+      "big": 1,
+      "path": [
+        "4",
+        "1"
+      ],
+      "label": "問4 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "大隅半島",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "大隅"
+      ]
+    },
+    {
+      "id": "1-4-2",
+      "big": 1,
+      "path": [
+        "4",
+        "2"
+      ],
+      "label": "問4 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-5-1",
+      "big": 1,
+      "path": [
+        "5",
+        "1"
+      ],
+      "label": "問5 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-5-2",
+      "big": 1,
+      "path": [
+        "5",
+        "2"
+      ],
+      "label": "問5 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "ふるさと納税",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-7-1",
+      "big": 1,
+      "path": [
+        "7",
+        "1"
+      ],
+      "label": "問7 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-7-2",
+      "big": 1,
+      "path": [
+        "7",
+        "2"
+      ],
+      "label": "問7 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "answer": "降水量が少なく、水不足にそなえるため。",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "path": [
+        "9"
+      ],
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "う飼い",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "鵜飼い",
+        "鵜飼",
+        "うかい"
+      ]
+    },
+    {
+      "id": "2-1-1",
+      "big": 2,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "問1 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-1-2",
+      "big": 2,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "問1 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "分国法",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-2-1",
+      "big": 2,
+      "path": [
+        "2",
+        "1"
+      ],
+      "label": "問2 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "太陽暦",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-2-2",
+      "big": 2,
+      "path": [
+        "2",
+        "2"
+      ],
+      "label": "問2 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-3-1",
+      "big": 2,
+      "path": [
+        "3",
+        "1"
+      ],
+      "label": "問3 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-3-2",
+      "big": 2,
+      "path": [
+        "3",
+        "2"
+      ],
+      "label": "問3 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "answer": "豊臣秀吉の朝鮮出兵の際に、日本に強制的に連れてこられた陶工が各地で焼き物を作るようになったため。",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-5-1",
+      "big": 2,
+      "path": [
+        "5",
+        "1"
+      ],
+      "label": "問5 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "法隆寺",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-5-2",
+      "big": 2,
+      "path": [
+        "5",
+        "2"
+      ],
+      "label": "問5 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "東大寺",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "富本銭",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-7-1",
+      "big": 2,
+      "path": [
+        "7",
+        "1"
+      ],
+      "label": "問7 (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "奥州街道",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-7-2",
+      "big": 2,
+      "path": [
+        "7",
+        "2"
+      ],
+      "label": "問7 (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "天下の台所",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "台所"
+      ]
+    },
+    {
+      "id": "2-7-3",
+      "big": 2,
+      "path": [
+        "7",
+        "3"
+      ],
+      "label": "問7 (3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-7-4",
+      "big": 2,
+      "path": [
+        "7",
+        "4"
+      ],
+      "label": "問7 (4)",
+      "unit": "",
+      "parts": [
+        "年",
+        "月",
+        "日"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "1947",
+        "5",
+        "3"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "answer": "東ヨーロッパの加盟国が増加した。",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": [
+        "★",
+        "■",
+        "▲"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "シリア",
+        "難民",
+        "フランス"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-7",
+      "big": 3,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "answer": "工業化の速度に環境対策が追いついていないため。",
+      "confidence": "manual",
+      "raw_values": []
+    }
+  ]
+}

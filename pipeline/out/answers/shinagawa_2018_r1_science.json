@@ -1,0 +1,458 @@
+{
+  "exam_id": "shinagawa_2018_r1_science",
+  "slots": [
+    {
+      "id": "1-Ⅰ-1",
+      "big": 1,
+      "path": [
+        "Ⅰ",
+        "1"
+      ],
+      "label": "Ⅰ (1)",
+      "unit": "",
+      "parts": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "直進",
+        "反射",
+        "くっ折",
+        "イ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "c は「屈折」も可"
+    },
+    {
+      "id": "1-Ⅱ-1",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "1"
+      ],
+      "label": "Ⅱ (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-2",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "2"
+      ],
+      "label": "Ⅱ (2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": [
+        "ア",
+        "ウ"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅰ-2-1",
+      "big": 1,
+      "path": [
+        "Ⅰ",
+        "2",
+        "1"
+      ],
+      "label": "Ⅰ (2) ①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅰ-2-2",
+      "big": 1,
+      "path": [
+        "Ⅰ",
+        "2",
+        "2"
+      ],
+      "label": "Ⅰ (2) ②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅰ-2-3",
+      "big": 1,
+      "path": [
+        "Ⅰ",
+        "2",
+        "3"
+      ],
+      "label": "Ⅰ (2) ③",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-3",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "3"
+      ],
+      "label": "Ⅱ (3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-4",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "4"
+      ],
+      "label": "Ⅱ (4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-5-1",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "5",
+        "1"
+      ],
+      "label": "Ⅱ (5) ①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-5-2",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "5",
+        "2"
+      ],
+      "label": "Ⅱ (5) ②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "ヨウ素液",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "ヨウ素溶液",
+        "ようそ液"
+      ]
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "sequence",
+      "answer": "イ→ア→ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "えい星",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "衛星"
+      ]
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "く",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "(く)"
+      ]
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "path": [
+        "6"
+      ],
+      "label": "(6)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "D",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "path": [
+        "7"
+      ],
+      "label": "(7)",
+      "unit": "",
+      "parts": [
+        "④",
+        "⑤",
+        "⑦"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "午後6時",
+        "午前6時",
+        "午後6時"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "path": [
+        "8"
+      ],
+      "label": "(8)",
+      "unit": "",
+      "parts": [
+        "⑥",
+        "⑧"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "東",
+        "西"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-9",
+      "big": 2,
+      "path": [
+        "9"
+      ],
+      "label": "(9)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "月の形の作図: 左側が光る (下弦に近い) 形"
+    },
+    {
+      "id": "2-10",
+      "big": 2,
+      "path": [
+        "10"
+      ],
+      "label": "(10)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "月の形の作図: 右側が光る (上弦に近い) 形"
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "1",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-3-1",
+      "big": 3,
+      "path": [
+        "3",
+        "1"
+      ],
+      "label": "(3) ①",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "2",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-3-2",
+      "big": 3,
+      "path": [
+        "3",
+        "2"
+      ],
+      "label": "(3) ②",
+      "unit": "",
+      "parts": [
+        "…億",
+        "…千万つぶつぶ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "1",
+        "5"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-4-1",
+      "big": 3,
+      "path": [
+        "4",
+        "1"
+      ],
+      "label": "(4) ①",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "3",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-4-2",
+      "big": 3,
+      "path": [
+        "4",
+        "2"
+      ],
+      "label": "(4) ②",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "24",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-4-3",
+      "big": 3,
+      "path": [
+        "4",
+        "3"
+      ],
+      "label": "(4) ③",
+      "unit": "",
+      "parts": [
+        "1 (g)",
+        "2 (億つぶつぶ)",
+        "3 炭素原子:酸素原子"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "8/3",
+        "3",
+        "1:2"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "1 は 2と2/3 g"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "exam_id": "kawasaki_2021_k2_math",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "2-1",
+      "big": 2,
+      "label": "(1)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "157",
+      "variants": [],
+      "points": 10
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "2-2",
+      "big": 2,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "(2.5×22×3.14)÷(2.5×20×3.14)=(2.5×22×3.14)/(2.5×20×3.14)=22/20",
+      "variants": [],
+      "points": 10,
+      "note": "式・途中式（い）: 22インチが20インチより1回転あたり1.1倍長く進むことが22÷20で求められる理由がわかる式"
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "2-3",
+      "big": 2,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "【図７】歯数120のわくと歯数30の歯車でかいた、とがった先が4つある星形（花びら4枚）の模様。【図８】それを一輪車の動きとして直線上に開いた、120→90→60→30→0の各目盛りで地面に接する4つのアーチ（サイクロイド）が続く線。",
+      "variants": [],
+      "points": 20,
+      "note": "作図: 【図７】と【図８】の模様を解答用紙にかく（解答例は図）"
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "2-4",
+      "big": 2,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "歯車が何回転しているか",
+      "variants": [],
+      "points": 10,
+      "note": "記述（う）: 花びらの枚数がわかる、同じ言葉が入る"
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "2-5",
+      "big": 2,
+      "label": "(5)",
+      "unit": "",
+      "parts": [
+        "え",
+        "お"
+      ],
+      "answer_type": "manual",
+      "answer": "え: わくの歯数120と歯車の歯数36の最小公倍数である360をわくの歯数120で割ることで求められる／お: わくの歯数120と歯車の歯数36の最小公倍数である360を歯車の歯数36で割ることで求められる",
+      "variants": [],
+      "points": 15,
+      "note": "記述（算数の用語を用いる）: え=わくを3周まわると完成する理由、お=歯車が10回転する理由。配点15は(え)(お)合計"
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "2-6",
+      "big": 2,
+      "label": "(6)",
+      "unit": "",
+      "parts": [
+        "か",
+        "き"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "タイヤの中心",
+        "直線"
+      ],
+      "variants": [],
+      "points": 10
+    }
+  ]
+}

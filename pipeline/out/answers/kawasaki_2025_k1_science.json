@@ -1,0 +1,195 @@
+{
+  "exam_id": "kawasaki_2025_k1_science",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "2-1",
+      "big": 2,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "ものが水にとける量には限りがある",
+      "variants": [],
+      "points": 10,
+      "note": "記述 15字以上20字以内: たろうさんの予想（あ）「ものが水にとける量」について"
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "2-2",
+      "big": 2,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "一定の",
+      "variants": [
+        "一定",
+        "決まった"
+      ],
+      "points": 5
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "2-3",
+      "big": 2,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "【実験Ｃ】の結果をグラフにかく: 砂糖（○）20℃203g・40℃238g・60℃287g・80℃362g、食塩（●）20℃36g・40℃38g・60℃39g・80℃40g の点をとり、それぞれ点と点を線で結ぶ",
+      "variants": [],
+      "points": 15,
+      "note": "作図(グラフ): 解答用紙のグラフに砂糖を○、食塩を●で表し点を線で結ぶ"
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "2-4",
+      "big": 2,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 10
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "2-5",
+      "big": 2,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "20℃、100mL の水に36ｇの食塩をとかし、砂糖を1g ずつとかしていく",
+      "variants": [],
+      "points": 15,
+      "note": "記述: たろうさんの予想（１つのものが限界までとけると別のものはとけない）を確かめる実験方法。「ものの量」「水の量」「水の温度」を具体的に"
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "2-6",
+      "big": 2,
+      "label": "(6)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 10
+    },
+    {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
+      "id": "2-7",
+      "big": 2,
+      "label": "(7)",
+      "unit": "",
+      "parts": [
+        "変えた条件",
+        "同じにした条件"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "イ",
+        "ア・ウ"
+      ],
+      "variants": [],
+      "points": 10,
+      "note": "同じにした条件は「すべて選び」(ア・ウ、順不同)"
+    },
+    {
+      "path": [
+        "8",
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "2-8-1",
+      "big": 2,
+      "label": "(8)く",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "250",
+      "variants": [],
+      "points": 5,
+      "note": "(8) 配点15を(く)(け)(こ)で5点ずつ均等割"
+    },
+    {
+      "path": [
+        "8",
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "2-8-2",
+      "big": 2,
+      "label": "(8)け",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "1/2倍、1/3倍",
+      "variants": [
+        "1/2倍,1/3倍",
+        "1/2、1/3",
+        "2分の1倍、3分の1倍",
+        "½倍、⅓倍"
+      ],
+      "points": 5,
+      "note": "(8) 配点15を(く)(け)(こ)で5点ずつ均等割"
+    },
+    {
+      "path": [
+        "8",
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "2-8-3",
+      "big": 2,
+      "label": "(8)こ",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "支点と力点のきょりを支点と作用点のきょりの２倍に",
+      "variants": [],
+      "points": 5,
+      "note": "記述: 「支点」「力点」「作用点」をすべて用いて、5kgのお米を半分の力で持ち上げる方法。(8) 配点15を5点ずつ均等割"
+    },
+    {
+      "path": [
+        "9"
+      ],
+      "confidence": "manual",
+      "id": "2-9",
+      "big": 2,
+      "label": "(9)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "道具の名前（つめ切り または ペンチ）と支点・力点・作用点の矢印。つめ切り: 力点＝上のレバーの端、支点＝本体の端（ちょうつがい側）、作用点＝刃の部分。ペンチ: 力点＝持ち手の端、支点＝中央の回転軸、作用点＝先端（はさむ部分）",
+      "variants": [],
+      "points": 10,
+      "note": "作図: つめ切り・ペンチから1つ選び、名前と支点・力点・作用点を矢印で図に書く"
+    }
+  ]
+}

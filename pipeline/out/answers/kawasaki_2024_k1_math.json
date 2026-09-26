@@ -1,0 +1,191 @@
+{
+  "exam_id": "kawasaki_2024_k1_math",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "3-1",
+      "big": 3,
+      "label": "(1)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "14.28",
+      "variants": [],
+      "points": 10
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "3-2",
+      "big": 3,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "a×4/3＋a×2/3×3.14÷2",
+      "variants": [],
+      "points": 10,
+      "note": "ことばの式((い)): 長方形のたてをaとしたときのUの太線の長さの式"
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "3-3",
+      "big": 3,
+      "label": "(3)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "13.5",
+      "variants": [],
+      "points": 15
+    },
+    {
+      "path": [
+        "4",
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "3-4-1",
+      "big": 3,
+      "label": "(4)(え)(お)",
+      "unit": "cm",
+      "parts": [
+        "え",
+        "お"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "4",
+        "4"
+      ],
+      "variants": [],
+      "points": 5,
+      "note": "解答用紙は(え)(お)で1欄配点5"
+    },
+    {
+      "path": [
+        "4",
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "3-4-2",
+      "big": 3,
+      "label": "(4)(か)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "直角二等辺三角形",
+      "variants": [
+        "ちょっかくにとうへんさんかっけい"
+      ],
+      "points": 10
+    },
+    {
+      "path": [
+        "4",
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "3-4-3",
+      "big": 3,
+      "label": "(4)(き)",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "32",
+      "variants": [],
+      "points": 5
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "3-5",
+      "big": 3,
+      "label": "(5)",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "30.28",
+      "variants": [],
+      "points": 15
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "3-6",
+      "big": 3,
+      "label": "(6)",
+      "unit": "",
+      "parts": [
+        "け",
+        "こ",
+        "さ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "エ",
+        "オ",
+        "イ"
+      ],
+      "variants": [],
+      "points": 10,
+      "note": "配点10は3欄まとめて"
+    },
+    {
+      "path": [
+        "7",
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "3-7-1",
+      "big": 3,
+      "label": "(7)(し)(す)",
+      "unit": "",
+      "parts": [
+        "し",
+        "す"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ア",
+        "キ"
+      ],
+      "variants": [],
+      "points": 5
+    },
+    {
+      "path": [
+        "7",
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "3-7-2",
+      "big": 3,
+      "label": "(7)(せ)(そ)",
+      "unit": "",
+      "parts": [
+        "せ",
+        "そ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ウ",
+        "ク"
+      ],
+      "variants": [],
+      "points": 5
+    }
+  ]
+}

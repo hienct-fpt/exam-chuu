@@ -1,0 +1,141 @@
+{
+  "exam_id": "kawasaki_2024_k1_science",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "2-1",
+      "big": 2,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 10
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "2-2",
+      "big": 2,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "カ",
+      "variants": [],
+      "points": 10
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "2-3",
+      "big": 2,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "大きな力が加わって、大地が押し上げられた",
+      "variants": [],
+      "points": 10,
+      "note": "記述 14字以上26字以内: 海の底でできた地層がヒマラヤ山脈で見られる理由((え)に入る言葉)"
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "2-4",
+      "big": 2,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 10
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "2-5",
+      "big": 2,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "水は氷になると体積が増えるから",
+      "variants": [],
+      "points": 10,
+      "note": "記述 20字以内、「体積」を使う: 飲料水入りペットボトルをこおらせるとこわれることがある理由"
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "2-6",
+      "big": 2,
+      "label": "(6)",
+      "unit": "",
+      "parts": [
+        "く",
+        "け",
+        "こ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "360÷24|360/24|360÷24=15",
+        "15",
+        "30"
+      ],
+      "variants": [],
+      "points": 15,
+      "note": "(く)は計算式(360÷24)。配点15は3欄まとめて"
+    },
+    {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
+      "id": "2-7",
+      "big": 2,
+      "label": "(7)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "8月31日",
+      "variants": [
+        "８月３１日",
+        "8/31"
+      ],
+      "points": 10,
+      "note": "次に満月になる月日(月は30日ちょうどで1周)"
+    },
+    {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
+      "id": "2-8",
+      "big": 2,
+      "label": "(8)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "作図: 地球と太陽(右側から光)の間の、地球から見て太陽の方向よりやや上(右上)の位置に月をかく",
+      "variants": [],
+      "points": 15,
+      "note": "作図: 三日月に見えるときの月の位置を図にかく"
+    }
+  ]
+}

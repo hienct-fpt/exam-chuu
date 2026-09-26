@@ -1,0 +1,256 @@
+{
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "3",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "9/7",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "label": "(3)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "72",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "label": "(4)",
+      "unit": "km",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "30",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "label": "(5)",
+      "unit": "個",
+      "parts": [
+        "①",
+        "②"
+      ],
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "20",
+        "85"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "label": "(6)",
+      "unit": "分",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "90",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "label": "(7)",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "36.48",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "label": "(8)",
+      "unit": "cm³",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "1243.44",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "label": "(1)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "40",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "label": "(2)",
+      "unit": "分",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "42.5",
+      "variants": [
+        "85/2",
+        "42 1/2"
+      ],
+      "note": null
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "label": "(3)",
+      "unit": "分",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "50.5",
+      "variants": [
+        "101/2",
+        "50 1/2"
+      ],
+      "note": null
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "ratio",
+      "options": null,
+      "answer": "1:3",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "ratio",
+      "options": null,
+      "answer": "8:1",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "ratio",
+      "options": null,
+      "answer": "80:33",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "label": "(1)",
+      "unit": "個",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "18",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "label": "(2)",
+      "unit": "個",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "20",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "label": "(3)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "10",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "5-1",
+      "big": 5,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "325",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "5-2",
+      "big": 5,
+      "label": "(2)",
+      "unit": "番目",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "57",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "5-3",
+      "big": 5,
+      "label": "(3)",
+      "unit": "番目",
+      "parts": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "219",
+      "variants": [],
+      "note": null
+    }
+  ]
+}

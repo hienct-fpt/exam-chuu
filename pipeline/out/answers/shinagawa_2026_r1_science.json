@@ -1,0 +1,433 @@
+{
+  "exam_id": "shinagawa_2026_r1_science",
+  "slots": [
+    {
+      "id": "1-Ⅰ-1",
+      "big": 1,
+      "path": [
+        "Ⅰ",
+        "1"
+      ],
+      "label": "Ⅰ (1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-1",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "1"
+      ],
+      "label": "Ⅱ (1)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "147",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-2",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "2"
+      ],
+      "label": "Ⅱ (2)",
+      "unit": "%",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "51",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅰ-2-1",
+      "big": 1,
+      "path": [
+        "Ⅰ",
+        "2",
+        "1"
+      ],
+      "label": "Ⅰ (2) ①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "等圧線",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅰ-2-2",
+      "big": 1,
+      "path": [
+        "Ⅰ",
+        "2",
+        "2"
+      ],
+      "label": "Ⅰ (2) ②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅰ-2-3",
+      "big": 1,
+      "path": [
+        "Ⅰ",
+        "2",
+        "3"
+      ],
+      "label": "Ⅰ (2) ③",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-3",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "3"
+      ],
+      "label": "Ⅱ (3)",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "236",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅰ-3-1",
+      "big": 1,
+      "path": [
+        "Ⅰ",
+        "3",
+        "1"
+      ],
+      "label": "Ⅰ (3) ①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅰ-3-2",
+      "big": 1,
+      "path": [
+        "Ⅰ",
+        "3",
+        "2"
+      ],
+      "label": "Ⅰ (3) ②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "sequence",
+      "answer": "エ→ア→ウ→イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-4",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "4"
+      ],
+      "label": "Ⅱ (4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-5",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "5"
+      ],
+      "label": "Ⅱ (5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "A",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-6-1",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "6",
+        "1"
+      ],
+      "label": "Ⅱ (6) ①",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "40",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "1-Ⅱ-6-2",
+      "big": 1,
+      "path": [
+        "Ⅱ",
+        "6",
+        "2"
+      ],
+      "label": "Ⅱ (6) ②",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "30.8",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": [
+        "ア",
+        "ウ"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "落葉広葉樹",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "落葉広葉"
+      ]
+    },
+    {
+      "id": "2-3-1",
+      "big": 2,
+      "path": [
+        "3",
+        "1"
+      ],
+      "label": "(3) ①",
+      "unit": "キロルクス",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "10",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-3-2",
+      "big": 2,
+      "path": [
+        "3",
+        "2"
+      ],
+      "label": "(3) ②",
+      "unit": "mg",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "25",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-3-3",
+      "big": 2,
+      "path": [
+        "3",
+        "3"
+      ],
+      "label": "(3) ③",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-3-4",
+      "big": 2,
+      "path": [
+        "3",
+        "4"
+      ],
+      "label": "(3) ④",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "answer": "どのように変化するか: 減っていく。／理由: 地表が暗くなると、グループIの幼い木は成長しにくいため。",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "sequence",
+      "answer": "ウ→ア→イ→オ→エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-1-1",
+      "big": 3,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "(1) ①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-1-2",
+      "big": 3,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "(1) ②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": [
+        "ア",
+        "エ"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "A",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "0.45",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "キ",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "path": [
+        "6"
+      ],
+      "label": "(6)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-7",
+      "big": 3,
+      "path": [
+        "7"
+      ],
+      "label": "(7)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": null,
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "回路図の作図 (抵抗線2本を並列→電熱線→ファン付きモーター)"
+    }
+  ]
+}

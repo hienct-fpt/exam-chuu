@@ -1,0 +1,95 @@
+{
+  "exam_id": "kawasaki_2025_k1_social",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "1-1",
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 5
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "1-2",
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "イ・エ",
+      "variants": [],
+      "points": 15
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "1-3",
+      "big": 1,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 5
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "1-4",
+      "big": 1,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "ア・ウ",
+      "variants": [],
+      "points": 15
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "1-5",
+      "big": 1,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "オ",
+      "variants": [],
+      "points": 5
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "1-6",
+      "big": 1,
+      "label": "(6)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "イ・オ",
+      "variants": [],
+      "points": 15
+    }
+  ]
+}

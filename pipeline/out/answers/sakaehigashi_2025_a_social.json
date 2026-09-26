@@ -1,0 +1,401 @@
+{
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "label": "問1",
+      "unit": "",
+      "options": null,
+      "parts": [
+        "あ",
+        "い",
+        "う",
+        "え"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "紀の",
+        "潮",
+        "志摩",
+        "熊野"
+      ],
+      "variants": [],
+      "note": "文中の空欄を埋める語句のみ（あ→『川』、い→『岬』、う→『半島』、え→『三山』が続けて印刷済み）。い・う・えは漢字指定。"
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ",
+        "カ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "label": "問3",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "note": "人物あ・い・うは同じ1県の西部・中部・東部に住む人々（福島県：あ=いわき方面、い=会津方面、う=郡山）。"
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "label": "問4",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ",
+        "カ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "label": "問5",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "label": "問6",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ",
+        "オ",
+        "カ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "カ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "options": null,
+      "parts": null,
+      "answer_type": "essay",
+      "answer": null,
+      "variants": [],
+      "note": "資料1~3をふまえ、日本のエネルギー源として石炭利用の割合が増えている理由を説明する記述問題。模範解答：石炭は石油と比べて輸入価格が安く、可採年数も長い。また、輸入先が特定の地域にかたよっていないため、安定した供給が見込めるから。"
+    },
+    {
+      "id": "1-10",
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "1-11",
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "options": [
+        "オ",
+        "カ",
+        "キ",
+        "ク"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "カ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "label": "問1",
+      "unit": "",
+      "options": null,
+      "parts": null,
+      "answer_type": "text",
+      "answer": "岩宿",
+      "variants": [],
+      "note": "解答欄に『遺跡』が印字済みのため、記入するのは『岩宿』のみ（正式名称：岩宿遺跡）。漢字指定。"
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "label": "問2",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "label": "問3",
+      "unit": "",
+      "options": null,
+      "parts": [
+        "2番目",
+        "4番目"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ア",
+        "エ"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "label": "問4",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "label": "問5",
+      "unit": "",
+      "options": null,
+      "parts": [
+        "2番目",
+        "4番目"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ア",
+        "エ"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "label": "問6",
+      "unit": "",
+      "options": null,
+      "parts": null,
+      "answer_type": "essay",
+      "answer": null,
+      "variants": [],
+      "note": "鎌倉幕府が六波羅探題を設置した目的を説明する記述問題。模範解答：朝廷の監視や西国の御家人の統率のため。"
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "label": "問7",
+      "unit": "",
+      "options": null,
+      "parts": [
+        "2番目",
+        "4番目"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "イ",
+        "ウ"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "label": "問8",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-9",
+      "big": 2,
+      "label": "問9",
+      "unit": "",
+      "options": null,
+      "parts": null,
+      "answer_type": "text",
+      "answer": "原敬",
+      "variants": [],
+      "note": "漢字指定。"
+    },
+    {
+      "id": "2-10",
+      "big": 2,
+      "label": "問10",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-11",
+      "big": 2,
+      "label": "問11",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-12",
+      "big": 2,
+      "label": "問12",
+      "unit": "",
+      "options": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "id": "2-13",
+      "big": 2,
+      "label": "問13",
+      "unit": "",
+      "options": null,
+      "parts": null,
+      "answer_type": "text",
+      "answer": "永久",
+      "variants": [],
+      "note": "日本国憲法第11条の空欄。漢字指定。"
+    }
+  ]
+}

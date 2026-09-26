@@ -1,0 +1,117 @@
+{
+  "exam_id": "kawasaki_2022_k2_science",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "3-1",
+      "big": 3,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "太陽のあたり方",
+      "variants": [],
+      "points": 15,
+      "note": "記述: (あ) 地面の種類による打ち水の効果を比べるために同じにする（変えない）条件"
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "3-2",
+      "big": 3,
+      "label": "(2)①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "ア・オ",
+      "variants": [],
+      "points": 10,
+      "note": "資料2からわかることとしてあてはまらないものをすべて選ぶ"
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "3-3",
+      "big": 3,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "水蒸気",
+      "variants": [
+        "すいじょうき"
+      ],
+      "points": 5
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "3-4",
+      "big": 3,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "水と同じ数・同じ大きさの粒を、わくの中全体に散らばるように間をあけてかく（四すみ・各辺の中央・中心に9個の○）",
+      "variants": [],
+      "points": 10,
+      "note": "作図: 水蒸気の粒のようすを解答用紙の図にかく（粒の数・大きさは変えず、体積が大きくなる）"
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "3-5",
+      "big": 3,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "オ",
+      "variants": [],
+      "points": 5
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "3-6",
+      "big": 3,
+      "label": "(6)",
+      "unit": "%",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "5",
+      "variants": [],
+      "points": 10,
+      "note": "資料7から、太陽光発電のCO2排出量は石油火力の約何%か（小数第一位を四捨五入）"
+    },
+    {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
+      "id": "3-7",
+      "big": 3,
+      "label": "(7)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "季節によって昼の長さが違うので、太陽の光を受ける時間に長短が生じるため",
+      "variants": [],
+      "points": 15,
+      "note": "記述: (お) 太陽光発電の発電量が1年の中で大きく異なる理由"
+    }
+  ]
+}

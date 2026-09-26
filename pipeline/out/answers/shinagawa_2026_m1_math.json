@@ -1,0 +1,345 @@
+{
+  "exam_id": "shinagawa_2026_m1_math",
+  "slots": [
+    {
+      "id": "1",
+      "big": 1,
+      "path": [],
+      "label": "1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": [
+        "③",
+        "⑤",
+        "⑥"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "番号を「、」区切りで入力"
+    },
+    {
+      "id": "2",
+      "big": 2,
+      "path": [],
+      "label": "2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "36/5",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "7 1/5"
+      ]
+    },
+    {
+      "id": "3",
+      "big": 3,
+      "path": [],
+      "label": "3",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "21",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "4",
+      "big": 4,
+      "path": [],
+      "label": "4",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "25",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "5",
+      "big": 5,
+      "path": [],
+      "label": "5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "4.97",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "6",
+      "big": 6,
+      "path": [],
+      "label": "6",
+      "unit": "km",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "6.75",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "7",
+      "big": 7,
+      "path": [],
+      "label": "7",
+      "unit": "円",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "150",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "8",
+      "big": 8,
+      "path": [],
+      "label": "8",
+      "unit": "km",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "4.8",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "9",
+      "big": 9,
+      "path": [],
+      "label": "9",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "5",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "10",
+      "big": 10,
+      "path": [],
+      "label": "10",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "208",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "11",
+      "big": 11,
+      "path": [],
+      "label": "11",
+      "unit": "分",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "80",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "12",
+      "big": 12,
+      "path": [],
+      "label": "12",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "白",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "白い",
+        "しろ"
+      ]
+    },
+    {
+      "id": "13",
+      "big": 13,
+      "path": [],
+      "label": "13",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "6",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "14",
+      "big": 14,
+      "path": [],
+      "label": "14",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "560",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "15",
+      "big": 15,
+      "path": [],
+      "label": "15",
+      "unit": "°",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "130",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "16",
+      "big": 16,
+      "path": [],
+      "label": "16",
+      "unit": "秒",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "44",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "17",
+      "big": 17,
+      "path": [],
+      "label": "17",
+      "unit": "",
+      "parts": [
+        "①(人)",
+        "②(人)"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "2",
+        "3"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "18",
+      "big": 18,
+      "path": [],
+      "label": "18",
+      "unit": "",
+      "parts": [
+        "ア",
+        "イ",
+        "ウ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "6",
+        "8",
+        "5"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "19",
+      "big": 19,
+      "path": [],
+      "label": "19",
+      "unit": "",
+      "parts": [
+        "分",
+        "秒"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "32",
+        "43 7/11"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "秒は帯分数 43と7/11"
+    },
+    {
+      "id": "20",
+      "big": 20,
+      "path": [],
+      "label": "20",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": [
+        "8",
+        "23"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "21",
+      "big": 21,
+      "path": [],
+      "label": "21",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "7",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "22",
+      "big": 22,
+      "path": [],
+      "label": "22",
+      "unit": "°",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "126",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "23",
+      "big": 23,
+      "path": [],
+      "label": "23",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "3.925",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "24-1",
+      "big": 24,
+      "path": [
+        "1"
+      ],
+      "label": "24 (1)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "5",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "24-2",
+      "big": 24,
+      "path": [
+        "2"
+      ],
+      "label": "24 (2)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "11",
+      "confidence": "manual",
+      "raw_values": []
+    }
+  ]
+}

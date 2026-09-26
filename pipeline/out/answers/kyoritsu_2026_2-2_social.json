@@ -1,0 +1,728 @@
+{
+  "exam_id": "kyoritsu_2026_2-2_social",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": [
+        "1",
+        "2"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "A",
+        "D"
+      ],
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(130,119)",
+        "Ｄ@(191,119)"
+      ]
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｄ@(294,119)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(415,119)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(536,119)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "条",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "八",
+      "confidence": "manual",
+      "raw_values": [
+        "八@(149,150)"
+      ],
+      "variants": [
+        "8"
+      ]
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "菅原道真",
+      "confidence": "high",
+      "raw_values": [
+        "菅原道真@(291,150)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-7-1",
+      "big": 1,
+      "path": [
+        "7",
+        "1"
+      ],
+      "label": "問7(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(172,182)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-7-2",
+      "big": 1,
+      "path": [
+        "7",
+        "2"
+      ],
+      "label": "問7(2)",
+      "unit": "→ → →",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "sequence",
+      "answer": "B→D→C→A",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ　→　Ｄ  →　Ｃ   →　Ａ@(280,182)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(149,214)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "path": [
+        "9"
+      ],
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(270,214)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-10-1",
+      "big": 1,
+      "path": [
+        "10",
+        "1"
+      ],
+      "label": "問10(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "空海",
+      "confidence": "high",
+      "raw_values": [
+        "空@(385,214)",
+        "海@(421,214)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-10-2",
+      "big": 1,
+      "path": [
+        "10",
+        "2"
+      ],
+      "label": "問10(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(512,214)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-11",
+      "big": 1,
+      "path": [
+        "11"
+      ],
+      "label": "問11",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(149,245)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "1-12",
+      "big": 1,
+      "path": [
+        "12"
+      ],
+      "label": "問12",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "平等院",
+      "confidence": "high",
+      "raw_values": [
+        "平等院@(298,238)",
+        "（５位　平等院）@(264,253)"
+      ],
+      "variants": [
+        "5位 平等院"
+      ]
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(149,309)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(270,309)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-3-1",
+      "big": 2,
+      "path": [
+        "3",
+        "1"
+      ],
+      "label": "問3(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(173,340)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-3-2",
+      "big": 2,
+      "path": [
+        "3",
+        "2"
+      ],
+      "label": "問3(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｄ@(294,340)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(148,372)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(269,372)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(390,372)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "manual",
+      "raw_values": [
+        "Ａ@(511,372)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "essay",
+      "answer": "冬に雪でおおわれ農作業ができないため,屋内でできる副業として発展した。",
+      "confidence": "high",
+      "raw_values": [
+        "冬に雪でおおわれ農作業ができないため，屋内でできる副業として発展した。@(163,404)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-9",
+      "big": 2,
+      "path": [
+        "9"
+      ],
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(148,435)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "2-10",
+      "big": 2,
+      "path": [
+        "10"
+      ],
+      "label": "問10",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(269,435)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(148,499)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(269,499)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｄ@(390,499)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-4-1",
+      "big": 3,
+      "path": [
+        "4",
+        "1"
+      ],
+      "label": "問4(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "C",
+      "confidence": "high",
+      "raw_values": [
+        "Ｃ@(172,530)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-4-2",
+      "big": 3,
+      "path": [
+        "4",
+        "2"
+      ],
+      "label": "問4(2)",
+      "unit": "",
+      "parts": [
+        "X",
+        "Y"
+      ],
+      "part_units": [
+        "",
+        ""
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "生産年齢人口",
+        "過疎"
+      ],
+      "confidence": "manual",
+      "raw_values": [
+        "Ⅹ@(138,564)",
+        "生産年齢人口@(205,562)",
+        "Ｙ@(344,564)",
+        "過@(372,562)",
+        "疎@(409,562)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "先進",
+      "confidence": "high",
+      "raw_values": [
+        "先@(118,594)",
+        "進@(155,594)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｄ@(148,657)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(269,657)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "high",
+      "raw_values": [
+        "Ａ@(390,657)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-4",
+      "big": 4,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "D",
+      "confidence": "high",
+      "raw_values": [
+        "Ｄ@(511,657)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-5",
+      "big": 4,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "B",
+      "confidence": "high",
+      "raw_values": [
+        "Ｂ@(148,689)"
+      ],
+      "variants": []
+    },
+    {
+      "id": "4-6",
+      "big": 4,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "裁判",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "民事",
+      "confidence": "manual",
+      "raw_values": [
+        "民事@(166,720)"
+      ],
+      "variants": [
+        "民事裁判"
+      ]
+    },
+    {
+      "id": "4-7",
+      "big": 4,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "情報リテラシー",
+      "confidence": "high",
+      "raw_values": [
+        "情報リテラシー@(355,713)",
+        "（メディアリテラシー）@(328,728)"
+      ],
+      "variants": [
+        "メディアリテラシー"
+      ]
+    }
+  ]
+}

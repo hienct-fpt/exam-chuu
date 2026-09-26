@@ -1,0 +1,323 @@
+{
+  "exam_id": "shinagawa_2018_m1_math",
+  "slots": [
+    {
+      "id": "1",
+      "big": 1,
+      "path": [],
+      "label": "1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "4",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2",
+      "big": 2,
+      "path": [],
+      "label": "2",
+      "unit": "本",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "15",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3",
+      "big": 3,
+      "path": [],
+      "label": "3",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "6",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "4",
+      "big": 4,
+      "path": [],
+      "label": "4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "3",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "5",
+      "big": 5,
+      "path": [],
+      "label": "5",
+      "unit": "人以上",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "8",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "6",
+      "big": 6,
+      "path": [],
+      "label": "6",
+      "unit": "cm³",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "600",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "7",
+      "big": 7,
+      "path": [],
+      "label": "7",
+      "unit": "m²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "31400",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "8",
+      "big": 8,
+      "path": [],
+      "label": "8",
+      "unit": "個",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "127",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "9",
+      "big": 9,
+      "path": [],
+      "label": "9",
+      "unit": "",
+      "parts": [
+        "ア",
+        "イ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "2",
+        "3"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "10",
+      "big": 10,
+      "path": [],
+      "label": "10",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "18",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "11",
+      "big": 11,
+      "path": [],
+      "label": "11",
+      "unit": "km",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "10.5",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "12",
+      "big": 12,
+      "path": [],
+      "label": "12",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "13/15",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "13"
+      ],
+      "note": "分母15は印字済み。分子のみでも可"
+    },
+    {
+      "id": "13",
+      "big": 13,
+      "path": [],
+      "label": "13",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "B",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "14",
+      "big": 14,
+      "path": [],
+      "label": "14",
+      "unit": "室",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "4",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "15",
+      "big": 15,
+      "path": [],
+      "label": "15",
+      "unit": "円",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "25600",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "16",
+      "big": 16,
+      "path": [],
+      "label": "16",
+      "unit": "°",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "78",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "17",
+      "big": 17,
+      "path": [],
+      "label": "17",
+      "unit": "曜日",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "木",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "木曜",
+        "木曜日"
+      ]
+    },
+    {
+      "id": "18",
+      "big": 18,
+      "path": [],
+      "label": "18",
+      "unit": "秒",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "50",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "19",
+      "big": 19,
+      "path": [],
+      "label": "19",
+      "unit": "人以上",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "22",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "20",
+      "big": 20,
+      "path": [],
+      "label": "20",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "28.26",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "21",
+      "big": 21,
+      "path": [],
+      "label": "21",
+      "unit": "点",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "64",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "22",
+      "big": 22,
+      "path": [],
+      "label": "22",
+      "unit": "個",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "5",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "23",
+      "big": 23,
+      "path": [],
+      "label": "23",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "9",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "24-1",
+      "big": 24,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "B",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "24-2",
+      "big": 24,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "D",
+      "confidence": "manual",
+      "raw_values": []
+    }
+  ]
+}

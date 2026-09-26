@@ -1,0 +1,1614 @@
+{
+  "chuo_2026_1_japanese": {
+    "id": "chuo_2026_1_japanese",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2026,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 50,
+    "files": {
+      "question": "pipeline/in/中央大学附属_2026年_第1回_国語問題.pdf"
+    }
+  },
+  "chuo_2026_1_math": {
+    "id": "chuo_2026_1_math",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2026,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "pipeline/in/中央大学附属_2026年_第1回_算数問題.pdf"
+    }
+  },
+  "chuo_2026_1_science": {
+    "id": "chuo_2026_1_science",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2026,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/中央大学附属_2026年_第1回_理科問題.pdf"
+    }
+  },
+  "chuo_2026_1_social": {
+    "id": "chuo_2026_1_social",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2026,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/中央大学附属_2026年_第1回_社会問題.pdf"
+    }
+  },
+  "chuo_2026_2_japanese": {
+    "id": "chuo_2026_2_japanese",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2026,
+    "session": "2",
+    "session_label": "第２回",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 50,
+    "files": {
+      "question": "pipeline/in/中央大学附属_2026年_第２回_国語問題.pdf"
+    }
+  },
+  "chuo_2026_2_math": {
+    "id": "chuo_2026_2_math",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2026,
+    "session": "2",
+    "session_label": "第２回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "pipeline/in/中央大学附属_2026年_第２回_算数問題.pdf"
+    }
+  },
+  "chuo_2026_2_science": {
+    "id": "chuo_2026_2_science",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2026,
+    "session": "2",
+    "session_label": "第２回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/中央大学附属_2026年_第２回_理科問題.pdf"
+    }
+  },
+  "chuo_2026_2_social": {
+    "id": "chuo_2026_2_social",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2026,
+    "session": "2",
+    "session_label": "第２回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/中央大学附属_2026年_第２回_社会問題.pdf"
+    }
+  },
+  "kawasaki_2021_k1_japanese": {
+    "id": "kawasaki_2021_k1_japanese",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2021,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kawasaki_past/R03examination1.pdf",
+      "answer": "kawasaki_past/R03-kaitou.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        8
+      ]
+    }
+  },
+  "kawasaki_2021_k1_social": {
+    "id": "kawasaki_2021_k1_social",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2021,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R03examination1.pdf",
+      "answer": "kawasaki_past/R03-kaitou.pdf"
+    },
+    "page_bigs": {
+      "2": [
+        9,
+        13
+      ]
+    }
+  },
+  "kawasaki_2021_k2_math": {
+    "id": "kawasaki_2021_k2_math",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2021,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R03-tekisi-2.pdf",
+      "answer": "kawasaki_past/R03-kaitou.pdf"
+    },
+    "page_bigs": {
+      "2": [
+        7,
+        12
+      ]
+    }
+  },
+  "kawasaki_2021_k2_science": {
+    "id": "kawasaki_2021_k2_science",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2021,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R03-tekisi-2.pdf",
+      "answer": "kawasaki_past/R03-kaitou.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        6
+      ]
+    }
+  },
+  "kawasaki_2021_k2_social": {
+    "id": "kawasaki_2021_k2_social",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2021,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R03-tekisi-2.pdf",
+      "answer": "kawasaki_past/R03-kaitou.pdf"
+    },
+    "page_bigs": {
+      "3": [
+        13,
+        18
+      ]
+    }
+  },
+  "kawasaki_2022_k1_japanese": {
+    "id": "kawasaki_2022_k1_japanese",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2022,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kawasaki_past/R04fuzoku-kensa1.pdf",
+      "answer": "kawasaki_past/R04fuzoku-kaitourei.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        5
+      ]
+    }
+  },
+  "kawasaki_2022_k1_social": {
+    "id": "kawasaki_2022_k1_social",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2022,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R04fuzoku-kensa1.pdf",
+      "answer": "kawasaki_past/R04fuzoku-kaitourei.pdf"
+    },
+    "page_bigs": {
+      "2": [
+        6,
+        11
+      ]
+    }
+  },
+  "kawasaki_2022_k2_math": {
+    "id": "kawasaki_2022_k2_math",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2022,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R04fuzoku-kensa2.pdf",
+      "answer": "kawasaki_past/R04fuzoku-kaitourei.pdf"
+    },
+    "page_bigs": {
+      "2": [
+        5,
+        10
+      ]
+    }
+  },
+  "kawasaki_2022_k2_science": {
+    "id": "kawasaki_2022_k2_science",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2022,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R04fuzoku-kensa2.pdf",
+      "answer": "kawasaki_past/R04fuzoku-kaitourei.pdf"
+    },
+    "page_bigs": {
+      "3": [
+        11,
+        16
+      ]
+    }
+  },
+  "kawasaki_2022_k2_social": {
+    "id": "kawasaki_2022_k2_social",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2022,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 10,
+    "files": {
+      "question": "kawasaki_past/R04fuzoku-kensa2.pdf",
+      "answer": "kawasaki_past/R04fuzoku-kaitourei.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        4
+      ]
+    }
+  },
+  "kawasaki_2023_k1_japanese": {
+    "id": "kawasaki_2023_k1_japanese",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2023,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kawasaki_past/R05Fuzoku-kensa1.pdf",
+      "answer": "kawasaki_past/R05Fuzoku-kaitourei.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        6
+      ]
+    }
+  },
+  "kawasaki_2023_k1_social": {
+    "id": "kawasaki_2023_k1_social",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2023,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R05Fuzoku-kensa1.pdf",
+      "answer": "kawasaki_past/R05Fuzoku-kaitourei.pdf"
+    },
+    "page_bigs": {
+      "2": [
+        7,
+        13
+      ]
+    }
+  },
+  "kawasaki_2023_k2_math": {
+    "id": "kawasaki_2023_k2_math",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2023,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R05Fuzoku-kensa2.pdf",
+      "answer": "kawasaki_past/R05Fuzoku-kaitourei.pdf"
+    },
+    "page_bigs": {
+      "2": [
+        8,
+        12
+      ]
+    }
+  },
+  "kawasaki_2023_k2_science": {
+    "id": "kawasaki_2023_k2_science",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2023,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R05Fuzoku-kensa2.pdf",
+      "answer": "kawasaki_past/R05Fuzoku-kaitourei.pdf"
+    },
+    "page_bigs": {
+      "3": [
+        13,
+        18
+      ]
+    }
+  },
+  "kawasaki_2023_k2_social": {
+    "id": "kawasaki_2023_k2_social",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2023,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R05Fuzoku-kensa2.pdf",
+      "answer": "kawasaki_past/R05Fuzoku-kaitourei.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        7
+      ]
+    }
+  },
+  "kawasaki_2024_k1_math": {
+    "id": "kawasaki_2024_k1_math",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2024,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R06_kensa_1(080119syusei).pdf",
+      "answer": "kawasaki_past/R06_kaitourei_haiten.pdf"
+    },
+    "page_bigs": {
+      "3": [
+        16,
+        20
+      ]
+    }
+  },
+  "kawasaki_2024_k1_science": {
+    "id": "kawasaki_2024_k1_science",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2024,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R06_kensa_1(080119syusei).pdf",
+      "answer": "kawasaki_past/R06_kaitourei_haiten.pdf"
+    },
+    "page_bigs": {
+      "2": [
+        11,
+        15
+      ]
+    }
+  },
+  "kawasaki_2024_k1_social": {
+    "id": "kawasaki_2024_k1_social",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2024,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R06_kensa_1(080119syusei).pdf",
+      "answer": "kawasaki_past/R06_kaitourei_haiten.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        10
+      ]
+    }
+  },
+  "kawasaki_2024_k2_japanese": {
+    "id": "kawasaki_2024_k2_japanese",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2024,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kawasaki_past/R06_kensa_2.pdf",
+      "answer": "kawasaki_past/R06_kaitourei_haiten.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        6
+      ],
+      "2": [
+        7,
+        8
+      ]
+    }
+  },
+  "kawasaki_2025_k1_math": {
+    "id": "kawasaki_2025_k1_math",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2025,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 15,
+    "files": {
+      "question": "kawasaki_past/R07_Fuzoku-kensa1(080119syusei).pdf",
+      "answer": "kawasaki_past/R07_fuzoku_kaitourei.pdf"
+    },
+    "page_bigs": {
+      "3": [
+        13,
+        16
+      ]
+    }
+  },
+  "kawasaki_2025_k1_science": {
+    "id": "kawasaki_2025_k1_science",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2025,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 20,
+    "files": {
+      "question": "kawasaki_past/R07_Fuzoku-kensa1(080119syusei).pdf",
+      "answer": "kawasaki_past/R07_fuzoku_kaitourei.pdf"
+    },
+    "page_bigs": {
+      "2": [
+        6,
+        12
+      ]
+    }
+  },
+  "kawasaki_2025_k1_social": {
+    "id": "kawasaki_2025_k1_social",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2025,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 10,
+    "files": {
+      "question": "kawasaki_past/R07_Fuzoku-kensa1(080119syusei).pdf",
+      "answer": "kawasaki_past/R07_fuzoku_kaitourei.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        5
+      ]
+    }
+  },
+  "kawasaki_2025_k2_japanese": {
+    "id": "kawasaki_2025_k2_japanese",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2025,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kawasaki_past/R07_fuzoku_kensa2.pdf",
+      "answer": "kawasaki_past/R07_fuzoku_kaitourei.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        7
+      ],
+      "2": [
+        8,
+        8
+      ]
+    }
+  },
+  "kawasaki_2026_k1_math": {
+    "id": "kawasaki_2026_k1_math",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2026,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 20,
+    "files": {
+      "question": "kawasaki_past/R08examination1.pdf",
+      "answer": "kawasaki_past/R08answer.pdf"
+    },
+    "page_bigs": {
+      "3": [
+        11,
+        13
+      ]
+    }
+  },
+  "kawasaki_2026_k1_science": {
+    "id": "kawasaki_2026_k1_science",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2026,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 20,
+    "files": {
+      "question": "kawasaki_past/R08examination1.pdf",
+      "answer": "kawasaki_past/R08answer.pdf"
+    },
+    "page_bigs": {
+      "2": [
+        7,
+        10
+      ]
+    }
+  },
+  "kawasaki_2026_k1_social": {
+    "id": "kawasaki_2026_k1_social",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2026,
+    "session": "k1",
+    "session_label": "適性検査Ⅰ",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 10,
+    "files": {
+      "question": "kawasaki_past/R08examination1.pdf",
+      "answer": "kawasaki_past/R08answer.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        6
+      ]
+    }
+  },
+  "kawasaki_2026_k2_japanese": {
+    "id": "kawasaki_2026_k2_japanese",
+    "school": "kawasaki",
+    "school_name": "川崎市立川崎高等学校附属中学校",
+    "year": 2026,
+    "session": "k2",
+    "session_label": "適性検査Ⅱ",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kawasaki_past/R08examination2.pdf",
+      "answer": "kawasaki_past/R08answer.pdf"
+    },
+    "page_bigs": {
+      "1": [
+        1,
+        4
+      ],
+      "2": [
+        6,
+        6
+      ]
+    }
+  },
+  "kyoritsu_2024_2-1_japanese": {
+    "id": "kyoritsu_2024_2-1_japanese",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2024,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2024年度/2-1入試_国語_問題.pdf",
+      "answer": "kyoritsu_past/2024年度/2-1入試_国語_模範解答.pdf",
+      "sheet": "kyoritsu_past/2024年度/2-1入試_国語_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2024_2-1_math": {
+    "id": "kyoritsu_2024_2-1_math",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2024,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2024年度/2-1入試_算数_問題.pdf",
+      "answer": "kyoritsu_past/2024年度/2-1入試_算数_模範解答.pdf",
+      "sheet": "kyoritsu_past/2024年度/2-1入試_算数_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2024_2-1_science": {
+    "id": "kyoritsu_2024_2-1_science",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2024,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2024年度/2-1入試_理科_問題.pdf",
+      "answer": "kyoritsu_past/2024年度/2-1入試_理科_模範解答.pdf",
+      "sheet": "kyoritsu_past/2024年度/2-1入試_理科_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2024_2-1_social": {
+    "id": "kyoritsu_2024_2-1_social",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2024,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2024年度/2-1入試_社会_問題.pdf",
+      "answer": "kyoritsu_past/2024年度/2-1入試_社会_模範解答.pdf",
+      "sheet": "kyoritsu_past/2024年度/2-1入試_社会_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2024_2-2_japanese": {
+    "id": "kyoritsu_2024_2-2_japanese",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2024,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2024年度/2-2入試_国語_問題.pdf",
+      "answer": "kyoritsu_past/2024年度/2-2入試_国語_模範解答.pdf",
+      "sheet": "kyoritsu_past/2024年度/2-2入試_国語_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2024_2-2_math": {
+    "id": "kyoritsu_2024_2-2_math",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2024,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2024年度/2-2入試_算数_問題.pdf",
+      "answer": "kyoritsu_past/2024年度/2-2入試_算数_模範解答.pdf",
+      "sheet": "kyoritsu_past/2024年度/2-2入試_算数_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2024_2-2_science": {
+    "id": "kyoritsu_2024_2-2_science",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2024,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2024年度/2-2入試_理科_問題.pdf",
+      "answer": "kyoritsu_past/2024年度/2-2入試_理科_模範解答.pdf",
+      "sheet": "kyoritsu_past/2024年度/2-2入試_理科_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2024_2-2_social": {
+    "id": "kyoritsu_2024_2-2_social",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2024,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2024年度/2-2入試_社会_問題.pdf",
+      "answer": "kyoritsu_past/2024年度/2-2入試_社会_模範解答.pdf",
+      "sheet": "kyoritsu_past/2024年度/2-2入試_社会_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2025_2-1_japanese": {
+    "id": "kyoritsu_2025_2-1_japanese",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2025,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2025年度/2-1入試_国語_問題.pdf",
+      "answer": "kyoritsu_past/2025年度/2-1入試_国語_模範解答.pdf",
+      "sheet": "kyoritsu_past/2025年度/2-1入試_国語_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2025_2-1_math": {
+    "id": "kyoritsu_2025_2-1_math",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2025,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2025年度/2-1入試_算数_問題.pdf",
+      "answer": "kyoritsu_past/2025年度/2-1入試_算数_模範解答.pdf",
+      "sheet": "kyoritsu_past/2025年度/2-1入試_算数_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2025_2-1_science": {
+    "id": "kyoritsu_2025_2-1_science",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2025,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2025年度/2-1入試_理科_問題.pdf",
+      "answer": "kyoritsu_past/2025年度/2-1入試_理科_模範解答.pdf",
+      "sheet": "kyoritsu_past/2025年度/2-1入試_理科_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2025_2-1_social": {
+    "id": "kyoritsu_2025_2-1_social",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2025,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2025年度/2-1入試_社会_問題.pdf",
+      "answer": "kyoritsu_past/2025年度/2-1入試_社会_模範解答.pdf",
+      "sheet": "kyoritsu_past/2025年度/2-1入試_社会_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2025_2-2_japanese": {
+    "id": "kyoritsu_2025_2-2_japanese",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2025,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2025年度/2-2入試_国語_問題.pdf",
+      "answer": "kyoritsu_past/2025年度/2-2入試_国語_模範解答.pdf",
+      "sheet": "kyoritsu_past/2025年度/2-2入試_国語_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2025_2-2_math": {
+    "id": "kyoritsu_2025_2-2_math",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2025,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2025年度/2-2入試_算数_問題.pdf",
+      "answer": "kyoritsu_past/2025年度/2-2入試_算数_模範解答.pdf",
+      "sheet": "kyoritsu_past/2025年度/2-2入試_算数_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2025_2-2_science": {
+    "id": "kyoritsu_2025_2-2_science",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2025,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2025年度/2-2入試_理科_問題.pdf",
+      "answer": "kyoritsu_past/2025年度/2-2入試_理科_模範解答.pdf",
+      "sheet": "kyoritsu_past/2025年度/2-2入試_理科_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2025_2-2_social": {
+    "id": "kyoritsu_2025_2-2_social",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2025,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2025年度/2-2入試_社会_問題.pdf",
+      "answer": "kyoritsu_past/2025年度/2-2入試_社会_模範解答.pdf",
+      "sheet": "kyoritsu_past/2025年度/2-2入試_社会_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2026_2-1_japanese": {
+    "id": "kyoritsu_2026_2-1_japanese",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2026,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2026年度/2-1入試_国語_問題.pdf",
+      "answer": "kyoritsu_past/2026年度/2-1入試_国語_模範解答.pdf",
+      "sheet": "kyoritsu_past/2026年度/2-1入試_国語_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2026_2-1_math": {
+    "id": "kyoritsu_2026_2-1_math",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2026,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2026年度/2-1入試_算数_問題.pdf",
+      "answer": "kyoritsu_past/2026年度/2-1入試_算数_模範解答.pdf",
+      "sheet": "kyoritsu_past/2026年度/2-1入試_算数_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2026_2-1_science": {
+    "id": "kyoritsu_2026_2-1_science",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2026,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2026年度/2-1入試_理科_問題.pdf",
+      "answer": "kyoritsu_past/2026年度/2-1入試_理科_模範解答.pdf",
+      "sheet": "kyoritsu_past/2026年度/2-1入試_理科_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2026_2-1_social": {
+    "id": "kyoritsu_2026_2-1_social",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2026,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2026年度/2-1入試_社会_問題.pdf",
+      "answer": "kyoritsu_past/2026年度/2-1入試_社会_模範解答.pdf",
+      "sheet": "kyoritsu_past/2026年度/2-1入試_社会_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2026_2-2_japanese": {
+    "id": "kyoritsu_2026_2-2_japanese",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2026,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2026年度/2-2入試_国語_問題.pdf",
+      "answer": "kyoritsu_past/2026年度/2-2入試_国語_模範解答.pdf",
+      "sheet": "kyoritsu_past/2026年度/2-2入試_国語_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2026_2-2_math": {
+    "id": "kyoritsu_2026_2-2_math",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2026,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "kyoritsu_past/2026年度/2-2入試_算数_問題.pdf",
+      "answer": "kyoritsu_past/2026年度/2-2入試_算数_模範解答.pdf",
+      "sheet": "kyoritsu_past/2026年度/2-2入試_算数_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2026_2-2_science": {
+    "id": "kyoritsu_2026_2-2_science",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2026,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2026年度/2-2入試_理科_問題.pdf",
+      "answer": "kyoritsu_past/2026年度/2-2入試_理科_模範解答.pdf",
+      "sheet": "kyoritsu_past/2026年度/2-2入試_理科_解答用紙.pdf"
+    }
+  },
+  "kyoritsu_2026_2-2_social": {
+    "id": "kyoritsu_2026_2-2_social",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2026,
+    "session": "2-2",
+    "session_label": "2/2入試",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "kyoritsu_past/2026年度/2-2入試_社会_問題.pdf",
+      "answer": "kyoritsu_past/2026年度/2-2入試_社会_模範解答.pdf",
+      "sheet": "kyoritsu_past/2026年度/2-2入試_社会_解答用紙.pdf"
+    }
+  },
+  "sakaehigashi_2025_a_japanese": {
+    "id": "sakaehigashi_2025_a_japanese",
+    "school": "sakaehigashi",
+    "school_name": "栄東中学校",
+    "year": 2025,
+    "session": "a",
+    "session_label": "A日程",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "pipeline/in/栄東中学校_2025年国語問題.pdf",
+      "answer": "pipeline/in/栄東中学校_2025年国語回答.pdf"
+    }
+  },
+  "sakaehigashi_2025_a_math": {
+    "id": "sakaehigashi_2025_a_math",
+    "school": "sakaehigashi",
+    "school_name": "栄東中学校",
+    "year": 2025,
+    "session": "a",
+    "session_label": "A日程",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "pipeline/in/栄東中学校_2025年算数問題.pdf",
+      "answer": "pipeline/in/栄東中学校_2025年算数回答.pdf"
+    }
+  },
+  "sakaehigashi_2025_a_science": {
+    "id": "sakaehigashi_2025_a_science",
+    "school": "sakaehigashi",
+    "school_name": "栄東中学校",
+    "year": 2025,
+    "session": "a",
+    "session_label": "A日程",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/栄東中学校_2025年理科問題.pdf",
+      "answer": "pipeline/in/栄東中学校_2025年理科回答.pdf"
+    }
+  },
+  "sakaehigashi_2025_a_social": {
+    "id": "sakaehigashi_2025_a_social",
+    "school": "sakaehigashi",
+    "school_name": "栄東中学校",
+    "year": 2025,
+    "session": "a",
+    "session_label": "A日程",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/栄東中学校_2025年社会問題.pdf",
+      "answer": "pipeline/in/栄東中学校_2025年社会回答.pdf"
+    }
+  },
+  "sakaehigashi_2026_a_japanese": {
+    "id": "sakaehigashi_2026_a_japanese",
+    "school": "sakaehigashi",
+    "school_name": "栄東中学校",
+    "year": 2026,
+    "session": "a",
+    "session_label": "A日程",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 45,
+    "files": {
+      "question": "pipeline/in/栄東中学校_2026年国語問題.pdf"
+    }
+  },
+  "sakaehigashi_2026_a_math": {
+    "id": "sakaehigashi_2026_a_math",
+    "school": "sakaehigashi",
+    "school_name": "栄東中学校",
+    "year": 2026,
+    "session": "a",
+    "session_label": "A日程",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "pipeline/in/栄東中学校_2026年算数問題.pdf"
+    }
+  },
+  "sakaehigashi_2026_a_science": {
+    "id": "sakaehigashi_2026_a_science",
+    "school": "sakaehigashi",
+    "school_name": "栄東中学校",
+    "year": 2026,
+    "session": "a",
+    "session_label": "A日程",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/栄東中学校_2026年理科問題.pdf"
+    }
+  },
+  "sakaehigashi_2026_a_social": {
+    "id": "sakaehigashi_2026_a_social",
+    "school": "sakaehigashi",
+    "school_name": "栄東中学校",
+    "year": 2026,
+    "session": "a",
+    "session_label": "A日程",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/栄東中学校_2026年社会問題.pdf"
+    }
+  },
+  "shinagawa_2018_m1_math": {
+    "id": "shinagawa_2018_m1_math",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2018,
+    "session": "m1",
+    "session_label": "算数1教科",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "shinagawa_past/2018年度_入試問題解答/算数１教科_算数問題解答用紙.pdf",
+      "answer_scan": "shinagawa_past/2018年度_入試問題解答/算数１教科_解答.pdf",
+      "sheet": "shinagawa_past/2018年度_解答用紙/算数１教科_解答用紙.pdf"
+    },
+    "page_range": [
+      1,
+      3
+    ]
+  },
+  "shinagawa_2018_r1_math": {
+    "id": "shinagawa_2018_r1_math",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2018,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "shinagawa_past/2018年度_入試問題解答/第１回_算数問題.pdf",
+      "answer_scan": "shinagawa_past/2018年度_入試問題解答/第１回_解答.pdf",
+      "sheet_all": "shinagawa_past/2018年度_入試問題解答/第１回_解答用紙.pdf",
+      "sheet": "shinagawa_past/2018年度_解答用紙/第１回_算数.pdf"
+    },
+    "page_range": [
+      1,
+      8
+    ]
+  },
+  "shinagawa_2018_r1_science": {
+    "id": "shinagawa_2018_r1_science",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2018,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "shinagawa_past/2018年度_入試問題解答/第１回_社会理科問題.pdf",
+      "answer_scan": "shinagawa_past/2018年度_入試問題解答/第１回_解答.pdf",
+      "sheet_all": "shinagawa_past/2018年度_入試問題解答/第１回_解答用紙.pdf",
+      "sheet": "shinagawa_past/2018年度_解答用紙/第１回_理科.pdf"
+    },
+    "page_range": [
+      13,
+      24
+    ]
+  },
+  "shinagawa_2018_r1_social": {
+    "id": "shinagawa_2018_r1_social",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2018,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "shinagawa_past/2018年度_入試問題解答/第１回_社会理科問題.pdf",
+      "answer_scan": "shinagawa_past/2018年度_入試問題解答/第１回_解答.pdf",
+      "sheet_all": "shinagawa_past/2018年度_入試問題解答/第１回_解答用紙.pdf",
+      "sheet": "shinagawa_past/2018年度_解答用紙/第１回_社会.pdf"
+    },
+    "page_range": [
+      1,
+      12
+    ]
+  },
+  "shinagawa_2018_r2_math": {
+    "id": "shinagawa_2018_r2_math",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2018,
+    "session": "r2",
+    "session_label": "第2回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "shinagawa_past/2018年度_入試問題解答/第２回_算数問題.pdf",
+      "answer_scan": "shinagawa_past/2018年度_入試問題解答/第２回_解答.pdf",
+      "sheet_all": "shinagawa_past/2018年度_入試問題解答/第２回_解答用紙.pdf",
+      "sheet": "shinagawa_past/2018年度_解答用紙/第2回_算数.pdf"
+    },
+    "page_range": [
+      1,
+      8
+    ]
+  },
+  "shinagawa_2018_r2_science": {
+    "id": "shinagawa_2018_r2_science",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2018,
+    "session": "r2",
+    "session_label": "第2回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "shinagawa_past/2018年度_入試問題解答/第２回_社会理科問題.pdf",
+      "answer_scan": "shinagawa_past/2018年度_入試問題解答/第２回_解答.pdf",
+      "sheet_all": "shinagawa_past/2018年度_入試問題解答/第２回_解答用紙.pdf",
+      "sheet": "shinagawa_past/2018年度_解答用紙/第2回_理科.pdf"
+    },
+    "page_range": [
+      16,
+      23
+    ]
+  },
+  "shinagawa_2018_r2_social": {
+    "id": "shinagawa_2018_r2_social",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2018,
+    "session": "r2",
+    "session_label": "第2回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "shinagawa_past/2018年度_入試問題解答/第２回_社会理科問題.pdf",
+      "answer_scan": "shinagawa_past/2018年度_入試問題解答/第２回_解答.pdf",
+      "sheet_all": "shinagawa_past/2018年度_入試問題解答/第２回_解答用紙.pdf",
+      "sheet": "shinagawa_past/2018年度_解答用紙/第2回_社会.pdf"
+    },
+    "page_range": [
+      2,
+      15
+    ]
+  },
+  "shinagawa_2023_r1_math": {
+    "id": "shinagawa_2023_r1_math",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2023,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "pipeline/in/品川女子学院_2023年算数問題.pdf",
+      "answer": "pipeline/in/品川女子学院_2023年算数回答.pdf"
+    }
+  },
+  "shinagawa_2023_r1_science": {
+    "id": "shinagawa_2023_r1_science",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2023,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/品川女子学院_2023年理科問題.pdf",
+      "answer": "pipeline/in/品川女子学院_2023年理科回答.pdf"
+    }
+  },
+  "shinagawa_2023_r1_social": {
+    "id": "shinagawa_2023_r1_social",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2023,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/品川女子学院_2023年社会問題.pdf",
+      "answer": "pipeline/in/品川女子学院_2023年社会回答.pdf"
+    }
+  },
+  "shinagawa_2024_r1_math": {
+    "id": "shinagawa_2024_r1_math",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2024,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "pipeline/in/品川女子学院_2024年算数問題.pdf",
+      "answer": "pipeline/in/品川女子学院_2024年算数回答.pdf"
+    }
+  },
+  "shinagawa_2024_r1_science": {
+    "id": "shinagawa_2024_r1_science",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2024,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/品川女子学院_2024年理科問題.pdf",
+      "answer": "pipeline/in/品川女子学院_2024年理科回答.pdf"
+    }
+  },
+  "shinagawa_2024_r1_social": {
+    "id": "shinagawa_2024_r1_social",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2024,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/品川女子学院_2024年社会問題.pdf",
+      "answer": "pipeline/in/品川女子学院_2024年社会回答.pdf"
+    }
+  },
+  "shinagawa_2025_r1_math": {
+    "id": "shinagawa_2025_r1_math",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2025,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "question": "pipeline/in/品川女子学院_2025年算数問題.pdf",
+      "answer": "pipeline/in/品川女子学院_2025年算数回答.pdf"
+    }
+  },
+  "shinagawa_2025_r1_science": {
+    "id": "shinagawa_2025_r1_science",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2025,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/品川女子学院_2025年理科問題.pdf",
+      "answer": "pipeline/in/品川女子学院_2025年理科回答.pdf"
+    }
+  },
+  "shinagawa_2025_r1_social": {
+    "id": "shinagawa_2025_r1_social",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2025,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "pipeline/in/品川女子学院_2025年社会問題.pdf",
+      "answer": "pipeline/in/品川女子学院_2025年社会回答.pdf"
+    }
+  },
+  "shinagawa_2026_m1_math": {
+    "id": "shinagawa_2026_m1_math",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2026,
+    "session": "m1",
+    "session_label": "算数1教科",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "shinagawa_past/2026年度_入試問題解答/算数１教科_問題.pdf",
+      "answer_scan": "shinagawa_past/2026年度_入試問題解答/算数１教科_解答.pdf",
+      "sheet": "shinagawa_past/2026年度_解答用紙/算数１教科_解答用紙.pdf"
+    },
+    "page_range": [
+      0,
+      2
+    ]
+  },
+  "shinagawa_2026_r1_math": {
+    "id": "shinagawa_2026_r1_math",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2026,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "shinagawa_past/2026年度_入試問題解答/第１回_算数問題.pdf",
+      "answer_scan": "shinagawa_past/2026年度_入試問題解答/第１回_解答.pdf",
+      "sheet": "shinagawa_past/2026年度_解答用紙/第１回_算数.pdf"
+    },
+    "page_range": [
+      1,
+      6
+    ]
+  },
+  "shinagawa_2026_r1_science": {
+    "id": "shinagawa_2026_r1_science",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2026,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "shinagawa_past/2026年度_入試問題解答/第１回_社会理科問題.pdf",
+      "answer_scan": "shinagawa_past/2026年度_入試問題解答/第１回_解答.pdf",
+      "sheet": "shinagawa_past/2026年度_解答用紙/第１回_理科.pdf"
+    },
+    "page_range": [
+      24,
+      35
+    ]
+  },
+  "shinagawa_2026_r1_social": {
+    "id": "shinagawa_2026_r1_social",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2026,
+    "session": "r1",
+    "session_label": "第1回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "shinagawa_past/2026年度_入試問題解答/第１回_社会理科問題.pdf",
+      "answer_scan": "shinagawa_past/2026年度_入試問題解答/第１回_解答.pdf",
+      "sheet": "shinagawa_past/2026年度_解答用紙/第１回_社会.pdf"
+    },
+    "page_range": [
+      1,
+      23
+    ]
+  },
+  "shinagawa_2026_r2_math": {
+    "id": "shinagawa_2026_r2_math",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2026,
+    "session": "r2",
+    "session_label": "第2回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "shinagawa_past/2026年度_入試問題解答/第２回_算数問題.pdf",
+      "answer_scan": "shinagawa_past/2026年度_入試問題解答/第２回_解答.pdf",
+      "sheet": "shinagawa_past/2026年度_解答用紙/第2回_算数.pdf"
+    },
+    "page_range": [
+      1,
+      5
+    ]
+  },
+  "shinagawa_2026_r2_science": {
+    "id": "shinagawa_2026_r2_science",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2026,
+    "session": "r2",
+    "session_label": "第2回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "question": "shinagawa_past/2026年度_入試問題解答/第２回_社会理科問題.pdf",
+      "answer_scan": "shinagawa_past/2026年度_入試問題解答/第２回_解答.pdf",
+      "sheet": "shinagawa_past/2026年度_解答用紙/第2回_理科.pdf"
+    },
+    "page_range": [
+      24,
+      34
+    ]
+  },
+  "shinagawa_2026_r2_social": {
+    "id": "shinagawa_2026_r2_social",
+    "school": "shinagawa",
+    "school_name": "品川女子学院中等部",
+    "year": 2026,
+    "session": "r2",
+    "session_label": "第2回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "question": "shinagawa_past/2026年度_入試問題解答/第２回_社会理科問題.pdf",
+      "answer_scan": "shinagawa_past/2026年度_入試問題解答/第２回_解答.pdf",
+      "sheet": "shinagawa_past/2026年度_解答用紙/第2回_社会.pdf"
+    },
+    "page_range": [
+      1,
+      23
+    ]
+  }
+}

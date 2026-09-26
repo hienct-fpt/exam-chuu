@@ -1,0 +1,311 @@
+{
+  "exam_id": "shinagawa_2018_r2_math",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "16/15",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "1 1/15"
+      ],
+      "work_required": true
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "1/10",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "円",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "1800",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "9",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "8",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "36",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "月",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "10",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": [
+        "60",
+        "68"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "note": "2つの数を「、」区切りで"
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "°",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "43",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "50.24",
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "",
+      "parts": [
+        "午前 …時",
+        "…分"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "9",
+        "12"
+      ],
+      "confidence": "manual",
+      "raw_values": []
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": ":",
+      "parts": null,
+      "answer_type": "ratio",
+      "answer": "3:4",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "cm²",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "22.5",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "5-1",
+      "big": 5,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "82.5",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "5-2",
+      "big": 5,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "6.5",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "5-3",
+      "big": 5,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "75",
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    },
+    {
+      "id": "6-1",
+      "big": 6,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "(1,2,4)と(3,4)",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "(1、2、4)と(3、4)",
+        "1,2,4と3,4",
+        "(1,2,4),(3,4)"
+      ],
+      "work_required": true,
+      "note": "例: (1,2,4)と(3,4)"
+    },
+    {
+      "id": "6-2",
+      "big": 6,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": [
+        "1点",
+        "8点",
+        "10点"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true,
+      "note": "「1点、8点、10点」のように入力"
+    },
+    {
+      "id": "6-3",
+      "big": 6,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": [
+        "人以上",
+        "人以下"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "7",
+        "22"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "work_required": true
+    }
+  ]
+}
