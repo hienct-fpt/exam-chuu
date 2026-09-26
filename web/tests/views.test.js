@@ -35,7 +35,7 @@ beforeAll(() => {
       const body = JSON.parse(opts.body);
       const exam = JSON.parse(readFileSync(resolve(PUB, 'bank', `${body.examId}.json`), 'utf-8'));
       const result = fakeResult(exam, body.answers);
-      return new Response(JSON.stringify({ result, emailSubject: 'sub', emailHtml: '<p>mail</p>' }), { status: 200 });
+      return new Response(JSON.stringify({ result }), { status: 200 });
     }
     return new Response('nf', { status: 404 });
   });

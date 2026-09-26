@@ -34,9 +34,9 @@ async function gradeNow(id) {
   });
   const cur = load();
   if (!r.ok) { cur[id].status = 'error'; cur[id].error = `dev_server ${r.status}`; save(cur); notify(id); return; }
-  const { result, emailHtml, emailSubject } = await r.json();
+  const { result } = await r.json();
   Object.assign(cur[id], { status: 'graded', result, score: result.score, max: result.max, percent: result.percent,
-    pendingCount: result.pendingCount, gradedAt: cur[id].gradedAt || new Date().toISOString(), emailHtml, emailSubject });
+    pendingCount: result.pendingCount, gradedAt: cur[id].gradedAt || new Date().toISOString() });
   save(cur); notify(id);
 }
 
@@ -66,10 +66,10 @@ export async function findInProgress(examId, gradeFilter = null) {
     && (a.gradeFilter || null) === (gradeFilter || null)) || null;
 }
 /** Topic mastery summary computed by dev_server from the graded attempts (mirrors students/{uid}/topicStats/summary). */
-export async function getTopicStats(opts = {}) {
+export async function getTopicStats() {
   const attempts = Object.values(load()).filter((a) => a.status === 'graded');
   const r = await fetch('/api/stats', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ attempts, studentName: user.name, digest: Boolean(opts.digest) }) });
+    body: JSON.stringify({ attempts, studentName: user.name }) });
   if (!r.ok) throw new Error(`dev_server ${r.status}`);
   return r.json();
 }

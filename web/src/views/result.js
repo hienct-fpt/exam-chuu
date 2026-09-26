@@ -46,8 +46,7 @@ export async function renderResult({ app }, attemptId) {
         <div class="muted">正解 ${r.correctCount} / ${r.itemCount} 問 · 未回答 ${r.itemCount - r.answeredCount} 問
           ${pending ? ` · <span class="warn">採点待ち ${pending} 問（記述・作図は保護者が採点）</span>` : ''}
           · 提出 ${a.submittedAt ? new Date(a.submittedAt).toLocaleString('ja-JP') : ''}</div>
-        <div class="muted">結果は保護者のメールにも送信されました。</div>
-        <p><a href="${retry}">${isPractice ? '同じ分野でもう一度' : 'もう一度挑戦'}</a> · <a href="#/dashboard">ダッシュボード</a> · <a href="#/">一覧へ</a>${a.emailHtml ? ' · <a href="#" id="showmail">メールプレビュー (mock)</a>' : ''}</p>
+        <p><a href="${retry}">${isPractice ? '同じ分野でもう一度' : 'もう一度挑戦'}</a> · <a href="#/dashboard">ダッシュボード</a> · <a href="#/">一覧へ</a></p>
       </div>
       <div class="two-col">
         <div class="card"><h2>${isPractice ? '過去問別' : '大問別'}</h2><table><tr><th>${isPractice ? '出典' : '大問'}</th><th>正解</th><th>正答率</th></tr>
@@ -69,8 +68,7 @@ export async function renderResult({ app }, attemptId) {
             ${it.pending && !isAdmin ? '<div class="hint warn">採点待ち</div>' : ''}</td>
           <td>${esc(fmt(it.expected))}${it.variants && it.variants.length ? ` <small class="muted">(${it.variants.map(esc).join(', ')})</small>` : ''}${it.note ? `<div class="hint">${esc(it.note)}</div>` : ''}${it.source?.url ? `<div class="hint"><a href="${esc(it.source.url)}" target="_blank" rel="noopener">解説 (${esc(it.source.site || 'source')})</a> <small class="muted">${esc(it.source.school || '')} ${it.source.year || ''}</small></div>` : ''}</td>
           <td>${it.image ? `<img class="thumb" src="/${it.image}" loading="lazy" onclick="this.classList.toggle('open')">` : ''}</td>
-        </tr>`).join('')}</table></div>
-      <div class="card" id="mailbox" style="display:none"><h2>メールプレビュー</h2><div id="mailhtml"></div></div>`;
+        </tr>`).join('')}</table></div>`;
     app.querySelector('#onlywrong').onchange = (e) => {
       for (const tr of app.querySelectorAll('#items tr[data-ok]')) tr.style.display = e.target.checked && tr.dataset.ok === 'true' ? 'none' : '';
     };
@@ -81,15 +79,6 @@ export async function renderResult({ app }, attemptId) {
         catch (e) { alert('採点の保存に失敗: ' + e.message); btn.disabled = false; }
       };
     }
-    const sm = app.querySelector('#showmail');
-    if (sm) sm.onclick = (e) => {
-      e.preventDefault();
-      const box = app.querySelector('#mailbox'); box.style.display = '';
-      const frame = document.createElement('iframe'); frame.style.cssText = 'width:100%;height:900px;border:1px solid #ddd';
-      app.querySelector('#mailhtml').replaceChildren(frame);
-      frame.srcdoc = a.emailHtml;
-      box.querySelector('h2').textContent = `メールプレビュー: ${a.emailSubject || ''}`;
-    };
   });
   return unsub;
 }

@@ -2,7 +2,7 @@
 
 POST /api/grade   exam:     {examId, answers, itemIds?, gradeFilter?, manualGrades?, studentName?, attemptId?}
                   practice: {mode:"practice", items:[full item ids], answers, manualGrades?, topics?, ...}
-                  -> {result, emailSubject, emailHtml}
+                  -> {result}
 POST /api/stats   {attempts:[graded attempts]} -> topicStats summary (same shape as students/{uid}/topicStats/summary)
                   + suggestions per subject
 GET  /api/health
@@ -21,7 +21,6 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "functions"))
 from analytics import outcomes, topic_stats, weak_topics, weekly_series, subject_summary, item_history, practice_set  # noqa: E402
 from grader import grade_submission, virtual_exam  # noqa: E402
-from report import render_report, render_digest  # noqa: E402
 
 OUT = ROOT / "pipeline" / "out"
 ALL_KEYS = json.loads((OUT / "answers_all.json").read_text(encoding="utf-8"))
@@ -41,17 +40,12 @@ def grade(req: dict) -> dict:
         exam, _ = virtual_exam(BANKS, ids)
         keys = {i: ALL_KEYS[i] for i in ids if i in ALL_KEYS}
         result = grade_submission(req.get("answers") or {}, keys, exam, ids, req.get("manualGrades"), full_ids=True)
-        meta = {"school_name": "", "year": "", "session_label": "弱点練習" if req.get("topics") else "練習",
-                "subject_label": "・".join(sorted({BANKS[i.split('#')[0]]["subject_label"] for i in ids if i.split('#')[0] in BANKS}))}
     else:
         exam_id = req["examId"]
         exam = BANKS[exam_id]
-        meta = exam
         result = grade_submission(req.get("answers") or {}, keys_for(exam_id), exam,
                                   req.get("itemIds"), req.get("manualGrades"))
-    subject, html = render_report(req.get("studentName") or "テスト", meta, result, "http://localhost:5173",
-                                  req.get("attemptId") or "local", grade_filter=req.get("gradeFilter"))
-    return {"result": result, "emailSubject": subject, "emailHtml": html}
+    return {"result": result}
 
 
 def stats(req: dict) -> dict:
@@ -70,9 +64,6 @@ def stats(req: dict) -> dict:
             picked = practice_set(BANK_ITEMS, set(weak), hist, n=10, subject=subj)
             suggestions[subj] = {"topics": weak, "count": len(picked), "items": [p["id"] for p in picked]}
     summary["suggestions"] = suggestions
-    if req.get("digest"):
-        subject, html = render_digest(req.get("studentName") or "テスト", summary, suggestions, "http://localhost:5173")
-        summary["digestSubject"], summary["digestHtml"] = subject, html
     return summary
 
 

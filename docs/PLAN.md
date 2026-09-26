@@ -291,3 +291,75 @@ Deferred: 国語 per-問 crops, 配点, P4 shinagawa.
 - Totals: 38 exams, 1098 items, 1413 crop files. pytest 29, vitest 8.
 
 Deferred: 国語 per-問 crops, 配点, showing the scanned 模範解答 page next to a graded item.
+
+## 13. P5 status (2026-09-24) — DONE (shinagawa 2023–25 + sakaehigashi 2025–26, 15 exams)
+
+- Imported from `pipeline/in`: shinagawa 第1回 2023/2024/2025 (算数・理科・社会, 9 exams) and sakaehigashi
+  栄東中学校 2025/2026 (算数・理科・社会, 6 exams).
+- Neither went through the marker-detection segmentation used elsewhere: shinagawa 2023–25's layout wasn't
+  matched against `shinagawa_math`/`shinagawa_science`/`shinagawa_social` (only 2018 + 2026 are — see § 6 in
+  README for why), and sakaehigashi's PDFs are scanned images with **no text layer** at all, so font/position
+  detection can't run there regardless. Both fall back to one shared page-image per 大問
+  (`shared_image: true` for every item, same mechanism as kyoritsu 国語).
+- `web/src/views/home.js` school filter extended (`sakaehigashi` chip added; `c9c4428`).
+- Not tracked in `pipeline/inventory.py` — see the P6 note below, same gap applies to sakaehigashi too.
+
+## 14. P6 status (2026-09-26) — chuo (中央大学附属) formalized + 国語 render fix + tagging + year filter
+
+- **Render bug fixed** (`939a08e`): `web/src/views/exam.js`'s shared-image fast path (every item in a 大問
+  resolves to the same `image`) returned before drawing `stem_image`/`stem_images`, so any multi-page 大問 on
+  that path silently dropped its earlier context pages from the live exam view — 21 大問 across all 6 kyoritsu
+  国語 exams (every 大問 2–5; 大問1 is single-page and unaffected). Fixed by drawing the stem images first in
+  that branch, same as the per-item fallback path already did.
+- **Chuo formalized + segmented** (`b216ce5`): chuo's `out/exams.json`/`overrides/`/`tags/` existed only as
+  untracked scratch files from an earlier, unlogged session (no `scan_chuo()` was ever added to
+  `inventory.py` — see the known-gap note in README § 6). Committed them, and added
+  `SUBJECT_RULES["chuo_math"/"chuo_science"/"chuo_social"]` to `segment.py` (chuo's 大問 box-digit sits
+  further right than kyoritsu's — `big_max_x`; `（１）`-style markers split across 3 spans/fonts —
+  `_merge_split_parens`) so 算数・理科・社会 get real per-問 crops like kyoritsu/shinagawa, instead of one
+  shared image per 大問. Also fixed `apply_overrides()` crashing on a list-shaped segments override
+  (chuo_2026_*_japanese, already present) — that bug silently blocked `segment.py` from reaching *any* exam.
+  国語 stays page-only (same as kyoritsu 国語, covered by the render fix above).
+- **Chuo 社会 answer ids fixed** (`b216ce5`): once per-問 crops existed, `pipeline/overrides/answers/chuo_2026_*_social.json`
+  turned out to number slots sequentially (問5 with 4 sub-parts イロハニ counted as 4 slots) instead of by the
+  real 問N marker key, so every question after a multi-part one resolved to the wrong crop. Merged each
+  multi-part question into one slot with a `parts` array (same convention as kyoritsu 国語's 記述 multi-parts).
+- **Chuo grade tags corrected** (`91ff5b5`): 社会/理科/国語 had `grade` set only at the 大問 level (mostly a
+  flat 6, since chuo's 大問 mix multiple eras/topics under one framing question, unlike kyoritsu's
+  one-topic-per-大問 structure); read every item and retagged per the same rubric as kyoritsu
+  (社会: 地理→5, 歴史/公民/時事→6; 理科: base curriculum 生物・地層→5, advanced/calculation 回路・波・気体計算・天体→6;
+  国語: only the standalone 漢字 item→5, reading comprehension stays 6). 算数 was already tagged correctly per item.
+- **Year filter fixed** (`8269fa4`): `home.js` only showed year chips when `bySchool.length > 12`, tuned around
+  kyoritsu/shinagawa's exam counts; sakaehigashi has 2 real years (2025/2026) but only 6 exams total, so its
+  years stayed mixed with no way to isolate one. Dropped the count gate (`years.length > 1` alone is enough —
+  chuo, single year, still correctly shows no filter).
+- Totals now: 61 school exams (kyoritsu 24, shinagawa 23, chuo 8, sakaehigashi 6) + min-san 114 sets. pytest 33,
+  vitest 12.
+
+Deferred: sakaehigashi per-問 segmentation (needs OCR/vision — no text layer to detect markers from), a
+reproducible `inventory.py` scan for chuo/sakaehigashi (currently hand-maintained, see README § 6), 国語 per-問
+crops for kyoritsu/chuo, 配点.
+
+## 15. P7 (2026-09-26) — email feature removed
+
+The parent-facing result/digest emails (`functions/report.py`, `_mail()`/`mail/` queue, the
+`firestore-send-email` extension, `weekly_digest`) described in §2.4/§4 above and built in P1/P3 are gone —
+the parent now reviews results and grades 記述/作図 items directly on the result page (`isAdmin` claim), same
+as before, just without an emailed copy.
+
+- `functions/main.py`: dropped `_mail()`, `PARENT_EMAIL`/`APP_URL` params, the `weekly_digest` scheduled
+  function, and `grade_attempt`'s post-grading report/mail block; `_grade()` now just returns the grading
+  result (no more `(result, exam_meta_for_report)` tuple). `refresh_topic_stats` (dashboard data) is untouched.
+- Deleted `functions/report.py` (was HTML-only, nothing else depended on it), `functions/env.example`,
+  `extensions/` (both `.env` files — the Gmail SMTP config), and the `"extensions"` block in `firebase.json`.
+- `firestore.rules`: dropped the `match /mail/{mailId}` rule and the `parentEmail` field guard on
+  `students/{uid}` updates (the field itself is left alone in existing docs — just unused now).
+- `scripts/dev_server.py` / `web/src/api.mock.js` / `web/src/views/result.js`: dropped the mock
+  `emailSubject`/`emailHtml`/`digestHtml` plumbing and the "メールプレビュー" preview link+iframe on the
+  result page. The never-wired `getTopicStats({digest: true})` option is gone too (no caller ever set it).
+- Tests: removed `report.py`-only tests (`test_report_html`, `test_report_scope_and_topics`) and the
+  digest assertions in `test_dev_server.py`/`views.test.js`; grading-logic tests are untouched.
+- **Manual step still needed** (not done by this change, since it acts on the live project, not the repo):
+  if the `firestore-send-email` extension instance is still installed on the Firebase project, removing it
+  from `firebase.json` does not uninstall it — run `firebase ext:uninstall firestore-send-email` (or remove
+  it in the Console) to actually stop it, or it'll keep billing/running orphaned.

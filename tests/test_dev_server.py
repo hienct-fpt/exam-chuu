@@ -13,7 +13,7 @@ if not (ROOT / "pipeline" / "out" / "bank" / "index.json").exists():
 import dev_server as ds  # noqa: E402
 
 
-def test_practice_grade_and_stats_digest():
+def test_practice_grade_and_stats():
     keys = ds.ALL_KEYS
     ids = [i for i in keys if i.startswith("kyoritsu_2026_2-1_math#")][:4] + \
           [i for i in keys if i.startswith("kyoritsu_2026_2-2_math#")][:3]
@@ -21,15 +21,13 @@ def test_practice_grade_and_stats_digest():
     out = ds.grade({"mode": "practice", "items": ids, "answers": answers, "topics": ["計算"], "attemptId": "p1"})
     r = out["result"]
     assert r["max"] == 7 and r["score"] == 5
-    assert "弱点練習" in out["emailSubject"]
     assert len({v["examId"] for v in r["perItem"].values()}) == 2
 
     attempts = [{"status": "graded", "examId": None, "mode": "practice", "submittedAt": "2026-09-20T09:00:00+00:00", "result": r}]
-    st = ds.stats({"attempts": attempts, "digest": True, "studentName": "共子"})
+    st = ds.stats({"attempts": attempts, "studentName": "共子"})
     assert st["attemptCount"] == 1
     assert st["subjects"]["math"]["attempts"] == 7
     assert any(t["subject"] == "math" for t in st["topics"].values())
-    assert "週間レポート" in st["digestHtml"] and "共子" in st["digestSubject"]
     # items answered wrong/blank come first in a practice suggestion for their topic
     hist = st["itemHistory"]
     assert all(k in keys for k in hist)

@@ -11,11 +11,6 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
-    // Outgoing mail queue consumed by the firestore-send-email extension.
-    match /mail/{mailId} {
-      allow read, write: if false;
-    }
-
     // Public catalog (metadata only, no answers).
     match /exams/{examId} {
       allow read: if signedIn();
@@ -34,7 +29,7 @@ service cloud.firestore {
     match /students/{uid} {
       allow read: if isOwner(uid) || isAdmin();
       allow create: if isOwner(uid);
-      allow update: if (isOwner(uid) && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'parentEmail'])) || isAdmin();
+      allow update: if (isOwner(uid) && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role'])) || isAdmin();
 
       match /attempts/{attemptId} {
         allow read: if isOwner(uid) || isAdmin();

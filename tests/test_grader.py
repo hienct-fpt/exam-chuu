@@ -8,7 +8,6 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "functions"))
 
 from grader import grade_submission  # noqa: E402
-from report import render_report  # noqa: E402
 
 OUT = ROOT / "pipeline" / "out"
 EXAM_ID = "kyoritsu_2026_2-1_math"
@@ -48,18 +47,6 @@ def test_partial_and_blank(exam_and_keys):
     assert r["score"] == 2 and r["answeredCount"] == 4
 
 
-def test_report_html(exam_and_keys):
-    exam, keys = exam_and_keys
-    answers = {sid: k["answer"] for sid, k in keys.items()}
-    answers["2-1"] = "80"
-    r = grade_submission(answers, keys, exam)
-    subject, html = render_report("共子", exam, r, "https://x.web.app/", "abc123")
-    assert "22/23" in subject and "共子" in subject
-    assert "https://x.web.app/q/kyoritsu_2026_2-1_math/q2-1.png" in html
-    assert "#/result/abc123" in html
-    assert html.count("<tr>") >= 23 + 6
-
-
 def test_subset_grade5_only(exam_and_keys):
     exam, keys = exam_and_keys
     g5 = [it["id"].split("#", 1)[1] for it in exam["items"] if it.get("grade") == 5]
@@ -93,12 +80,3 @@ def test_manual_grading_of_essays():
     assert r["score"] == 2
     r2 = grade_submission(answers, keys, exam, manual_grades={"1-1": True})
     assert r2["pendingCount"] == 0 and r2["score"] == 3 and r2["perItem"]["1-1"]["manual"]
-
-
-def test_report_scope_and_topics(exam_and_keys):
-    exam, keys = exam_and_keys
-    g5 = [it["id"].split("#", 1)[1] for it in exam["items"] if it.get("grade") == 5]
-    r = grade_submission({}, keys, exam, item_ids=g5)
-    subject, html = render_report("共子", exam, r, "https://x.web.app", "a1", grade_filter=5)
-    assert "[小5まで]" in subject
-    assert "分野別" in html and "割合・食塩水" in html

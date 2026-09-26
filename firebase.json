@@ -22,9 +22,6 @@
       "ignore": ["venv", ".venv", "__pycache__", "*.pyc", "tests"]
     }
   ],
-  "extensions": {
-    "firestore-send-email": "firebase/firestore-send-email@0.2.10"
-  },
   "emulators": {
     "auth": { "port": 9099 },
     "firestore": { "port": 8080 },
