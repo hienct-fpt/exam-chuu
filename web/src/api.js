@@ -4,12 +4,14 @@ const MOCK = import.meta.env.VITE_MOCK === '1';
 let indexCache = null;
 const bankCache = new Map();
 export async function loadIndex() {
-  if (!indexCache) indexCache = await (await fetch('/bank/index.json')).json();
+  // cache: 'no-cache' = always revalidate (ETag, 304): a copy cached under an older max-age would otherwise hide
+  // exams added by a newer deploy until it expired
+  if (!indexCache) indexCache = await (await fetch('/bank/index.json', { cache: 'no-cache' })).json();
   return indexCache;
 }
 export async function loadExam(examId) {
   if (!bankCache.has(examId)) {
-    const r = await fetch(`/bank/${examId}.json`);
+    const r = await fetch(`/bank/${examId}.json`, { cache: 'no-cache' });
     if (!r.ok) throw new Error(`exam not found: ${examId}`);
     bankCache.set(examId, await r.json());
   }
