@@ -1,0 +1,469 @@
+{
+  "exam_id": "kumiwake_2026_r3_math",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "33",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "12",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "4/15",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "5",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "12",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "10",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "6.28",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "(5) 分速",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "156",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "path": [
+        "6"
+      ],
+      "label": "(6)",
+      "unit": "円",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "20",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "path": [
+        "7"
+      ],
+      "label": "(7)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "11",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "path": [
+        "8"
+      ],
+      "label": "(8)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "21",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "3.14",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "㎠",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "7.85",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "%",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "7",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "%",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "20",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "5-1",
+      "big": 5,
+      "path": [
+        "1"
+      ],
+      "label": "(1) ア",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "480",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "5-2",
+      "big": 5,
+      "path": [
+        "2"
+      ],
+      "label": "(2) イ",
+      "unit": "分",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "10",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "6-1",
+      "big": 6,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "6",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "6-2",
+      "big": 6,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "60",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "7-1",
+      "big": 7,
+      "path": [
+        "1"
+      ],
+      "label": "(1) 毎分",
+      "unit": "㎤",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "900",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "7-2",
+      "big": 7,
+      "path": [
+        "2"
+      ],
+      "label": "(2) ウ",
+      "unit": "分",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "90",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "7-3",
+      "big": 7,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": [
+        "ア",
+        "イ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "30",
+        "50"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "cm",
+        "分"
+      ],
+      "variants": [],
+      "points": 8,
+      "note": "くんで正解"
+    },
+    {
+      "id": "8-1",
+      "big": 8,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": [
+        "ア",
+        "イ",
+        "ウ",
+        "エ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "3",
+        "3",
+        "3",
+        "27"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "通り",
+        "通り",
+        "通り",
+        "通り"
+      ],
+      "variants": [],
+      "points": 8,
+      "note": "くんで正解"
+    },
+    {
+      "id": "8-2",
+      "big": 8,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": [
+        "オ",
+        "カ",
+        "キ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "12",
+        "81",
+        "93"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "通り",
+        "通り",
+        "通り"
+      ],
+      "variants": [],
+      "points": 8,
+      "note": "くんで正解"
+    },
+    {
+      "id": "8-3",
+      "big": 8,
+      "path": [
+        "3"
+      ],
+      "label": "(3) ク",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "945",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    }
+  ]
+}

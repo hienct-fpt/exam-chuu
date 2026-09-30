@@ -14,6 +14,7 @@ Manual fixes: pipeline/overrides/segments/{exam_id}.json  (replaces the node wit
 """
 from __future__ import annotations
 
+import dataclasses
 import re
 import unicodedata
 
@@ -30,13 +31,14 @@ PAD_TOP = 1.5
 PAD_BOTTOM = 4
 
 RE_FOOTER = re.compile(r"^[−\-–—－]\s*(?:社|理|算|国)?\s*\d+\s*[−\-–—－]$")   # − 3 −, － 理4 －, － 社8 －
+RE_KUMI_FOOTER = re.compile(r"^\d{4}－組.－\d+－(?:社|理|算|国)－\d+$")           # kumiwake: 2026－組①－５－算－2
 NOISE_TEXT = ("（問題はこれで終わりです）", "【問題は次のページにもあります】", "【問題は次のページに続きます】",
-              "【計算用紙】", "【問題はこれで終わりです】")
+              "【計算用紙】", "【問題はこれで終わりです】", "問題はこれで終わりです。")
 
 
 def _is_footer(t: str) -> bool:
     """Page number decorated with dashes/symbols: '− 4 −', '－ 理4 －', '━ 00 ━4' (2018 shinagawa: hidden digits)."""
-    if RE_FOOTER.match(t):
+    if RE_FOOTER.match(t) or RE_KUMI_FOOTER.match(t):
         return True
     core = "".join(c for c in t if not c.isspace() and unicodedata.category(c)[0] not in "PS")
     return core != t.replace(" ", "").replace("\u3000", "") and bool(re.fullmatch(r"(?:社|理|算|国)?\d{1,4}", core))
@@ -99,6 +101,14 @@ SUBJECT_RULES = {
     "chuo_math":    {"ranks": {2}, "top": {2}, "big_max_x": 80, "merge_paren_digit": True},
     "chuo_science": {"ranks": {1}, "top": {1}, "big_max_x": 80},   # 〔問１〕 leaf questions, no sub-parts
     "chuo_social":  {"ranks": {1}, "top": {1}, "roman_big": True}, # 大問 = boxed Ⅰ/Ⅱ; 問１．leaf questions
+    # kumiwake (四谷大塚): 算数's ⑴⑵ are glyphs of an Fx-* font whose text maps to unrelated kanji -> remap them.
+    # Markers sit at x 57/68/79; ①… mid-text ("①の部分の…", experiment steps) are not markers -> bare ① only.
+    # Ruby sits 5.5pt above a line (pad_top). A figure beside several ⑴⑵ -> the 大問 is shown whole.
+    "kumiwake_math":    {"ranks": {2, 3}, "top": {2}, "sub_max_x": 85, "bare_circled": True, "pad_top": 6,
+                         "whole_if_figure_spans": True,
+                         "glyph_markers": dict(zip("唄欝蔚鰻姥厩浦瓜", "⑴⑵⑶⑷⑸⑹⑺⑻"))},
+    "kumiwake_science": {"ranks": {1, 2}, "top": {1, 2}, "sub_max_x": 85, "pad_top": 6, "whole_if_figure_spans": True},   # 問１ then (1); some 大問 start at (1)
+    "kumiwake_social":  {"ranks": {1}, "top": {1}, "sub_max_x": 85, "pad_top": 6, "whole_if_figure_spans": True},         # 問１ leaf questions
 }
 
 
@@ -146,12 +156,16 @@ def find_markers(doc: fitz.Document, subject: str = "math", page_range: tuple[in
     page_range (inclusive) restricts to a subject's pages inside a combined PDF (its first page is content)."""
     rules = SUBJECT_RULES.get(subject, SUBJECT_RULES["science"])
     big_max_x = rules.get("big_max_x", BIG_MAX_X)
+    sub_max_x = rules.get("sub_max_x", SUB_MAX_X)
+    glyphs = rules.get("glyph_markers") or {}
     first, last = page_range if page_range else (1, len(doc) - 1)
     spans = list(iter_spans(doc))
     if rules.get("merge_paren_digit"):
         spans = _merge_split_parens(spans)
     raw = []
     for s in spans:
+        if glyphs and s.font.startswith("Fx") and s.text.strip() in glyphs:
+            s = dataclasses.replace(s, text=glyphs[s.text.strip()])
         if s.page < first or s.page > last or s.y0 < TOP_MARGIN:
             continue
         if s.x0 < big_max_x and (n := is_big_digit(s.text)) is not None and _is_big_marker(s):
@@ -161,8 +175,10 @@ def find_markers(doc: fitz.Document, subject: str = "math", page_range: tuple[in
             n = ROMAN_BIG.index(s.text.strip()) + 1
             raw.append({"page": s.page, "y": s.y0, "rank": 0, "key": str(n), "label": s.text.strip(), "no": n})
             continue
-        if s.x0 < SUB_MAX_X:
+        if s.x0 < sub_max_x:
             lab = parse_label(s.text)
+            if lab and lab.rank == 3 and rules.get("bare_circled") and len(s.text.strip()) > 1:
+                continue
             if lab and lab.kind == "ROMAN" and rules.get("roman"):
                 raw.append({"page": s.page, "y": s.y0, "rank": 1, "key": lab.text, "label": lab.text})
                 continue
@@ -175,6 +191,9 @@ def find_markers(doc: fitz.Document, subject: str = "math", page_range: tuple[in
                     if sub and sub.rank == 2:
                         raw.append({"page": s.page, "y": s.y0 + 0.01, "rank": 2, "key": sub.key, "label": sub.text})
     raw.sort(key=lambda m: (m["page"], m["y"]))
+    if "pad_top" in rules:           # ruby over the marker's first line belongs to that question
+        for m in raw:
+            m["pad"] = rules["pad_top"]
     # structural filter: a marker is valid only if its would-be parent is a 大問 (and rank allowed at top)
     # or a marker of exactly one rank higher (no skipping levels) -> drops list bullets in passages
     out = []
@@ -212,8 +231,8 @@ def _regions(doc: fitz.Document, start: dict, end: dict | None, last_page: int) 
     ey = end["y"] if end else None
     regions = []
     for p in range(sp, ep + 1):
-        y0 = sy - PAD_TOP if p == sp else TOP_MARGIN
-        limit = ey - PAD_TOP if (p == ep and ey is not None) else None
+        y0 = sy - start.get("pad", PAD_TOP) if p == sp else TOP_MARGIN
+        limit = ey - end.get("pad", PAD_TOP) if (p == ep and ey is not None) else None
         if limit is not None and limit - y0 < 8 and p == ep:
             continue
         y1 = page_content_bottom(doc[p], y0, limit)
@@ -264,12 +283,33 @@ def build_tree(doc: fitz.Document, markers: list[dict], last_page: int) -> list[
     return bigs
 
 
+def _figure_spans_subs(doc: fitz.Document, big: dict) -> bool:
+    """A drawing or image crossing the top edge of a sub question at any depth (a figure beside ⑴⑵)."""
+    def nodes(n):
+        for sub in n["subs"]:
+            yield sub
+            yield from nodes(sub)
+    for sub in nodes(big):
+        for r in sub["regions"][:1]:
+            page, y = doc[r["page"]], r["y0"]
+            rects = [fitz.Rect(d["rect"]) for d in page.get_drawings()] + [fitz.Rect(i["bbox"]) for i in page.get_image_info()]
+            if any(q.y0 < y - 2 and q.y1 > y + 2 and q.height < 0.5 * page.rect.height and q.width < 0.9 * page.rect.width
+                   for q in rects):
+                return True
+    return False
+
+
 def segment(doc: fitz.Document, subject: str = "math", page_range: tuple[int, int] | None = None) -> list[dict]:
     markers = find_markers(doc, subject, page_range)
     last_page = page_range[1] if page_range else len(doc) - 1
     while last_page > 0 and is_blank_page(doc[last_page]):
         last_page -= 1
-    return build_tree(doc, markers, last_page)
+    bigs = build_tree(doc, markers, last_page)
+    if SUBJECT_RULES.get(subject, {}).get("whole_if_figure_spans"):
+        for b in bigs:              # build.py then shows the whole 大問 image once, items below it
+            if _figure_spans_subs(doc, b):
+                b["whole"] = True
+    return bigs
 
 
 def apply_overrides(exam_id: str, bigs: list[dict]) -> list[dict]:
@@ -333,7 +373,7 @@ def main() -> None:
             continue
         if ex["subject"] == "japanese":
             import japanese
-            bigs = apply_overrides(eid, japanese.segment(doc))
+            bigs = apply_overrides(eid, japanese.segment_tiers(doc) if ex["school"] == "kumiwake" else japanese.segment(doc))
             dump_json(OUT / "segments" / f"{eid}.json", {"exam_id": eid, "bigs": bigs})
             print(f"[segment] {eid}: " + " ".join(f"{b['no']}[{len(b['regions'])}p]" for b in bigs))
             continue

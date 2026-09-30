@@ -78,7 +78,7 @@ def main(only: set[str] | None = None, verbose: bool = False) -> None:
     for eid, ex in exams.items():
         if only and eid not in only:
             continue
-        if ex["school"] == "shinagawa":
+        if ex["school"] in ("shinagawa", "kumiwake"):   # no readable 模範解答: slots from the question tree
             import answer_key_tree
             answer_key_tree.process(eid, verbose)
             continue

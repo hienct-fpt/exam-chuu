@@ -690,6 +690,326 @@
       ]
     }
   },
+  "kumiwake_2026_r1_japanese": {
+    "id": "kumiwake_2026_r1_japanese",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r1",
+    "session_label": "第1回 (3月)",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 50,
+    "files": {
+      "question": "kumiwake_past/2026年3月 公開組分けテスト５年　第１回国語問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年3月 公開組分けテスト５年　第１回国語回答.pdf",
+      "result": "kumiwake_past/2026年3月公開組分けテスト５年　第１回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r1_math": {
+    "id": "kumiwake_2026_r1_math",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r1",
+    "session_label": "第1回 (3月)",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "kumiwake_past/2026年3月 公開組分けテスト５年　第１回算数問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年3月 公開組分けテスト５年　第１回算数回答.pdf",
+      "result": "kumiwake_past/2026年3月公開組分けテスト５年　第１回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r1_science": {
+    "id": "kumiwake_2026_r1_science",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r1",
+    "session_label": "第1回 (3月)",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 35,
+    "files": {
+      "question": "kumiwake_past/2026年3月 公開組分けテスト５年　第１回理科問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年3月 公開組分けテスト５年　第１回理科回答.pdf",
+      "result": "kumiwake_past/2026年3月公開組分けテスト５年　第１回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r1_social": {
+    "id": "kumiwake_2026_r1_social",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r1",
+    "session_label": "第1回 (3月)",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 35,
+    "files": {
+      "question": "kumiwake_past/2026年3月 公開組分けテスト５年　第１回社会問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年3月 公開組分けテスト５年　第１回社会回答.pdf",
+      "result": "kumiwake_past/2026年3月公開組分けテスト５年　第１回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r2_japanese": {
+    "id": "kumiwake_2026_r2_japanese",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r2",
+    "session_label": "第2回 (5月)",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 50,
+    "files": {
+      "question": "kumiwake_past/2026年5月 公開組分けテスト５年　第２回国語問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年5月 公開組分けテスト５年　第２回国語回答.pdf",
+      "result": "kumiwake_past/2026年5月公開組分けテスト５年　第２回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r2_math": {
+    "id": "kumiwake_2026_r2_math",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r2",
+    "session_label": "第2回 (5月)",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "kumiwake_past/2026年5月 公開組分けテスト５年　第２回算数問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年5月 公開組分けテスト５年　第２回算数回答.pdf",
+      "result": "kumiwake_past/2026年5月公開組分けテスト５年　第２回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r2_science": {
+    "id": "kumiwake_2026_r2_science",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r2",
+    "session_label": "第2回 (5月)",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 35,
+    "files": {
+      "question": "kumiwake_past/2026年5月 公開組分けテスト５年　第２回理科問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年5月 公開組分けテスト５年　第２回理科回答.pdf",
+      "result": "kumiwake_past/2026年5月公開組分けテスト５年　第２回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r2_social": {
+    "id": "kumiwake_2026_r2_social",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r2",
+    "session_label": "第2回 (5月)",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 35,
+    "files": {
+      "question": "kumiwake_past/2026年5月 公開組分けテスト５年　第２回社会問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年5月 公開組分けテスト５年　第２回社会回答.pdf",
+      "result": "kumiwake_past/2026年5月公開組分けテスト５年　第２回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r3_japanese": {
+    "id": "kumiwake_2026_r3_japanese",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r3",
+    "session_label": "第3回 (6月)",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 50,
+    "files": {
+      "question": "kumiwake_past/2026年6月 公開組分けテスト５年　第３回国語問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年6月 公開組分けテスト５年　第３回国語回答.pdf",
+      "result": "kumiwake_past/2026年6月公開組分けテスト５年　第３回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r3_math": {
+    "id": "kumiwake_2026_r3_math",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r3",
+    "session_label": "第3回 (6月)",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "kumiwake_past/2026年6月 公開組分けテスト５年　第３回算数問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年6月 公開組分けテスト５年　第３回算数回答.pdf",
+      "result": "kumiwake_past/2026年6月公開組分けテスト５年　第３回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r3_science": {
+    "id": "kumiwake_2026_r3_science",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r3",
+    "session_label": "第3回 (6月)",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 35,
+    "files": {
+      "question": "kumiwake_past/2026年6月 公開組分けテスト５年　第３回理科問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年6月 公開組分けテスト５年　第３回理科回答.pdf",
+      "result": "kumiwake_past/2026年6月公開組分けテスト５年　第３回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r3_social": {
+    "id": "kumiwake_2026_r3_social",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r3",
+    "session_label": "第3回 (6月)",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 35,
+    "files": {
+      "question": "kumiwake_past/2026年6月 公開組分けテスト５年　第３回社会問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年6月 公開組分けテスト５年　第３回社会回答.pdf",
+      "result": "kumiwake_past/2026年6月公開組分けテスト５年　第３回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r4_japanese": {
+    "id": "kumiwake_2026_r4_japanese",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r4",
+    "session_label": "第4回 (7月)",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 50,
+    "files": {
+      "question": "kumiwake_past/2026年7月 公開組分けテスト５年　第４回国語問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年7月 公開組分けテスト５年　第４回国語回答.pdf",
+      "result": "kumiwake_past/2026年7月公開組分けテスト５年　第４回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r4_math": {
+    "id": "kumiwake_2026_r4_math",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r4",
+    "session_label": "第4回 (7月)",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "kumiwake_past/2026年7月 公開組分けテスト５年　第４回算数問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年7月 公開組分けテスト５年　第４回算数回答.pdf",
+      "result": "kumiwake_past/2026年7月公開組分けテスト５年　第４回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r4_science": {
+    "id": "kumiwake_2026_r4_science",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r4",
+    "session_label": "第4回 (7月)",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 35,
+    "files": {
+      "question": "kumiwake_past/2026年7月 公開組分けテスト５年　第４回理科問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年7月 公開組分けテスト５年　第４回理科回答.pdf",
+      "result": "kumiwake_past/2026年7月公開組分けテスト５年　第４回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r4_social": {
+    "id": "kumiwake_2026_r4_social",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r4",
+    "session_label": "第4回 (7月)",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 35,
+    "files": {
+      "question": "kumiwake_past/2026年7月 公開組分けテスト５年　第４回社会問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年7月 公開組分けテスト５年　第４回社会回答.pdf",
+      "result": "kumiwake_past/2026年7月公開組分けテスト５年　第４回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r5_japanese": {
+    "id": "kumiwake_2026_r5_japanese",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r5",
+    "session_label": "第5回 (8月)",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 50,
+    "files": {
+      "question": "kumiwake_past/2026年8月 公開組分けテスト５年　第５回国語問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年8月 公開組分けテスト５年　第５回国語回答.pdf",
+      "result": "kumiwake_past/2026年8月公開組分けテスト５年　第５回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r5_math": {
+    "id": "kumiwake_2026_r5_math",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r5",
+    "session_label": "第5回 (8月)",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "question": "kumiwake_past/2026年8月 公開組分けテスト５年　第５回算数問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年8月 公開組分けテスト５年　第５回算数回答.pdf",
+      "result": "kumiwake_past/2026年8月公開組分けテスト５年　第５回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r5_science": {
+    "id": "kumiwake_2026_r5_science",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r5",
+    "session_label": "第5回 (8月)",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 35,
+    "files": {
+      "question": "kumiwake_past/2026年8月 公開組分けテスト５年　第５回理科問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年8月 公開組分けテスト５年　第５回理科回答.pdf",
+      "result": "kumiwake_past/2026年8月公開組分けテスト５年　第５回結果.pdf"
+    }
+  },
+  "kumiwake_2026_r5_social": {
+    "id": "kumiwake_2026_r5_social",
+    "school": "kumiwake",
+    "school_name": "四谷大塚 公開組分けテスト",
+    "year": 2026,
+    "session": "r5",
+    "session_label": "第5回 (8月)",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 35,
+    "files": {
+      "question": "kumiwake_past/2026年8月 公開組分けテスト５年　第５回社会問題.pdf",
+      "scored_sheet": "kumiwake_past/2026年8月 公開組分けテスト５年　第５回社会回答.pdf",
+      "result": "kumiwake_past/2026年8月公開組分けテスト５年　第５回結果.pdf"
+    }
+  },
   "kyoritsu_2024_2-1_japanese": {
     "id": "kyoritsu_2024_2-1_japanese",
     "school": "kyoritsu",

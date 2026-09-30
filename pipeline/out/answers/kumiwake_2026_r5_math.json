@@ -1,0 +1,466 @@
+{
+  "exam_id": "kumiwake_2026_r5_math",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "4/15",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "3・5・7",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8,
+      "note": "①(2)はくんで不順可"
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "5/6",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "ratio",
+      "answer": "10:7",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "%",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "14",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "本",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "9",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "(4)",
+      "unit": "㎠",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "75",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "(5)",
+      "unit": "秒",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "6",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "path": [
+        "6"
+      ],
+      "label": "(6)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "12",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "path": [
+        "7"
+      ],
+      "label": "(7)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "fraction",
+      "answer": "59/9",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "path": [
+        "8"
+      ],
+      "label": "(8)",
+      "unit": "mL",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "450",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "㎤",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "900",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "cm",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "7",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "(1) 分速",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "54",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "(2) 分速",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "216",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": [
+        "ア",
+        "イ"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "14",
+        "324"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "分",
+        "m"
+      ],
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "5-1",
+      "big": 5,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "6",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "5-2",
+      "big": 5,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "通り",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "16",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "6-1",
+      "big": 6,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "22",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "6-2",
+      "big": 6,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": [
+        "A",
+        "B",
+        "C"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "273",
+        "270",
+        "274"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "7-1",
+      "big": 7,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "㎠",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "41.12",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "7-2",
+      "big": 7,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "㎠",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "266.12",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "8-1",
+      "big": 8,
+      "path": [
+        "1"
+      ],
+      "label": "(1)",
+      "unit": "分後",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "44",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "8-2",
+      "big": 8,
+      "path": [
+        "2"
+      ],
+      "label": "(2)",
+      "unit": "",
+      "parts": [
+        "分",
+        "秒後"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "9",
+        "20"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "分",
+        "秒後"
+      ],
+      "variants": [],
+      "points": 8
+    },
+    {
+      "id": "8-3",
+      "big": 8,
+      "path": [
+        "3"
+      ],
+      "label": "(3)",
+      "unit": "",
+      "parts": [
+        "分",
+        "秒後"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "18",
+        "40"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "分",
+        "秒後"
+      ],
+      "variants": [],
+      "points": 8
+    }
+  ]
+}

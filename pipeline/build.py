@@ -50,7 +50,7 @@ def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
         slots = [s for s in ans["slots"] if s["big"] == bno]
         item_ids = []
         big_img = f"q/{eid}/q{bno}.png"
-        big_stem = f"q/{eid}/q{bno}_stem.png" if (b.get("stem") and b.get("subs")) else None
+        big_stem = f"q/{eid}/q{bno}_stem.png" if (b.get("stem") and b.get("subs") and not b.get("whole")) else None
         for s in slots:
             path = s.get("path") or s["id"].split("-")[1:]
             node, node_path, ancestors, exact = resolve(b, path)
@@ -65,6 +65,8 @@ def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
                     stems.append(f"q/{eid}/{node_name(bno, a_path(a, b, bno))}_stem.png")
             if not node_path and big_stem and node.get("subs"):
                 stems = []  # whole 大問 image already contains the stem
+            if b.get("whole"):   # a figure spans several sub questions (segment.py): one whole-大問 image
+                image, stems, node_path = big_img, [], []
             shared = not exact or not node_path
             iid = f"{eid}#{s['id']}"
             tag = {**bt, **item_tags.get(s["id"], {})}

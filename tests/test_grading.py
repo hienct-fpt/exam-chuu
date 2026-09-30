@@ -105,3 +105,19 @@ def test_all_bank_answers_grade_themselves():
             if not grade(k, v).correct:
                 bad.append((iid, v))
     assert not bad, bad
+
+
+def test_grade_maru_batsu_variants():
+    maru, batsu = {"answer_type": "choice", "answer": "○"}, {"answer_type": "choice", "answer": "×"}
+    assert grade(maru, "〇").correct and grade(maru, "◯").correct
+    assert grade(batsu, "✕").correct and not grade(batsu, "〇").correct
+    assert not grade({"answer_type": "text", "answer": "〇〇県"}, "○○県").correct   # only single-symbol answers
+
+
+def test_grade_circled_kana_and_multi_variants():
+    assert grade({"answer_type": "choice", "answer": "㋑"}, "い").correct          # ○い printed, い typed
+    assert grade({"answer_type": "set", "answer": "㋓・㋕"}, "か・え").correct
+    assert not grade({"answer_type": "choice", "answer": "㋑"}, "う").correct
+    key = {"answer_type": "multi", "answer": ["㋑", "㋒", "東京都"], "variants": [["㋒", "㋑", "東京都"]]}
+    assert grade(key, ["う", "い", "東京都"]).correct and grade(key, ["い", "う", "東京都"]).correct
+    assert not grade(key, ["い", "い", "東京都"]).correct

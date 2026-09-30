@@ -1,0 +1,526 @@
+{
+  "slots": {
+    "1": {
+      "delete": true
+    },
+    "2": {
+      "delete": true
+    },
+    "3": {
+      "delete": true
+    },
+    "4": {
+      "delete": true
+    },
+    "1-1": {
+      "big": 1,
+      "label": "1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "輸入",
+      "variants": [],
+      "points": 1
+    },
+    "1-2": {
+      "big": 1,
+      "label": "2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "墓地",
+      "variants": [],
+      "points": 1
+    },
+    "1-3": {
+      "big": 1,
+      "label": "3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "費やし",
+      "variants": [],
+      "points": 1
+    },
+    "1-4": {
+      "big": 1,
+      "label": "4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "複雑",
+      "variants": [],
+      "points": 1
+    },
+    "1-5": {
+      "big": 1,
+      "label": "5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "消毒",
+      "variants": [],
+      "points": 1
+    },
+    "1-6": {
+      "big": 1,
+      "label": "6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "燃やす",
+      "variants": [],
+      "points": 1
+    },
+    "1-7": {
+      "big": 1,
+      "label": "7",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "評価",
+      "variants": [],
+      "points": 1
+    },
+    "1-8": {
+      "big": 1,
+      "label": "8",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "精進",
+      "variants": [],
+      "points": 1
+    },
+    "1-9": {
+      "big": 1,
+      "label": "9",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "功績",
+      "variants": [],
+      "points": 1
+    },
+    "1-10": {
+      "big": 1,
+      "label": "10",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "貸借",
+      "variants": [],
+      "points": 1
+    },
+    "2-1-1": {
+      "big": 2,
+      "label": "問一 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "2-1-2": {
+      "big": 2,
+      "label": "問一 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "2-1-3": {
+      "big": 2,
+      "label": "問一 3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 2
+    },
+    "2-1-4": {
+      "big": 2,
+      "label": "問一 4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "2-2-1": {
+      "big": 2,
+      "label": "問二 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 1
+    },
+    "2-2-2": {
+      "big": 2,
+      "label": "問二 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 1
+    },
+    "2-3-1": {
+      "big": 2,
+      "label": "問三 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "しらは",
+      "variants": [],
+      "points": 1
+    },
+    "2-3-2": {
+      "big": 2,
+      "label": "問三 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "たま",
+      "variants": [],
+      "points": 1
+    },
+    "2-4-1": {
+      "big": 2,
+      "label": "問四 1①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "指示",
+      "variants": [],
+      "points": 1
+    },
+    "2-4-2": {
+      "big": 2,
+      "label": "問四 1②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "支持",
+      "variants": [],
+      "points": 1
+    },
+    "2-4-3": {
+      "big": 2,
+      "label": "問四 2①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "努",
+      "variants": [],
+      "points": 1
+    },
+    "2-4-4": {
+      "big": 2,
+      "label": "問四 2②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "勤",
+      "variants": [],
+      "points": 1
+    },
+    "2-4-5": {
+      "big": 2,
+      "label": "問四 2③",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "務",
+      "variants": [],
+      "points": 1
+    },
+    "2-5-1": {
+      "big": 2,
+      "label": "問五 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 1
+    },
+    "2-5-2": {
+      "big": 2,
+      "label": "問五 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 1
+    },
+    "2-5-3": {
+      "big": 2,
+      "label": "問五 3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 1
+    },
+    "2-5-4": {
+      "big": 2,
+      "label": "問五 4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 1
+    },
+    "2-6-1": {
+      "big": 2,
+      "label": "問六 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 1
+    },
+    "2-6-2": {
+      "big": 2,
+      "label": "問六 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 1
+    },
+    "3-1": {
+      "big": 3,
+      "label": "問一",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 5
+    },
+    "3-2": {
+      "big": 3,
+      "label": "問二",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 3
+    },
+    "3-3": {
+      "big": 3,
+      "label": "問三",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 6
+    },
+    "3-4": {
+      "big": 3,
+      "label": "問四",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "結人のミニバスの応援に行ったら迷惑だろうから、せめて結人のタオルやキーホルダーを作って励ましたいという思い。",
+      "variants": [],
+      "points": 12,
+      "note": "解説に部分点の基準記載なし（配点12点）。解説：107〜109行め「本当は、結人のミニバスの応援に行きたかったんだ…せめてこういうの作って励まそうかと思ってさ」から。"
+    },
+    "3-5": {
+      "big": 3,
+      "label": "問五",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "ア・エ",
+      "variants": [],
+      "points": 6,
+      "note": "あてはまらないものを二つ（くんで不順可）"
+    },
+    "3-6": {
+      "big": 3,
+      "label": "問六",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 6
+    },
+    "3-7-1": {
+      "big": 3,
+      "label": "問七 A",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 4
+    },
+    "3-7-2": {
+      "big": 3,
+      "label": "問七 B",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 4
+    },
+    "3-8": {
+      "big": 3,
+      "label": "問八",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 4
+    },
+    "3-9-1": {
+      "big": 3,
+      "label": "問九 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 4
+    },
+    "3-9-2": {
+      "big": 3,
+      "label": "問九 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 4
+    },
+    "3-9-3": {
+      "big": 3,
+      "label": "問九 3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 4
+    },
+    "4-1": {
+      "big": 4,
+      "label": "問一",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 6
+    },
+    "4-2-1": {
+      "big": 4,
+      "label": "問二 1A",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "金鉱脈候補地",
+      "variants": [],
+      "points": 5
+    },
+    "4-2-2": {
+      "big": 4,
+      "label": "問二 1B",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "放射化分析法",
+      "variants": [],
+      "points": 5
+    },
+    "4-2-3": {
+      "big": 4,
+      "label": "問二 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "鉱脈に～く植物",
+      "variants": [
+        "鉱脈に〜く植物",
+        "鉱脈に・く植物",
+        "鉱脈に…く植物",
+        "鉱脈にく植物",
+        "鉱脈に近づくにつれて金の含有量が際立って上がっていく植物"
+      ],
+      "points": 5,
+      "note": "設問は二十八字の言葉の「はじめと終わりの三字」をぬき出す（くんで）。解答は「鉱脈に～く植物」。全文は解説より。1つの入力欄のため区切り表記の揺れを variants で吸収"
+    },
+    "4-3": {
+      "big": 4,
+      "label": "問三",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "放射化分析法による金の検出感度が極めて高いということ。",
+      "variants": [],
+      "points": 10,
+      "note": "三十字以内。解説に部分点の基準記載なし（配点10点）。58〜65行め、放射化分析法による金の検出感度が極めて高いことを言うための例。"
+    },
+    "4-4-1": {
+      "big": 4,
+      "label": "問四 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 6
+    },
+    "4-4-2": {
+      "big": 4,
+      "label": "問四 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 6
+    },
+    "4-5": {
+      "big": 4,
+      "label": "問五",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 6
+    },
+    "4-6": {
+      "big": 4,
+      "label": "問六",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 6
+    }
+  }
+}

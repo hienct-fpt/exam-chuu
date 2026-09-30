@@ -1,0 +1,312 @@
+{
+  "slots": {
+    "1-1": {
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "24",
+      "variants": [],
+      "points": 8
+    },
+    "1-2": {
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "fraction",
+      "answer": "4/21",
+      "variants": [],
+      "points": 8
+    },
+    "1-3": {
+      "big": 1,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "fraction",
+      "answer": "1/6",
+      "variants": [],
+      "points": 8
+    },
+    "2-1": {
+      "big": 2,
+      "label": "(1)",
+      "unit": "個",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "4",
+      "variants": [],
+      "points": 8
+    },
+    "2-2": {
+      "big": 2,
+      "label": "(2)",
+      "unit": "割",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "7",
+      "variants": [],
+      "points": 8
+    },
+    "2-3": {
+      "big": 2,
+      "label": "(3)",
+      "unit": "㎠",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "75",
+      "variants": [],
+      "points": 8
+    },
+    "2-4": {
+      "big": 2,
+      "label": "(4)",
+      "unit": "脚",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "8",
+      "variants": [],
+      "points": 8
+    },
+    "2-5": {
+      "big": 2,
+      "label": "(5)",
+      "unit": "人",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "360",
+      "variants": [],
+      "points": 8
+    },
+    "2-6": {
+      "big": 2,
+      "label": "(6)",
+      "unit": "㎠",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "41",
+      "variants": [],
+      "points": 8
+    },
+    "2-7": {
+      "big": 2,
+      "label": "(7)",
+      "unit": "回",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "5",
+      "variants": [],
+      "points": 8
+    },
+    "2-8": {
+      "big": 2,
+      "label": "(8)",
+      "unit": "円",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "850",
+      "variants": [],
+      "points": 8
+    },
+    "3-1": {
+      "big": 3,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "13",
+      "variants": [],
+      "points": 8
+    },
+    "3-2": {
+      "big": 3,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "103",
+      "variants": [],
+      "points": 8
+    },
+    "4-1": {
+      "big": 4,
+      "label": "(1)",
+      "unit": "度",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "18",
+      "variants": [],
+      "points": 8
+    },
+    "4-2": {
+      "big": 4,
+      "label": "(2)",
+      "unit": "度",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "42",
+      "variants": [],
+      "points": 8
+    },
+    "5-1": {
+      "big": 5,
+      "label": "(1)",
+      "unit": "",
+      "parts": [
+        "__年生の方が",
+        "__人多い"
+      ],
+      "part_units": [
+        "年生",
+        "人"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "5",
+        "4"
+      ],
+      "variants": [],
+      "points": 8,
+      "note": "5・4（くんで）: 5年生の方が4人多い"
+    },
+    "5-2": {
+      "big": 5,
+      "label": "(2)",
+      "unit": "本",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "82",
+      "variants": [],
+      "points": 8
+    },
+    "6-1": {
+      "big": 6,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "120",
+      "variants": [],
+      "points": 8
+    },
+    "6-2": {
+      "big": 6,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "5040",
+      "variants": [],
+      "points": 8
+    },
+    "6-3": {
+      "big": 6,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "804",
+      "variants": [],
+      "points": 8
+    },
+    "7-1": {
+      "big": 7,
+      "label": "(1)",
+      "unit": "倍",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "fraction",
+      "answer": "2/9",
+      "variants": [],
+      "points": 8
+    },
+    "7-2": {
+      "big": 7,
+      "label": "(2)",
+      "unit": "",
+      "parts": [
+        "A",
+        "B",
+        "C"
+      ],
+      "part_units": [
+        "L",
+        "L",
+        "L"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "36",
+        "18",
+        "11"
+      ],
+      "variants": [],
+      "points": 8,
+      "note": "36・18・11（くんで）"
+    },
+    "8-1": {
+      "big": 8,
+      "label": "(1)",
+      "unit": "㎠",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "25.12",
+      "variants": [],
+      "points": 8
+    },
+    "8-2-1": {
+      "big": 8,
+      "label": "(2)①",
+      "unit": "",
+      "parts": [
+        "右に",
+        "上に"
+      ],
+      "part_units": [
+        "cm",
+        "cm"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "8",
+        "7"
+      ],
+      "variants": [],
+      "points": 8,
+      "note": "8・7（くんで）"
+    },
+    "8-2-2": {
+      "big": 8,
+      "label": "(2)②",
+      "unit": "㎠",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "125.6",
+      "variants": [],
+      "points": 8
+    }
+  }
+}

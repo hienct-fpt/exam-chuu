@@ -1,0 +1,686 @@
+{
+  "exam_id": "kumiwake_2026_r4_science",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "問1 (ことば)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "受粉",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "あ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2,
+      "note": "解答は丸囲みひらがな記号(Unicodeに無いので平仮名で表記)。"
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "60",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-1",
+      "big": 2,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "問2 (2つ)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "C・D",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3,
+      "note": "解答「C・D(くんで不順可)」→ set。"
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "問3 (すべて)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "C・D",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3,
+      "note": "解答「C, D(くんで不順可)」→ set。"
+    },
+    {
+      "id": "2-4-1",
+      "big": 2,
+      "path": [
+        "4",
+        "1"
+      ],
+      "label": "問4(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "2-4-2",
+      "big": 2,
+      "path": [
+        "4",
+        "2"
+      ],
+      "label": "問4(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": [
+        "気体",
+        "液の色"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "B",
+        "ウ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": [
+        "○あ",
+        "○う"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "D",
+        "B"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "3-1",
+      "big": 3,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "法",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "水上置換",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": [
+        "固体X",
+        "液体①"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "オ",
+        "カ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "問3 (Pの値)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "1440",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": [
+        "固体Y",
+        "液体②"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ウ",
+        "キ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "path": [
+        "6"
+      ],
+      "label": "問6 (R)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "12.8",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "3-7-1",
+      "big": 3,
+      "path": [
+        "7",
+        "1"
+      ],
+      "label": "問7 気体",
+      "unit": "㎤",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "2880",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "3-7-2",
+      "big": 3,
+      "path": [
+        "7",
+        "2"
+      ],
+      "label": "問7 固体",
+      "unit": "g",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "16.2",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "4-1-1",
+      "big": 4,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "問1(1)",
+      "unit": "",
+      "parts": [
+        "X",
+        "Y"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "デンプン",
+        "ヨウ素液"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "4-1-2",
+      "big": 4,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "問1(2)",
+      "unit": "",
+      "parts": [
+        "B",
+        "C"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ア",
+        "エ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "4-1-3",
+      "big": 4,
+      "path": [
+        "1",
+        "3"
+      ],
+      "label": "問1(3)",
+      "unit": "",
+      "parts": [
+        "①",
+        "②"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "イ",
+        "ウ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "問2 (ことば)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "気孔",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "4-3-1",
+      "big": 4,
+      "path": [
+        "3",
+        "1"
+      ],
+      "label": "問3(1)",
+      "unit": "mg",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "5",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "4-3-2",
+      "big": 4,
+      "path": [
+        "3",
+        "2"
+      ],
+      "label": "問3(2)",
+      "unit": "mg",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "15",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "4-3-3",
+      "big": 4,
+      "path": [
+        "3",
+        "3"
+      ],
+      "label": "問3(3)",
+      "unit": "",
+      "parts": [
+        "量",
+        "増加/減少"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "30",
+        "増加"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "mg",
+        ""
+      ],
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "5-1-1",
+      "big": 5,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "問1 ①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "5-1-2",
+      "big": 5,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "問1 ②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "5-2-1",
+      "big": 5,
+      "path": [
+        "2",
+        "1"
+      ],
+      "label": "問2 A (4字)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "マントル",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "5-2-2",
+      "big": 5,
+      "path": [
+        "2",
+        "2"
+      ],
+      "label": "問2 B (4字)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "プレート",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "5-3-1",
+      "big": 5,
+      "path": [
+        "3",
+        "1"
+      ],
+      "label": "問3(1)",
+      "unit": "",
+      "parts": [
+        "向き",
+        "周期"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "あ",
+        "イ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3,
+      "note": "解答は丸囲みひらがな記号(Unicodeに無いので平仮名で表記)。向き=あ(丸囲み)。"
+    },
+    {
+      "id": "5-3-2",
+      "big": 5,
+      "path": [
+        "3",
+        "2"
+      ],
+      "label": "問3(2) (漢字1字)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "西",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "5-4",
+      "big": 5,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": [
+        "6月__日",
+        "__時"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "2",
+        "13"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "日",
+        "時"
+      ],
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "5-5",
+      "big": 5,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "km",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "40104",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 3
+    }
+  ]
+}

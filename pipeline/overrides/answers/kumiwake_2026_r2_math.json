@@ -1,0 +1,320 @@
+{
+  "slots": {
+    "1-1": {
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "1620",
+      "variants": [],
+      "points": 8
+    },
+    "1-2": {
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "fraction",
+      "answer": "1/12",
+      "variants": [],
+      "points": 8
+    },
+    "1-3": {
+      "big": 1,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "fraction",
+      "answer": "2/3",
+      "variants": [],
+      "points": 8
+    },
+    "2-1": {
+      "big": 2,
+      "label": "(1)",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "78",
+      "variants": [],
+      "points": 8
+    },
+    "2-2": {
+      "big": 2,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "14",
+      "variants": [],
+      "points": 8
+    },
+    "2-3": {
+      "big": 2,
+      "label": "(3)",
+      "unit": "cm",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "31.4",
+      "variants": [],
+      "points": 8
+    },
+    "2-4": {
+      "big": 2,
+      "label": "(4)",
+      "unit": "㎠",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "354",
+      "variants": [],
+      "points": 8
+    },
+    "2-5": {
+      "big": 2,
+      "label": "(5)",
+      "unit": "㎠",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "47.1",
+      "variants": [],
+      "points": 8
+    },
+    "2-6": {
+      "big": 2,
+      "label": "(6)",
+      "unit": "個",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "45",
+      "variants": [],
+      "points": 8
+    },
+    "2-7": {
+      "big": 2,
+      "label": "(7)",
+      "unit": "円",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "150",
+      "variants": [],
+      "points": 8
+    },
+    "2-8": {
+      "big": 2,
+      "label": "(8)",
+      "unit": "㎠",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "376.8",
+      "variants": [],
+      "points": 8
+    },
+    "3-1": {
+      "big": 3,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "19",
+      "variants": [],
+      "points": 8
+    },
+    "3-2": {
+      "big": 3,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "127",
+      "variants": [],
+      "points": 8
+    },
+    "3-3": {
+      "big": 3,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "307",
+      "variants": [],
+      "points": 8
+    },
+    "4-1": {
+      "big": 4,
+      "label": "(1)",
+      "unit": "円",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "280",
+      "variants": [],
+      "points": 8
+    },
+    "4-2": {
+      "big": 4,
+      "label": "(2)",
+      "unit": "個",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "14",
+      "variants": [],
+      "points": 8
+    },
+    "5-1": {
+      "big": 5,
+      "label": "(1)",
+      "unit": "%",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "6",
+      "variants": [],
+      "points": 8
+    },
+    "5-2": {
+      "big": 5,
+      "label": "(2)",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "72",
+      "variants": [],
+      "points": 8
+    },
+    "6-1": {
+      "big": 6,
+      "label": "(1)",
+      "unit": "cm",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "18.14",
+      "variants": [],
+      "points": 8
+    },
+    "6-2": {
+      "big": 6,
+      "label": "(2)",
+      "unit": "㎠",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "38.99",
+      "variants": [],
+      "points": 8
+    },
+    "7-1": {
+      "big": 7,
+      "label": "(1)",
+      "unit": "",
+      "parts": [
+        "ア 頂点",
+        "イ 頂点"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "P",
+        "B"
+      ],
+      "variants": [],
+      "points": 8,
+      "note": "くんで（両方正解で得点）"
+    },
+    "7-2": {
+      "big": 7,
+      "label": "(2)",
+      "unit": "cm",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "23.55",
+      "variants": [],
+      "points": 8
+    },
+    "8-1": {
+      "big": 8,
+      "label": "(1) ア",
+      "unit": "%",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "60",
+      "variants": [],
+      "points": 6
+    },
+    "8-2": {
+      "big": 8,
+      "label": "(2) イ",
+      "unit": "円",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "400",
+      "variants": [],
+      "points": 6
+    },
+    "8-3-1": {
+      "big": 8,
+      "label": "(3)①",
+      "unit": "",
+      "parts": [
+        "ウ",
+        "エ"
+      ],
+      "part_units": [
+        "倍",
+        "%"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "2/3",
+        "50"
+      ],
+      "variants": [],
+      "points": 6,
+      "note": "くんで（ウ 2/3倍・エ 50%）"
+    },
+    "8-3-2": {
+      "big": 8,
+      "label": "(3)②",
+      "unit": "",
+      "parts": [
+        "オ",
+        "カ",
+        "キ"
+      ],
+      "part_units": [
+        "円",
+        "個",
+        "個"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "21000",
+        "33",
+        "38"
+      ],
+      "variants": [],
+      "points": 6,
+      "note": "くんで（オ 21000円・カ 33個・キ 38個）"
+    }
+  }
+}

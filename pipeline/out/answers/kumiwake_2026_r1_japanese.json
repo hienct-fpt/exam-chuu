@@ -1,0 +1,915 @@
+{
+  "exam_id": "kumiwake_2026_r1_japanese",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "功績",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "1-2",
+      "big": 1,
+      "path": [
+        "2"
+      ],
+      "label": "2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "精進",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "1-3",
+      "big": 1,
+      "path": [
+        "3"
+      ],
+      "label": "3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "素行",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "path": [
+        "4"
+      ],
+      "label": "4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "測る",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "path": [
+        "5"
+      ],
+      "label": "5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "貸借",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "path": [
+        "6"
+      ],
+      "label": "6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "率いる",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "path": [
+        "7"
+      ],
+      "label": "7",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "建築",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "1-8",
+      "big": 1,
+      "path": [
+        "8"
+      ],
+      "label": "8",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "伝統",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "path": [
+        "9"
+      ],
+      "label": "9",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "調停",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "1-10",
+      "big": 1,
+      "path": [
+        "10"
+      ],
+      "label": "10",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "財政",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "2-1-1",
+      "big": 2,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "問一 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "あたま",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-1-2",
+      "big": 2,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "問一 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "ほねみ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-1-3",
+      "big": 2,
+      "path": [
+        "1",
+        "3"
+      ],
+      "label": "問一 3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "てのひら",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-2-1",
+      "big": 2,
+      "path": [
+        "2",
+        "1"
+      ],
+      "label": "問二 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-2-2",
+      "big": 2,
+      "path": [
+        "2",
+        "2"
+      ],
+      "label": "問二 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "オ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-2-3",
+      "big": 2,
+      "path": [
+        "2",
+        "3"
+      ],
+      "label": "問二 3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-3-1",
+      "big": 2,
+      "path": [
+        "3",
+        "1"
+      ],
+      "label": "問三 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-3-2",
+      "big": 2,
+      "path": [
+        "3",
+        "2"
+      ],
+      "label": "問三 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-3-3",
+      "big": 2,
+      "path": [
+        "3",
+        "3"
+      ],
+      "label": "問三 3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-3-4",
+      "big": 2,
+      "path": [
+        "3",
+        "4"
+      ],
+      "label": "問三 4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-4-1",
+      "big": 2,
+      "path": [
+        "4",
+        "1"
+      ],
+      "label": "問四 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-4-2",
+      "big": 2,
+      "path": [
+        "4",
+        "2"
+      ],
+      "label": "問四 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-4-3",
+      "big": 2,
+      "path": [
+        "4",
+        "3"
+      ],
+      "label": "問四 3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-1-1",
+      "big": 3,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "問一 二つめ",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "精肉部門は",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "3-1-2",
+      "big": 3,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "問一 三つめ",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "鮮魚部門は",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "問二",
+      "unit": "",
+      "parts": [
+        "a",
+        "b"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ア",
+        "エ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 4,
+      "note": "a ア b エ（くんで）"
+    },
+    {
+      "id": "3-3-1",
+      "big": 3,
+      "path": [
+        "3",
+        "1"
+      ],
+      "label": "問三 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 4
+    },
+    {
+      "id": "3-3-2",
+      "big": 3,
+      "path": [
+        "3",
+        "2"
+      ],
+      "label": "問三 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 4
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "問四",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "（米国の）スーパーマーケットを参考にして、野菜を店舗の入り口付近に並べたこと。",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 8,
+      "note": "「米国の」は〔〕付き（なくても可）。配点8点。解説: 「これ」は「野菜を店舗の入り口に並べていった」配置の仕方を指し、米国のスーパーマーケットを参考にした（商品のレイアウトまで米国にならった）ことが理由。部分点基準の記載なし。"
+    },
+    {
+      "id": "3-5-1",
+      "big": 3,
+      "path": [
+        "5",
+        "1"
+      ],
+      "label": "問五 Ⅰ",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-5-2",
+      "big": 3,
+      "path": [
+        "5",
+        "2"
+      ],
+      "label": "問五 Ⅱ",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-5-3",
+      "big": 3,
+      "path": [
+        "5",
+        "3"
+      ],
+      "label": "問五 Ⅲ",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "path": [
+        "6"
+      ],
+      "label": "問六",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 5
+    },
+    {
+      "id": "3-7",
+      "big": 3,
+      "path": [
+        "7"
+      ],
+      "label": "問七",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "Ｃ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 4
+    },
+    {
+      "id": "3-8",
+      "big": 3,
+      "path": [
+        "8"
+      ],
+      "label": "問八",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 5
+    },
+    {
+      "id": "3-9-1",
+      "big": 3,
+      "path": [
+        "9",
+        "1"
+      ],
+      "label": "問九 ①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "90",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "3-9-2",
+      "big": 3,
+      "path": [
+        "9",
+        "2"
+      ],
+      "label": "問九 ②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "120",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "3-9-3",
+      "big": 3,
+      "path": [
+        "9",
+        "3"
+      ],
+      "label": "問九 ③",
+      "unit": "",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "10",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "3-9-4",
+      "big": 3,
+      "path": [
+        "9",
+        "4"
+      ],
+      "label": "問九 ④",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "3-9-5",
+      "big": 3,
+      "path": [
+        "9",
+        "5"
+      ],
+      "label": "問九 ⑤",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "3-9-6",
+      "big": 3,
+      "path": [
+        "9",
+        "6"
+      ],
+      "label": "問九 ⑥",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 1
+    },
+    {
+      "id": "3-10",
+      "big": 3,
+      "path": [
+        "10"
+      ],
+      "label": "問十",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "Ｄ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 6
+    },
+    {
+      "id": "4-1-1",
+      "big": 4,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "問一 1①",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 4
+    },
+    {
+      "id": "4-1-2",
+      "big": 4,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "問一 1②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 4
+    },
+    {
+      "id": "4-1-3",
+      "big": 4,
+      "path": [
+        "1",
+        "3"
+      ],
+      "label": "問一 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "白黒",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 4
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "問二",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "answer": "親をまたいでもよい、と主張する理由など、考えたことがなかったから。",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 10,
+      "note": "配点10点。解説: そもそもなぜこのような考えたこともないことを聞かれているのかという戸惑いが中心。部分点基準の記載なし。"
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "path": [
+        "3"
+      ],
+      "label": "問三",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 5
+    },
+    {
+      "id": "4-4-1",
+      "big": 4,
+      "path": [
+        "4",
+        "1"
+      ],
+      "label": "問四 1a",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "出入り口の前に寝ころんでいたから、またぐしかなかった",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [
+        "出入り口の～かなかった"
+      ],
+      "points": 3,
+      "note": "解答は「出入り口の～かなかった」と省略表記。全文は解説の引用（105・106行め）から復元。a・bは（くんで）＝両方正解で得点だが、スロットは別々。"
+    },
+    {
+      "id": "4-4-2",
+      "big": 4,
+      "path": [
+        "4",
+        "2"
+      ],
+      "label": "問四 1b",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "反論",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 3,
+      "note": "1a・1bは（くんで）"
+    },
+    {
+      "id": "4-4-3",
+      "big": 4,
+      "path": [
+        "4",
+        "3"
+      ],
+      "label": "問四 2c",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "責任の一端",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "4-4-4",
+      "big": 4,
+      "path": [
+        "4",
+        "4"
+      ],
+      "label": "問四 2d",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "少し共感できた",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 3
+    },
+    {
+      "id": "4-5",
+      "big": 4,
+      "path": [
+        "5"
+      ],
+      "label": "問五",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 5
+    },
+    {
+      "id": "4-6",
+      "big": 4,
+      "path": [
+        "6"
+      ],
+      "label": "問六",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 6
+    },
+    {
+      "id": "4-7",
+      "big": 4,
+      "path": [
+        "7"
+      ],
+      "label": "問七",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "variants": [],
+      "points": 6
+    }
+  ]
+}

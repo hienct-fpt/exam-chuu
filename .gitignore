@@ -8,6 +8,7 @@ extensions/*.secret.local
 functions/.env
 functions/venv/
 kyoritsu_past/
+kumiwake_past/
 node_modules/
 pipeline/in/
 pipeline/out/*
@@ -20,3 +21,7 @@ firestore-debug.log
 ui-debug.log
 .firebase/
 extensions/*.env.*
+
+# Claude Code: per-user settings and hook logs
+.claude/settings.local.json
+.claude/logs/

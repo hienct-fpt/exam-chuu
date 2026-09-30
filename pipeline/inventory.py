@@ -6,6 +6,7 @@ Exam id: {school}_{year}_{session}_{subject}
 Shinagawa 社会・理科 share one 問題 PDF; `page_range` (0-based, inclusive) selects the subject's pages.
 Shinagawa 解答 are scanned images (answers are transcribed into pipeline/overrides/answers/*.json).
   kawasaki_2026_k1_social         kawasaki: k1 / k2 (適性検査Ⅰ / Ⅱ), one exam per subject (table: kawasaki_exams.json)
+  kumiwake_2026_r1_math           kumiwake: 四谷大塚 公開組分けテスト 5年 r1..r5 (第1〜5回)
 """
 from __future__ import annotations
 
@@ -162,7 +163,51 @@ def scan_kawasaki() -> dict[str, dict]:
     return exams
 
 
-SCANNERS = {"kyoritsu": scan_kyoritsu, "shinagawa": scan_shinagawa, "kawasaki": scan_kawasaki}
+# --------------------------------------------------------------- kumiwake
+
+KUMIWAKE = ROOT / "kumiwake_past"
+# matched against the NFKC file name: "2026年3月 公開組分けテスト5年 第1回算数問題.pdf"
+RE_KUMI = re.compile(r"^(?P<year>\d{4})年(?P<month>\d{1,2})月\s*公開組分けテスト(?P<grade>\d)年\s*第(?P<round>\d)回"
+                     r"(?P<subject>算数|国語|理科|社会)(?P<kind>問題|回答)\.pdf$")
+
+
+def scan_kumiwake() -> dict[str, dict]:
+    """四谷大塚 公開組分けテスト (5年, 第1〜5回). The 回答 PDFs are the child's own scored answer sheets (handwriting,
+    ○/✓, name), NOT 模範解答: kept as `scored_sheet` for slot layout checks only, never shipped or read as answers.
+    The keys come from the round's 結果.pdf (`result`)."""
+    exams: dict[str, dict] = {}
+    for pdf in sorted(KUMIWAKE.glob("*.pdf")):
+        m = RE_KUMI.match(nfkc(pdf.name))
+        if not m:
+            continue
+        year, rnd, subject = int(m["year"]), int(m["round"]), SUBJECT_MAP[m["subject"]]
+        eid = f"kumiwake_{year}_r{rnd}_{subject}"
+        rel = str(pdf.relative_to(ROOT)).replace("\\", "/")
+        ex = exams.setdefault(eid, {
+            "id": eid, "school": "kumiwake", "school_name": "四谷大塚 公開組分けテスト",
+            "year": year, "session": f"r{rnd}", "session_label": f"第{rnd}回 ({int(m['month'])}月)",
+            "subject": subject, "subject_label": m["subject"],
+            "time_limit_min": 50 if subject in ("math", "japanese") else 35,
+            "files": {},
+        })
+        if m["kind"] == "問題":
+            ex["files"]["question"] = rel
+            cover = re.sub(r"\s+", "", fitz.open(pdf)[0].get_text())
+            if t := re.search(r"試験時間(\d+)分", cover):
+                ex["time_limit_min"] = int(t.group(1))
+        else:
+            ex["files"]["scored_sheet"] = rel
+    # 結果.pdf (one per round, all subjects): 解答と解説 + 正答率一覧 (配点, 領域・内容) -- the keys were transcribed
+    # from it into overrides/answers + tags; it also holds the child's scores, so it is never shipped either
+    for pdf in sorted(KUMIWAKE.glob("*結果.pdf")):
+        if m := re.search(r"第(\d)回", nfkc(pdf.name)):
+            for ex in exams.values():
+                if ex["session"] == f"r{m.group(1)}":
+                    ex["files"]["result"] = str(pdf.relative_to(ROOT)).replace("\\", "/")
+    return {k: v for k, v in exams.items() if "question" in v["files"]}
+
+
+SCANNERS ={"kyoritsu": scan_kyoritsu, "shinagawa": scan_shinagawa, "kawasaki": scan_kawasaki, "kumiwake": scan_kumiwake}
 
 
 def main(subjects: tuple[str, ...] | None = None, schools: tuple[str, ...] = tuple(SCANNERS)) -> dict:

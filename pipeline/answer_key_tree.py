@@ -4,6 +4,8 @@ Shinagawa 模範解答 are scanned handwriting, so nothing can be extracted auto
 every leaf of the segmented question tree becomes a slot, and the answers are transcribed
 by hand into pipeline/overrides/answers/{exam_id}.json (same shape as the kyoritsu overrides).
 Slots still lacking an answer after overrides are listed as "needs transcription".
+Same for kumiwake (四谷大塚 公開組分けテスト): the only sheets on hand are the child's scored answer sheets;
+the keys come from the 解答解説, transcribed into the same overrides.
 """
 from __future__ import annotations
 
@@ -56,7 +58,7 @@ def process(eid: str, verbose: bool = True) -> list[dict] | None:
 def main(only: set[str] | None = None, verbose: bool = False) -> None:
     exams = load_json(OUT / "exams.json", {})
     for eid, ex in exams.items():
-        if ex["school"] != "shinagawa":
+        if ex["school"] not in ("shinagawa", "kumiwake"):
             continue
         if only and eid not in only:
             continue

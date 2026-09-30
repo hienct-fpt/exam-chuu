@@ -1,0 +1,981 @@
+{
+  "exam_id": "kumiwake_2026_r4_social",
+  "slots": [
+    {
+      "id": "1-1",
+      "big": 1,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "農業",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "近郊",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-2-1",
+      "big": 1,
+      "path": [
+        "2",
+        "1"
+      ],
+      "label": "問2 1",
+      "unit": "",
+      "parts": [
+        "名",
+        "記号"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "利根川",
+        "ア"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-2-2",
+      "big": 1,
+      "path": [
+        "2",
+        "2"
+      ],
+      "label": "問2 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "むさしの",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [
+        "武蔵野"
+      ],
+      "points": 2,
+      "note": "解答はひらがな「むさしの」。漢字表記はvariant。"
+    },
+    {
+      "id": "1-3-1",
+      "big": 1,
+      "path": [
+        "3",
+        "1"
+      ],
+      "label": "問3 1",
+      "unit": "",
+      "parts": [
+        "数__つ",
+        "名"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "4",
+        "東京都"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "つ",
+        ""
+      ],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-3-2",
+      "big": 1,
+      "path": [
+        "3",
+        "2"
+      ],
+      "label": "問3 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-4",
+      "big": 1,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "川崎市",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-5",
+      "big": 1,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-6",
+      "big": 1,
+      "path": [
+        "6"
+      ],
+      "label": "問6 (2つ)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "イ・エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-7",
+      "big": 1,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": [
+        "名 __工業地帯",
+        "記号"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "京浜",
+        "ウ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "工業地帯",
+        ""
+      ],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-8-1",
+      "big": 1,
+      "path": [
+        "8",
+        "1"
+      ],
+      "label": "問8 1",
+      "unit": "",
+      "parts": [
+        "B __諸島",
+        "記号"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "小笠原",
+        "ア"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "諸島",
+        ""
+      ],
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-8-2",
+      "big": 1,
+      "path": [
+        "8",
+        "2"
+      ],
+      "label": "問8 2",
+      "unit": "製糸場",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "富岡",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "1-9",
+      "big": 1,
+      "path": [
+        "9"
+      ],
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "群馬県",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-1-1",
+      "big": 2,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "問1 A",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "阿蘇山",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-1-2",
+      "big": 2,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "問1 B",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "宍道湖",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-1-3",
+      "big": 2,
+      "path": [
+        "1",
+        "3"
+      ],
+      "label": "問1 C",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "小豆島",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-2",
+      "big": 2,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-3",
+      "big": 2,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": [
+        "③",
+        "④"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ウ",
+        "イ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-4",
+      "big": 2,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-5",
+      "big": 2,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-6",
+      "big": 2,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "対馬海流",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-7",
+      "big": 2,
+      "path": [
+        "7"
+      ],
+      "label": "問7",
+      "unit": "",
+      "parts": [
+        "⑨",
+        "⑩"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "エ",
+        "ウ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-8",
+      "big": 2,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-9",
+      "big": 2,
+      "path": [
+        "9"
+      ],
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-10",
+      "big": 2,
+      "path": [
+        "10"
+      ],
+      "label": "問10",
+      "unit": "",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "高松市",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "2-11",
+      "big": 2,
+      "path": [
+        "11"
+      ],
+      "label": "問11",
+      "unit": "",
+      "parts": [
+        "府県1",
+        "府県2",
+        "距離"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "⑧|⑪",
+        "⑧|⑪",
+        "ウ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2,
+      "note": "解答「府県 ⑧・⑪(くんで不順可) 距離 ウ(府県と距離はくんで)」。府県2つは順不同のため両欄に⑧|⑪を許容(同一記号の重複は採点で弾けない)。全体で1問扱い。"
+    },
+    {
+      "id": "2-12",
+      "big": 2,
+      "path": [
+        "12"
+      ],
+      "label": "問12",
+      "unit": "",
+      "parts": [
+        "1",
+        "2",
+        "3"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "④",
+        "⑦",
+        "⑥"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2,
+      "note": "解答「(3つくんで)」: 3つ全部正解で得点。"
+    },
+    {
+      "id": "2-13",
+      "big": 2,
+      "path": [
+        "13"
+      ],
+      "label": "問13",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-1-1",
+      "big": 3,
+      "path": [
+        "1",
+        "1"
+      ],
+      "label": "問1 A",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-1-2",
+      "big": 3,
+      "path": [
+        "1",
+        "2"
+      ],
+      "label": "問1 B",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "オ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-2",
+      "big": 3,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-3",
+      "big": 3,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "E",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-4",
+      "big": 3,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-5",
+      "big": 3,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "m",
+      "parts": null,
+      "answer_type": "number",
+      "answer": "1125",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-6",
+      "big": 3,
+      "path": [
+        "6"
+      ],
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-7-1",
+      "big": 3,
+      "path": [
+        "7",
+        "1"
+      ],
+      "label": "問7 1",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-7-2",
+      "big": 3,
+      "path": [
+        "7",
+        "2"
+      ],
+      "label": "問7 2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-7-3-1",
+      "big": 3,
+      "path": [
+        "7",
+        "3",
+        "1"
+      ],
+      "label": "問7 3 Ⅲ",
+      "unit": "空港",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "新千歳",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-7-3-2",
+      "big": 3,
+      "path": [
+        "7",
+        "3",
+        "2"
+      ],
+      "label": "問7 3 Ⅳ 新__",
+      "unit": "北斗駅",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "函館",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "3-7-4",
+      "big": 3,
+      "path": [
+        "7",
+        "4"
+      ],
+      "label": "問7 4",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "4-1",
+      "big": 4,
+      "path": [
+        "1"
+      ],
+      "label": "問1",
+      "unit": "",
+      "parts": [
+        "A",
+        "C"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ウ",
+        "ア"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "4-2",
+      "big": 4,
+      "path": [
+        "2"
+      ],
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "4-3",
+      "big": 4,
+      "path": [
+        "3"
+      ],
+      "label": "問3",
+      "unit": "",
+      "parts": [
+        "①",
+        "②"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ウ",
+        "ア"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "4-4",
+      "big": 4,
+      "path": [
+        "4"
+      ],
+      "label": "問4",
+      "unit": "",
+      "parts": [
+        "③",
+        "④"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "ア",
+        "イ"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "4-5",
+      "big": 4,
+      "path": [
+        "5"
+      ],
+      "label": "問5",
+      "unit": "海岸",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "リアス",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "4-6",
+      "big": 4,
+      "path": [
+        "6"
+      ],
+      "label": "問6 (ひらがな)",
+      "unit": "山脈",
+      "parts": null,
+      "answer_type": "text",
+      "answer": "おうう",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "4-7",
+      "big": 4,
+      "path": [
+        "7"
+      ],
+      "label": "問7 (2つ)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "ウ・エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    },
+    {
+      "id": "4-8",
+      "big": 4,
+      "path": [
+        "8"
+      ],
+      "label": "問8",
+      "unit": "",
+      "parts": [
+        "1",
+        "2"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "お",
+        "い"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2,
+      "note": "解答は丸囲みひらがな記号(Unicodeに無いので平仮名で表記)。"
+    },
+    {
+      "id": "4-9",
+      "big": 4,
+      "path": [
+        "9"
+      ],
+      "label": "問9",
+      "unit": "",
+      "parts": [
+        "記号",
+        "名"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "い",
+        "盛岡市"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2,
+      "note": "解答は丸囲みひらがな記号(Unicodeに無いので平仮名で表記)。"
+    },
+    {
+      "id": "4-10",
+      "big": 4,
+      "path": [
+        "10"
+      ],
+      "label": "問10",
+      "unit": "",
+      "parts": [
+        "記号",
+        "名 __新幹線"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "か",
+        "山形"
+      ],
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": [
+        "",
+        "新幹線"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "解答は丸囲みひらがな記号(Unicodeに無いので平仮名で表記)。"
+    },
+    {
+      "id": "4-11",
+      "big": 4,
+      "path": [
+        "11"
+      ],
+      "label": "問11 (2つ)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "answer": "イ・エ",
+      "confidence": "manual",
+      "raw_values": [],
+      "part_units": null,
+      "variants": [],
+      "points": 2
+    }
+  ]
+}

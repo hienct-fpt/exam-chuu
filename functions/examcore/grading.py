@@ -99,6 +99,10 @@ def norm_word(s: str) -> str:
     """Text equality key: NFKC, no spaces, no punctuation noise, katakana long vowel unified."""
     t = normalize(s).replace(" ", "")
     t = t.replace("ｰ", "ー").replace("-", "ー") if re.search(r"[ァ-ン]", t) else t
+    if len(t) == 1:   # single symbols: 〇/◯ -> ○, ✕/✖ -> ×; hiragana -> katakana, so a ○い option typed as
+        t = {"〇": "○", "◯": "○", "✕": "×", "✖": "×"}.get(t, t)   # い matches a key ㋑ (NFKC: イ)
+        if "ぁ" <= t <= "ゖ":
+            t = chr(ord(t) + 0x60)
     return t.rstrip(".。")
 
 
@@ -184,12 +188,18 @@ def grade(key: dict, student) -> GradeResult:
     if atype in PENDING_TYPES:
         return GradeResult(False, normalize(student) if not isinstance(student, list) else student, pending=True)
     if atype == "multi" or (isinstance(expected, list) and atype not in ("set", "sequence")):
-        exp_list = list(expected)
-        stu_list = list(student) if isinstance(student, (list, tuple)) else _split_multi(student, len(exp_list))
-        stu_list = (stu_list + [""] * len(exp_list))[: len(exp_list)]
-        results = [_grade_part(str(e), s) for e, s in zip(exp_list, stu_list)]
-        return GradeResult(all(r.correct for r in results), [r.normalized for r in results],
-                           parts_correct=[r.correct for r in results])
+        best = None
+        # list-valued variants = other accepted part combinations (e.g. two 不順可 記号 paired with a name)
+        for exp_list in [list(expected)] + [list(v) for v in variants if isinstance(v, (list, tuple)) and len(v) == len(expected)]:
+            stu_list = list(student) if isinstance(student, (list, tuple)) else _split_multi(student, len(exp_list))
+            stu_list = (stu_list + [""] * len(exp_list))[: len(exp_list)]
+            results = [_grade_part(str(e), s) for e, s in zip(exp_list, stu_list)]
+            res = GradeResult(all(r.correct for r in results), [r.normalized for r in results],
+                              parts_correct=[r.correct for r in results])
+            if res.correct:
+                return res
+            best = best or res
+        return best
     if isinstance(student, (list, tuple)):
         student = "・".join(str(x) for x in student) if atype == "set" else "→".join(str(x) for x in student)
     return _grade_scalar(atype, expected if isinstance(expected, list) else str(expected),

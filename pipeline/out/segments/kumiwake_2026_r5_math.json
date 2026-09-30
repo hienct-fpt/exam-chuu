@@ -1,0 +1,531 @@
+{
+  "exam_id": "kumiwake_2026_r5_math",
+  "bigs": [
+    {
+      "key": "1",
+      "label": "1",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 1,
+          "y0": 53.0,
+          "y1": 542.5
+        }
+      ],
+      "stem": {
+        "page": 1,
+        "y0": 53.0,
+        "y1": 76.7
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 1,
+              "y0": 89.1,
+              "y1": 116.0
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 1,
+              "y0": 302.4,
+              "y1": 324.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 1,
+              "y0": 515.7,
+              "y1": 542.5
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 1
+    },
+    {
+      "key": "2",
+      "label": "2",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 2,
+          "y0": 53.0,
+          "y1": 736.5
+        },
+        {
+          "page": 3,
+          "y0": 30,
+          "y1": 717.3
+        }
+      ],
+      "stem": {
+        "page": 2,
+        "y0": 53.0,
+        "y1": 76.7
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 89.1,
+              "y1": 127.8
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 266.8,
+              "y1": 287.8
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 426.8,
+              "y1": 483.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "4",
+          "label": "(4)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 622.3,
+              "y1": 736.5
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "5",
+          "label": "(5)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 3,
+              "y0": 53.6,
+              "y1": 110.1
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "6",
+          "label": "(6)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 3,
+              "y0": 240.2,
+              "y1": 391.4
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "7",
+          "label": "(7)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 3,
+              "y0": 409.0,
+              "y1": 477.4
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "8",
+          "label": "(8)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 3,
+              "y0": 607.4,
+              "y1": 717.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 2
+    },
+    {
+      "key": "3",
+      "label": "3",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 4,
+          "y0": 53.0,
+          "y1": 323.4
+        }
+      ],
+      "stem": {
+        "page": 4,
+        "y0": 53.0,
+        "y1": 142.4
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 142.4,
+              "y1": 248.8
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 266.8,
+              "y1": 323.4
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 3,
+      "whole": true
+    },
+    {
+      "key": "4",
+      "label": "4",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 5,
+          "y0": 53.0,
+          "y1": 607.7
+        }
+      ],
+      "stem": {
+        "page": 5,
+        "y0": 53.0,
+        "y1": 316.5
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 337.9,
+              "y1": 358.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 462.3,
+              "y1": 483.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 586.7,
+              "y1": 607.7
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 4
+    },
+    {
+      "key": "5",
+      "label": "5",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 6,
+          "y0": 53.0,
+          "y1": 287.8
+        }
+      ],
+      "stem": {
+        "page": 6,
+        "y0": 53.0,
+        "y1": 92.3
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 6,
+              "y0": 106.8,
+              "y1": 145.6
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 6,
+              "y0": 249.0,
+              "y1": 287.8
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 5
+    },
+    {
+      "key": "6",
+      "label": "6",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 7,
+          "y0": 53.0,
+          "y1": 252.3
+        }
+      ],
+      "stem": {
+        "page": 7,
+        "y0": 53.0,
+        "y1": 92.3
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 7,
+              "y0": 106.8,
+              "y1": 127.8
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 7,
+              "y0": 231.3,
+              "y1": 252.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 6
+    },
+    {
+      "key": "7",
+      "label": "7",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 8,
+          "y0": 53.0,
+          "y1": 378.3
+        },
+        {
+          "page": 9,
+          "y0": 30,
+          "y1": 398.3
+        }
+      ],
+      "stem": {
+        "page": 8,
+        "y0": 53.0,
+        "y1": 76.7
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 8,
+              "y0": 89.1,
+              "y1": 378.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 9,
+              "y0": 53.6,
+              "y1": 398.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 7
+    },
+    {
+      "key": "8",
+      "label": "8",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 10,
+          "y0": 53.0,
+          "y1": 518.8
+        },
+        {
+          "page": 11,
+          "y0": 30,
+          "y1": 412.2
+        }
+      ],
+      "stem": {
+        "page": 10,
+        "y0": 53.0,
+        "y1": 518.8
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 11,
+              "y0": 53.6,
+              "y1": 92.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 11,
+              "y0": 195.8,
+              "y1": 252.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "rank": 2,
+          "regions": [
+            {
+              "page": 11,
+              "y0": 355.7,
+              "y1": 412.2
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 8
+    }
+  ]
+}

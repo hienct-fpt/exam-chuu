@@ -1,0 +1,468 @@
+{
+  "slots": {
+    "3-7": {
+      "delete": true
+    },
+    "5-1": {
+      "delete": true
+    },
+    "5-2": {
+      "delete": true
+    },
+    "1-1": {
+      "big": 1,
+      "label": "問1 (ことば)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "受粉",
+      "variants": [],
+      "points": 2
+    },
+    "1-2": {
+      "big": 1,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 2
+    },
+    "1-3": {
+      "big": 1,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "1-4": {
+      "big": 1,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "あ",
+      "variants": [],
+      "points": 2,
+      "note": "解答は丸囲みひらがな記号(Unicodeに無いので平仮名で表記)。"
+    },
+    "1-5": {
+      "big": 1,
+      "label": "問5",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "60",
+      "variants": [],
+      "points": 2
+    },
+    "2-1": {
+      "big": 2,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "variants": [],
+      "points": 3
+    },
+    "2-2": {
+      "big": 2,
+      "label": "問2 (2つ)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "C・D",
+      "variants": [],
+      "points": 3,
+      "note": "解答「C・D(くんで不順可)」→ set。"
+    },
+    "2-3": {
+      "big": 2,
+      "label": "問3 (すべて)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "C・D",
+      "variants": [],
+      "points": 3,
+      "note": "解答「C, D(くんで不順可)」→ set。"
+    },
+    "2-4-1": {
+      "big": 2,
+      "label": "問4(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "variants": [],
+      "points": 3
+    },
+    "2-4-2": {
+      "big": 2,
+      "label": "問4(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 3
+    },
+    "2-5": {
+      "big": 2,
+      "label": "問5",
+      "unit": "",
+      "parts": [
+        "気体",
+        "液の色"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "B",
+        "ウ"
+      ],
+      "variants": [],
+      "points": 3
+    },
+    "2-6": {
+      "big": 2,
+      "label": "問6",
+      "unit": "",
+      "parts": [
+        "○あ",
+        "○う"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "D",
+        "B"
+      ],
+      "variants": [],
+      "points": 3
+    },
+    "3-1": {
+      "big": 3,
+      "label": "問1",
+      "unit": "法",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "水上置換",
+      "variants": [],
+      "points": 3
+    },
+    "3-2": {
+      "big": 3,
+      "label": "問2",
+      "unit": "",
+      "parts": [
+        "固体X",
+        "液体①"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "オ",
+        "カ"
+      ],
+      "variants": [],
+      "points": 3
+    },
+    "3-3": {
+      "big": 3,
+      "label": "問3 (Pの値)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "1440",
+      "variants": [],
+      "points": 3
+    },
+    "3-4": {
+      "big": 3,
+      "label": "問4",
+      "unit": "",
+      "parts": [
+        "固体Y",
+        "液体②"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "ウ",
+        "キ"
+      ],
+      "variants": [],
+      "points": 3
+    },
+    "3-5": {
+      "big": 3,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 3
+    },
+    "3-6": {
+      "big": 3,
+      "label": "問6 (R)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "12.8",
+      "variants": [],
+      "points": 3
+    },
+    "3-7-1": {
+      "big": 3,
+      "label": "問7 気体",
+      "unit": "㎤",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "2880",
+      "variants": [],
+      "points": 3
+    },
+    "3-7-2": {
+      "big": 3,
+      "label": "問7 固体",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "16.2",
+      "variants": [],
+      "points": 3
+    },
+    "4-1-1": {
+      "big": 4,
+      "label": "問1(1)",
+      "unit": "",
+      "parts": [
+        "X",
+        "Y"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "デンプン",
+        "ヨウ素液"
+      ],
+      "variants": [],
+      "points": 3
+    },
+    "4-1-2": {
+      "big": 4,
+      "label": "問1(2)",
+      "unit": "",
+      "parts": [
+        "B",
+        "C"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "ア",
+        "エ"
+      ],
+      "variants": [],
+      "points": 3
+    },
+    "4-1-3": {
+      "big": 4,
+      "label": "問1(3)",
+      "unit": "",
+      "parts": [
+        "①",
+        "②"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "イ",
+        "ウ"
+      ],
+      "variants": [],
+      "points": 3
+    },
+    "4-2": {
+      "big": 4,
+      "label": "問2 (ことば)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "気孔",
+      "variants": [],
+      "points": 3
+    },
+    "4-3-1": {
+      "big": 4,
+      "label": "問3(1)",
+      "unit": "mg",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "5",
+      "variants": [],
+      "points": 3
+    },
+    "4-3-2": {
+      "big": 4,
+      "label": "問3(2)",
+      "unit": "mg",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "15",
+      "variants": [],
+      "points": 3
+    },
+    "4-3-3": {
+      "big": 4,
+      "label": "問3(3)",
+      "unit": "",
+      "parts": [
+        "量",
+        "増加/減少"
+      ],
+      "part_units": [
+        "mg",
+        ""
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "30",
+        "増加"
+      ],
+      "variants": [],
+      "points": 3
+    },
+    "5-1-1": {
+      "big": 5,
+      "label": "問1 ①",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 3
+    },
+    "5-1-2": {
+      "big": 5,
+      "label": "問1 ②",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 3
+    },
+    "5-2-1": {
+      "big": 5,
+      "label": "問2 A (4字)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "マントル",
+      "variants": [],
+      "points": 3
+    },
+    "5-2-2": {
+      "big": 5,
+      "label": "問2 B (4字)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "プレート",
+      "variants": [],
+      "points": 3
+    },
+    "5-3-1": {
+      "big": 5,
+      "label": "問3(1)",
+      "unit": "",
+      "parts": [
+        "向き",
+        "周期"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "あ",
+        "イ"
+      ],
+      "variants": [],
+      "points": 3,
+      "note": "解答は丸囲みひらがな記号(Unicodeに無いので平仮名で表記)。向き=あ(丸囲み)。"
+    },
+    "5-3-2": {
+      "big": 5,
+      "label": "問3(2) (漢字1字)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "西",
+      "variants": [],
+      "points": 3
+    },
+    "5-4": {
+      "big": 5,
+      "label": "問4",
+      "unit": "",
+      "parts": [
+        "6月__日",
+        "__時"
+      ],
+      "part_units": [
+        "日",
+        "時"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "2",
+        "13"
+      ],
+      "variants": [],
+      "points": 3
+    },
+    "5-5": {
+      "big": 5,
+      "label": "問5",
+      "unit": "km",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "40104",
+      "variants": [],
+      "points": 3
+    }
+  }
+}

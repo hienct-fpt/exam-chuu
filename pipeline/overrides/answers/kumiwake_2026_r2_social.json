@@ -1,0 +1,641 @@
+{
+  "slots": {
+    "1-1": {
+      "delete": true
+    },
+    "1-3": {
+      "delete": true
+    },
+    "1-5": {
+      "delete": true
+    },
+    "1-6": {
+      "delete": true
+    },
+    "3-1": {
+      "delete": true
+    },
+    "3-4": {
+      "delete": true
+    },
+    "3-5": {
+      "delete": true
+    },
+    "4-1": {
+      "delete": true
+    },
+    "4-2": {
+      "delete": true
+    },
+    "4-8": {
+      "delete": true
+    },
+    "4-10": {
+      "delete": true
+    },
+    "1-1-1-1": {
+      "big": 1,
+      "label": "問1 1 記号",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "1-1-1-2": {
+      "big": 1,
+      "label": "問1 1 国の名",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "インド",
+      "variants": [],
+      "points": 2
+    },
+    "1-1-2": {
+      "big": 1,
+      "label": "問1 2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 2
+    },
+    "1-2": {
+      "big": 1,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "フードバンク",
+      "variants": [],
+      "points": 2
+    },
+    "1-3-1": {
+      "big": 1,
+      "label": "問3 1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 2
+    },
+    "1-3-2": {
+      "big": 1,
+      "label": "問3 2 (順番)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "sequence",
+      "answer": "イ→ア→ウ",
+      "variants": [],
+      "points": 2,
+      "note": "3つくんで"
+    },
+    "1-4": {
+      "big": 1,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "熱帯林",
+      "variants": [],
+      "points": 2
+    },
+    "1-5-1": {
+      "big": 1,
+      "label": "問5 1",
+      "unit": "",
+      "parts": [
+        "⑤",
+        "⑥"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "ウ",
+        "ア"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "くんで（⑤ ウ・⑥ ア）"
+    },
+    "1-5-2": {
+      "big": 1,
+      "label": "問5 2",
+      "unit": "な開発目標",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "持続可能",
+      "variants": [],
+      "points": 2
+    },
+    "1-6-1": {
+      "big": 1,
+      "label": "問6 1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "環境基本法",
+      "variants": [],
+      "points": 2
+    },
+    "1-6-2": {
+      "big": 1,
+      "label": "問6 2",
+      "unit": "",
+      "parts": [
+        "B",
+        "C"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "熊本",
+        "水銀"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "くんで（B 熊本・C 水銀）"
+    },
+    "2-1": {
+      "big": 2,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "中国",
+      "variants": [
+        "中華人民共和国"
+      ],
+      "points": 2
+    },
+    "2-2": {
+      "big": 2,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "オーストラリア",
+      "variants": [],
+      "points": 2
+    },
+    "2-3": {
+      "big": 2,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 2
+    },
+    "2-4": {
+      "big": 2,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "名古屋港",
+      "variants": [],
+      "points": 2
+    },
+    "2-5": {
+      "big": 2,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "千葉県",
+      "variants": [],
+      "points": 2
+    },
+    "2-6": {
+      "big": 2,
+      "label": "問6",
+      "unit": "",
+      "parts": [
+        "横浜港",
+        "東京港"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "ウ",
+        "ア"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "くんで（横浜港 ウ・東京港 ア）"
+    },
+    "2-7": {
+      "big": 2,
+      "label": "問7",
+      "unit": "",
+      "parts": [
+        "D",
+        "E"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "ア",
+        "イ"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "くんで（D ア・E イ）"
+    },
+    "2-8": {
+      "big": 2,
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "貿易摩擦",
+      "variants": [],
+      "points": 2
+    },
+    "2-9": {
+      "big": 2,
+      "label": "問9 貿易__字",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "黒",
+      "variants": [],
+      "points": 2
+    },
+    "2-10": {
+      "big": 2,
+      "label": "問10",
+      "unit": "",
+      "parts": [
+        "ことば",
+        "文"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "イ",
+        "ア"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "くんで（ことば イ・文 ア）"
+    },
+    "3-1-1": {
+      "big": 3,
+      "label": "問1 1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "択捉島",
+      "variants": [],
+      "points": 2
+    },
+    "3-1-2": {
+      "big": 3,
+      "label": "問1 2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "3-1-3": {
+      "big": 3,
+      "label": "問1 3 (2つ)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "イ・ウ",
+      "variants": [],
+      "points": 2,
+      "note": "くんで不順可"
+    },
+    "3-2": {
+      "big": 3,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "島根県",
+      "variants": [],
+      "points": 2
+    },
+    "3-3": {
+      "big": 3,
+      "label": "問3",
+      "unit": "水域",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "排他的経済",
+      "variants": [],
+      "points": 2
+    },
+    "3-4-1-1": {
+      "big": 3,
+      "label": "問4 1 記号",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "3-4-1-2": {
+      "big": 3,
+      "label": "問4 1 名",
+      "unit": "新幹線",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "北海道",
+      "variants": [],
+      "points": 2
+    },
+    "3-4-2": {
+      "big": 3,
+      "label": "問4 2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 2
+    },
+    "3-4-3": {
+      "big": 3,
+      "label": "問4 3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "東京国際空港",
+      "variants": [
+        "羽田空港"
+      ],
+      "points": 2
+    },
+    "3-4-4": {
+      "big": 3,
+      "label": "問4 4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ク",
+      "variants": [],
+      "points": 2
+    },
+    "3-5-1": {
+      "big": 3,
+      "label": "問5 1 (すべて)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "ア・ウ",
+      "variants": [],
+      "points": 2,
+      "note": "すべて選ぶ（くんで不順可）"
+    },
+    "3-5-2": {
+      "big": 3,
+      "label": "問5 2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "インバウンド",
+      "variants": [],
+      "points": 2
+    },
+    "3-5-3-1": {
+      "big": 3,
+      "label": "問5 3 ことば",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "インターネット",
+      "variants": [],
+      "points": 2
+    },
+    "3-5-3-2": {
+      "big": 3,
+      "label": "問5 3 記号",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 2
+    },
+    "4-1-1": {
+      "big": 4,
+      "label": "問1 A",
+      "unit": "漁業",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "遠洋",
+      "variants": [],
+      "points": 2
+    },
+    "4-1-2": {
+      "big": 4,
+      "label": "問1",
+      "unit": "",
+      "parts": [
+        "B",
+        "C"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "ウ",
+        "イ"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "解答では A 遠洋・B ウ・C イ の3つがくんで。このスロットは B・C のみ"
+    },
+    "4-2-1": {
+      "big": 4,
+      "label": "問2 1",
+      "unit": "漁業",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "栽培",
+      "variants": [],
+      "points": 2
+    },
+    "4-2-2": {
+      "big": 4,
+      "label": "問2 2 (順番)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "sequence",
+      "answer": "イ→ウ",
+      "variants": [],
+      "points": 2,
+      "note": "くんで"
+    },
+    "4-3": {
+      "big": 4,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 2
+    },
+    "4-4": {
+      "big": 4,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "コークス",
+      "variants": [],
+      "points": 2
+    },
+    "4-5": {
+      "big": 4,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "4-6": {
+      "big": 4,
+      "label": "問6 (アルファベット3字)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "LNG",
+      "variants": [
+        "ＬＮＧ"
+      ],
+      "points": 2
+    },
+    "4-7": {
+      "big": 4,
+      "label": "問7 (すべて)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "イ・エ",
+      "variants": [],
+      "points": 2,
+      "note": "すべて選ぶ（くんで不順可）"
+    },
+    "4-8-1": {
+      "big": 4,
+      "label": "問8 1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "東海工業地域",
+      "variants": [],
+      "points": 2
+    },
+    "4-8-2": {
+      "big": 4,
+      "label": "問8 2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 2
+    },
+    "4-9": {
+      "big": 4,
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "電子",
+      "variants": [],
+      "points": 2
+    },
+    "4-10-1": {
+      "big": 4,
+      "label": "問10 1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "4-10-2": {
+      "big": 4,
+      "label": "問10 2 (すべて)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "ア・ウ",
+      "variants": [],
+      "points": 2,
+      "note": "すべて選ぶ（くんで不順可）"
+    },
+    "4-11": {
+      "big": 4,
+      "label": "問11",
+      "unit": "省",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "経済産業",
+      "variants": [],
+      "points": 2
+    }
+  }
+}

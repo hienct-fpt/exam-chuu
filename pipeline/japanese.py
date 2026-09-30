@@ -76,6 +76,64 @@ def segment(doc: fitz.Document) -> list[dict]:
     return out
 
 
+# kumiwake (四谷大塚): A4 pages in two tiers (上段 / 下段), each read right-to-left; a 大問 can start mid-tier
+# (大問1 漢字 and 大問2 share the top tier of page 1), so 大問 are cut into tier strips instead of whole pages.
+TIERS = ((50, 425), (430, 800))      # y ranges; nothing crosses y≈427, the page footer sits at y≈809
+TIER_RIGHT, TIER_LEFT = 560, 36      # x range of the text block
+MARKER_PAD = 8                       # a 大問's strip starts this far right of its marker's right edge
+
+
+def segment_tiers(doc: fitz.Document) -> list[dict]:
+    """大問 marker = full-width digit >= 11.9pt at the top of a tier; strips follow in reading order
+    (page by page, top tier then bottom tier, right to left). A page whose two tiers both belong to one
+    大問 becomes one full-page region."""
+    starts = []
+    for s in iter_spans(doc):
+        t = s.text.strip()
+        if s.page == 0 or s.size < 11.9 or len(t) != 1 or t not in FULLWIDTH:
+            continue
+        tier = next((i for i, (y0, _) in enumerate(TIERS) if 0 <= s.y0 - y0 < 30), None)   # y≈67 / y≈438
+        if tier is not None:
+            starts.append((s.page, tier, -s.x1, int(nfkc(t))))
+    starts.sort()
+    seen, marks = set(), []
+    for p, tier, negx, no in starts:
+        if no not in seen:
+            seen.add(no)
+            marks.append((p, tier, -negx, no))
+
+    def strip(p: int, tier: int, x_right: float, x_left: float) -> dict | None:
+        y0, y1 = TIERS[tier]
+        rect = fitz.Rect(x_left, y0, x_right, y1)
+        if not doc[p].get_text(clip=rect).strip() and not any(fitz.Rect(i["bbox"]).intersects(rect) for i in doc[p].get_image_info()):
+            return None
+        return {"page": p, "x0": round(x_left, 1), "x1": round(x_right, 1), "y0": y0, "y1": y1}
+
+    out = []
+    for i, (p, tier, x, no) in enumerate(marks):
+        nxt = marks[i + 1] if i + 1 < len(marks) else (len(doc) - 1, len(TIERS) - 1, TIER_LEFT - MARKER_PAD, None)
+        strips = []
+        pos = (p, tier)
+        while pos <= nxt[:2]:
+            cp, ct = pos
+            right = x + MARKER_PAD if pos == (p, tier) and x + MARKER_PAD < TIER_RIGHT - 20 else TIER_RIGHT
+            left = nxt[2] + MARKER_PAD if pos == nxt[:2] else TIER_LEFT
+            if right - left > 20 and (r := strip(cp, ct, min(right, TIER_RIGHT), max(left, TIER_LEFT))):
+                strips.append(r)
+            pos = (cp, ct + 1) if ct + 1 < len(TIERS) else (cp + 1, 0)
+        regions = []
+        for r in strips:   # both full-width tiers of one page -> the whole page
+            prev = regions[-1] if regions else None
+            if (prev and prev["page"] == r["page"] and prev["y1"] == TIERS[0][1] and r["y0"] == TIERS[1][0]
+                    and prev["x0"] == r["x0"] == TIER_LEFT and prev["x1"] == r["x1"] == TIER_RIGHT):
+                prev["y1"] = r["y1"]
+            else:
+                regions.append(r)
+        out.append({"no": no, "key": str(no), "label": str(no), "rank": 0, "regions": regions,
+                    "page_regions": regions, "stem": None, "subs": []})
+    return out
+
+
 # ------------------------------------------------------------------ spans
 
 def _spans(doc: fitz.Document) -> list[Span]:

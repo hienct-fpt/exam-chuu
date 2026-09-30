@@ -1,7 +1,6 @@
 # exam-chuu — 中学受験 過去問練習アプリ
 
 Past-paper practice app: questions cropped from PDF → web answer sheet → auto-grading → dashboard for the parent.
-Plan and status: `docs/PLAN.md`.
 
 ```
 pipeline/   offline PDF → question crops + bank json + answer keys   (python pipeline/run_all.py)
@@ -97,11 +96,12 @@ The result page shows 分野別 correctness so weak topics stand out. Edit tags,
 
 ## 6. Subjects and answer types
 
-88 school exams are processed: 24 kyoritsu (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語), 23 shinagawa
+108 exams are processed: 24 kyoritsu (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語), 23 shinagawa
 (2018 + 2023–2026 × 第1回/第2回 × 算数・理科・社会, plus 算数1教科), 8 chuo (2026 × 1回/2回 × 算数・理科・社会・国語),
-6 sakaehigashi (2025–2026 × 算数・理科・社会) and 27 kawasaki (2021–2026 適性検査Ⅰ/Ⅱ split by subject), plus the
-min-san.com offline copy (§ below). The home page has a school filter (すべて / 共立女子 / 品川女子学院中等部 /
-栄東中学校 / 中央大学附属 / 川崎市立川崎附属 / みんなの算数). Question types:
+6 sakaehigashi (2025–2026 × 算数・理科・社会), 27 kawasaki (2021–2026 適性検査Ⅰ/Ⅱ split by subject) and 20 kumiwake
+(四谷大塚 公開組分けテスト 5年 第1〜5回 × 4 subjects), plus the min-san.com offline copy (§ below). The home page has
+a school filter (すべて / 共立女子 / 品川女子学院中等部 / 栄東中学校 / 中央大学附属 / 川崎市立川崎附属 / 四谷大塚 組分け /
+みんなの算数). Question types:
 
 | answer_type | input | grading |
 |---|---|---|
@@ -151,6 +151,21 @@ per (n). Answer keys + 配点 were transcribed from the 解答例 PDFs into `ove
 (`points` = 配点, used by the grader); 記述/作図/グラフ are `manual` with the 解答例 as the expected answer, 作文
 (解答例 <省略>) have `answer: null`. Reading passages marked 「著作権の関係により省略」 (2021 検査Ⅰ, 2026 検査Ⅱ)
 make their questions unanswerable — those slots were dropped (the pages still show).
+
+**Kumiwake (四谷大塚 公開組分けテスト, 5年 2026 第1〜5回)**: `kumiwake_past/` (git-ignored) is scanned by
+`inventory.scan_kumiwake()` into `kumiwake_2026_r{1-5}_{subject}`. The `…回答.pdf` files are **the child's own scored
+answer sheets** (handwriting, ○/✓, name), not 模範解答: they are kept as `files.scored_sheet` and never shipped or
+read as keys. The question PDFs have a text layer: 算数's ⑴⑵ are glyphs of an `Fx-*` font whose text is unrelated
+kanji (唄欝蔚鰻姥厩浦瓜 → ⑴…⑻, remapped in `SUBJECT_RULES["kumiwake_math"]`), 理科 uses 問１ + (1), 社会 問１; the
+`2026－組①－５－算－2` footers are noise; ruby above a question's first line needs `pad_top`; a 大問 whose figure sits
+beside several sub questions gets `whole: true` and is shown as one image (`build.py`). 国語 is two tiers per page
+(上段/下段) and several 大問 can share a tier, so `japanese.segment_tiers()` cuts tier strips in reading order. Slots
+come from the question tree (`answer_key_tree.py`), split per answer box as laid out on the scored sheets.
+The keys were transcribed from each round's `…結果.pdf` (`files.result`: 解答と解説 on pp. 2–8, then the 教科別正答率一覧表,
+whose rows match the slots one to one): `overrides/answers/kumiwake_*.json` holds answer / answer_type / variants and
+`points` = 配点 (200/150/100 per exam), `pipeline/tags/kumiwake_*.json` grade 5 + topic = the table's 領域. Only the
+国語 記述 are `manual` (model answer + note). The 結果.pdf also has the child's own scores — not used. Symbols printed
+as circled hiragana (○い) are stored as ㋑ etc.; the grader folds single kana so a typed い matches (`norm_word`).
 
 **Sakaehigashi (栄東中学校)**: all 6 PDFs (算数・理科・社会 × 2025/2026) are scanned images with **no text layer**,
 so the font/position marker detection above can't run — every 大問 still falls back to one shared image per big

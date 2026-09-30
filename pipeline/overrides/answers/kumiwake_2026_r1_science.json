@@ -1,0 +1,422 @@
+{
+  "slots": {
+    "3-2": {
+      "delete": true
+    },
+    "1-1": {
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "1-2": {
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 2
+    },
+    "1-3": {
+      "big": 1,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 2
+    },
+    "1-4": {
+      "big": 1,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 2
+    },
+    "1-5": {
+      "big": 1,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 2
+    },
+    "2-1": {
+      "big": 2,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "ロゼット",
+      "variants": [],
+      "points": 3
+    },
+    "2-2": {
+      "big": 2,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "ア・イ",
+      "variants": [],
+      "points": 3,
+      "note": "くんで不順可"
+    },
+    "2-3-1": {
+      "big": 2,
+      "label": "問3(1)",
+      "unit": "植物",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "長日",
+      "variants": [],
+      "points": 3,
+      "note": "解答欄の単位「植物」→長日植物"
+    },
+    "2-3-2": {
+      "big": 2,
+      "label": "問3(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 3
+    },
+    "2-3-3": {
+      "big": 2,
+      "label": "問3(3)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 3
+    },
+    "2-4": {
+      "big": 2,
+      "label": "問4 (番号①～④)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "①",
+      "variants": [],
+      "points": 3
+    },
+    "2-5": {
+      "big": 2,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 3
+    },
+    "2-6": {
+      "big": 2,
+      "label": "問6 (2つ, 番号)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "①・④",
+      "variants": [],
+      "points": 3,
+      "note": "くんで不順可"
+    },
+    "3-1": {
+      "big": 3,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 3
+    },
+    "3-2-1": {
+      "big": 3,
+      "label": "問2 ○い",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 3
+    },
+    "3-2-2": {
+      "big": 3,
+      "label": "問2 ○う",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 3
+    },
+    "3-3": {
+      "big": 3,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 3
+    },
+    "3-4": {
+      "big": 3,
+      "label": "問4",
+      "unit": "",
+      "parts": [
+        "○お",
+        "○か"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "ア",
+        "エ"
+      ],
+      "variants": [],
+      "points": 3,
+      "note": "㋔ ア ㋕ エ（くんで）"
+    },
+    "3-5": {
+      "big": 3,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "㋓・㋕",
+      "variants": [
+        "え・か"
+      ],
+      "points": 3,
+      "note": "くんで不順可。記号は丸囲みの え・か"
+    },
+    "3-6": {
+      "big": 3,
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 3
+    },
+    "4-1-1": {
+      "big": 4,
+      "label": "問1(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 3
+    },
+    "4-1-2": {
+      "big": 4,
+      "label": "問1(2)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 3
+    },
+    "4-2": {
+      "big": 4,
+      "label": "問2 (ことば)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "伝導",
+      "variants": [],
+      "points": 3
+    },
+    "4-3": {
+      "big": 4,
+      "label": "問3",
+      "unit": "",
+      "parts": [
+        "X",
+        "Y"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "イ",
+        "オ"
+      ],
+      "variants": [],
+      "points": 3,
+      "note": "X イ Y オ（くんで）"
+    },
+    "4-4": {
+      "big": 4,
+      "label": "問4",
+      "unit": "カロリー",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "4000",
+      "variants": [],
+      "points": 3
+    },
+    "4-5-1": {
+      "big": 4,
+      "label": "問5(1)",
+      "unit": "℃",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "37",
+      "variants": [],
+      "points": 3
+    },
+    "4-5-2": {
+      "big": 4,
+      "label": "問5(2)",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "160",
+      "variants": [],
+      "points": 3
+    },
+    "5-1": {
+      "big": 5,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 3
+    },
+    "5-2": {
+      "big": 5,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 3
+    },
+    "5-3": {
+      "big": 5,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "Ｄ",
+      "variants": [],
+      "points": 3
+    },
+    "5-4": {
+      "big": 5,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "Ｂ",
+      "variants": [],
+      "points": 3
+    },
+    "5-5": {
+      "big": 5,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 3
+    },
+    "5-6": {
+      "big": 5,
+      "label": "問6",
+      "unit": "時",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "22",
+      "variants": [],
+      "points": 3
+    },
+    "5-7": {
+      "big": 5,
+      "label": "問7",
+      "unit": "",
+      "parts": [
+        "記号",
+        "数字"
+      ],
+      "part_units": [
+        "",
+        "度"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "あ",
+        "90"
+      ],
+      "variants": [],
+      "points": 3,
+      "note": "記号 ㋐（丸囲みの あ） 数字 90（くんで）"
+    },
+    "5-8": {
+      "big": 5,
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 3
+    }
+  }
+}
