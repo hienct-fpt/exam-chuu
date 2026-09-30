@@ -189,8 +189,10 @@ def grade(key: dict, student) -> GradeResult:
         return GradeResult(False, normalize(student) if not isinstance(student, list) else student, pending=True)
     if atype == "multi" or (isinstance(expected, list) and atype not in ("set", "sequence")):
         best = None
-        # list-valued variants = other accepted part combinations (e.g. two 不順可 記号 paired with a name)
-        for exp_list in [list(expected)] + [list(v) for v in variants if isinstance(v, (list, tuple)) and len(v) == len(expected)]:
+        # {"parts": [...]} variants = other accepted part combinations (e.g. two 不順可 記号 paired with a name);
+        # a map, not a nested list, because answerKeys live in Firestore (no arrays inside arrays)
+        combos = [v.get("parts") if isinstance(v, dict) else v for v in variants]
+        for exp_list in [list(expected)] + [list(c) for c in combos if isinstance(c, (list, tuple)) and len(c) == len(expected)]:
             stu_list = list(student) if isinstance(student, (list, tuple)) else _split_multi(student, len(exp_list))
             stu_list = (stu_list + [""] * len(exp_list))[: len(exp_list)]
             results = [_grade_part(str(e), s) for e, s in zip(exp_list, stu_list)]

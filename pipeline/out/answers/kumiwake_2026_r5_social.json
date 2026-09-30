@@ -163,12 +163,7 @@
       "confidence": "manual",
       "raw_values": [],
       "part_units": null,
-      "variants": [
-        [
-          "お",
-          "名古屋市"
-        ]
-      ],
+      "variants": [],
       "points": 2,
       "note": "記号は丸囲みのひらがな「お」（㋔で表記）"
     },
@@ -823,21 +818,13 @@
       "raw_values": [],
       "part_units": null,
       "variants": [
-        [
-          "㋒",
-          "㋑",
-          "東京都"
-        ],
-        [
-          "い",
-          "う",
-          "東京都"
-        ],
-        [
-          "う",
-          "い",
-          "東京都"
-        ]
+        {
+          "parts": [
+            "㋒",
+            "㋑",
+            "東京都"
+          ]
+        }
       ],
       "points": 2,
       "note": "記号2つはくんで不順可（丸囲みのい・う＝㋑・㋒）、記号と名はくんで。multiのため順序入れ替えをvariantsで許容"

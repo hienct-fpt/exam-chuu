@@ -102,7 +102,7 @@ def test_all_bank_answers_grade_themselves():
         if not r.correct:
             bad.append((iid, k["answer"]))
         for v in k.get("variants") or []:
-            if not grade(k, v).correct:
+            if not grade(k, v["parts"] if isinstance(v, dict) else v).correct:   # {"parts": [...]}: multi combo
                 bad.append((iid, v))
     assert not bad, bad
 
@@ -118,6 +118,6 @@ def test_grade_circled_kana_and_multi_variants():
     assert grade({"answer_type": "choice", "answer": "㋑"}, "い").correct          # ○い printed, い typed
     assert grade({"answer_type": "set", "answer": "㋓・㋕"}, "か・え").correct
     assert not grade({"answer_type": "choice", "answer": "㋑"}, "う").correct
-    key = {"answer_type": "multi", "answer": ["㋑", "㋒", "東京都"], "variants": [["㋒", "㋑", "東京都"]]}
+    key = {"answer_type": "multi", "answer": ["㋑", "㋒", "東京都"], "variants": [{"parts": ["㋒", "㋑", "東京都"]}]}
     assert grade(key, ["う", "い", "東京都"]).correct and grade(key, ["い", "う", "東京都"]).correct
     assert not grade(key, ["い", "い", "東京都"]).correct
