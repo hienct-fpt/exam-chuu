@@ -49,9 +49,12 @@ service cloud.firestore {
       match /attempts/{attemptId} {
         allow read: if isOwner(uid) || isParentOf(uid);
         // Student may create and edit an attempt only while it is in progress, then submit it once.
+        // Cross-exam practice sets have no examId; they carry the item ids instead.
         allow create: if isOwner(uid)
           && request.resource.data.status == 'in_progress'
-          && request.resource.data.examId is string;
+          && (request.resource.data.examId is string
+            || (request.resource.data.examId == null && request.resource.data.mode == 'practice'
+              && request.resource.data.items is list && request.resource.data.items.size() > 0));
         allow update: if (isOwner(uid)
           && resource.data.status == 'in_progress'
           && request.resource.data.status in ['in_progress', 'submitted']

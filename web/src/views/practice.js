@@ -96,11 +96,19 @@ export async function renderPractice({ app }, arg) {
   app.querySelector('#start').onclick = async () => {
     picked = preview();
     if (!picked.length) return;
+    const btn = app.querySelector('#start');
     const title = `${SUBJ[subject]} 練習: ${selected.size ? [...selected].join('・') : '全分野'}`;
-    const id = await createAttempt(null, 'practice', {
-      items: picked.map((p) => p.id), topics: [...selected], subject, gradeFilter,
-      timeLimitMin: Math.max(5, Math.ceil(picked.length * 2 / 5) * 5), title,
-    });
-    location.hash = `#/attempt/${id}`;
+    btn.disabled = true; btn.textContent = '準備中…';
+    try {
+      const id = await createAttempt(null, 'practice', {
+        items: picked.map((p) => p.id), topics: [...selected], subject, gradeFilter,
+        timeLimitMin: Math.max(5, Math.ceil(picked.length * 2 / 5) * 5), title,
+      });
+      location.hash = `#/attempt/${id}`;
+    } catch (e) {
+      console.error(e);
+      alert('練習を開始できませんでした: ' + e.message);
+      btn.disabled = false; btn.textContent = '練習を始める';
+    }
   };
 }

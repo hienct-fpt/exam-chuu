@@ -54,6 +54,28 @@ export function scaledTimeLimit(exam, items) {
   return Math.max(5, Math.ceil((exam.time_limit_min * items.length / exam.items.length) / 5) * 5);
 }
 
+/**
+ * Local draft of unsaved answers (localStorage), written synchronously on every edit so nothing is lost when the
+ * page changes / the tab closes before the debounced server save lands. Cleared once the server has the answers.
+ */
+const DRAFT_PREFIX = 'exam-chuu:draft:';
+export function readDraft(key) {
+  try { return JSON.parse(localStorage.getItem(DRAFT_PREFIX + key)) || null; } catch { return null; }
+}
+function writeDraft(key, answers) {
+  try { localStorage.setItem(DRAFT_PREFIX + key, JSON.stringify({ answers, t: new Date().toISOString() })); } catch { /* quota / private mode */ }
+}
+function clearDraft(key) {
+  try { localStorage.removeItem(DRAFT_PREFIX + key); } catch { /* ignore */ }
+}
+
+/** Server answers, overlaid by the local draft unless the server copy was saved after it (e.g. from another device). */
+export function mergeDraft(serverAnswers, serverUpdatedAt, draft) {
+  if (!draft?.answers) return { answers: serverAnswers || {}, restored: false };
+  if (serverUpdatedAt && new Date(serverUpdatedAt) > new Date(draft.t)) return { answers: serverAnswers || {}, restored: false };
+  return { answers: { ...(serverAnswers || {}), ...draft.answers }, restored: true };
+}
+
 /** Group items into blocks: one block per (exam, 大問). */
 function blocks(items, banks) {
   const map = new Map();
@@ -118,12 +140,13 @@ function renderBlock(b, answers, keyOf, showExam, skipped = [], gradeFilter = nu
 
 /**
  * Shared answer-sheet renderer.
- * sheet = { title, subtitle, items, banks, keyOf(item)->answer key, timeLimit, attemptId|null, answers, startedAt,
- *           createExtra: () => [examId, mode, extra], showExam }
+ * sheet = { title, subtitle, items, banks, keyOf(item)->answer key, timeLimit, attemptId|null, answers, updatedAt,
+ *           startedAt, draftKey, createExtra: () => [examId, mode, extra], showExam }
  */
 async function renderSheet(app, sheet) {
-  const { items, banks, keyOf } = sheet;
-  const answers = { ...(sheet.answers || {}) };
+  const { items, banks, keyOf, draftKey } = sheet;
+  const merged = mergeDraft(sheet.answers, sheet.updatedAt, readDraft(draftKey));
+  const answers = { ...merged.answers };
   let attemptId = sheet.attemptId;
   const startedAt = sheet.startedAt || new Date();
   app.innerHTML = `
@@ -158,15 +181,33 @@ async function renderSheet(app, sheet) {
   }
   collect();
   let saveTimer = null;
+  let dirty = false; // edits not yet sent to the server
+  let edits = 0; // bumps on every edit, so a save only clears the draft if nothing changed while it was in flight
+  let submitted = false;
+  let creating = null;
   async function ensureAttempt() {
-    if (!attemptId) attemptId = await createAttempt(...sheet.createExtra());
+    if (!attemptId) attemptId = await (creating ||= createAttempt(...sheet.createExtra()));
     return attemptId;
   }
-  async function persist() { await saveAnswers(await ensureAttempt(), answers); savestate.textContent = '保存済み'; }
+  async function persist() {
+    dirty = false; clearTimeout(saveTimer);
+    const seen = edits;
+    await saveAnswers(await ensureAttempt(), answers);
+    if (seen === edits) clearDraft(draftKey);
+    savestate.textContent = '保存済み';
+  }
+  const persistSafe = () => persist().catch((e) => { dirty = true; savestate.textContent = '保存失敗'; console.error(e); });
+  const scheduleSave = () => { dirty = true; clearTimeout(saveTimer); saveTimer = setTimeout(persistSafe, 800); };
+  /** Leaving the page / hiding the tab: send pending edits now instead of waiting for the debounce. */
+  const flush = () => { if (dirty && !submitted) persistSafe(); };
   const onChange = () => {
-    collect(); savestate.textContent = '保存中…'; clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => persist().catch((e) => { savestate.textContent = '保存失敗'; console.error(e); }), 800);
+    collect(); edits++; writeDraft(draftKey, answers);
+    savestate.textContent = '保存中…'; scheduleSave();
   };
+  if (merged.restored) { savestate.textContent = '前回の入力を復元しました'; scheduleSave(); }
+  const onHide = () => { if (document.visibilityState === 'hidden') flush(); };
+  document.addEventListener('visibilitychange', onHide);
+  window.addEventListener('pagehide', flush);
   form.addEventListener('input', onChange);
   form.addEventListener('change', onChange);
   form.addEventListener('keydown', (e) => {
@@ -195,6 +236,7 @@ async function renderSheet(app, sheet) {
     try {
       clearTimeout(saveTimer);
       await submitAttempt(await ensureAttempt(), answers);
+      submitted = true; clearDraft(draftKey);
       clearInterval(tick);
       location.hash = `#/result/${attemptId}`;
     } catch (e) {
@@ -202,11 +244,15 @@ async function renderSheet(app, sheet) {
       btn.disabled = false; btn.textContent = '提出して採点';
     }
   };
-  return () => { clearInterval(tick); clearTimeout(saveTimer); };
+  return () => {
+    clearInterval(tick); flush(); clearTimeout(saveTimer);
+    document.removeEventListener('visibilitychange', onHide);
+    window.removeEventListener('pagehide', flush);
+  };
 }
 
 /** Full exam (optionally filtered to 小N以下 items): #/exam/{examId}[?g=4|5] */
-export async function renderExam({ app }, arg) {
+export async function renderExam({ app, user }, arg) {
   const { examId, gradeFilter } = parseExamArg(arg);
   const exam = await loadExam(examId);
   const items = selectItems(exam, gradeFilter);
@@ -219,13 +265,14 @@ export async function renderExam({ app }, arg) {
     subtitle: `${items.length} 問${gradeFilter ? ` <small>(全 ${exam.item_count} 問中)</small>` : ''} · 制限時間 ${timeLimit} 分 · 答えは解答欄に入力（単位は不要）`,
     items, banks: { [examId]: exam }, keyOf: (it) => slotId(it.id), timeLimit, showExam: false,
     skipped: exam.items.filter((it) => !items.includes(it)), gradeFilter,
-    attemptId: attempt ? attempt.id : null, answers: attempt?.answers, startedAt: attempt ? new Date(attempt.startedAt) : null,
+    attemptId: attempt ? attempt.id : null, answers: attempt?.answers, updatedAt: attempt?.updatedAt,
+    startedAt: attempt ? new Date(attempt.startedAt) : null, draftKey: `${user?.uid || 'anon'}:exam:${examId}:${gradeFilter || 'all'}`,
     createExtra: () => [examId, gradeFilter ? 'practice' : 'exam', { itemIds, gradeFilter, timeLimitMin: timeLimit }],
   });
 }
 
 /** Cross-exam practice attempt created by the practice view: #/attempt/{attemptId} */
-export async function renderAttempt({ app }, attemptId) {
+export async function renderAttempt({ app, user }, attemptId) {
   const a = await getAttempt(attemptId);
   if (!a) { app.innerHTML = '<div class="card">見つかりません。<a href="#/">一覧へ</a></div>'; return; }
   if (a.status !== 'in_progress') { location.hash = `#/result/${attemptId}`; return; }
@@ -238,7 +285,8 @@ export async function renderAttempt({ app }, attemptId) {
     title: `${esc(a.title || '練習')} ${a.gradeFilter ? `<span class="badge">小${a.gradeFilter}まで</span>` : ''}`,
     subtitle: `${items.length} 問 · ${[...new Set(items.map((i) => i.examLabel))].length} 回分の過去問から · 目安 ${timeLimit} 分`,
     items, banks: all.banks, keyOf: (it) => it.id, timeLimit, showExam: true,
-    attemptId, answers: a.answers, startedAt: new Date(a.startedAt),
+    attemptId, answers: a.answers, updatedAt: a.updatedAt, startedAt: new Date(a.startedAt),
+    draftKey: `${user?.uid || 'anon'}:attempt:${attemptId}`,
     createExtra: () => [null, 'practice', {}],
   });
 }

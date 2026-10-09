@@ -106,6 +106,43 @@ describe('mock api + views', () => {
     unsub();
   });
 
+  it('leaving the exam page saves pending answers and reopening restores them', async () => {
+    const { renderExam, readDraft } = await import('../src/views/exam.js');
+    const api = await import('../src/api.js');
+    const user = { uid: 'local' };
+    const draftKey = `local:exam:${EXAM}:all`;
+    const app = document.createElement('main');
+    let cleanup = await renderExam({ app, user }, EXAM);
+    const el = app.querySelector('input[data-sid="1-1"]:not([data-part])');
+    el.value = '7'; el.dispatchEvent(new Event('input', { bubbles: true }));
+    expect(readDraft(draftKey).answers['1-1']).toBe('7'); // draft written synchronously, before the debounce
+    cleanup(); // navigate away well before the 800ms autosave
+    await new Promise((r) => setTimeout(r, 50));
+    expect((await api.findInProgress(EXAM)).answers['1-1']).toBe('7');
+    expect(readDraft(draftKey)).toBeNull(); // server has it -> draft cleared
+
+    // unsaved local draft (e.g. tab closed mid-typing) is restored on top of the server answers
+    localStorage.setItem(`exam-chuu:draft:${draftKey}`, JSON.stringify({ answers: { '1-2': '99' }, t: new Date(Date.now() + 1000).toISOString() }));
+    const app2 = document.createElement('main');
+    cleanup = await renderExam({ app: app2, user }, EXAM);
+    expect(app2.querySelector('input[data-sid="1-1"]:not([data-part])').value).toBe('7');
+    expect(app2.querySelector('input[data-sid="1-2"]:not([data-part])').value).toBe('99');
+    expect(app2.querySelector('#savestate').textContent).toContain('復元');
+    cleanup();
+    await new Promise((r) => setTimeout(r, 50));
+    expect((await api.findInProgress(EXAM)).answers['1-2']).toBe('99');
+  });
+
+  it('mergeDraft prefers the newer copy', async () => {
+    const { mergeDraft } = await import('../src/views/exam.js');
+    const server = { a: '1', b: '2' };
+    expect(mergeDraft(server, null, null)).toEqual({ answers: server, restored: false });
+    expect(mergeDraft(server, '2026-01-01T00:00:00Z', { answers: { b: '3' }, t: '2026-01-02T00:00:00Z' }))
+      .toEqual({ answers: { a: '1', b: '3' }, restored: true });
+    expect(mergeDraft(server, '2026-01-03T00:00:00Z', { answers: { b: '3' }, t: '2026-01-02T00:00:00Z' }))
+      .toEqual({ answers: server, restored: false });
+  });
+
   it('history lists the graded attempt', async () => {
     const { renderHistory } = await import('../src/views/history.js');
     const app = document.createElement('main');

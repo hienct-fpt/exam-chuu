@@ -61,7 +61,7 @@ const attemptRef = (id, uid = user.uid) => doc(db, 'students', uid || user.uid, 
 function norm(snap) {
   const d = snap.data();
   const ts = (v) => (v && v.toDate ? v.toDate().toISOString() : v || null);
-  return { id: snap.id, ...d, startedAt: ts(d.startedAt), submittedAt: ts(d.submittedAt), gradedAt: ts(d.gradedAt) };
+  return { id: snap.id, ...d, startedAt: ts(d.startedAt), submittedAt: ts(d.submittedAt), gradedAt: ts(d.gradedAt), updatedAt: ts(d.updatedAt) };
 }
 
 /** extra: { itemIds, gradeFilter, timeLimitMin, items (practice: full item ids), topics, title, subject } */
