@@ -6,7 +6,7 @@ Exam id: {school}_{year}_{session}_{subject}
 Shinagawa 社会・理科 share one 問題 PDF; `page_range` (0-based, inclusive) selects the subject's pages.
 Shinagawa 解答 are scanned images (answers are transcribed into pipeline/overrides/answers/*.json).
   kawasaki_2026_k1_social         kawasaki: k1 / k2 (適性検査Ⅰ / Ⅱ), one exam per subject (table: kawasaki_exams.json)
-  kumiwake_2026_r1_math           kumiwake: 四谷大塚 公開組分けテスト 5年 r1..r5 (第1〜5回)
+  kumiwake_2026_r1_math           kumiwake: 四谷大塚 公開組分けテスト 5年 r1..r6 (第1〜6回)
 """
 from __future__ import annotations
 
@@ -172,7 +172,7 @@ RE_KUMI = re.compile(r"^(?P<year>\d{4})年(?P<month>\d{1,2})月\s*公開組分�
 
 
 def scan_kumiwake() -> dict[str, dict]:
-    """四谷大塚 公開組分けテスト (5年, 第1〜5回). The 回答 PDFs are the child's own scored answer sheets (handwriting,
+    """四谷大塚 公開組分けテスト (5年, 第1〜6回; 第6回 has no 回答 sheets). The 回答 PDFs are the child's own scored answer sheets (handwriting,
     ○/✓, name), NOT 模範解答: kept as `scored_sheet` for slot layout checks only, never shipped or read as answers.
     The keys come from the round's 結果.pdf (`result`)."""
     exams: dict[str, dict] = {}

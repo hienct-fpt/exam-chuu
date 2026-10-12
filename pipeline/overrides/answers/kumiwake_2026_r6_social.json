@@ -1,0 +1,643 @@
+{
+  "slots": {
+    "1-2": {
+      "delete": true
+    },
+    "1-8": {
+      "delete": true
+    },
+    "2-3": {
+      "delete": true
+    },
+    "2-10": {
+      "delete": true
+    },
+    "3-2": {
+      "delete": true
+    },
+    "3-11": {
+      "delete": true
+    },
+    "1-1": {
+      "big": 1,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "太政大臣",
+      "variants": [],
+      "points": 2
+    },
+    "1-2-1": {
+      "big": 1,
+      "label": "問2 1",
+      "unit": "",
+      "parts": [
+        "名",
+        "記号"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "大輪田泊",
+        "イ"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "名と記号はくんで"
+    },
+    "1-2-2": {
+      "big": 1,
+      "label": "問2 2 (2つ)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "イ・ウ",
+      "variants": [],
+      "points": 2,
+      "note": "くんで不順可"
+    },
+    "1-3": {
+      "big": 1,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "寝殿造",
+      "variants": [],
+      "points": 2
+    },
+    "1-4": {
+      "big": 1,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "保元",
+      "variants": [],
+      "points": 2
+    },
+    "1-5": {
+      "big": 1,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 2
+    },
+    "1-6": {
+      "big": 1,
+      "label": "問6 (漢字2字)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "新皇",
+      "variants": [],
+      "points": 2
+    },
+    "1-7": {
+      "big": 1,
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "藤原純友",
+      "variants": [],
+      "points": 2
+    },
+    "1-8-1": {
+      "big": 1,
+      "label": "問8 1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 2
+    },
+    "1-8-2": {
+      "big": 1,
+      "label": "問8 2 (ひらがな3字)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "えみし",
+      "variants": [],
+      "points": 2
+    },
+    "1-9": {
+      "big": 1,
+      "label": "問9",
+      "unit": "",
+      "parts": [
+        "⑨ 天皇の名",
+        "記号"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "白河",
+        "ア"
+      ],
+      "variants": [
+        {
+          "parts": [
+            "白河天皇",
+            "ア"
+          ]
+        }
+      ],
+      "points": 2,
+      "note": "名と記号はくんで"
+    },
+    "1-10": {
+      "big": 1,
+      "label": "問10",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "院政",
+      "variants": [],
+      "points": 2
+    },
+    "1-11": {
+      "big": 1,
+      "label": "問11 (順番)",
+      "unit": "",
+      "parts": [
+        "1",
+        "→2",
+        "→3",
+        "→4"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "C",
+        "D",
+        "B",
+        "A"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "4つくんで"
+    },
+    "2-1": {
+      "big": 2,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 2
+    },
+    "2-2": {
+      "big": 2,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 2
+    },
+    "2-3-1": {
+      "big": 2,
+      "label": "問3 1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "前方後円墳",
+      "variants": [],
+      "points": 2
+    },
+    "2-3-2": {
+      "big": 2,
+      "label": "問3 2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "渡来人",
+      "variants": [],
+      "points": 2
+    },
+    "2-4": {
+      "big": 2,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "埴輪",
+      "variants": [],
+      "points": 2
+    },
+    "2-5": {
+      "big": 2,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "大森貝塚",
+      "variants": [],
+      "points": 2
+    },
+    "2-6": {
+      "big": 2,
+      "label": "問6 (すべて)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "イ・ウ",
+      "variants": [],
+      "points": 2,
+      "note": "すべて選ぶ；くんで不順可"
+    },
+    "2-7": {
+      "big": 2,
+      "label": "問7 (漢字2字)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "土器",
+      "variants": [],
+      "points": 2
+    },
+    "2-8": {
+      "big": 2,
+      "label": "問8",
+      "unit": "",
+      "parts": [
+        "歴史書",
+        "時代"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "イ",
+        "オ"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "くんで"
+    },
+    "2-9": {
+      "big": 2,
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "2-10-1": {
+      "big": 2,
+      "label": "問10 1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "2-10-2": {
+      "big": 2,
+      "label": "問10 2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 2
+    },
+    "3-1": {
+      "big": 3,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "木簡",
+      "variants": [],
+      "points": 2
+    },
+    "3-2-1": {
+      "big": 3,
+      "label": "問2 ②",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "3-2-2": {
+      "big": 3,
+      "label": "問2 ③",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "キ",
+      "variants": [],
+      "points": 2
+    },
+    "3-2-3": {
+      "big": 3,
+      "label": "問2 ④",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "コ",
+      "variants": [],
+      "points": 2
+    },
+    "3-3": {
+      "big": 3,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "3-4": {
+      "big": 3,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "儒教",
+      "variants": [],
+      "points": 2
+    },
+    "3-5": {
+      "big": 3,
+      "label": "問5",
+      "unit": "",
+      "parts": [
+        "名",
+        "記号"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "百済",
+        "ア"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "名と記号はくんで"
+    },
+    "3-6": {
+      "big": 3,
+      "label": "問6",
+      "unit": "の戦い",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "白村江",
+      "variants": [],
+      "points": 2,
+      "note": "解答らんの「の戦い」は推定（回答用紙なし）"
+    },
+    "3-7": {
+      "big": 3,
+      "label": "問7 (漢字2字)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "防人",
+      "variants": [],
+      "points": 2
+    },
+    "3-8": {
+      "big": 3,
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "滋賀県",
+      "variants": [
+        "滋賀"
+      ],
+      "points": 2
+    },
+    "3-9": {
+      "big": 3,
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "天智",
+      "variants": [],
+      "points": 2
+    },
+    "3-10": {
+      "big": 3,
+      "label": "問10",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "壬申の乱",
+      "variants": [],
+      "points": 2
+    },
+    "3-11-1": {
+      "big": 3,
+      "label": "問11 1 (漢字2字)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "大宝",
+      "variants": [],
+      "points": 2
+    },
+    "3-11-2": {
+      "big": 3,
+      "label": "問11 2 (すべて)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "ア・イ・ウ",
+      "variants": [],
+      "points": 2,
+      "note": "正しくないものをすべて；3つくんで不順可"
+    },
+    "3-12": {
+      "big": 3,
+      "label": "問12",
+      "unit": "年",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "710",
+      "variants": [],
+      "points": 2
+    },
+    "3-13": {
+      "big": 3,
+      "label": "問13",
+      "unit": "",
+      "parts": [
+        "名",
+        "記号"
+      ],
+      "part_units": [
+        "天皇",
+        ""
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "聖武",
+        "エ"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "名と記号はくんで。解答らんの「天皇」は推定（回答用紙なし）"
+    },
+    "3-14": {
+      "big": 3,
+      "label": "問14",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "正倉院",
+      "variants": [],
+      "points": 2
+    },
+    "3-15": {
+      "big": 3,
+      "label": "問15 (すべて)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "ア・イ",
+      "variants": [],
+      "points": 2,
+      "note": "すべて選ぶ；くんで不順可"
+    },
+    "3-16": {
+      "big": 3,
+      "label": "問16",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "関白",
+      "variants": [],
+      "points": 2
+    },
+    "3-17": {
+      "big": 3,
+      "label": "問17",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "菅原道真",
+      "variants": [],
+      "points": 2
+    },
+    "3-18": {
+      "big": 3,
+      "label": "問18",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "藤原道長",
+      "variants": [],
+      "points": 2
+    },
+    "3-19": {
+      "big": 3,
+      "label": "問19",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "3-20": {
+      "big": 3,
+      "label": "問20",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "荘園",
+      "variants": [],
+      "points": 2
+    },
+    "3-21": {
+      "big": 3,
+      "label": "問21 (漢字2字)",
+      "unit": "の権",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "不輸",
+      "variants": [],
+      "points": 2,
+      "note": "解答らんの「の権」は推定（回答用紙なし）"
+    },
+    "3-22": {
+      "big": 3,
+      "label": "問22",
+      "unit": "",
+      "parts": [
+        "名",
+        "記号"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "藤原京",
+        "ウ"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "名と記号はくんで"
+    }
+  }
+}

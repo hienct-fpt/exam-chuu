@@ -96,10 +96,10 @@ The result page shows 分野別 correctness so weak topics stand out. Edit tags,
 
 ## 6. Subjects and answer types
 
-108 exams are processed: 24 kyoritsu (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語), 23 shinagawa
+112 exams are processed: 24 kyoritsu (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語), 23 shinagawa
 (2018 + 2023–2026 × 第1回/第2回 × 算数・理科・社会, plus 算数1教科), 8 chuo (2026 × 1回/2回 × 算数・理科・社会・国語),
-6 sakaehigashi (2025–2026 × 算数・理科・社会), 27 kawasaki (2021–2026 適性検査Ⅰ/Ⅱ split by subject) and 20 kumiwake
-(四谷大塚 公開組分けテスト 5年 第1〜5回 × 4 subjects), plus the min-san.com offline copy (§ below). The home page has
+6 sakaehigashi (2025–2026 × 算数・理科・社会), 27 kawasaki (2021–2026 適性検査Ⅰ/Ⅱ split by subject) and 24 kumiwake
+(四谷大塚 公開組分けテスト 5年 第1〜6回 × 4 subjects), plus the min-san.com offline copy (§ below). The home page has
 a school filter (すべて / 共立女子 / 品川女子学院中等部 / 栄東中学校 / 中央大学附属 / 川崎市立川崎附属 / 四谷大塚 組分け /
 みんなの算数). Question types:
 
@@ -152,8 +152,8 @@ per (n). Answer keys + 配点 were transcribed from the 解答例 PDFs into `ove
 (解答例 <省略>) have `answer: null`. Reading passages marked 「著作権の関係により省略」 (2021 検査Ⅰ, 2026 検査Ⅱ)
 make their questions unanswerable — those slots were dropped (the pages still show).
 
-**Kumiwake (四谷大塚 公開組分けテスト, 5年 2026 第1〜5回)**: `kumiwake_past/` (git-ignored) is scanned by
-`inventory.scan_kumiwake()` into `kumiwake_2026_r{1-5}_{subject}`. The `…回答.pdf` files are **the child's own scored
+**Kumiwake (四谷大塚 公開組分けテスト, 5年 2026 第1〜6回)**: `kumiwake_past/` (git-ignored) is scanned by
+`inventory.scan_kumiwake()` into `kumiwake_2026_r{1-6}_{subject}` (第6回 came without 回答 sheets). The `…回答.pdf` files are **the child's own scored
 answer sheets** (handwriting, ○/✓, name), not 模範解答: they are kept as `files.scored_sheet` and never shipped or
 read as keys. The question PDFs have a text layer: 算数's ⑴⑵ are glyphs of an `Fx-*` font whose text is unrelated
 kanji (唄欝蔚鰻姥厩浦瓜 → ⑴…⑻, remapped in `SUBJECT_RULES["kumiwake_math"]`), 理科 uses 問１ + (1), 社会 問１; the

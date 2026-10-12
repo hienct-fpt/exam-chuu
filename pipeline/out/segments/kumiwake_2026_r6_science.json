@@ -1,0 +1,727 @@
+{
+  "exam_id": "kumiwake_2026_r6_science",
+  "bigs": [
+    {
+      "key": "1",
+      "label": "1",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 2,
+          "y0": 53.5,
+          "y1": 733.1
+        },
+        {
+          "page": 3,
+          "y0": 30,
+          "y1": 187.3
+        }
+      ],
+      "stem": {
+        "page": 2,
+        "y0": 53.5,
+        "y1": 77.2
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "問1",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 90.1,
+              "y1": 199.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "問2",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 267.8,
+              "y1": 377.7
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "問3",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 445.5,
+              "y1": 555.4
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "4",
+          "label": "問4",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 2,
+              "y0": 623.3,
+              "y1": 733.1
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "5",
+          "label": "問5",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 3,
+              "y0": 53.6,
+              "y1": 187.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 1
+    },
+    {
+      "key": "2",
+      "label": "2",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 4,
+          "y0": 53.5,
+          "y1": 762.7
+        },
+        {
+          "page": 5,
+          "y0": 30,
+          "y1": 421.1
+        }
+      ],
+      "stem": {
+        "page": 4,
+        "y0": 53.5,
+        "y1": 223.3
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "問1",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 226.4,
+              "y1": 265.1
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "問2",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 310.8,
+              "y1": 402.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "問3",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 448.5,
+              "y1": 487.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "4",
+          "label": "問4",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 532.9,
+              "y1": 607.2
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "5",
+          "label": "問5",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 4,
+              "y0": 652.9,
+              "y1": 762.7
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "6",
+          "label": "問6",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 53.6,
+              "y1": 163.4
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "7",
+          "label": "問7",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 209.1,
+              "y1": 247.8
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "8",
+          "label": "問8",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 5,
+              "y0": 293.5,
+              "y1": 421.1
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 2
+    },
+    {
+      "key": "3",
+      "label": "3",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 6,
+          "y0": 53.5,
+          "y1": 741.9
+        },
+        {
+          "page": 7,
+          "y0": 30,
+          "y1": 764.7
+        }
+      ],
+      "stem": {
+        "page": 6,
+        "y0": 53.5,
+        "y1": 276.7
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "問1",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 6,
+              "y0": 276.7,
+              "y1": 356.7
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "2",
+          "label": "問2",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 6,
+              "y0": 356.7,
+              "y1": 430.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "問3",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 6,
+              "y0": 454.4,
+              "y1": 510.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "4",
+          "label": "問4",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 6,
+              "y0": 534.3,
+              "y1": 626.4
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "5",
+          "label": "問5",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 6,
+              "y0": 649.9,
+              "y1": 741.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "6",
+          "label": "問6",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 7,
+              "y0": 53.6,
+              "y1": 684.7
+            }
+          ],
+          "stem": {
+            "page": 7,
+            "y0": 53.6,
+            "y1": 361.6
+          },
+          "subs": [
+            {
+              "key": "1",
+              "label": "(1)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 7,
+                  "y0": 361.6,
+                  "y1": 489.3
+                }
+              ],
+              "stem": null,
+              "subs": []
+            },
+            {
+              "key": "2",
+              "label": "(2)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 7,
+                  "y0": 503.8,
+                  "y1": 684.7
+                }
+              ],
+              "stem": null,
+              "subs": []
+            }
+          ]
+        },
+        {
+          "key": "7",
+          "label": "問7",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 7,
+              "y0": 708.2,
+              "y1": 764.7
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 3,
+      "whole": true
+    },
+    {
+      "key": "4",
+      "label": "4",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 8,
+          "y0": 53.5,
+          "y1": 684.3
+        },
+        {
+          "page": 9,
+          "y0": 30,
+          "y1": 341.1
+        }
+      ],
+      "stem": {
+        "page": 8,
+        "y0": 53.5,
+        "y1": 250.3
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "問1",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 8,
+              "y0": 254.4,
+              "y1": 435.4
+            }
+          ],
+          "stem": {
+            "page": 8,
+            "y0": 254.4,
+            "y1": 307.8
+          },
+          "subs": [
+            {
+              "key": "1",
+              "label": "(1)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 8,
+                  "y0": 307.8,
+                  "y1": 346.5
+                }
+              ],
+              "stem": null,
+              "subs": []
+            },
+            {
+              "key": "2",
+              "label": "(2)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 8,
+                  "y0": 396.6,
+                  "y1": 435.4
+                }
+              ],
+              "stem": null,
+              "subs": []
+            }
+          ]
+        },
+        {
+          "key": "2",
+          "label": "問2",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 8,
+              "y0": 503.3,
+              "y1": 595.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "3",
+          "label": "問3",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 8,
+              "y0": 663.3,
+              "y1": 684.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "4",
+          "label": "問4",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 9,
+              "y0": 53.6,
+              "y1": 92.3
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "5",
+          "label": "問5",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 9,
+              "y0": 160.2,
+              "y1": 198.9
+            }
+          ],
+          "stem": null,
+          "subs": []
+        },
+        {
+          "key": "6",
+          "label": "問6",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 9,
+              "y0": 266.8,
+              "y1": 341.1
+            }
+          ],
+          "stem": null,
+          "subs": []
+        }
+      ],
+      "no": 4
+    },
+    {
+      "key": "5",
+      "label": "5",
+      "rank": 0,
+      "regions": [
+        {
+          "page": 10,
+          "y0": 53.5,
+          "y1": 662.1
+        },
+        {
+          "page": 11,
+          "y0": 30,
+          "y1": 554.4
+        }
+      ],
+      "stem": {
+        "page": 10,
+        "y0": 53.5,
+        "y1": 214.5
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "問1",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 10,
+              "y0": 214.5,
+              "y1": 516.6
+            }
+          ],
+          "stem": {
+            "page": 10,
+            "y0": 214.5,
+            "y1": 232.3
+          },
+          "subs": [
+            {
+              "key": "1",
+              "label": "(1)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 10,
+                  "y0": 232.3,
+                  "y1": 276.9
+                }
+              ],
+              "stem": null,
+              "subs": []
+            },
+            {
+              "key": "2",
+              "label": "(2)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 10,
+                  "y0": 321.2,
+                  "y1": 516.6
+                }
+              ],
+              "stem": null,
+              "subs": []
+            }
+          ]
+        },
+        {
+          "key": "2",
+          "label": "問2",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 10,
+              "y0": 516.6,
+              "y1": 662.1
+            },
+            {
+              "page": 11,
+              "y0": 30,
+              "y1": 317.3
+            }
+          ],
+          "stem": {
+            "page": 10,
+            "y0": 516.6,
+            "y1": 552.2
+          },
+          "subs": [
+            {
+              "key": "1",
+              "label": "(1)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 10,
+                  "y0": 552.2,
+                  "y1": 610.0
+                }
+              ],
+              "stem": null,
+              "subs": []
+            },
+            {
+              "key": "2",
+              "label": "(2)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 10,
+                  "y0": 641.1,
+                  "y1": 662.1
+                },
+                {
+                  "page": 11,
+                  "y0": 30,
+                  "y1": 317.3
+                }
+              ],
+              "stem": null,
+              "subs": []
+            }
+          ]
+        },
+        {
+          "key": "3",
+          "label": "問3",
+          "rank": 1,
+          "regions": [
+            {
+              "page": 11,
+              "y0": 320.1,
+              "y1": 554.4
+            }
+          ],
+          "stem": {
+            "page": 11,
+            "y0": 320.1,
+            "y1": 337.9
+          },
+          "subs": [
+            {
+              "key": "1",
+              "label": "(1)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 11,
+                  "y0": 337.9,
+                  "y1": 358.9
+                }
+              ],
+              "stem": null,
+              "subs": []
+            },
+            {
+              "key": "2",
+              "label": "(2)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 11,
+                  "y0": 426.8,
+                  "y1": 447.7
+                }
+              ],
+              "stem": null,
+              "subs": []
+            },
+            {
+              "key": "3",
+              "label": "(3)",
+              "rank": 2,
+              "regions": [
+                {
+                  "page": 11,
+                  "y0": 515.7,
+                  "y1": 554.4
+                }
+              ],
+              "stem": null,
+              "subs": []
+            }
+          ]
+        }
+      ],
+      "no": 5,
+      "whole": true
+    }
+  ]
+}

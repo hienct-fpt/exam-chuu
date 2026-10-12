@@ -1,0 +1,450 @@
+{
+  "slots": {
+    "5-3-3": {
+      "delete": true
+    },
+    "1-1": {
+      "big": 1,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 3
+    },
+    "1-2": {
+      "big": 1,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 3
+    },
+    "1-3": {
+      "big": 1,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 3
+    },
+    "1-4": {
+      "big": 1,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 3
+    },
+    "1-5": {
+      "big": 1,
+      "label": "問5",
+      "unit": "cm",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "48",
+      "variants": [],
+      "points": 3
+    },
+    "2-1": {
+      "big": 2,
+      "label": "問1 (ことば)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "食物連鎖",
+      "variants": [],
+      "points": 2
+    },
+    "2-2": {
+      "big": 2,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 2
+    },
+    "2-3": {
+      "big": 2,
+      "label": "問3 (ことば)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "光合成",
+      "variants": [],
+      "points": 2
+    },
+    "2-4": {
+      "big": 2,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 2
+    },
+    "2-5": {
+      "big": 2,
+      "label": "問5 (2つ)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "ア・エ",
+      "variants": [],
+      "points": 2,
+      "note": "くんで不順可"
+    },
+    "2-6": {
+      "big": 2,
+      "label": "問6",
+      "unit": "",
+      "parts": [
+        "A",
+        "B"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "イ",
+        "ア"
+      ],
+      "variants": [],
+      "points": 2,
+      "note": "A イ B ア（くんで）"
+    },
+    "2-7": {
+      "big": 2,
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 2
+    },
+    "2-8": {
+      "big": 2,
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 2
+    },
+    "3-1": {
+      "big": 3,
+      "label": "問1",
+      "unit": "",
+      "parts": [
+        "記号 1番目",
+        "記号 2番目",
+        "記号 3番目",
+        "ことば"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "D",
+        "F",
+        "C",
+        "消化管"
+      ],
+      "variants": [],
+      "points": 3,
+      "note": "記号 D・F・C（通る順）・ことば 消化管（4つくんで）"
+    },
+    "3-2": {
+      "big": 3,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 3
+    },
+    "3-3": {
+      "big": 3,
+      "label": "問3",
+      "unit": "",
+      "parts": [
+        "ことば",
+        "記号"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "answer": [
+        "胆汁",
+        "A"
+      ],
+      "variants": [],
+      "points": 3,
+      "note": "くんで"
+    },
+    "3-4": {
+      "big": 3,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ウ",
+      "variants": [],
+      "points": 3
+    },
+    "3-5": {
+      "big": 3,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "エ",
+      "variants": [],
+      "points": 3
+    },
+    "3-6-1": {
+      "big": 3,
+      "label": "問6(1)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "イ",
+      "variants": [],
+      "points": 3
+    },
+    "3-6-2": {
+      "big": 3,
+      "label": "問6(2) (2つ)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "set",
+      "answer": "ア・オ",
+      "variants": [],
+      "points": 3,
+      "note": "くんで不順可"
+    },
+    "3-7": {
+      "big": 3,
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "A",
+      "variants": [],
+      "points": 3
+    },
+    "4-1-1": {
+      "big": 4,
+      "label": "問1(1) (漢字2字)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "中和",
+      "variants": [],
+      "points": 3
+    },
+    "4-1-2": {
+      "big": 4,
+      "label": "問1(2) (ことば)",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "answer": "塩化ナトリウム",
+      "variants": [],
+      "points": 3
+    },
+    "4-2": {
+      "big": 4,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "answer": "ア",
+      "variants": [],
+      "points": 3
+    },
+    "4-3": {
+      "big": 4,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "2.4",
+      "variants": [],
+      "points": 3
+    },
+    "4-4": {
+      "big": 4,
+      "label": "問4",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "1.8",
+      "variants": [],
+      "points": 3
+    },
+    "4-5": {
+      "big": 4,
+      "label": "問5",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "0.4",
+      "variants": [],
+      "points": 3
+    },
+    "4-6": {
+      "big": 4,
+      "label": "問6",
+      "unit": "",
+      "parts": [
+        "A・B (○で囲む)",
+        "重さ"
+      ],
+      "part_units": [
+        "",
+        "g"
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "B",
+        "0.1"
+      ],
+      "variants": [],
+      "points": 3,
+      "note": "B・0.1g（くんで）"
+    },
+    "5-1-1": {
+      "big": 5,
+      "label": "問1(1)",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "50",
+      "variants": [],
+      "points": 3
+    },
+    "5-1-2": {
+      "big": 5,
+      "label": "問1(2)",
+      "unit": "",
+      "parts": [
+        "距離",
+        "上がった/下がった"
+      ],
+      "part_units": [
+        "cm",
+        ""
+      ],
+      "answer_type": "multi",
+      "answer": [
+        "24",
+        "上がった"
+      ],
+      "variants": [],
+      "points": 3,
+      "note": "24cm・上がった（くんで）"
+    },
+    "5-2-1": {
+      "big": 5,
+      "label": "問2(1)",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "160",
+      "variants": [],
+      "points": 3
+    },
+    "5-2-2": {
+      "big": 5,
+      "label": "問2(2)",
+      "unit": "cm",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "25",
+      "variants": [],
+      "points": 3
+    },
+    "5-3-1": {
+      "big": 5,
+      "label": "問3(1)",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "120",
+      "variants": [],
+      "points": 3
+    },
+    "5-3-2": {
+      "big": 5,
+      "label": "問3(2)",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "250",
+      "variants": [],
+      "points": 3
+    },
+    "5-3-3-1": {
+      "big": 5,
+      "label": "問3(3) 重さ",
+      "unit": "g",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "90",
+      "variants": [],
+      "points": 3
+    },
+    "5-3-3-2": {
+      "big": 5,
+      "label": "問3(3) 位置",
+      "unit": "cm",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "number",
+      "answer": "20",
+      "variants": [],
+      "points": 3
+    }
+  }
+}
