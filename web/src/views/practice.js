@@ -51,7 +51,7 @@ export async function renderPractice({ app }, arg) {
     const el = app.querySelector('#preview');
     el.innerHTML = picked.length
       ? `<div class="muted">${picked.length} 問 · ${[...new Set(picked.map((p) => p.examLabel))].join(' / ')}</div>
-         <ul class="muted small">${picked.slice(0, 12).map((p) => `<li>${esc(p.examLabel)} 大問${p.big} ${esc(p.label)} <small>${esc(p.topic || '')}</small>${stats.itemHistory?.[p.id] ? (stats.itemHistory[p.id].correct ? ' ○' : ' <span class="ng">×前回不正解</span>') : ' <span class="badge">未</span>'}</li>`).join('')}${picked.length > 12 ? '<li>…</li>' : ''}</ul>`
+         <ul class="muted small">${picked.slice(0, 12).map((p) => `<li>${esc(p.examLabel)} 大問${p.big} ${esc(p.label)} <small>${esc(p.topic_detail || p.topic || '')}</small>${stats.itemHistory?.[p.id] ? (stats.itemHistory[p.id].correct ? ' ○' : ' <span class="ng">×前回不正解</span>') : ' <span class="badge">未</span>'}</li>`).join('')}${picked.length > 12 ? '<li>…</li>' : ''}</ul>`
       : '<div class="muted">該当する問題がありません（分野または学年フィルタを変えてください）</div>';
     app.querySelector('#start').disabled = !picked.length;
     return picked;

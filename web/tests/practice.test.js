@@ -35,8 +35,8 @@ describe('dashboard + practice views render with mocked stats', () => {
   it('dashboard shows weak topics and practice links', async () => {
     const stats = {
       attemptCount: 2, weekly: [{ weekStart: '2026-09-14', attempts: 5, correct: 2, accuracy: 0.4 }],
-      subjects: { math: { attempts: 5, correct: 2, accuracy: 0.4, weak: ['速さ・旅人算'] } },
-      topics: { '速さ・旅人算': { subject: 'math', attempts: 3, correct: 0, pending: 0, mastery: 0, confident: true, weak: true, streak: 0, grade: 5 },
+      subjects: { math: { attempts: 5, correct: 2, accuracy: 0.4, weak: ['速さ'] } },
+      topics: { '速さ': { subject: 'math', attempts: 3, correct: 0, pending: 0, mastery: 0, confident: true, weak: true, streak: 0, grade: 5 },
         '計算': { subject: 'math', attempts: 2, correct: 2, pending: 0, mastery: 1, confident: false, weak: false, streak: 2, grade: 5 } },
       itemHistory: {}, suggestions: {},
     };
@@ -48,7 +48,7 @@ describe('dashboard + practice views render with mocked stats', () => {
     const { renderDashboard } = await import('../src/views/dashboard.js');
     const app = document.createElement('main');
     await renderDashboard({ app });
-    expect(app.textContent).toContain('速さ・旅人算');
+    expect(app.textContent).toContain('速さ');
     expect(app.querySelector('a[href^="#/practice/math?topic="]')).toBeTruthy();
     expect(app.querySelectorAll('tr.weak').length).toBeGreaterThan(0);
 
