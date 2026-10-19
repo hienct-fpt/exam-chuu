@@ -1,0 +1,30 @@
+{
+  "_doc": "Target schools for the 目標 (weekly goal) feature, read by functions/goals.py. exam_dates = the 2028 入試 days (MM-DD per session, year comes from plan.exam_year). subjects.<s>.pass / max = 合格最低点 (or 合格者平均) and 満点 per subject, sent by the parent; null = not known yet -> goals.py uses DEFAULT_TARGET and flags the target as 仮.",
+  "plan": {"first": "kyoritsu", "second": "shinagawa", "exam_year": 2028, "margin": 0.05},
+  "schools": {
+    "kyoritsu": {
+      "name": "共立女子",
+      "exam_dates": {"2-1": "02-01", "2-2": "02-02"},
+      "subjects": {
+        "math": {"pass": null, "max": null}, "japanese": {"pass": null, "max": null},
+        "science": {"pass": null, "max": null}, "social": {"pass": null, "max": null}
+      }
+    },
+    "shinagawa": {
+      "name": "品川女子学院中等部",
+      "exam_dates": {"r1": "02-01", "r2": "02-02"},
+      "subjects": {
+        "math": {"pass": null, "max": null}, "japanese": {"pass": null, "max": null},
+        "science": {"pass": null, "max": null}, "social": {"pass": null, "max": null}
+      }
+    },
+    "sakaehigashi": {
+      "name": "栄東",
+      "exam_dates": {"a": "01-10"},
+      "subjects": {
+        "math": {"pass": null, "max": null}, "japanese": {"pass": null, "max": null},
+        "science": {"pass": null, "max": null}, "social": {"pass": null, "max": null}
+      }
+    }
+  }
+}

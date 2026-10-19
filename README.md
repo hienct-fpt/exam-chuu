@@ -168,3 +168,19 @@ each page (similar to how `answer_key_ai.py` already reads scanned 模範解答 
   per-subject tables and topics not yet practised.
 - 練習 (`#/practice/{subject}?weak=1|topic=...&g=5`) builds a set across all exams: wrong-before first, then
   unseen, then previously-correct; the attempt stores the item ids and is graded against several answer keys.
+
+## 8. 今週の目標 (weekly goals toward the 2028 入試)
+
+- Target schools, 入試 days and 合格点 per subject live in `functions/schools.json` (`plan`: 第一志望 kyoritsu,
+  第二志望 shinagawa, exam_year 2028, margin +5%). A subject whose `pass`/`max` is still `null` uses a provisional
+  70% target (shown as 仮).
+- `functions/goals.py` (pure, tested in `tests/test_goals.py`) sets each subject's weekly goal from the results
+  **before** the week (Monday 00:00 JST): accuracy climbs from the current level (last 4 weeks of items + latest
+  whole-exam / 組分け scores, the parent's official 組分け score superseding the app's) to the final target so that
+  it is reached 8 weeks before the exam; volume = 4-week median (+10% after a missed week); focus 分野 =
+  (1 − mastery) × frequency in the target schools' past papers.
+- The Cloud Function freezes the goals once per week in `students/{uid}/weeklyGoals/{weekStart}` (first grading of
+  the week, or the Monday 00:05 JST `weekly_goals` schedule) and adds them with the week's live progress to
+  `topicStats/summary.goals`. Official 組分け scores: `students/{uid}/kumiwakeScores/{round}`
+  `{date, scores: {math: {score, max}, ...}}` (Admin SDK only for now).
+- UI: `web/src/views/goals.js` card on the dashboard and on the parent's child page.

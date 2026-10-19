@@ -8,6 +8,7 @@ redeem_invite : callable, child enters a parent's invite code -> link students/{
 create_child_account : callable, signed-out child opens the invite link -> new login-ID account, linked.
 reset_child_password : callable, linked parent sets a login-ID child's password.
 unlink_child  : callable, parent removes a linked child.
+weekly_goals  : Monday 00:05 JST, refreshes every student's topicStats so the new week's 目標 exists before the first answer.
 """
 from __future__ import annotations
 
@@ -15,9 +16,10 @@ import datetime as dt
 import re
 
 from firebase_admin import auth, firestore, initialize_app
-from firebase_functions import firestore_fn, https_fn, options
+from firebase_functions import firestore_fn, https_fn, options, scheduler_fn
 
 from analytics import outcomes, topic_stats, weekly_series, subject_summary, item_history
+from goals import exam_scores, plan_of, topic_frequency, week_goals, week_start, with_actuals
 from grader import grade_submission, virtual_exam
 
 initialize_app()
@@ -36,10 +38,11 @@ def _graded_attempts(db, uid: str) -> list[dict]:
 def refresh_topic_stats(db, uid: str) -> dict:
     """Recompute from all graded attempts (a few hundred at most) -> students/{uid}/topicStats/summary."""
     attempts = _graded_attempts(db, uid)
-    exams = {d.id: d.to_dict() for d in db.collection("exams").select(["subject"]).stream()}
+    exams = {d.id: d.to_dict() for d in db.collection("exams").select(["subject", "school"]).stream()}
     subject_of = {eid: e.get("subject") for eid, e in exams.items()}
     outs = outcomes(attempts, subject_of)
     stats = topic_stats(outs)
+    goals = current_goals(db, uid, attempts, exams, outs, stats)
     doc = {
         "topics": stats,
         "subjects": subject_summary(stats),
@@ -48,9 +51,33 @@ def refresh_topic_stats(db, uid: str) -> dict:
                         for k, v in item_history(outs).items()},
         "updatedAt": dt.datetime.now(dt.timezone.utc),
         "attemptCount": len(attempts),
+        "goals": goals,
     }
     db.document(f"students/{uid}/topicStats/summary").set(doc)
     return doc
+
+
+def current_goals(db, uid: str, attempts: list[dict], exams: dict, outs: list[dict], stats: dict) -> dict:
+    """This week's goals, frozen in students/{uid}/weeklyGoals/{weekStart} on first use (plan vs actual stays
+    comparable), plus the live progress of the week."""
+    profile = db.document(f"students/{uid}").get().to_dict() or {}
+    plan = plan_of(profile.get("plan"))
+    ws = week_start(dt.datetime.now(dt.timezone.utc))
+    ref = db.document(f"students/{uid}/weeklyGoals/{ws.date().isoformat()}")
+    snap = ref.get()
+    if snap.exists:
+        goals = snap.to_dict()
+    else:
+        official = [d.to_dict() for d in db.collection(f"students/{uid}/kumiwakeScores").stream()]
+        items = []
+        for d in db.collection("exams").where("school", "in", [plan["first"], plan["second"]]).select(["school", "subject", "items"]).stream():
+            e = d.to_dict()
+            items += [{"school": e.get("school"), "subject": e.get("subject"), "topic": it.get("topic")} for it in e.get("items") or []]
+        prev = db.document(f"students/{uid}/weeklyGoals/{(ws - dt.timedelta(weeks=1)).date().isoformat()}").get()
+        goals = week_goals(outs, exam_scores(attempts, exams, plan, official), stats, topic_frequency(items, plan), plan,
+                           ws, prev.to_dict() if prev.exists else None)
+        ref.set(goals)
+    return with_actuals(goals, outs)
 
 
 def _grade(db, data: dict) -> dict:
@@ -218,3 +245,12 @@ def unlink_child(req: https_fn.CallableRequest) -> dict:
     batch.update(db.document(f"students/{parent}"), {"children": firestore.ArrayRemove([child])})
     batch.commit()
     return {"ok": True}
+
+
+@scheduler_fn.on_schedule(schedule="5 0 * * 1", timezone=scheduler_fn.Timezone("Asia/Tokyo"))
+def weekly_goals(event: scheduler_fn.ScheduledEvent) -> None:
+    """Freeze the new week's goals for every student (parents have `children`, students do not)."""
+    db = firestore.client()
+    for d in db.collection("students").stream():
+        if not (d.to_dict() or {}).get("children"):
+            refresh_topic_stats(db, d.id)

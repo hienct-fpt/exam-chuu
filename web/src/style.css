@@ -71,3 +71,9 @@ a.button.primary { background: var(--accent); color: #fff; border-color: var(--a
 .invite-code { font-family: ui-monospace, monospace; font-size: 18px; letter-spacing: 3px; text-transform: uppercase; }
 #join-form { display: flex; gap: 8px; align-items: center; }
 .stack { display: grid; gap: 8px; max-width: 360px; } .stack label { display: grid; gap: 2px; }
+
+/* 今週の目標 (views/goals.js) */
+.goal-card .countdown { font-size: 22px; color: var(--accent); }
+.goal-card tr.goal-done td:first-child { color: var(--ok); font-weight: 700; }
+.goal-card tr.goal-low td:first-child { color: var(--ng); font-weight: 700; }
+.goal-card .chips { margin: 0; }

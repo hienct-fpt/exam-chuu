@@ -1,6 +1,7 @@
 import { currentUser, listChildren, listStudentAttempts, listPendingAttempts, getTopicStats, loadIndex,
   createInvite, listInvites, deleteInvite, unlinkChild, resetChildPassword } from '../api.js';
 import { weeklyChart } from './dashboard.js';
+import { goalCard } from './goals.js';
 
 // 保護者ページ (admin claim only): #/parent = grading queue + one card per child, #/parent/<uid> = one child's record.
 const SUBJ = { math: '算数', science: '理科', social: '社会', japanese: '国語' };
@@ -133,6 +134,7 @@ async function renderChild(app, uid) {
       <div class="muted">受験 ${stats.attemptCount || 0} 回 · 採点待ち ${pendingN} 回分</div>
       <h3>週ごとの正答率</h3>${weeklyChart(stats.weekly) || '<p class="muted">データなし</p>'}
     </div>
+    ${goalCard(stats.goals, { practice: false })}
     <div class="two-col">
       <div class="card"><h2>教科別</h2><table><tr><th>教科</th><th>正答率</th><th>解答数</th></tr>
         ${Object.entries(SUBJ).filter(([k]) => stats.subjects?.[k]).map(([k, label]) =>

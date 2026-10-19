@@ -1,5 +1,6 @@
 import { getTopicStats, loadAllItems } from '../api.js';
 import { gradeFilterFromPref } from './home.js';
+import { goalCard } from './goals.js';
 
 const SUBJ = { math: '算数', science: '理科', social: '社会', japanese: '国語' };
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -37,11 +38,11 @@ export async function renderDashboard({ app }) {
   const topics = stats.topics || {};
   const done = Object.values(topics).reduce((n, t) => n + t.attempts, 0);
   if (!done) {
-    app.innerHTML = `<div class="card"><h1>ダッシュボード</h1><p class="muted">まだ採点済みの結果がありません。<a href="#/">試験一覧</a>から始めましょう。</p></div>`;
+    app.innerHTML = `${goalCard(stats.goals, { gradeQ })}<div class="card"><h1>ダッシュボード</h1><p class="muted">まだ採点済みの結果がありません。<a href="#/">試験一覧</a>から始めましょう。</p></div>`;
     return;
   }
   const weakAll = Object.entries(topics).filter(([, t]) => t.weak).sort(([, a], [, b]) => a.mastery - b.mastery);
-  app.innerHTML = `
+  app.innerHTML = `${goalCard(stats.goals, { gradeQ })}
     <div class="card"><h1>ダッシュボード</h1>
       <div class="muted">受験 ${stats.attemptCount} 回 · 解答 ${done} 問 · 弱点分野 ${weakAll.length}
         ${gf ? `· <span class="badge">小${gf}までの問題で練習</span>` : ''}</div>

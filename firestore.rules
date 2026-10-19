@@ -43,8 +43,8 @@ service cloud.firestore {
     // Student profile + attempts.
     match /students/{uid} {
       allow read: if isOwner(uid) || (signedIn() && request.auth.uid in resource.data.get('parents', []));
-      allow create: if isOwner(uid) && !request.resource.data.keys().hasAny(['role', 'parents', 'parentNames', 'children', 'loginId']);
-      allow update: if isOwner(uid) && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'parents', 'parentNames', 'children', 'loginId']);
+      allow create: if isOwner(uid) && !request.resource.data.keys().hasAny(['role', 'parents', 'parentNames', 'children', 'loginId', 'plan']);
+      allow update: if isOwner(uid) && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'parents', 'parentNames', 'children', 'loginId', 'plan']);
 
       match /attempts/{attemptId} {
         allow read: if isOwner(uid) || isParentOf(uid);
@@ -67,6 +67,16 @@ service cloud.firestore {
       match /topicStats/{topicId} {
         allow read: if isOwner(uid) || isParentOf(uid);
         allow write: if false; // Cloud Function (Admin SDK) only
+      }
+
+      // 今週の目標: frozen once per week by the Cloud Function (functions/goals.py); 組分け scores sent by the parent.
+      match /weeklyGoals/{weekStart} {
+        allow read: if isOwner(uid) || isParentOf(uid);
+        allow write: if false;
+      }
+      match /kumiwakeScores/{round} {
+        allow read: if isOwner(uid) || isParentOf(uid);
+        allow write: if false;
       }
     }
   }
