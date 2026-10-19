@@ -64,12 +64,16 @@ def test_targets_take_the_harder_school(monkeypatch):
     # a round known only by its total 合格ライン -> line rate + margin for every subject
     _schools(monkeypatch, {"subjects": {}, "total": {"max": 400, "line": 240}}, {"subjects": {}, "total": {}})
     assert targets(PLAN)["japanese"]["target"] == 0.65
+    # only 受験者平均 published (共立) -> + margin
+    _schools(monkeypatch, {"subjects": {"math": {"max": 100, "examinee_avg": 61.0}}, "total": {}}, {"subjects": {}, "total": {}})
+    assert targets(PLAN)["math"] == {"target": 0.66, "provisional": False, "basis": "共立女子 2/1 受験者平均+5%"}
 
 
 def test_real_shinagawa_scores_loaded():
     """schools.json: 品川 第1回/第2回 合格者平均 (parent, 2026-10-19); the higher round counts."""
     tg = targets(PLAN)
     assert tg["math"]["target"] == 0.81 and not tg["math"]["provisional"]
+    assert tg["social"]["basis"] == "共立女子 2/2入試 受験者平均+5%"      # 28.3/50 + 5% > 品川 36.5/60
 
 
 def test_current_level_mixes_items_and_exam_scores():

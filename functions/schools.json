@@ -1,42 +1,209 @@
 {
-  "_doc": "Target schools for the 目標 (weekly goal) feature, read by functions/goals.py. Per school, `sessions` = the 入試 rounds: date (MM-DD, year = plan.exam_year), subjects.<s> = {max, pass_avg (合格者平均), examinee_avg (受験者平均), line (科目別合格ライン, rarely published)}, total = {max, line (合格ライン), pass_avg, examinee_avg}. Numbers sent by the parent; null / missing = unknown. `goal: false` = round not used for the target (different format). goals.py target per subject = the higher of 第一志望 / 第二志望: 合格者平均 rate, else line rate + plan.margin; nothing known -> provisional 70%.",
-  "plan": {"first": "kyoritsu", "second": "shinagawa", "exam_year": 2028, "margin": 0.05},
+  "_doc": "Target schools for the 目標 (weekly goal) feature, read by functions/goals.py. Per school, `sessions` = the 入試 rounds: date (MM-DD, year = plan.exam_year), subjects.<s> = {max, pass_avg (合格者平均), examinee_avg (受験者平均), line (科目別合格ライン, rarely published)}, total = {max, line (合格ライン), pass_avg, examinee_avg}. Numbers sent by the parent; null / missing = unknown. `goal: false` = round not used for the target (different format). goals.py target per subject = the higher of 第一志望 / 第二志望: 合格者平均 rate, else line rate + plan.margin, else 受験者平均 rate + plan.margin; nothing known -> provisional 70%.",
+  "plan": {
+    "first": "kyoritsu",
+    "second": "shinagawa",
+    "exam_year": 2028,
+    "margin": 0.05
+  },
   "schools": {
     "kyoritsu": {
       "name": "共立女子",
       "sessions": {
-        "2-1": {"label": "2/1入試", "date": "02-01", "subjects": {}, "total": {}},
-        "2-2": {"label": "2/2入試", "date": "02-02", "subjects": {}, "total": {}}
-      }
+        "2-1": {
+          "label": "2/1入試",
+          "date": "02-01",
+          "subjects": {
+            "japanese": {
+              "max": 100,
+              "examinee_avg": 55.2
+            },
+            "math": {
+              "max": 100,
+              "examinee_avg": 61.0
+            },
+            "social": {
+              "max": 50,
+              "examinee_avg": 27.4
+            },
+            "science": {
+              "max": 50,
+              "examinee_avg": 26.4
+            }
+          },
+          "total": {
+            "max": 300,
+            "examinee_avg": 170.0
+          }
+        },
+        "2-2": {
+          "label": "2/2入試",
+          "date": "02-02",
+          "subjects": {
+            "japanese": {
+              "max": 100,
+              "examinee_avg": 54.9
+            },
+            "math": {
+              "max": 100,
+              "examinee_avg": 57.8
+            },
+            "social": {
+              "max": 50,
+              "examinee_avg": 28.3
+            },
+            "science": {
+              "max": 50,
+              "examinee_avg": 25.3
+            }
+          },
+          "total": {
+            "max": 300,
+            "examinee_avg": 166.4
+          }
+        },
+        "2-3e": {
+          "label": "2/3午後 英語4技能型",
+          "date": "02-03",
+          "goal": false,
+          "subjects": {
+            "math": {
+              "max": 100,
+              "examinee_avg": 35.1
+            }
+          },
+          "total": {
+            "max": 200,
+            "examinee_avg": 92.9
+          }
+        },
+        "2-3g": {
+          "label": "2/3午後 合科型",
+          "date": "02-03",
+          "goal": false,
+          "subjects": {
+            "math": {
+              "max": 100,
+              "examinee_avg": 52.3
+            }
+          },
+          "total": {
+            "max": 200,
+            "examinee_avg": 108.9
+          }
+        }
+      },
+      "_source": "parent, 2026-10-19 (2026年度入試結果; 受験者平均 only, 合格者平均/合格ライン not published: 2/1 募集130 受験408 合格182 2.2倍 / 2/2 110・433・179・2.4倍 / 2/3午後 英語4技能型 15・22・9・2.4倍 / 2/3午後 合科型 40・248・61・4.1倍)"
     },
     "shinagawa": {
       "name": "品川女子学院中等部",
-      "_source": "parent, 2026-10-19 (入試結果: 第1回 募集90 受験317 合格134 実質2.4倍 / 算数1教科 20・266・135・2.0倍 / 第2回 60・308・104・3.0倍 / 第3回 30・196・35・5.6倍)",
+      "_source": "parent, 2026-10-19 (入試結果, year unconfirmed: 第1回 募集90 受験317 合格134 実質2.4倍 / 算数1教科 20・266・135・2.0倍 / 第2回 60・308・104・3.0倍 / 第3回 30・196・35・5.6倍)",
       "sessions": {
-        "r1": {"label": "第1回", "date": "02-01",
-               "subjects": {"japanese": {"max": 100, "pass_avg": 58.4, "examinee_avg": 52.5},
-                            "math": {"max": 100, "pass_avg": 80.7, "examinee_avg": 68.3},
-                            "social": {"max": 60, "pass_avg": 36.5, "examinee_avg": 32.4},
-                            "science": {"max": 60, "pass_avg": 35.0, "examinee_avg": 27.8}},
-               "total": {"max": 320, "line": 192, "pass_avg": 210.6, "examinee_avg": 181.0}},
-        "m1": {"label": "算数1教科", "date": "02-01",
-               "subjects": {"math": {"max": 100, "pass_avg": 73.8, "examinee_avg": 59.2, "line": 61}},
-               "total": {"max": 100, "line": 61, "pass_avg": 73.8, "examinee_avg": 59.2}},
-        "r2": {"label": "第2回", "date": "02-02",
-               "subjects": {"japanese": {"max": 100, "pass_avg": 61.8, "examinee_avg": 52.9},
-                            "math": {"max": 100, "pass_avg": 73.2, "examinee_avg": 56.5},
-                            "social": {"max": 60, "pass_avg": 34.5, "examinee_avg": 27.4},
-                            "science": {"max": 60, "pass_avg": 40.0, "examinee_avg": 34.4}},
-               "total": {"max": 320, "line": 192, "pass_avg": 209.4, "examinee_avg": 171.2}},
-        "r3": {"label": "第3回 表現力・総合型", "date": "02-04", "goal": false,
-               "subjects": {},
-               "total": {"max": 160, "line": 130, "pass_avg": 136.5, "examinee_avg": 107.1}}
+        "r1": {
+          "label": "第1回",
+          "date": "02-01",
+          "subjects": {
+            "japanese": {
+              "max": 100,
+              "pass_avg": 58.4,
+              "examinee_avg": 52.5
+            },
+            "math": {
+              "max": 100,
+              "pass_avg": 80.7,
+              "examinee_avg": 68.3
+            },
+            "social": {
+              "max": 60,
+              "pass_avg": 36.5,
+              "examinee_avg": 32.4
+            },
+            "science": {
+              "max": 60,
+              "pass_avg": 35.0,
+              "examinee_avg": 27.8
+            }
+          },
+          "total": {
+            "max": 320,
+            "line": 192,
+            "pass_avg": 210.6,
+            "examinee_avg": 181.0
+          }
+        },
+        "m1": {
+          "label": "算数1教科",
+          "date": "02-01",
+          "subjects": {
+            "math": {
+              "max": 100,
+              "pass_avg": 73.8,
+              "examinee_avg": 59.2,
+              "line": 61
+            }
+          },
+          "total": {
+            "max": 100,
+            "line": 61,
+            "pass_avg": 73.8,
+            "examinee_avg": 59.2
+          }
+        },
+        "r2": {
+          "label": "第2回",
+          "date": "02-02",
+          "subjects": {
+            "japanese": {
+              "max": 100,
+              "pass_avg": 61.8,
+              "examinee_avg": 52.9
+            },
+            "math": {
+              "max": 100,
+              "pass_avg": 73.2,
+              "examinee_avg": 56.5
+            },
+            "social": {
+              "max": 60,
+              "pass_avg": 34.5,
+              "examinee_avg": 27.4
+            },
+            "science": {
+              "max": 60,
+              "pass_avg": 40.0,
+              "examinee_avg": 34.4
+            }
+          },
+          "total": {
+            "max": 320,
+            "line": 192,
+            "pass_avg": 209.4,
+            "examinee_avg": 171.2
+          }
+        },
+        "r3": {
+          "label": "第3回 表現力・総合型",
+          "date": "02-04",
+          "goal": false,
+          "subjects": {},
+          "total": {
+            "max": 160,
+            "line": 130,
+            "pass_avg": 136.5,
+            "examinee_avg": 107.1
+          }
+        }
       }
     },
     "sakaehigashi": {
       "name": "栄東",
       "sessions": {
-        "a": {"label": "A日程", "date": "01-10", "subjects": {}, "total": {}}
+        "a": {
+          "label": "A日程",
+          "date": "01-10",
+          "subjects": {},
+          "total": {}
+        }
       }
     }
   }

@@ -48,7 +48,7 @@ export function goalCard(goals, { gradeQ = '', practice = true } = {}) {
       <span style="margin-left:auto">第一志望 ${esc(goals.firstName)} 入試まで <b class="countdown">${days}</b> 日</span></div>
     <table><tr><th>科目</th><th>解いた問題</th><th>正答率 今週 / 目標</th><th>実力 → 最終目標</th><th>重点分野</th></tr>${rows}</table>
     <p class="muted small">目標は毎週月曜に先週までの結果から自動で決まります（${esc(md(goals.deadline))}までに最終目標に届くペース、残り${goals.weeksLeft}週）。
-      最終目標＝${esc(goals.firstName)}・${esc(goals.secondName)}の合格者平均のうち高い方${bases ? `（${esc(bases)}）` : ''}。
+      最終目標＝${esc(goals.firstName)}・${esc(goals.secondName)}の公表データ（合格者平均、未公表なら受験者平均＋5%）のうち高い方${bases ? `（${esc(bases)}）` : ''}。
       重点分野＝苦手 × 両校の過去問によく出る分野。${provisional ? '（仮）＝合格点が未登録のため目標70%で計算中。' : ''}</p>
   </div>`;
 }

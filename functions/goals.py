@@ -52,7 +52,7 @@ def exam_date(plan: dict, school: str | None = None) -> dt.date:
 
 def _school_rates(school: str, subject: str, margin: float) -> list[tuple[float, str]]:
     """Candidate target rates from one school's rounds: 合格者平均 rate as is (already above the line), else the
-    subject line, else the round's total line, + margin."""
+    subject line, else the round's total line, else 受験者平均 (about half pass), + margin."""
     sch = CONFIG["schools"][school]
     out = []
     for x in sch["sessions"].values():
@@ -68,6 +68,8 @@ def _school_rates(school: str, subject: str, margin: float) -> list[tuple[float,
             out.append((sub["line"] / sub["max"] + margin, f"{name} 合格ライン+{round(margin * 100)}%"))
         elif not x.get("subjects") and tot.get("line") is not None and tot.get("max"):
             out.append((tot["line"] / tot["max"] + margin, f"{name} 合格ライン+{round(margin * 100)}%"))
+        elif sub.get("examinee_avg") is not None and sub.get("max"):   # e.g. 共立: only 受験者平均 is published
+            out.append((sub["examinee_avg"] / sub["max"] + margin, f"{name} 受験者平均+{round(margin * 100)}%"))
     return out
 
 

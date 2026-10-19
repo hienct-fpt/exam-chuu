@@ -173,8 +173,8 @@ each page (similar to how `answer_key_ai.py` already reads scanned 模範解答 
 
 - Target schools live in `functions/schools.json` (`plan`: 第一志望 kyoritsu, 第二志望 shinagawa, exam_year 2028,
   margin +5%), with per-round 入試 day, 満点 / 合格者平均 / 受験者平均 per subject and the 合格ライン (sent by the
-  parent). Final target per subject = the higher of the two schools: 合格者平均 rate, else 合格ライン rate + margin;
-  nothing known -> provisional 70% (shown as 仮).
+  parent). Final target per subject = the higher of the two schools: 合格者平均 rate, else 合格ライン rate + margin,
+  else 受験者平均 rate + margin (共立 publishes only that); nothing known -> provisional 70% (shown as 仮).
 - `functions/goals.py` (pure, tested in `tests/test_goals.py`) sets each subject's weekly goal from the results
   **before** the week (Monday 00:00 JST): accuracy climbs from the current level (last 4 weeks of items + latest
   whole-exam / 組分け scores, the parent's official 組分け score superseding the app's) to the final target so that
