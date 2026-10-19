@@ -310,9 +310,9 @@ def test_phases_follow_juku_terms():
 
 
 def test_focus_window_retakes_whole_papers(no_upcoming):
-    """過去問集中 (Jul-Sep 2027): spare weekly time goes to whole school papers again (2回目), 8+ weeks after."""
+    """過去問集中 (Jul-Nov 2027): spare weekly time goes to whole school papers again (2回目), 8+ weeks after."""
     jul = dt.datetime(2027, 7, 5, tzinfo=JST)
-    assert goals.in_focus(PLAN, jul) and not goals.in_focus(PLAN, dt.datetime(2027, 10, 4, tzinfo=JST))
+    assert goals.in_focus(PLAN, jul) and not goals.in_focus(PLAN, dt.datetime(2027, 12, 6, tzinfo=JST))
     done = [{"status": "graded", "examId": e, "percent": p, "submittedAt": t} for e, p, t in (
         ("kyoritsu_2024_2-1_math", 40, "2027-03-01T00:00:00+00:00"),
         ("shinagawa_2024_r1_math", 70, "2027-03-01T00:00:00+00:00"),
@@ -330,7 +330,7 @@ def test_focus_window_retakes_whole_papers(no_upcoming):
     assert goals.assignment_status(asg, done + [{"status": "graded", "examId": "kyoritsu_2024_2-1_math",
                                                  "submittedAt": "2027-07-06T00:00:00+00:00"}], "2027-07-05") == [True]
     r = goals.roadmap([], META, PLAN, MON)
-    focus_weeks = [w for w in r["weeks"] if "2027-07-01" <= w["weekStart"] <= "2027-09-30"]
+    focus_weeks = [w for w in r["weeks"] if "2027-07-01" <= w["weekStart"] <= "2027-11-30"]
     assert r["retakes"] > 0 and any(i.get("retake") for w in focus_weeks for i in w["items"])
-    assert not any(i.get("retake") for w in r["weeks"] if not ("2027-06-28" <= w["weekStart"] <= "2027-09-30") for i in w["items"])
+    assert not any(i.get("retake") for w in r["weeks"] if not ("2027-06-28" <= w["weekStart"] <= "2027-11-30") for i in w["items"])
     assert any(m["date"] == "2027-07-01" and m["label"].startswith("過去問集中") for m in r["milestones"])

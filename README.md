@@ -191,7 +191,7 @@ each page (similar to how `answer_key_ai.py` already reads scanned 模範解答 
   each target school's latest year is held back until `reserve_from` (直前期). Until `grade6_from` exams are
   assigned with the 小5 filter; from 6年 a filtered-only attempt counts as not done. Time = 制限時間 scaled to the
   assigned items; a week may run 10% over. Unfinished work stays at the head of next week's queue.
-  過去問集中 (`plan.focus`, Jul–Sep 2027): spare time after the new exams goes to whole school papers again
+  過去問集中 (`plan.focus`, Jul–Nov 2027): spare time after the new exams goes to whole school papers again
   (kind `retake`, 2回目, timed, no 小5 filter) — 第一/第二志望 first, then extra schools, last done 8+ weeks ago,
   longest ago / lowest score first; 組分け and the reserved latest year are never retaken. Projected in 全体計画 too.
   Once every 課題 of the week is done, next week's list is made (and frozen, `createdAt` = now) so the child
