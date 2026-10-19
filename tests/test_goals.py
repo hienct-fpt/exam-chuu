@@ -244,8 +244,11 @@ def no_upcoming(monkeypatch):
     monkeypatch.setitem(goals.CONFIG, "upcoming", {})
 
 
+NOFOCUS = {**PLAN, "focus": None}
+
+
 def test_roadmap_projects_queue_and_6th_grade_return(no_upcoming):
-    r = goals.roadmap([], META, PLAN, MON)
+    r = goals.roadmap([], META, NOFOCUS, MON)
     assert r["weeks"][0]["weekStart"] == "2026-10-19" and r["weeks"][-1]["weekStart"] < r["examDate"]
     assert r["newBudget"] == round(180 * (1 - PLAN["review_share"]))
     first = [i["examId"] for w in r["weeks"] for i in w["items"]]
@@ -258,10 +261,11 @@ def test_roadmap_projects_queue_and_6th_grade_return(no_upcoming):
     late = [w for w in r["weeks"] if any(i["examId"] == "kyoritsu_2026_2-1_math" for i in w["items"])]
     assert late and all(w["weekStart"] >= "2027-11-29" for w in late) and late[0]["phase"] in ("6年 後期", "直前期")
     assert [m["label"] for m in r["milestones"] if m.get("exam")] == ["入試：栄東", "入試：共立女子・品川女子学院中等部"]
+    assert r["retakes"] == 0
 
 
 def test_roadmap_keeps_frozen_weeks(no_upcoming):
-    r = goals.roadmap([], META, PLAN, MON, scheduled={"2026-10-19": ["chuo_2026_1_math"]})
+    r = goals.roadmap([], META, NOFOCUS, MON, scheduled={"2026-10-19": ["chuo_2026_1_math"]})
     assert [i["examId"] for i in r["weeks"][0]["items"]] == ["chuo_2026_1_math"]
     assert "chuo_2026_1_math" not in [i["examId"] for w in r["weeks"][1:] for i in w["items"]]
 
@@ -303,3 +307,30 @@ def test_phases_follow_juku_terms():
             ("2026-12-28", "2027-01-04", "2027-05-31", "2027-06-07", "2027-12-06")] ==         ["5年", "6年 前期", "6年 前期", "6年 後期", "直前期"]
     labels = [m["label"] for m in goals.milestones(PLAN)]
     assert labels[:2] == ["6年 前期スタート（過去問は全問で）", "6年 後期スタート（過去問を本番形式で）"]
+
+
+def test_focus_window_retakes_whole_papers(no_upcoming):
+    """過去問集中 (Jul-Sep 2027): spare weekly time goes to whole school papers again (2回目), 8+ weeks after."""
+    jul = dt.datetime(2027, 7, 5, tzinfo=JST)
+    assert goals.in_focus(PLAN, jul) and not goals.in_focus(PLAN, dt.datetime(2027, 10, 4, tzinfo=JST))
+    done = [{"status": "graded", "examId": e, "percent": p, "submittedAt": t} for e, p, t in (
+        ("kyoritsu_2024_2-1_math", 40, "2027-03-01T00:00:00+00:00"),
+        ("shinagawa_2024_r1_math", 70, "2027-03-01T00:00:00+00:00"),
+        ("chuo_2026_1_math", 30, "2027-02-01T00:00:00+00:00"),
+        ("kumiwake_2026_r1_math", 20, "2027-01-01T00:00:00+00:00"),        # 組分け: never a 2回目
+        ("kumiwake_2026_r2_math", 20, "2027-01-01T00:00:00+00:00"),
+        ("kyoritsu_2026_2-1_math", 10, "2027-06-28T00:00:00+00:00"))]     # done last week -> too recent
+    order = goals.retake_order(goals.last_done(done, META), META, PLAN, jul, set())
+    assert order == ["kyoritsu_2024_2-1_math", "shinagawa_2024_r1_math", "chuo_2026_1_math"]   # targets, low score first
+    a = goals.weekly_assignments([], done, META, PLAN, jul)
+    kinds = [(i["kind"], i["examId"]) for i in a["items"]]
+    assert ("retake", "kyoritsu_2024_2-1_math") in kinds and all(k != "kumiwake" for k, _ in kinds)
+    # a retake counts as done like a new exam
+    asg = {"items": [{"kind": "retake", "examId": "kyoritsu_2024_2-1_math"}], "createdAt": jul.isoformat()}
+    assert goals.assignment_status(asg, done + [{"status": "graded", "examId": "kyoritsu_2024_2-1_math",
+                                                 "submittedAt": "2027-07-06T00:00:00+00:00"}], "2027-07-05") == [True]
+    r = goals.roadmap([], META, PLAN, MON)
+    focus_weeks = [w for w in r["weeks"] if "2027-07-01" <= w["weekStart"] <= "2027-09-30"]
+    assert r["retakes"] > 0 and any(i.get("retake") for w in focus_weeks for i in w["items"])
+    assert not any(i.get("retake") for w in r["weeks"] if not ("2027-06-28" <= w["weekStart"] <= "2027-09-30") for i in w["items"])
+    assert any(m["date"] == "2027-07-01" and m["label"].startswith("過去問集中") for m in r["milestones"])

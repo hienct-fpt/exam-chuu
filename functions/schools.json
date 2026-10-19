@@ -10,6 +10,7 @@
     "grade6_from": "2027-01-01",
     "term2_from": "2027-06-01",
     "reserve_from": "2027-12-01",
+    "focus": {"from": "2027-07-01", "until": "2027-09-30", "retake_gap_weeks": 8},
     "extra_schools": ["sakaehigashi", "chuo"]
   },
   "upcoming": {

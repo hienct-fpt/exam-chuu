@@ -19,6 +19,7 @@ export function goalStatus(g, a) {
   return 'progress';
 }
 const ICON = { done: '✅', progress: '▶', low: '⚠️' };
+const KIND = { new: '新しい問題', retake: '2回目（全問・時間を計って）', review: 'やり直し' };
 
 /** One line for the parent overview: 今週の課題 progress + countdown. */
 export function weekSummary(goals) {
@@ -34,9 +35,10 @@ export function weekSummary(goals) {
 
 /** 今週の課題: new exams + やり直し within the weekly time budget (goals.assignments, frozen per week). */
 function taskList(asg, done, links) {
-  const href = (it) => (it.kind === 'new' ? `#/exam/${it.examId}${asg.grade ? `?g=${asg.grade}` : ''}` : `#/redo/${encodeURIComponent(it.examId)}`);
+  const href = (it) => (it.kind === 'review' ? `#/redo/${encodeURIComponent(it.examId)}`
+    : `#/exam/${it.examId}${asg.grade && it.kind === 'new' ? `?g=${asg.grade}` : ''}`);
   return `<ul class="assignments">${asg.items.map((it, i) => `<li class="${done[i] ? 'done' : ''}">${done[i] ? '✅' : '⬜'}
-      <span class="badge ${it.kind}">${it.kind === 'new' ? '新しい問題' : 'やり直し'}</span>
+      <span class="badge ${it.kind}">${KIND[it.kind] || it.kind}</span>
       ${links && !done[i] ? `<a href="${href(it)}">${esc(it.label)}</a>` : esc(it.label)}
       <small class="muted">${it.kind === 'review' ? `間違い・未回答 ${it.items.length}問 · ` : ''}${it.minutes}分</small></li>`).join('')}</ul>`;
 }

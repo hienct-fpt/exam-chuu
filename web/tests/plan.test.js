@@ -12,6 +12,7 @@ const stats = {
       { weekStart: '2026-10-19', grade: 5, phase: '5年', items: [{ examId: 'a', label: '組分け 第3回 算数', minutes: 50 }] },
       { weekStart: '2026-10-26', grade: 5, phase: '5年', items: [{ examId: 'b', label: '共立 2024 算数', minutes: 25 }] },
       { weekStart: '2026-11-02', grade: 5, phase: '5年', items: [] },
+      { weekStart: '2026-11-09', grade: null, phase: '6年 後期', items: [{ examId: 'k24', label: '共立 2024 算数', minutes: 45, retake: true }] },
       { weekStart: '2026-11-23', grade: 5, phase: '5年', items: [{ examId: 'planned:kumiwake_202611_math', label: '組分け 11月（予定） 算数', minutes: 50, planned: true }] },
     ],
   },
@@ -31,6 +32,7 @@ describe('全体計画', () => {
     expect(planCard(stats, { links: false })).not.toContain('href="#/exam/');
     expect(html).toContain('<span class="planned">組分け 11月（予定） 算数</span>');   // not linkable yet
     expect(html).not.toContain('href="#/exam/planned:');
+    expect(html).toContain('<span class="badge retake">2回目</span><a href="#/exam/k24">');
     expect(planCard({})).toBe('');
   });
 

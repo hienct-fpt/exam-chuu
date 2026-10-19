@@ -76,7 +76,7 @@ def stats(req: dict) -> dict:
     nxt = next_week(summary["goals"], outs, attempts, EXAM_META, PLAN, now)   # not persisted locally
     if nxt:
         summary["goals"]["next"] = nxt
-    scheduled = {g["weekStart"]: [i["examId"] for i in g["assignments"]["items"] if i["kind"] == "new"]
+    scheduled = {g["weekStart"]: [i["examId"] for i in g["assignments"]["items"] if i["kind"] != "review"]
                  for g in (summary["goals"], nxt or {}) if g.get("assignments")}
     summary["plan"] = {**roadmap(attempts, EXAM_META, PLAN, now, scheduled), "history": []}
     return summary

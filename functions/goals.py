@@ -320,6 +320,36 @@ def review_units(outs: list[dict], exam_meta: dict[str, dict], g: int | None, ws
     return units
 
 
+def in_focus(plan: dict, ws: dt.datetime) -> bool:
+    """過去問集中 window (plan.focus): weeks with spare time get whole past papers again."""
+    f = plan.get("focus")
+    return bool(f) and f["from"] <= ws.date().isoformat() <= f["until"]
+
+
+def last_done(attempts: list[dict], exam_meta: dict[str, dict]) -> dict[str, tuple[dt.datetime, float]]:
+    """{examId: (last graded attempt time, its percent)} for exams done as an exam (not a やり直し set)."""
+    out: dict[str, tuple[dt.datetime, float]] = {}
+    for a in attempts:
+        eid = a.get("examId")
+        if eid in exam_meta and a.get("status") == "graded" and not a.get("items"):
+            t = _t(a.get("submittedAt") or a.get("gradedAt"))
+            if eid not in out or t > out[eid][0]:
+                out[eid] = (t, a.get("percent") or 0)
+    return out
+
+
+def retake_order(last: dict[str, tuple[dt.datetime, float]], exam_meta: dict[str, dict], plan: dict,
+                 ws: dt.datetime, exclude: set[str]) -> list[str]:
+    """2回目 candidates: school past papers (第一/第二志望 first, then extra_schools) last done at least
+    focus.retake_gap_weeks ago, longest ago first, lower score first; the reserved latest year stays reserved."""
+    rank = {plan["first"]: 0, plan["second"]: 0, **{s: 1 for s in plan.get("extra_schools", [])}}
+    gap = dt.timedelta(weeks=(plan.get("focus") or {}).get("retake_gap_weeks", 8))
+    allowed = set(exam_queue(exam_meta, plan, ws))
+    rows = [(rank[exam_meta[e].get("school")], t, pct, e) for e, (t, pct) in last.items()
+            if e in allowed and exam_meta[e].get("school") in rank and e not in exclude and t <= ws - gap]
+    return [r[3] for r in sorted(rows)]
+
+
 def weekly_assignments(outs: list[dict], attempts: list[dict], exam_meta: dict[str, dict], plan: dict,
                        now: dt.datetime, created: dt.datetime | None = None) -> dict:
     """This week's work within plan.weekly_minutes: やり直し up to review_share of the time, the rest new exams
@@ -343,6 +373,14 @@ def weekly_assignments(outs: list[dict], attempts: list[dict], exam_meta: dict[s
             new.append({"kind": "new", "examId": eid, "subject": exam_meta[eid].get("subject"),
                         "label": label(exam_meta[eid]), "minutes": m})
             nused += m
+    if in_focus(plan, ws):        # 過去問集中: fill the rest of the week with whole past papers again (2回目)
+        for eid in retake_order(last_done(attempts, exam_meta), exam_meta, plan, ws, {i["examId"] for i in new}):
+            m = minutes(exam_meta[eid], exam_meta[eid].get("item_count") or 1)
+            if used + nused + m > budget * OVERRUN:
+                break
+            new.append({"kind": "retake", "examId": eid, "subject": exam_meta[eid].get("subject"),
+                        "label": label(exam_meta[eid]), "minutes": m})
+            nused += m
     return {"grade": g, "budget": budget, "items": new + review,
             "remaining": len(pending) - len(new), "queue": len(pending),
             "createdAt": (created or ws).isoformat()}
@@ -356,7 +394,7 @@ def assignment_status(assign: dict, attempts: list[dict], week_start_iso: str) -
     graded = [a for a in attempts if a.get("status") == "graded" and _t(a.get("submittedAt") or a.get("gradedAt")) >= ws]
     out = []
     for it in assign.get("items") or []:
-        if it["kind"] == "new":
+        if it["kind"] in ("new", "retake"):
             out.append(any(a.get("examId") == it["examId"] and not a.get("items") for a in graded))
         else:
             out.append(any(a.get("redoOf") == it["examId"] for a in graded))
@@ -401,7 +439,9 @@ def phase_of(plan: dict, day: dt.date) -> str:
 def milestones(plan: dict) -> list[dict]:
     """Key dates: 6年, 直前期, the target deadline, each school's 入試 (schools on the same day share a row)."""
     edate = exam_date(plan)
-    rows = [{"date": plan["grade6_from"], "label": "6年 前期スタート（過去問は全問で）"},
+    focus = [{"date": plan["focus"]["from"], "label": "過去問集中（2回目・やり直し）〜" + plan["focus"]["until"][5:].replace("-", "/")}] \
+        if plan.get("focus") else []
+    rows = focus + [{"date": plan["grade6_from"], "label": "6年 前期スタート（過去問は全問で）"},
             {"date": term2_from(plan).isoformat(), "label": "6年 後期スタート（過去問を本番形式で）"},
             {"date": plan["reserve_from"], "label": "直前期（各校の最新年度の過去問）"},
             {"date": (edate - dt.timedelta(weeks=DEADLINE_WEEKS)).isoformat(), "label": "最終目標の正答率に到達"}]
@@ -473,6 +513,7 @@ def roadmap(attempts: list[dict], exam_meta: dict[str, dict], plan: dict, now: d
     end = exam_date(plan)
     new_budget = round(plan["weekly_minutes"] * (1 - plan["review_share"]))
     sim: set[tuple[str, int | None]] = set()      # (examId, grade filter) assumed done by the plan
+    last = last_done(attempts, exam_meta)           # examId -> (last time done, percent), advanced by the plan
     weeks = []
     while ws.date() < end:
         g = grade_now(plan, ws)
@@ -491,17 +532,32 @@ def roadmap(attempts: list[dict], exam_meta: dict[str, dict], plan: dict, now: d
                     break
                 items.append(eid)
                 used += m
+        retakes = []
+        if key not in scheduled and in_focus(plan, ws):
+            for eid in retake_order(last, exam_meta, plan, ws, set(items)):
+                m = minutes(exam_meta[eid], exam_meta[eid].get("item_count") or 1)
+                if used + m > new_budget * OVERRUN:
+                    break
+                retakes.append(eid)
+                used += m
         sim |= {(e, g) for e in items}
+        for e in items + retakes:
+            last[e] = (ws, (last.get(e) or (ws, 0))[1])
         weeks.append({"weekStart": key, "grade": g, "phase": phase_of(plan, ws.date()),
                       "items": [{"examId": e, "label": label(exam_meta[e]), "subject": exam_meta[e].get("subject"),
                                  **({"planned": True} if exam_meta[e].get("planned") else {}),
                                  "minutes": minutes(exam_meta[e], filtered_count(exam_meta[e], g) or exam_meta[e].get("item_count") or 1)}
-                                for e in items]})
+                                for e in items]
+                               + [{"examId": e, "label": label(exam_meta[e]), "subject": exam_meta[e].get("subject"),
+                                   "retake": True, "minutes": minutes(exam_meta[e], exam_meta[e].get("item_count") or 1),
+                                   **({"planned": True} if exam_meta[e].get("planned") else {})} for e in retakes]})
         ws += dt.timedelta(weeks=1)
     last = max((i for i, w in enumerate(weeks) if w["items"]), default=None)
     return {"weeks": weeks, "milestones": milestones(plan), "examDate": end.isoformat(),
             "newBudget": new_budget, "finishWeek": weeks[last]["weekStart"] if last is not None else None,
-            "totalExams": sum(len(w["items"]) for w in weeks)}
+            "totalExams": sum(1 for w in weeks for i in w["items"] if not i.get("retake")),
+            "retakes": sum(1 for w in weeks for i in w["items"] if i.get("retake")),
+            "focus": plan.get("focus")}
 
 
 def history(weekly_docs: list[dict], attempts: list[dict], before: str) -> list[dict]:

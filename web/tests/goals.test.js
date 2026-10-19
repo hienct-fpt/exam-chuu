@@ -77,6 +77,10 @@ describe('先取り / 保護者', () => {
     expect(html).toContain('先取りOK');
     expect(html).toContain('href="#/exam/b?g=5"');
     expect(assignmentList({ ...g, next: undefined })).not.toContain('来週の課題');
+    const rt = assignmentList({ ...g, next: undefined, assignments: { grade: null, budget: 180, remaining: 0,
+      items: [{ kind: 'retake', examId: 'k24', label: '共立 2024 算数', minutes: 45 }] }, assignmentsDone: [false] });
+    expect(rt).toContain('2回目');
+    expect(rt).toContain('href="#/exam/k24"');
   });
 
   it('parent summary line and redirect of student pages', () => {

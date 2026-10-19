@@ -73,7 +73,7 @@ def overall_plan(db, uid: str, attempts: list[dict], exams: dict, goals: dict) -
     scheduled = {}
     for g in (goals, goals.get("next") or {}):
         if g.get("weekStart") and g.get("assignments"):
-            scheduled[g["weekStart"]] = [i["examId"] for i in g["assignments"]["items"] if i["kind"] == "new"]
+            scheduled[g["weekStart"]] = [i["examId"] for i in g["assignments"]["items"] if i["kind"] != "review"]
     docs = [d.to_dict() for d in db.collection(f"students/{uid}/weeklyGoals").stream()]
     return {**roadmap(attempts, meta, plan, dt.datetime.now(dt.timezone.utc), scheduled),
             "history": history(docs, attempts, goals["weekStart"])}
