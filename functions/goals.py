@@ -17,6 +17,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import math
+import re
 from pathlib import Path
 from statistics import median
 
@@ -263,7 +264,8 @@ def exam_queue(exam_meta: dict[str, dict], plan: dict, ws: dt.datetime) -> list[
     schools; each target school's latest year only from plan.reserve_from (直前期). Subjects of one set together."""
     def sets(school):
         rows = [(m.get("year") or 0, str(m.get("session") or ""), SUBJECT_ORDER.get(m.get("subject"), 9), eid)
-                for eid, m in exam_meta.items() if m.get("school") == school]
+                for eid, m in exam_meta.items()
+                if m.get("school") == school and (not m.get("available") or m["available"] <= ws.date().isoformat())]
         return sorted(rows)
     reserve_open = ws.date() >= dt.date.fromisoformat(plan["reserve_from"])
     queue = [r[3] for r in sets("kumiwake")]
@@ -405,12 +407,61 @@ def milestones(plan: dict) -> list[dict]:
     return sorted(rows, key=lambda r: r["date"])
 
 
+RE_MONTH = re.compile(r"\((\d{1,2})月\)")
+
+
+def _kumiwake_month(meta: dict) -> str | None:
+    """Calendar YYYY-MM of a real 組分け round ("第6回 (10月)"; the round's year is the school year from March)."""
+    m = RE_MONTH.search(meta.get("session_label") or "")
+    if not m:
+        return None
+    month = int(m.group(1))
+    return f"{(meta.get('year') or 0) + (1 if month < 3 else 0)}-{month:02d}"
+
+
+def upcoming_meta(exam_meta: dict[str, dict]) -> dict[str, dict]:
+    """Planned (予定) exams for the projection: a monthly 組分け round and the schools' next papers, sized like the
+    latest real exam of the same kind. Skipped once the real exam is in the bank."""
+    up = CONFIG.get("upcoming") or {}
+    out: dict[str, dict] = {}
+    real = exam_meta.values()
+    kc = up.get("kumiwake")
+    if kc:
+        have = {_kumiwake_month(m) for m in real if m.get("school") == "kumiwake"}
+        tmpl = {}
+        for m in sorted((m for m in real if m.get("school") == "kumiwake"), key=lambda m: (m.get("year") or 0, str(m.get("session")))):
+            tmpl[m.get("subject")] = m
+        y, mo = int(kc["from"][:4]), int(kc["from"][5:])
+        while f"{y}-{mo:02d}" <= kc["until"]:
+            ym = f"{y}-{mo:02d}"
+            if ym not in have:
+                for subj, t in tmpl.items():
+                    out[f"planned:kumiwake_{y}{mo:02d}_{subj}"] = {
+                        **{k: t.get(k) for k in ("school", "school_name", "subject", "subject_label", "time_limit_min",
+                                                 "item_count", "grade_counts")},
+                        "year": y, "session": f"~{ym}", "session_label": f"{mo}月（予定）",
+                        "available": f"{ym}-{kc.get('day', 22):02d}", "planned": True}
+            y, mo = (y + 1, 1) if mo == 12 else (y, mo + 1)
+    for pc in up.get("papers") or []:
+        rows = [m for m in real if m.get("school") == pc["school"]]
+        if not rows or any(m.get("year") == pc["year"] for m in rows):
+            continue
+        latest = max(m.get("year") or 0 for m in rows)
+        for m in rows:
+            if m.get("year") == latest:
+                out[f"planned:{pc['school']}_{pc['year']}_{m.get('session')}_{m.get('subject')}"] = {
+                    **m, "year": pc["year"], "available": pc["available"], "planned": True,
+                    "session_label": f"{m.get('session_label', '')}（予定）"}
+    return out
+
+
 def roadmap(attempts: list[dict], exam_meta: dict[str, dict], plan: dict, now: dt.datetime,
             scheduled: dict[str, list[str]] | None = None) -> dict:
     """Projected new-exam schedule from now to the exam, assuming each week's plan is done: per week the
     queue fills plan.weekly_minutes x (1 - review_share) (the rest stays for やり直し). Weeks whose list is
     already frozen (`scheduled` = {weekStart: [examId]}) are taken as is. 小5-filtered work comes back at 6年."""
     scheduled = scheduled or {}
+    exam_meta = {**exam_meta, **upcoming_meta(exam_meta)}
     ws = week_start(now)
     end = exam_date(plan)
     new_budget = round(plan["weekly_minutes"] * (1 - plan["review_share"]))
@@ -436,6 +487,7 @@ def roadmap(attempts: list[dict], exam_meta: dict[str, dict], plan: dict, now: d
         sim |= {(e, g) for e in items}
         weeks.append({"weekStart": key, "grade": g, "phase": phase_of(plan, ws.date()),
                       "items": [{"examId": e, "label": label(exam_meta[e]), "subject": exam_meta[e].get("subject"),
+                                 **({"planned": True} if exam_meta[e].get("planned") else {}),
                                  "minutes": minutes(exam_meta[e], filtered_count(exam_meta[e], g) or exam_meta[e].get("item_count") or 1)}
                                 for e in items]})
         ws += dt.timedelta(weeks=1)

@@ -198,6 +198,9 @@ each page (similar to how `answer_key_ai.py` already reads scanned 模範解答 
   the new-exam queue to the exam at `weekly_minutes x (1 - review_share)` per week assuming each week is done
   (frozen weeks as is; 小5-filtered exams with 6年 items come back at 6年), with the milestones (6年, 直前期,
   target deadline, 入試 days). Recomputed after every grading.
+  Material added later is projected too (`schools.json` `upcoming`, shown as 予定, no link): a 組分け round every
+  month (sized like the latest real round; dropped once the real round's month is in the bank) and each school's
+  next 入試 papers from their `available` date — which then become the reserved latest year.
 - 保護者 (admin) accounts don't take tests: the student pages (`web/src/roles.js`) redirect to `#/parent`; the
   overview shows each child's 今週の課題 progress, the child page the full goal card (no links).
 - UI: `web/src/views/goals.js` card on the dashboard and on the parent's child page.

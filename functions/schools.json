@@ -11,6 +11,12 @@
     "reserve_from": "2027-12-01",
     "extra_schools": ["sakaehigashi", "chuo"]
   },
+  "upcoming": {
+    "_doc": "Material the parent adds later, used only by the 全体計画 projection (shown as 予定): a 組分け round every month (available from `day`), each school's next 入試 papers from `available`. A planned round disappears once the real exam is in the bank.",
+    "kumiwake": {"from": "2026-11", "until": "2027-12", "day": 22},
+    "papers": [{"school": "kyoritsu", "year": 2027, "available": "2027-02-15"},
+               {"school": "shinagawa", "year": 2027, "available": "2027-02-15"}]
+  },
   "schools": {
     "kyoritsu": {
       "name": "共立女子",

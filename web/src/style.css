@@ -99,3 +99,4 @@ ul.assignments li.done { color: var(--muted); }
 .plan-card .milestone.exam { color: var(--ng); }
 .phase { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; background: #e5e7eb; white-space: nowrap; }
 .phase.p5 { background: #dcfce7; } .phase.p6 { background: #dbeafe; } .phase.pk { background: #fef3c7; } .phase.pc { background: #fee2e2; }
+.plan-card .planned { color: var(--muted); font-style: italic; }

@@ -15,7 +15,8 @@ function weekRow(w, { now, cur, links, milestones }) {
   const total = w.items.reduce((n, it) => n + it.minutes, 0);
   const tag = w.weekStart === cur ? '<span class="badge new">今週</span>' : w.weekStart < now ? '' : '';
   const list = w.items.length
-    ? w.items.map((it) => (links ? `<a href="#/exam/${it.examId}${w.grade ? `?g=${w.grade}` : ''}">${esc(it.label)}</a>` : esc(it.label))).join('、')
+    ? w.items.map((it) => (it.planned ? `<span class="planned">${esc(it.label)}</span>`   // not in the bank yet
+      : links ? `<a href="#/exam/${it.examId}${w.grade ? `?g=${w.grade}` : ''}">${esc(it.label)}</a>` : esc(it.label))).join('、')
     : '<span class="muted">やり直し・新しく追加される組分け／過去問</span>';
   return `<tr class="${w.weekStart === cur ? 'current' : ''}"><td class="nowrap">${md(w.weekStart)}〜${md(end)} ${tag}</td>
     <td><span class="phase ${PHASE_CLS[w.phase] || ''}">${esc(w.phase)}</span></td>
@@ -50,12 +51,12 @@ export function planCard(stats, { links = true, now = new Date() } = {}) {
   const behind = (p.history || []).filter((h) => h.done < h.items).length;
   return `<div class="card plan-card">
     <div class="big-head"><h2 style="margin:0">全体計画</h2>
-      <span class="muted">予定どおり進めば ${p.finishWeek ? `${md(p.finishWeek)}の週までに今ある ${p.totalExams} 回分を一巡` : '—'}</span>
+      <span class="muted">予定どおり進めば ${p.finishWeek ? `${md(p.finishWeek)}の週までに ${p.totalExams} 回分を一巡（追加予定の組分け・過去問を含む）` : '—'}</span>
       <span style="margin-left:auto">入試まで <b class="countdown">${daysUntil(p.examDate, now)}</b> 日</span></div>
     ${behind ? `<p class="warn">やり残しのある週が ${behind} 週あります。やり残しは次の週の課題の先頭に入ります。</p>` : ''}
     <div class="chips">${(p.milestones || []).map((m) => `<span class="chip ${m.exam ? 'weak' : ''}">🚩 ${md(m.date)} ${esc(m.label)}</span>`).join('')}</div>
     ${historyTable(p.history)}
-    <h3>これからの予定 <small class="muted">（毎週 新しい問題 約${p.newBudget}分 ＋ やり直し。予定は毎週の結果で更新されます）</small></h3>
+    <h3>これからの予定 <small class="muted">（毎週 新しい問題 約${p.newBudget}分 ＋ やり直し。予定は毎週の結果で更新されます。<span class="planned">（予定）</span>＝これから追加される組分け・過去問）</small></h3>
     ${body}
   </div>`;
 }

@@ -239,7 +239,12 @@ def test_next_week_only_when_all_done_and_counts_early_work():
 
 # --------------------------------------------------------------- 全体計画
 
-def test_roadmap_projects_queue_and_6th_grade_return():
+@pytest.fixture
+def no_upcoming(monkeypatch):
+    monkeypatch.setitem(goals.CONFIG, "upcoming", {})
+
+
+def test_roadmap_projects_queue_and_6th_grade_return(no_upcoming):
     r = goals.roadmap([], META, PLAN, MON)
     assert r["weeks"][0]["weekStart"] == "2026-10-19" and r["weeks"][-1]["weekStart"] < r["examDate"]
     assert r["newBudget"] == round(180 * (1 - PLAN["review_share"]))
@@ -255,7 +260,7 @@ def test_roadmap_projects_queue_and_6th_grade_return():
     assert [m["label"] for m in r["milestones"] if m.get("exam")] == ["入試：栄東", "入試：共立女子・品川女子学院中等部"]
 
 
-def test_roadmap_keeps_frozen_weeks():
+def test_roadmap_keeps_frozen_weeks(no_upcoming):
     r = goals.roadmap([], META, PLAN, MON, scheduled={"2026-10-19": ["chuo_2026_1_math"]})
     assert [i["examId"] for i in r["weeks"][0]["items"]] == ["chuo_2026_1_math"]
     assert "chuo_2026_1_math" not in [i["examId"] for w in r["weeks"][1:] for i in w["items"]]
@@ -269,3 +274,23 @@ def test_history_assigned_vs_done():
     atts = [{"status": "graded", "examId": "a", "submittedAt": "2026-10-14T00:00:00+00:00"}]
     h = goals.history(docs, atts, before="2026-10-19")
     assert h == [{"weekStart": "2026-10-12", "items": 2, "done": 1, "minutes": 80, "doneMinutes": 50, "missed": ["B"]}]
+
+
+def test_upcoming_planned_material(monkeypatch):
+    monkeypatch.setitem(goals.CONFIG, "upcoming", {
+        "kumiwake": {"from": "2026-10", "until": "2026-12", "day": 22},
+        "papers": [{"school": "kyoritsu", "year": 2027, "available": "2027-02-15"},
+                   {"school": "shinagawa", "year": 2025, "available": "2027-02-15"}]})     # 2025 already real
+    meta = {**META, "kumiwake_2026_r6_math": {**_meta("kumiwake", 2026, "r6", "math"), "session_label": "第6回 (10月)"}}
+    up = goals.upcoming_meta(meta)
+    assert sorted(k for k in up if "kumiwake" in k) == ["planned:kumiwake_202611_math", "planned:kumiwake_202612_math"]  # 10月 is real
+    assert up["planned:kumiwake_202611_math"]["available"] == "2026-11-22"
+    assert sorted(k for k in up if "kyoritsu" in k) == ["planned:kyoritsu_2027_2-1_math"]   # modelled on the latest real year
+    assert not any("shinagawa" in k for k in up)
+    r = goals.roadmap([], meta, PLAN, MON)
+    weeks = {i["examId"]: w["weekStart"] for w in r["weeks"] for i in w["items"]}
+    assert weeks["planned:kumiwake_202611_math"] >= "2026-11-16"        # not before it exists (week of 11/22)
+    assert all(i.get("planned") for w in r["weeks"] for i in w["items"] if i["examId"].startswith("planned:"))
+    # once 共立 2027 exists it is the reserved latest year; 2026 moves into the normal queue
+    assert weeks["planned:kyoritsu_2027_2-1_math"] >= PLAN["reserve_from"][:8]
+    assert weeks["kyoritsu_2026_2-1_math"] < PLAN["reserve_from"]
