@@ -110,7 +110,7 @@ def test_partial_and_blank(exam_and_keys):
 - `score` / `max` / `percent` / `answeredCount` / `pendingCount`
 - `perBig` / `perTopic` / `perGrade` の件数
 - `item_ids`(小5サブセット: 範囲外の解答は無視される)、`full_ids=True`(練習セット: `exam#slot` キー)
-- `points`(配点、kawasaki)
+- `points`(配点、kumiwake)
 
 ### 4. analytics は小さな合成データで
 

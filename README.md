@@ -96,11 +96,11 @@ The result page shows 分野別 correctness so weak topics stand out. Edit tags,
 
 ## 6. Subjects and answer types
 
-112 exams are processed: 24 kyoritsu (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語), 23 shinagawa
+85 exams are processed: 24 kyoritsu (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語), 23 shinagawa
 (2018 + 2023–2026 × 第1回/第2回 × 算数・理科・社会, plus 算数1教科), 8 chuo (2026 × 1回/2回 × 算数・理科・社会・国語),
-6 sakaehigashi (2025–2026 × 算数・理科・社会), 27 kawasaki (2021–2026 適性検査Ⅰ/Ⅱ split by subject) and 24 kumiwake
+6 sakaehigashi (2025–2026 × 算数・理科・社会) and 24 kumiwake
 (四谷大塚 公開組分けテスト 5年 第1〜6回 × 4 subjects), plus the min-san.com offline copy (§ below). The home page has
-a school filter (すべて / 共立女子 / 品川女子学院中等部 / 栄東中学校 / 中央大学附属 / 川崎市立川崎附属 / 四谷大塚 組分け /
+a school filter (すべて / 共立女子 / 品川女子学院中等部 / 栄東中学校 / 中央大学附属 / 四谷大塚 組分け /
 みんなの算数). Question types:
 
 | answer_type | input | grading |
@@ -140,17 +140,6 @@ them. Their answer keys are full slot lists in `overrides/answers/{exam_id}.json
 `answer_key_generic.py` copies such a list to `out/answers/` for any exam without a 解答用紙, so editing the
 override + `python pipeline/run_all.py` (or `answer_key_generic.py <exam_id>` + `build.py`) is enough — no more
 hand-copying into `out/answers`. Add a `scan_chuo`/`scan_sakaehigashi` to rebuild the entries from scratch.
-
-**Kawasaki (川崎市立川崎高等学校附属中 適性検査, 2021–2026)**: each 45分 検査 mixes subjects, so it is split
-**by 問題** into subject exams `kawasaki_{year}_{k1|k2}_{subject}` (k1/k2 = 適性検査Ⅰ/Ⅱ; one 問題 = one 大問,
-numbered by its 問題 number). The table lives in `pipeline/kawasaki_exams.json` (PDF, subject, `bigs` =
-{問題: [first, last]} 0-based question pages, `time_limit_min` = 45 × the exam's share of the 検査 points) and is
-read by `inventory.scan_kawasaki()`. Every 問題 is delivered as page images (`segment.page_only_bigs`: 2 PDFs are
-scans without text, 縦書き 国語, and the 資料 of one question spread over several pages), answers are entered
-per (n). Answer keys + 配点 were transcribed from the 解答例 PDFs into `overrides/answers/kawasaki_*.json`
-(`points` = 配点, used by the grader); 記述/作図/グラフ are `manual` with the 解答例 as the expected answer, 作文
-(解答例 <省略>) have `answer: null`. Reading passages marked 「著作権の関係により省略」 (2021 検査Ⅰ, 2026 検査Ⅱ)
-make their questions unanswerable — those slots were dropped (the pages still show).
 
 **Kumiwake (四谷大塚 公開組分けテスト, 5年 2026 第1〜6回)**: `kumiwake_past/` (git-ignored) is scanned by
 `inventory.scan_kumiwake()` into `kumiwake_2026_r{1-6}_{subject}` (第6回 came without 回答 sheets). The `…回答.pdf` files are **the child's own scored

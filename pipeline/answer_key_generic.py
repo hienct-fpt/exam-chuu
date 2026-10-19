@@ -2,7 +2,7 @@
 
 Same output shape as answer_key.py (math). Overrides: pipeline/overrides/answers/{exam_id}.json
   {"slots": {"1-7-1": {"answer": "...", "answer_type": "text"}, "1-4": {"answer_type": "manual", "note": "graph"}}}
-Exams without a 解答用紙 (kawasaki, chuo) keep the whole key there as a list: {"slots": [{"id": "2-1", ...}, ...]}.
+Exams without a 解答用紙 (chuo, sakaehigashi) keep the whole key there as a list: {"slots": [{"id": "2-1", ...}, ...]}.
 """
 from __future__ import annotations
 

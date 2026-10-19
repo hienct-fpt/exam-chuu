@@ -1,6 +1,6 @@
 """Map every source's own topic tags (pipeline/tags/*.json) onto one shared, medium-grained 分野 taxonomy per
 subject, so practice sets / weak-topic detection / the dashboard pool 四谷大塚 組み分け items together with the
-school past papers (kyoritsu / shinagawa / chuo / sakaehigashi / kawasaki) and min-san.
+school past papers (kyoritsu / shinagawa / chuo / sakaehigashi) and min-san.
 
 build.py writes the shared 分野 as the item's `topic` and keeps the original label as `topic_detail`.
 
@@ -13,7 +13,7 @@ build.py writes the shared 分野 as the item's `topic` and keeps the original l
   no min-san precedent are a domain-knowledge best guess (marked). 組み分け 領域 (正答率一覧) map 1:1.
 理科: 15 単元-level 分野 (力・てこ・ばね … 実験・観察・資料).
 社会: 地理 8 / 歴史 6 / 公民 4 + 時事.
-国語: 漢字 / 語句・文法 / 読解 / 記述 / 作文. The school tags can't tell 物語 from 説明文 (kyoritsu / kawasaki tag
+国語: 漢字 / 語句・文法 / 読解 / 記述 / 作文. The school tags can't tell 物語 from 説明文 (kyoritsu tags
   whole passages as 読解) nor 語句 from 文法 (kyoritsu "語句・文法"), so those stay merged to keep one pool.
 
 "文章題" (算数 fallback label on a few 大問 whose items carry their own tags) is intentionally unmapped (None):
@@ -89,8 +89,6 @@ BUNYA_MAP: dict[str, str | None] = {
     "立体-水量": "立体図形",
     "位置・方角": "平面図形",
     "概数": "数の性質",
-    "文字と式": "逆算",       # □を使った式 (kawasaki)
-    "条件整理": "論理・推理",  # kawasaki 適性検査
     # intentionally unmapped: generic fallback label, not a min-san leaf category
     "文章題": None,
 }
@@ -145,7 +143,6 @@ SCIENCE_MAP: dict[str, str] = {
     "地学-気象": WEATHER,
     "地学-地層": EARTH, "地学-地層・化石": EARTH, "地学-地震": EARTH, "地学-流れる水": EARTH,
     "実験操作-けんび鏡": LAB, "実験操作・顕微鏡": LAB, "実験計画": LAB, "資料の読み取り": LAB,
-    "割合の計算": LAB, "規則性": LAB, "条件整理": LAB,  # kawasaki 適性検査
     "総合-ばね・てこ・小問": MIXED, "総合-光の性質・植物のはたらき": MIXED, "総合-実験器具・火山": MIXED,
     "総合-気象・水溶液の濃度": MIXED, "総合-状態変化・侵食": MIXED,
 }
@@ -183,7 +180,7 @@ SOCIAL_MAP: dict[str, str] = {
     "地理-観光と産業": REGION, "地理-総合(自然・産業)": REGION,
     "地理・歴史(九州)": REGION, "地理・歴史(千葉)": REGION,
     "地理-世界": WORLD, "地理-時差": WORLD,
-    "地理-統計": STATS, "資料の読み取り": STATS, "記述": STATS, "条件整理": STATS,  # kawasaki 適性検査
+    "地理-統計": STATS,
     "歴史-古代": ANCIENT,
     "歴史-中世": MEDIEVAL, "歴史-中世~近世(武士)": MEDIEVAL,
     "歴史-近世": EARLYMOD, "歴史-近世・時事": EARLYMOD,
