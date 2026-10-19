@@ -18,7 +18,7 @@ export async function createAttempt(examId, mode = 'exam', extra = {}) {
   const id = 'a' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
   all[id] = { id, examId: examId || null, mode, status: 'in_progress', answers: {}, startedAt: new Date().toISOString(),
     itemIds: extra.itemIds || null, gradeFilter: extra.gradeFilter || null, timeLimitMin: extra.timeLimitMin || null,
-    items: extra.items || null, topics: extra.topics || null, title: extra.title || null, subject: extra.subject || null, manualGrades: {} };
+    items: extra.items || null, topics: extra.topics || null, title: extra.title || null, subject: extra.subject || null, redoOf: extra.redoOf || null, manualGrades: {} };
   save(all);
   return id;
 }

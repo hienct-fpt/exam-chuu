@@ -93,16 +93,20 @@ def test_official_kumiwake_supersedes_app_grading():
 
 
 def test_exam_scores_only_whole_exams():
-    meta = {"kyoritsu_2026_2-1_math": {"school": "kyoritsu", "subject": "math"},
-            "kumiwake_2026_r1_math": {"school": "kumiwake", "subject": "math"}}
+    meta = {"kyoritsu_2026_2-1_math": {"school": "kyoritsu", "subject": "math", "item_count": 10,
+                                       "grade_counts": {"5": 6, "6": 4}},
+            "kumiwake_2026_r1_math": {"school": "kumiwake", "subject": "math", "item_count": 25, "grade_counts": {"5": 25}}}
     base = {"status": "graded", "submittedAt": "2026-10-10T00:00:00+00:00", "percent": 60}
+    ids = lambda n: [str(i) for i in range(n)]  # noqa: E731
     atts = [{**base, "examId": "kyoritsu_2026_2-1_math"},
-            {**base, "examId": "kumiwake_2026_r1_math"},
-            {**base, "examId": "kyoritsu_2026_2-1_math", "gradeFilter": 5},       # partial -> skipped
-            {**base, "examId": None, "mode": "practice"}]
+            # 小5 filter keeps every 組分け item -> the app's "practice" attempt still is the whole exam
+            {**base, "examId": "kumiwake_2026_r1_math", "mode": "practice", "gradeFilter": 5, "itemIds": ids(25)},
+            {**base, "examId": "kyoritsu_2026_2-1_math", "mode": "practice", "gradeFilter": 5, "itemIds": ids(6)},
+            {**base, "examId": "kyoritsu_2026_2-1_math", "mode": "practice", "gradeFilter": 5, "itemIds": ids(3)},  # partial
+            {**base, "examId": None, "mode": "practice", "items": ["x#1"], "redoOf": "kyoritsu_2026_2-1_math"}]
     official = [{"date": "2026-10-12", "scores": {"math": {"score": 120, "max": 200}}}]
     sc = exam_scores(atts, meta, PLAN, official)
-    assert [(s["kind"], s["percent"]) for s in sc] == [("target", 0.6), ("kumiwake", 0.6), ("official", 0.6)]
+    assert [(s["kind"], s["percent"]) for s in sc] == [("target", 0.6), ("kumiwake", 0.6), ("target", 0.6), ("official", 0.6)]
 
 
 def test_topic_frequency_and_focus():
@@ -148,3 +152,65 @@ def test_with_actuals_counts_only_this_week():
     a = with_actuals(g, outs)["actual"]["math"]
     assert a == {"items": 8, "correct": 6, "accuracy": 0.75}
     assert counts(outs, MON - dt.timedelta(weeks=1), MON, "math")["items"] == 5
+
+
+# --------------------------------------------------------------- 今週の課題
+
+def _meta(school, year, session, subject, items=20, minutes=50, g6=0):
+    return {"school": school, "year": year, "session": session, "subject": subject, "school_name": school,
+            "session_label": session, "subject_label": subject, "time_limit_min": minutes,
+            "item_count": items, "grade_counts": {"5": items - g6, **({"6": g6} if g6 else {})}}
+
+
+META = {
+    "kumiwake_2026_r1_math": _meta("kumiwake", 2026, "r1", "math"),
+    "kumiwake_2026_r2_math": _meta("kumiwake", 2026, "r2", "math"),
+    "kyoritsu_2024_2-1_math": _meta("kyoritsu", 2024, "2-1", "math", g6=10),
+    "kyoritsu_2026_2-1_math": _meta("kyoritsu", 2026, "2-1", "math"),
+    "shinagawa_2024_r1_math": _meta("shinagawa", 2024, "r1", "math"),
+    "shinagawa_2025_r1_math": _meta("shinagawa", 2025, "r1", "math"),
+    "chuo_2026_1_math": _meta("chuo", 2026, "1", "math"),
+}
+
+
+def test_exam_queue_order_and_reserved_latest_year():
+    q = goals.exam_queue(META, PLAN, MON)
+    assert q == ["kumiwake_2026_r1_math", "kumiwake_2026_r2_math", "kyoritsu_2024_2-1_math",
+                 "shinagawa_2024_r1_math", "chuo_2026_1_math"]       # 共立 2026 / 品川 2025 (latest) held back
+    late = goals.exam_queue(META, PLAN, dt.datetime(2027, 12, 6, tzinfo=JST))
+    assert late[-2:] == ["shinagawa_2025_r1_math", "kyoritsu_2026_2-1_math"]   # 直前期: latest years last
+
+
+def test_weekly_assignments_budget_review_and_grade():
+    atts = [{"status": "graded", "examId": "kumiwake_2026_r1_math", "submittedAt": "2026-10-05T00:00:00+00:00"}]
+    old = MON - dt.timedelta(days=10)
+    outs = [{"t": old, "examId": "kumiwake_2026_r1_math", "itemId": f"kumiwake_2026_r1_math#{i}", "subject": "math",
+             "correct": i < 12, "pending": False, "grade": 5} for i in range(20)]
+    r = goals.weekly_assignments(outs, atts, META, PLAN, MON)
+    assert r["grade"] == 5 and r["budget"] == 180
+    kinds = [(i["kind"], i["examId"], i["minutes"]) for i in r["items"]]
+    assert kinds[-1] == ("review", "kumiwake_2026_r1_math", 20)          # 8 wrong of 20 -> 50 * 8/20
+    news = [k for k in kinds if k[0] == "new"]
+    assert [k[1] for k in news] == ["kumiwake_2026_r2_math", "kyoritsu_2024_2-1_math", "shinagawa_2024_r1_math",
+                                    "chuo_2026_1_math"]                  # 195 min: within the 10% overrun
+    assert news[1][2] == 25                                              # 小5: 10 of 20 items -> 25 min
+    assert sum(k[2] for k in kinds) <= 180 * goals.OVERRUN
+    # a try within the last REVIEW_GAP_DAYS -> no やり直し yet
+    recent = [{**o, "t": MON - dt.timedelta(days=2)} for o in outs]
+    assert all(i["kind"] == "new" for i in goals.weekly_assignments(recent, atts, META, PLAN, MON)["items"])
+
+
+def test_6th_grade_brings_filtered_exams_back():
+    atts = [{"status": "graded", "examId": "kyoritsu_2024_2-1_math", "gradeFilter": 5, "itemIds": ["x"] * 10,
+             "submittedAt": "2026-10-05T00:00:00+00:00"}]
+    may = dt.datetime(2027, 5, 3, tzinfo=JST)
+    assert "kyoritsu_2024_2-1_math" in goals.done_exams(atts, META, 5)
+    assert "kyoritsu_2024_2-1_math" not in goals.done_exams(atts, META, goals.grade_now(PLAN, may))
+
+
+def test_assignment_status():
+    asg = {"items": [{"kind": "new", "examId": "a"}, {"kind": "review", "examId": "b"}, {"kind": "new", "examId": "c"}]}
+    atts = [{"status": "graded", "examId": "a", "submittedAt": "2026-10-20T00:00:00+00:00"},
+            {"status": "graded", "examId": None, "items": ["b#1"], "redoOf": "b", "submittedAt": "2026-10-21T00:00:00+00:00"},
+            {"status": "graded", "examId": "c", "submittedAt": "2026-10-10T00:00:00+00:00"}]     # before the week
+    assert goals.assignment_status(asg, atts, "2026-10-19") == [True, True, False]

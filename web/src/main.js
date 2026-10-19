@@ -8,6 +8,7 @@ import { renderDashboard } from './views/dashboard.js';
 import { renderPractice } from './views/practice.js';
 import { renderParent } from './views/parent.js';
 import { renderJoin } from './views/join.js';
+import { renderRedo } from './views/redo.js';
 
 const app = document.getElementById('app');
 const userBox = document.getElementById('user');
@@ -15,7 +16,7 @@ let user = null;
 let cleanup = null;
 
 const ROUTES = { '': renderHome, exam: renderExam, attempt: renderAttempt, result: renderResult, history: renderHistory,
-  dashboard: renderDashboard, practice: renderPractice, parent: renderParent, join: renderJoin };
+  dashboard: renderDashboard, practice: renderPractice, parent: renderParent, join: renderJoin, redo: renderRedo };
 
 function route() {
   if (cleanup) { cleanup(); cleanup = null; }

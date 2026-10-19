@@ -4,7 +4,12 @@
     "first": "kyoritsu",
     "second": "shinagawa",
     "exam_year": 2028,
-    "margin": 0.05
+    "margin": 0.05,
+    "weekly_minutes": 180,
+    "review_share": 0.34,
+    "grade6_from": "2027-04-01",
+    "reserve_from": "2027-12-01",
+    "extra_schools": ["sakaehigashi", "chuo"]
   },
   "schools": {
     "kyoritsu": {

@@ -20,6 +20,24 @@ export function goalStatus(g, a) {
 }
 const ICON = { done: '✅', progress: '▶', low: '⚠️' };
 
+/** 今週の課題: new exams + やり直し within the weekly time budget (goals.assignments, frozen per week). */
+export function assignmentList(goals, { links = true } = {}) {
+  const asg = goals?.assignments;
+  if (!asg?.items?.length) return '';
+  const done = goals.assignmentsDone || [];
+  const total = asg.items.reduce((n, it) => n + it.minutes, 0);
+  const doneMin = asg.items.reduce((n, it, i) => n + (done[i] ? it.minutes : 0), 0);
+  const href = (it) => (it.kind === 'new' ? `#/exam/${it.examId}${asg.grade ? `?g=${asg.grade}` : ''}` : `#/redo/${encodeURIComponent(it.examId)}`);
+  const rows = asg.items.map((it, i) => `<li class="${done[i] ? 'done' : ''}">${done[i] ? '✅' : '⬜'}
+      <span class="badge ${it.kind}">${it.kind === 'new' ? '新しい問題' : 'やり直し'}</span>
+      ${links && !done[i] ? `<a href="${href(it)}">${esc(it.label)}</a>` : esc(it.label)}
+      <small class="muted">${it.kind === 'review' ? `間違い・未回答 ${it.items.length}問 · ` : ''}${it.minutes}分</small></li>`).join('');
+  return `<h3>今週の課題 <small class="muted">${doneMin} / ${total}分（目安 ${Math.round(asg.budget / 60 * 10) / 10}時間）</small></h3>
+    <ul class="assignments">${rows}</ul>
+    <p class="muted small">新しい問題：組分け → ${esc(goals.firstName)}・${esc(goals.secondName)}の過去問（古い年度から）→ 併願校の順。各校の最新年度は直前期用に残します。
+      やり直し：前に解いた回の間違い・未回答だけをもう一度。残り ${asg.remaining} 回分${asg.grade ? `（小${asg.grade}までの問題）` : ''}。</p>`;
+}
+
 export function goalCard(goals, { gradeQ = '', practice = true } = {}) {
   if (!goals?.subjects) return '';
   const end = new Date(Date.parse(goals.weekStart) + 6 * 86400e3).toISOString().slice(0, 10);
@@ -46,6 +64,7 @@ export function goalCard(goals, { gradeQ = '', practice = true } = {}) {
   return `<div class="card goal-card">
     <div class="big-head"><h2 style="margin:0">今週の目標</h2><span class="muted">${md(goals.weekStart)}〜${md(end)}</span>
       <span style="margin-left:auto">第一志望 ${esc(goals.firstName)} 入試まで <b class="countdown">${days}</b> 日</span></div>
+    ${assignmentList(goals, { links: practice })}
     <table><tr><th>科目</th><th>解いた問題</th><th>正答率 今週 / 目標</th><th>実力 → 最終目標</th><th>重点分野</th></tr>${rows}</table>
     <p class="muted small">目標は毎週月曜に先週までの結果から自動で決まります（${esc(md(goals.deadline))}までに最終目標に届くペース、残り${goals.weeksLeft}週）。
       最終目標＝${esc(goals.firstName)}・${esc(goals.secondName)}の公表データ（合格者平均、未公表なら受験者平均＋5%）のうち高い方${bases ? `（${esc(bases)}）` : ''}。

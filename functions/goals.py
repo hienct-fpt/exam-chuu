@@ -6,6 +6,9 @@ Every week (Monday 00:00 JST) each subject gets
                  week is carried automatically because the next week starts from the (lower) measured level.
   goalItems    : questions to solve: median of the last 4 weeks, +10% after a missed week, clamped.
   focus        : weakest 分野 weighted by how often they appear in the target schools' past papers.
+plus 今週の課題 (weekly_assignments): plan.weekly_minutes of work = new exams from a fixed queue (組分け -> 共立 /
+品川 oldest first -> 栄東 / 中央; each school's latest year kept for the 直前期) + やり直し of done exams (the
+items still wrong or left blank, at least a week after the last try).
 Goals are computed only from data BEFORE the week starts, and main.py freezes them in weeklyGoals/{weekStart},
 so plan vs actual stays comparable later. Inputs: analytics.outcomes(), exam_scores(), analytics.topic_stats().
 """
@@ -94,6 +97,22 @@ def _t(v) -> dt.datetime:
     return t if t.tzinfo else t.replace(tzinfo=JST)
 
 
+def filtered_count(meta: dict, g: int | None) -> int:
+    """Items of an exam a student at grade g answers (the 小g filter keeps items tagged grade <= g)."""
+    if not g:
+        return meta.get("item_count") or 0
+    return sum(n for k, n in (meta.get("grade_counts") or {}).items() if str(k).isdigit() and int(k) <= g)
+
+
+def whole_exam(a: dict, meta: dict) -> bool:
+    """A graded exam attempt that covered every item of the exam -- or every item left by its 小N filter
+    (the app stores filtered exam attempts with mode "practice" + itemIds). やり直し sets carry `items`."""
+    if a.get("items") or not a.get("examId"):
+        return False
+    ids = a.get("itemIds")
+    return not ids or len(ids) >= filtered_count(meta, a.get("gradeFilter"))
+
+
 def exam_scores(attempts: list[dict], exam_meta: dict[str, dict], plan: dict,
                 official: list[dict] | None = None) -> list[dict]:
     """Whole-exam results as level signals: [{t, subject, percent (0-1), kind}].
@@ -102,8 +121,7 @@ def exam_scores(attempts: list[dict], exam_meta: dict[str, dict], plan: dict,
     out = []
     for a in attempts:
         meta = exam_meta.get(a.get("examId") or "")
-        if (not meta or a.get("status") != "graded" or a.get("mode") == "practice" or a.get("itemIds")
-                or a.get("gradeFilter") or a.get("percent") is None):
+        if not meta or a.get("status") != "graded" or a.get("percent") is None or not whole_exam(a, meta):
             continue
         school = meta.get("school")
         kind = "kumiwake" if school == "kumiwake" else "target" if school in (plan["first"], plan["second"]) else "school"
@@ -205,8 +223,137 @@ def week_goals(outs: list[dict], scores: list[dict], stats: dict[str, dict], fre
             "subjects": subjects}
 
 
-def with_actuals(goals: dict, outs: list[dict]) -> dict:
-    """Attach this week's live progress (questions / accuracy so far) to frozen goals."""
+def with_actuals(goals: dict, outs: list[dict], attempts: list[dict] | None = None) -> dict:
+    """Attach this week's live progress (questions / accuracy so far, assignments done) to frozen goals."""
     ws = dt.datetime.fromisoformat(goals["weekStart"]).replace(tzinfo=JST)
     actual = {s: counts(outs, ws, ws + dt.timedelta(weeks=1), s) for s in SUBJECTS}
-    return {**goals, "actual": actual}
+    out = {**goals, "actual": actual}
+    if goals.get("assignments"):
+        out["assignmentsDone"] = assignment_status(goals["assignments"], attempts or [], goals["weekStart"])
+    return out
+
+
+# --------------------------------------------------------------- 今週の課題 (weekly assignments)
+
+SUBJECT_ORDER = {s: i for i, s in enumerate(("math", "japanese", "science", "social"))}
+REVIEW_GAP_DAYS = 6     # redo an exam's wrong items at least this long after the last try
+MIN_MINUTES = 10
+OVERRUN = 1.1         # a new exam may push the week up to 10% over plan.weekly_minutes
+
+
+def grade_now(plan: dict, ws: dt.datetime) -> int | None:
+    """小5 filter until the child becomes 6年 (plan.grade6_from), then whole exams."""
+    return 5 if ws.date() < dt.date.fromisoformat(plan["grade6_from"]) else None
+
+
+def minutes(meta: dict, n: int) -> int:
+    """Time for n of the exam's items, scaled from its 制限時間, rounded to 5 minutes."""
+    total = meta.get("item_count") or n or 1
+    return max(MIN_MINUTES, round((meta.get("time_limit_min") or 50) * n / total / 5) * 5)
+
+
+def label(meta: dict) -> str:
+    if meta.get("school") == "kumiwake":
+        return f"組分け {meta.get('session_label', '')} {meta.get('subject_label', '')}".strip()
+    return f"{meta.get('school_name', '')} {meta.get('year', '')}年度 {meta.get('session_label', '')} {meta.get('subject_label', '')}".strip()
+
+
+def exam_queue(exam_meta: dict[str, dict], plan: dict, ws: dt.datetime) -> list[str]:
+    """New-exam order: 組分け rounds, then 第一/第二志望 interleaved by year (oldest first), then the extra
+    schools; each target school's latest year only from plan.reserve_from (直前期). Subjects of one set together."""
+    def sets(school):
+        rows = [(m.get("year") or 0, str(m.get("session") or ""), SUBJECT_ORDER.get(m.get("subject"), 9), eid)
+                for eid, m in exam_meta.items() if m.get("school") == school]
+        return sorted(rows)
+    reserve_open = ws.date() >= dt.date.fromisoformat(plan["reserve_from"])
+    queue = [r[3] for r in sets("kumiwake")]
+    target, reserved = [], []
+    for rank, school in enumerate((plan["first"], plan["second"])):
+        rows = sets(school)
+        latest = max((r[0] for r in rows), default=None)
+        for r in rows:
+            (reserved if r[0] == latest else target).append((r[0], rank, r[1], r[2], r[3]))
+    queue += [r[4] for r in sorted(target)]
+    for school in plan.get("extra_schools", []):
+        queue += [r[3] for r in sets(school)]
+    if reserve_open:
+        queue += [r[4] for r in sorted(reserved)]
+    return queue
+
+
+def done_exams(attempts: list[dict], exam_meta: dict[str, dict], g: int | None) -> set[str]:
+    """Exams already done at the current grade: at 小5 any graded attempt; at 6年 only one that covered the
+    whole exam (a 小5-filtered attempt of an exam with 6年 items comes back as new)."""
+    done = set()
+    for a in attempts:
+        meta = exam_meta.get(a.get("examId") or "")
+        if not meta or a.get("status") != "graded" or a.get("items"):
+            continue
+        if g or not a.get("itemIds") or len(a["itemIds"]) >= (meta.get("item_count") or 0):
+            done.add(a["examId"])
+    return done
+
+
+def review_units(outs: list[dict], exam_meta: dict[str, dict], g: int | None, ws: dt.datetime) -> list[dict]:
+    """やり直し candidates per done exam: items whose latest outcome is wrong / blank (grade <= g), lowest
+    accuracy first; skipped if the exam was touched within REVIEW_GAP_DAYS."""
+    latest: dict[str, dict] = {}
+    for o in outs:
+        if o["examId"] in exam_meta and o["t"] < ws and not o["pending"]:
+            latest[o["itemId"]] = o
+    by_exam: dict[str, list[dict]] = {}
+    for o in latest.values():
+        by_exam.setdefault(o["examId"], []).append(o)
+    units = []
+    for eid, lst in by_exam.items():
+        if max(o["t"] for o in lst) > ws - dt.timedelta(days=REVIEW_GAP_DAYS):
+            continue
+        wrong = sorted(o["itemId"] for o in lst if not o["correct"] and (not g or not o.get("grade") or o["grade"] <= g))
+        if wrong:
+            acc = sum(1 for o in lst if o["correct"]) / len(lst)
+            units.append({"kind": "review", "examId": eid, "subject": exam_meta[eid].get("subject"),
+                          "label": label(exam_meta[eid]), "items": wrong, "minutes": minutes(exam_meta[eid], len(wrong)),
+                          "accuracy": round(acc, 3)})
+    units.sort(key=lambda u: (u["accuracy"], u["examId"]))
+    return units
+
+
+def weekly_assignments(outs: list[dict], attempts: list[dict], exam_meta: dict[str, dict], plan: dict,
+                       now: dt.datetime) -> dict:
+    """This week's work within plan.weekly_minutes: やり直し up to review_share of the time, the rest new exams
+    in queue order (an unfinished assignment stays at the head of the queue next week)."""
+    ws = week_start(now)
+    g = grade_now(plan, ws)
+    budget = plan["weekly_minutes"]
+    review, used = [], 0
+    for u in review_units(outs, exam_meta, g, ws):
+        if used + u["minutes"] <= round(budget * plan["review_share"]):
+            review.append(u)
+            used += u["minutes"]
+    done = done_exams(attempts, exam_meta, g)
+    new, nused = [], 0
+    pending = [eid for eid in exam_queue(exam_meta, plan, ws) if eid not in done]
+    for eid in pending:
+        m = minutes(exam_meta[eid], filtered_count(exam_meta[eid], g) or exam_meta[eid].get("item_count") or 1)
+        if used + nused + m > budget * OVERRUN and new:
+            break
+        if used + nused + m <= budget * OVERRUN or not new:
+            new.append({"kind": "new", "examId": eid, "subject": exam_meta[eid].get("subject"),
+                        "label": label(exam_meta[eid]), "minutes": m})
+            nused += m
+    return {"grade": g, "budget": budget, "items": new + review,
+            "remaining": len(pending) - len(new), "queue": len(pending)}
+
+
+def assignment_status(assign: dict, attempts: list[dict], week_start_iso: str) -> list[bool]:
+    """Done flags for this week's assignments: a graded attempt of the exam (new) or a graded やり直し set
+    (redoOf = exam) submitted since the week started."""
+    ws = dt.datetime.fromisoformat(week_start_iso).replace(tzinfo=JST)
+    graded = [a for a in attempts if a.get("status") == "graded" and _t(a.get("submittedAt") or a.get("gradedAt")) >= ws]
+    out = []
+    for it in assign.get("items") or []:
+        if it["kind"] == "new":
+            out.append(any(a.get("examId") == it["examId"] and not a.get("items") for a in graded))
+        else:
+            out.append(any(a.get("redoOf") == it["examId"] for a in graded))
+    return out

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { daysUntil, goalCard, goalStatus } from '../src/views/goals.js';
+import { assignmentList, daysUntil, goalCard, goalStatus } from '../src/views/goals.js';
+import { redoItems } from '../src/views/redo.js';
 
 const goals = {
   weekStart: '2026-10-19', examDate: '2028-02-01', deadline: '2027-12-07', weeksLeft: 60,
@@ -34,5 +35,31 @@ describe('goals card', () => {
     expect(html).toContain('合格点が未登録');
     expect(goalCard(goals, { practice: false })).not.toContain('#/practice/');
     expect(goalCard(undefined)).toBe('');
+  });
+});
+
+describe('今週の課題', () => {
+  const g = { ...goals,
+    assignments: { grade: 5, budget: 180, remaining: 40, queue: 42, items: [
+      { kind: 'new', examId: 'kumiwake_2026_r3_math', label: '組分け 第3回 算数', minutes: 50 },
+      { kind: 'review', examId: 'kumiwake_2026_r1_math', label: '組分け 第1回 算数', minutes: 40, items: ['kumiwake_2026_r1_math#2-1'] },
+    ] },
+    assignmentsDone: [true, false] };
+
+  it('lists new exams and やり直し with links, minutes done / planned', () => {
+    const html = assignmentList(g);
+    expect(html).toContain('50 / 90分');
+    expect(html).toContain('目安 3時間');
+    expect(html).toContain('href="#/redo/kumiwake_2026_r1_math"');
+    expect(html).not.toContain('href="#/exam/kumiwake_2026_r3_math');      // done -> no link
+    expect(html).toContain('間違い・未回答 1問');
+    expect(goalCard(g)).toContain('今週の課題');
+    expect(assignmentList(goals)).toBe('');
+  });
+
+  it('redo items: frozen assignment first, else latest wrong outcomes', () => {
+    const stats = { goals: g, itemHistory: { 'x#1': { correct: false }, 'x#2': { correct: true }, 'y#1': { correct: false } } };
+    expect(redoItems(stats, 'kumiwake_2026_r1_math')).toEqual(['kumiwake_2026_r1_math#2-1']);
+    expect(redoItems(stats, 'x')).toEqual(['x#1']);
   });
 });

@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "functions"))
 from analytics import outcomes, topic_stats, weak_topics, weekly_series, subject_summary, item_history, practice_set  # noqa: E402
-from goals import exam_scores, plan_of, topic_frequency, week_goals, with_actuals  # noqa: E402
+from goals import exam_scores, plan_of, topic_frequency, week_goals, weekly_assignments, with_actuals  # noqa: E402
 from grader import grade_submission, virtual_exam  # noqa: E402
 
 OUT = ROOT / "pipeline" / "out"
@@ -29,7 +29,7 @@ INDEX = json.loads((OUT / "bank" / "index.json").read_text(encoding="utf-8"))
 BANKS = {e["id"]: json.loads((OUT / "bank" / f"{e['id']}.json").read_text(encoding="utf-8")) for e in INDEX}
 SUBJECT_OF = {e["id"]: e["subject"] for e in INDEX}
 BANK_ITEMS = [{**it, "subject": b["subject"]} for b in BANKS.values() for it in b["items"]]
-EXAM_META = {e["id"]: {"school": e.get("school"), "subject": e.get("subject")} for e in INDEX}
+EXAM_META = {e["id"]: e for e in INDEX if e.get("school") != "minsan"}
 PLAN = plan_of()
 TOPIC_FREQ = topic_frequency([{**it, "school": BANKS.get(it.get("exam_id"), {}).get("school")} for it in BANK_ITEMS], PLAN)
 
@@ -70,7 +70,9 @@ def stats(req: dict) -> dict:
     summary["suggestions"] = suggestions
     attempts = req.get("attempts") or []
     now = dt.datetime.now(dt.timezone.utc)
-    summary["goals"] = with_actuals(week_goals(outs, exam_scores(attempts, EXAM_META, PLAN), st, TOPIC_FREQ, PLAN, now), outs)
+    goals = week_goals(outs, exam_scores(attempts, EXAM_META, PLAN), st, TOPIC_FREQ, PLAN, now)
+    goals["assignments"] = weekly_assignments(outs, attempts, EXAM_META, PLAN, now)
+    summary["goals"] = with_actuals(goals, outs, attempts)
     return summary
 
 

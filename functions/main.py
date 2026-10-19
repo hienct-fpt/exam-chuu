@@ -19,7 +19,7 @@ from firebase_admin import auth, firestore, initialize_app
 from firebase_functions import firestore_fn, https_fn, options, scheduler_fn
 
 from analytics import outcomes, topic_stats, weekly_series, subject_summary, item_history
-from goals import exam_scores, plan_of, topic_frequency, week_goals, week_start, with_actuals
+from goals import exam_scores, plan_of, topic_frequency, week_goals, week_start, weekly_assignments, with_actuals
 from grader import grade_submission, virtual_exam
 
 initialize_app()
@@ -35,10 +35,14 @@ def _graded_attempts(db, uid: str) -> list[dict]:
     return [{**d.to_dict(), "id": d.id} for d in docs]
 
 
+EXAM_META_FIELDS = ["subject", "school", "school_name", "year", "session", "session_label", "subject_label",
+                    "time_limit_min", "item_count", "grade_counts"]
+
+
 def refresh_topic_stats(db, uid: str) -> dict:
     """Recompute from all graded attempts (a few hundred at most) -> students/{uid}/topicStats/summary."""
     attempts = _graded_attempts(db, uid)
-    exams = {d.id: d.to_dict() for d in db.collection("exams").select(["subject", "school"]).stream()}
+    exams = {d.id: d.to_dict() for d in db.collection("exams").select(EXAM_META_FIELDS).stream()}
     subject_of = {eid: e.get("subject") for eid, e in exams.items()}
     outs = outcomes(attempts, subject_of)
     stats = topic_stats(outs)
@@ -65,8 +69,12 @@ def current_goals(db, uid: str, attempts: list[dict], exams: dict, outs: list[di
     ws = week_start(dt.datetime.now(dt.timezone.utc))
     ref = db.document(f"students/{uid}/weeklyGoals/{ws.date().isoformat()}")
     snap = ref.get()
+    meta = {k: v for k, v in exams.items() if v.get("school") != "minsan"}
     if snap.exists:
         goals = snap.to_dict()
+        if "assignments" not in goals:   # week frozen before 今週の課題 existed
+            goals["assignments"] = weekly_assignments(outs, attempts, meta, plan, ws)
+            ref.update({"assignments": goals["assignments"]})
     else:
         official = [d.to_dict() for d in db.collection(f"students/{uid}/kumiwakeScores").stream()]
         items = []
@@ -76,8 +84,9 @@ def current_goals(db, uid: str, attempts: list[dict], exams: dict, outs: list[di
         prev = db.document(f"students/{uid}/weeklyGoals/{(ws - dt.timedelta(weeks=1)).date().isoformat()}").get()
         goals = week_goals(outs, exam_scores(attempts, exams, plan, official), stats, topic_frequency(items, plan), plan,
                            ws, prev.to_dict() if prev.exists else None)
+        goals["assignments"] = weekly_assignments(outs, attempts, meta, plan, ws)
         ref.set(goals)
-    return with_actuals(goals, outs)
+    return with_actuals(goals, outs, attempts)
 
 
 def _grade(db, data: dict) -> dict:

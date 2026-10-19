@@ -184,4 +184,11 @@ each page (similar to how `answer_key_ai.py` already reads scanned 模範解答 
   the week, or the Monday 00:05 JST `weekly_goals` schedule) and adds them with the week's live progress to
   `topicStats/summary.goals`. Official 組分け scores: `students/{uid}/kumiwakeScores/{round}`
   `{date, scores: {math: {score, max}, ...}}` (Admin SDK only for now).
+- 今週の課題 (`goals.weekly_assignments`): `plan.weekly_minutes` (180) of work per week, frozen with the goals.
+  やり直し (up to `review_share` of the time) = items still wrong / blank in an exam last touched 6+ days ago,
+  lowest accuracy first, opened via `#/redo/{examId}` (a practice set with `redoOf`). New exams fill the rest in
+  queue order: 組分け rounds -> 共立 / 品川 interleaved by year, oldest first -> `extra_schools` (栄東, 中央);
+  each target school's latest year is held back until `reserve_from` (直前期). Until `grade6_from` exams are
+  assigned with the 小5 filter; from 6年 a filtered-only attempt counts as not done. Time = 制限時間 scaled to the
+  assigned items; a week may run 10% over. Unfinished work stays at the head of next week's queue.
 - UI: `web/src/views/goals.js` card on the dashboard and on the parent's child page.

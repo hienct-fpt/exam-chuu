@@ -69,7 +69,7 @@ export async function createAttempt(examId, mode = 'exam', extra = {}) {
   const ref = await addDoc(attempts(), {
     examId: examId || null, mode, status: 'in_progress', answers: {}, manualGrades: {},
     itemIds: extra.itemIds || null, gradeFilter: extra.gradeFilter || null, timeLimitMin: extra.timeLimitMin || null,
-    items: extra.items || null, topics: extra.topics || null, title: extra.title || null, subject: extra.subject || null,
+    items: extra.items || null, topics: extra.topics || null, title: extra.title || null, subject: extra.subject || null, redoOf: extra.redoOf || null,
     startedAt: serverTimestamp(), updatedAt: serverTimestamp(),
   });
   return ref.id;
