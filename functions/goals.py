@@ -46,19 +46,42 @@ def plan_of(override: dict | None = None) -> dict:
 
 def exam_date(plan: dict, school: str | None = None) -> dt.date:
     """Earliest 入試 day of the school (default: 第一志望) in plan.exam_year."""
-    dates = CONFIG["schools"][school or plan["first"]]["exam_dates"].values()
+    dates = [x["date"] for x in CONFIG["schools"][school or plan["first"]]["sessions"].values()]
     return min(dt.date(plan["exam_year"], int(d[:2]), int(d[3:])) for d in dates)
 
 
+def _school_rates(school: str, subject: str, margin: float) -> list[tuple[float, str]]:
+    """Candidate target rates from one school's rounds: 合格者平均 rate as is (already above the line), else the
+    subject line, else the round's total line, + margin."""
+    sch = CONFIG["schools"][school]
+    out = []
+    for x in sch["sessions"].values():
+        if x.get("goal") is False:
+            continue
+        sub, tot = (x.get("subjects") or {}).get(subject) or {}, x.get("total") or {}
+        if not (x.get("subjects") or {}) and not tot.get("line"):
+            continue
+        name = f"{sch['name']} {x.get('label', '')}"
+        if sub.get("pass_avg") is not None and sub.get("max"):
+            out.append((sub["pass_avg"] / sub["max"], f"{name} 合格者平均"))
+        elif sub.get("line") is not None and sub.get("max"):
+            out.append((sub["line"] / sub["max"] + margin, f"{name} 合格ライン+{round(margin * 100)}%"))
+        elif not x.get("subjects") and tot.get("line") is not None and tot.get("max"):
+            out.append((tot["line"] / tot["max"] + margin, f"{name} 合格ライン+{round(margin * 100)}%"))
+    return out
+
+
 def targets(plan: dict) -> dict[str, dict]:
-    """Final target accuracy per subject: 第一志望's 合格点 / 満点 + margin, or DEFAULT_TARGET (provisional)."""
+    """Final target accuracy per subject: the highest known requirement of 第一志望 / 第二志望 (both must be
+    passable), or DEFAULT_TARGET (provisional) while nothing is known."""
     out = {}
     for s in SUBJECTS:
-        sub = CONFIG["schools"][plan["first"]]["subjects"].get(s) or {}
-        if sub.get("pass") is not None and sub.get("max"):
-            out[s] = {"target": round(min(MAX_TARGET, sub["pass"] / sub["max"] + plan["margin"]), 2), "provisional": False}
+        cands = [c for sch in (plan["first"], plan["second"]) for c in _school_rates(sch, s, plan["margin"])]
+        if cands:
+            rate, basis = max(cands)
+            out[s] = {"target": round(min(MAX_TARGET, rate), 2), "provisional": False, "basis": basis}
         else:
-            out[s] = {"target": DEFAULT_TARGET, "provisional": True}
+            out[s] = {"target": DEFAULT_TARGET, "provisional": True, "basis": None}
     return out
 
 
@@ -170,7 +193,7 @@ def week_goals(outs: list[dict], scores: list[dict], stats: dict[str, dict], fre
             need = max(0.0, target - lvl["level"]) / weeks_left
             at_risk = need > MAX_STEP
             goal_acc = round(min(target, lvl["level"] + min(need, MAX_STEP)), 2) if need else target
-        subjects[s] = {"target": target, "provisional": tg[s]["provisional"], "level": lvl["level"],
+        subjects[s] = {"target": target, "provisional": tg[s]["provisional"], "basis": tg[s]["basis"], "level": lvl["level"],
                        "levelSources": lvl["sources"], "goalAccuracy": goal_acc, "goalItems": goal_items,
                        "behind": behind, "atRisk": at_risk,
                        "focus": focus_topics({t: v for t, v in stats.items() if v.get("subject") == s}, freq.get(s) or {})}

@@ -25,6 +25,8 @@ export function goalCard(goals, { gradeQ = '', practice = true } = {}) {
   const end = new Date(Date.parse(goals.weekStart) + 6 * 86400e3).toISOString().slice(0, 10);
   const days = daysUntil(goals.examDate);
   const provisional = Object.values(goals.subjects).some((s) => s.provisional);
+  const bases = Object.entries(SUBJ).filter(([k]) => goals.subjects[k]?.basis)
+    .map(([k, label]) => `${label}: ${goals.subjects[k].basis}`).join(' / ');
   const rows = Object.entries(SUBJ).map(([k, label]) => {
     const g = goals.subjects[k];
     if (!g) return '';
@@ -38,7 +40,7 @@ export function goalCard(goals, { gradeQ = '', practice = true } = {}) {
       <td>${ICON[st]} ${label}</td>
       <td><div class="bar"><div style="width:${fill}%"></div></div> ${a.items} / ${g.goalItems}問${g.behind ? ' <small class="warn">先週未達→増量</small>' : ''}</td>
       <td>${pct(a.accuracy)} <span class="muted">/ ${g.goalAccuracy == null ? '—' : pct(g.goalAccuracy)}</span></td>
-      <td>${pct(g.level)} <span class="muted">→</span> ${pct(g.target)}${g.provisional ? '<small class="muted">(仮)</small>' : ''}${g.atRisk ? ' <small class="ng">ペース不足</small>' : ''}</td>
+      <td title="${esc(g.basis || '')}">${pct(g.level)} <span class="muted">→</span> ${pct(g.target)}${g.provisional ? '<small class="muted">(仮)</small>' : ''}${g.atRisk ? ' <small class="ng">ペース不足</small>' : ''}</td>
       <td><div class="chips">${focus || '<span class="muted">—</span>'}</div></td></tr>`;
   }).join('');
   return `<div class="card goal-card">
@@ -46,6 +48,7 @@ export function goalCard(goals, { gradeQ = '', practice = true } = {}) {
       <span style="margin-left:auto">第一志望 ${esc(goals.firstName)} 入試まで <b class="countdown">${days}</b> 日</span></div>
     <table><tr><th>科目</th><th>解いた問題</th><th>正答率 今週 / 目標</th><th>実力 → 最終目標</th><th>重点分野</th></tr>${rows}</table>
     <p class="muted small">目標は毎週月曜に先週までの結果から自動で決まります（${esc(md(goals.deadline))}までに最終目標に届くペース、残り${goals.weeksLeft}週）。
-      重点分野＝苦手 × ${esc(goals.firstName)}・${esc(goals.secondName)}の過去問によく出る分野。${provisional ? '（仮）＝合格点が未登録のため目標70%で計算中。' : ''}</p>
+      最終目標＝${esc(goals.firstName)}・${esc(goals.secondName)}の合格者平均のうち高い方${bases ? `（${esc(bases)}）` : ''}。
+      重点分野＝苦手 × 両校の過去問によく出る分野。${provisional ? '（仮）＝合格点が未登録のため目標70%で計算中。' : ''}</p>
   </div>`;
 }

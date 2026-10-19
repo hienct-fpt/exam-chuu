@@ -2,6 +2,8 @@ import datetime as dt
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "functions"))
 
@@ -33,11 +35,41 @@ def test_plan_defaults_and_dates():
     assert exam_date(PLAN, "sakaehigashi") == dt.date(2028, 1, 10)       # 栄東 is in January
 
 
-def test_targets_provisional_until_pass_line_known(monkeypatch):
+def _schools(monkeypatch, kyoritsu: dict, shinagawa: dict):
+    """Replace both target schools' rounds with test data (the real schools.json numbers change)."""
+    monkeypatch.setitem(goals.CONFIG["schools"]["kyoritsu"], "sessions",
+                        {"2-1": {"label": "2/1", "date": "02-01", **kyoritsu}})
+    monkeypatch.setitem(goals.CONFIG["schools"]["shinagawa"], "sessions",
+                        {"r1": {"label": "第1回", "date": "02-01", **shinagawa}})
+
+
+@pytest.fixture
+def unknown_schools(monkeypatch):
+    _schools(monkeypatch, {"subjects": {}, "total": {}}, {"subjects": {}, "total": {}})
+
+
+def test_targets_provisional_until_scores_known(unknown_schools):
+    assert targets(PLAN)["math"] == {"target": goals.DEFAULT_TARGET, "provisional": True, "basis": None}
+
+
+def test_targets_take_the_harder_school(monkeypatch):
+    _schools(monkeypatch,
+             {"subjects": {"math": {"max": 100, "line": 70}}, "total": {}},                  # line 70 + margin 5
+             {"subjects": {"math": {"max": 100, "pass_avg": 80}, "social": {"max": 60, "pass_avg": 30}},
+              "total": {"max": 320, "line": 192}})
     tg = targets(PLAN)
-    assert tg["math"] == {"target": goals.DEFAULT_TARGET, "provisional": True}
-    monkeypatch.setitem(goals.CONFIG["schools"]["kyoritsu"]["subjects"], "math", {"pass": 65, "max": 100})
-    assert targets(PLAN)["math"] == {"target": 0.70, "provisional": False}   # 65% + margin 5%
+    assert tg["math"]["target"] == 0.8 and tg["math"]["basis"].endswith("第1回 合格者平均")
+    assert tg["social"]["target"] == 0.5
+    assert tg["japanese"]["provisional"]          # no 国語 data in either school's subjects
+    # a round known only by its total 合格ライン -> line rate + margin for every subject
+    _schools(monkeypatch, {"subjects": {}, "total": {"max": 400, "line": 240}}, {"subjects": {}, "total": {}})
+    assert targets(PLAN)["japanese"]["target"] == 0.65
+
+
+def test_real_shinagawa_scores_loaded():
+    """schools.json: 品川 第1回/第2回 合格者平均 (parent, 2026-10-19); the higher round counts."""
+    tg = targets(PLAN)
+    assert tg["math"]["target"] == 0.81 and not tg["math"]["provisional"]
 
 
 def test_current_level_mixes_items_and_exam_scores():
@@ -82,7 +114,7 @@ def test_topic_frequency_and_focus():
     assert [(r["topic"], r["score"]) for r in top] == [("計算", 0.18), ("立体図形", 0.1)]
 
 
-def test_week_goals_on_track_climbs_toward_target():
+def test_week_goals_on_track_climbs_toward_target(unknown_schools):
     outs = [o for w in range(1, 5) for o in _outs(w, 20, 10)]   # 50%, 20 items/week
     g = week_goals(outs, [], {}, {}, PLAN, MON + dt.timedelta(days=3))
     assert g["weekStart"] == "2026-10-19" and g["examDate"] == "2028-02-01" and g["deadline"] == "2027-12-07"
@@ -95,7 +127,7 @@ def test_week_goals_on_track_climbs_toward_target():
     assert s["level"] is None and s["goalAccuracy"] is None and s["goalItems"] == goals.DEFAULT_ITEMS
 
 
-def test_week_goals_missed_week_bumps_volume_and_flags_risk():
+def test_week_goals_missed_week_bumps_volume_and_flags_risk(unknown_schools):
     outs = [o for w in range(1, 5) for o in _outs(w, 40, 10)]   # 25%, 40 items/week
     prev = {"subjects": {"math": {"goalItems": 50, "goalAccuracy": 0.3}}}
     late = dt.datetime(2027, 11, 1, tzinfo=JST)
