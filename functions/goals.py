@@ -382,20 +382,27 @@ def next_week(goals_out: dict, outs: list[dict], attempts: list[dict], exam_meta
 
 # --------------------------------------------------------------- 全体計画 (roadmap to the exam)
 
+def term2_from(plan: dict) -> dt.date:
+    """6年 後期 (juku second term, 過去問 season) starts in September of the 6年 year."""
+    return dt.date(dt.date.fromisoformat(plan["grade6_from"]).year, 9, 1)
+
+
 def phase_of(plan: dict, day: dt.date) -> str:
+    """Juku terms: 5年 -> 6年 前期 (from grade6_from) -> 6年 後期 (September, 過去問) -> 直前期 (reserve_from)."""
     if day < dt.date.fromisoformat(plan["grade6_from"]):
         return "5年"
-    if day < dt.date(dt.date.fromisoformat(plan["grade6_from"]).year, 9, 1):
+    if day < term2_from(plan):
         return "6年 前期"
     if day < dt.date.fromisoformat(plan["reserve_from"]):
-        return "過去問期"
+        return "6年 後期"
     return "直前期"
 
 
 def milestones(plan: dict) -> list[dict]:
     """Key dates: 6年, 直前期, the target deadline, each school's 入試 (schools on the same day share a row)."""
     edate = exam_date(plan)
-    rows = [{"date": plan["grade6_from"], "label": "6年スタート（過去問は全問で）"},
+    rows = [{"date": plan["grade6_from"], "label": "6年 前期スタート（過去問は全問で）"},
+            {"date": term2_from(plan).isoformat(), "label": "6年 後期スタート（過去問を本番形式で）"},
             {"date": plan["reserve_from"], "label": "直前期（各校の最新年度の過去問）"},
             {"date": (edate - dt.timedelta(weeks=DEADLINE_WEEKS)).isoformat(), "label": "最終目標の正答率に到達"}]
     by_day: dict[str, list[str]] = {}

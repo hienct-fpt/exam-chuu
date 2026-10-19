@@ -256,7 +256,7 @@ def test_roadmap_projects_queue_and_6th_grade_return(no_upcoming):
     assert w6["weekStart"] >= PLAN["grade6_from"] and w6["phase"] == "6年 前期"
     # reserved latest years only in the 直前期
     late = [w for w in r["weeks"] if any(i["examId"] == "kyoritsu_2026_2-1_math" for i in w["items"])]
-    assert late and all(w["weekStart"] >= "2027-11-29" for w in late) and late[0]["phase"] in ("過去問期", "直前期")
+    assert late and all(w["weekStart"] >= "2027-11-29" for w in late) and late[0]["phase"] in ("6年 後期", "直前期")
     assert [m["label"] for m in r["milestones"] if m.get("exam")] == ["入試：栄東", "入試：共立女子・品川女子学院中等部"]
 
 
@@ -294,3 +294,10 @@ def test_upcoming_planned_material(monkeypatch):
     # once 共立 2027 exists it is the reserved latest year; 2026 moves into the normal queue
     assert weeks["planned:kyoritsu_2027_2-1_math"] >= PLAN["reserve_from"][:8]
     assert weeks["kyoritsu_2026_2-1_math"] < PLAN["reserve_from"]
+
+
+def test_phases_follow_juku_terms():
+    assert [goals.phase_of(PLAN, dt.date.fromisoformat(d)) for d in
+            ("2026-12-28", "2027-01-04", "2027-08-30", "2027-09-06", "2027-12-06")] ==         ["5年", "6年 前期", "6年 前期", "6年 後期", "直前期"]
+    labels = [m["label"] for m in goals.milestones(PLAN)]
+    assert labels[:2] == ["6年 前期スタート（過去問は全問で）", "6年 後期スタート（過去問を本番形式で）"]

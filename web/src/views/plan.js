@@ -6,7 +6,7 @@ import { daysUntil } from './goals.js';
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const md = (iso) => `${Number(iso.slice(5, 7))}/${Number(iso.slice(8, 10))}`;
 const addDays = (iso, n) => new Date(Date.parse(iso) + n * 86400e3).toISOString().slice(0, 10);
-const PHASE_CLS = { '5年': 'p5', '6年 前期': 'p6', 過去問期: 'pk', 直前期: 'pc' };
+const PHASE_CLS = { '5年': 'p5', '6年 前期': 'p6', '6年 後期': 'pk', 直前期: 'pc' };
 
 function weekRow(w, { now, cur, links, milestones }) {
   const end = addDays(w.weekStart, 6);
