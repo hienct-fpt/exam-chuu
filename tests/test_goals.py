@@ -235,3 +235,37 @@ def test_next_week_only_when_all_done_and_counts_early_work():
     assert goals.assignment_status(nxt["assignments"], early, "2026-10-26")[0] is True
     again = goals.next_week(out, [], early, META, PLAN, wed, existing=nxt["assignments"])
     assert again["assignments"] is nxt["assignments"]                       # frozen list reused
+
+
+# --------------------------------------------------------------- 全体計画
+
+def test_roadmap_projects_queue_and_6th_grade_return():
+    r = goals.roadmap([], META, PLAN, MON)
+    assert r["weeks"][0]["weekStart"] == "2026-10-19" and r["weeks"][-1]["weekStart"] < r["examDate"]
+    assert r["newBudget"] == round(180 * (1 - PLAN["review_share"]))
+    first = [i["examId"] for w in r["weeks"] for i in w["items"]]
+    assert first[:2] == ["kumiwake_2026_r1_math", "kumiwake_2026_r2_math"]
+    # 共立 2024 has 6年 items: assigned filtered at 小5, again in full at 6年; 組分け (all 小5) only once
+    assert first.count("kyoritsu_2024_2-1_math") == 2 and first.count("kumiwake_2026_r1_math") == 1
+    w6 = next(w for w in r["weeks"] if any(i["examId"] == "kyoritsu_2024_2-1_math" for i in w["items"]) and w["grade"] is None)
+    assert w6["weekStart"] >= PLAN["grade6_from"] and w6["phase"] == "6年 前期"
+    # reserved latest years only in the 直前期
+    late = [w for w in r["weeks"] if any(i["examId"] == "kyoritsu_2026_2-1_math" for i in w["items"])]
+    assert late and all(w["weekStart"] >= "2027-11-29" for w in late) and late[0]["phase"] in ("過去問期", "直前期")
+    assert [m["label"] for m in r["milestones"] if m.get("exam")] == ["入試：栄東", "入試：共立女子・品川女子学院中等部"]
+
+
+def test_roadmap_keeps_frozen_weeks():
+    r = goals.roadmap([], META, PLAN, MON, scheduled={"2026-10-19": ["chuo_2026_1_math"]})
+    assert [i["examId"] for i in r["weeks"][0]["items"]] == ["chuo_2026_1_math"]
+    assert "chuo_2026_1_math" not in [i["examId"] for w in r["weeks"][1:] for i in w["items"]]
+
+
+def test_history_assigned_vs_done():
+    docs = [{"weekStart": "2026-10-12", "assignments": {"items": [
+                {"kind": "new", "examId": "a", "label": "A", "minutes": 50},
+                {"kind": "new", "examId": "b", "label": "B", "minutes": 30}]}},
+            {"weekStart": "2026-10-19", "assignments": {"items": [{"kind": "new", "examId": "c", "label": "C", "minutes": 10}]}}]
+    atts = [{"status": "graded", "examId": "a", "submittedAt": "2026-10-14T00:00:00+00:00"}]
+    h = goals.history(docs, atts, before="2026-10-19")
+    assert h == [{"weekStart": "2026-10-12", "items": 2, "done": 1, "minutes": 80, "doneMinutes": 50, "missed": ["B"]}]

@@ -193,6 +193,11 @@ each page (similar to how `answer_key_ai.py` already reads scanned 模範解答 
   assigned items; a week may run 10% over. Unfinished work stays at the head of next week's queue.
   Once every 課題 of the week is done, next week's list is made (and frozen, `createdAt` = now) so the child
   can work ahead; work done early counts toward it, and on Monday the week keeps that list.
+- 全体計画 (`goals.roadmap` / `goals.history` -> `topicStats/summary.plan`, `web/src/views/plan.js`, `#/plan` and
+  the parent's child page): past weeks' 課題 assigned vs done (やり残し listed), then a week-by-week projection of
+  the new-exam queue to the exam at `weekly_minutes x (1 - review_share)` per week assuming each week is done
+  (frozen weeks as is; 小5-filtered exams with 6年 items come back at 6年), with the milestones (6年, 直前期,
+  target deadline, 入試 days). Recomputed after every grading.
 - 保護者 (admin) accounts don't take tests: the student pages (`web/src/roles.js`) redirect to `#/parent`; the
   overview shows each child's 今週の課題 progress, the child page the full goal card (no links).
 - UI: `web/src/views/goals.js` card on the dashboard and on the parent's child page.

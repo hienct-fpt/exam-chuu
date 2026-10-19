@@ -376,3 +376,85 @@ def next_week(goals_out: dict, outs: list[dict], attempts: list[dict], exam_meta
     asg = existing or weekly_assignments(outs, attempts, exam_meta, plan, nws, created=now)
     return {"weekStart": nws.date().isoformat(), "assignments": asg,
             "assignmentsDone": assignment_status(asg, attempts, nws.date().isoformat())}
+
+
+# --------------------------------------------------------------- 全体計画 (roadmap to the exam)
+
+def phase_of(plan: dict, day: dt.date) -> str:
+    if day < dt.date.fromisoformat(plan["grade6_from"]):
+        return "5年"
+    if day < dt.date(dt.date.fromisoformat(plan["grade6_from"]).year, 9, 1):
+        return "6年 前期"
+    if day < dt.date.fromisoformat(plan["reserve_from"]):
+        return "過去問期"
+    return "直前期"
+
+
+def milestones(plan: dict) -> list[dict]:
+    """Key dates: 6年, 直前期, the target deadline, each school's 入試 (schools on the same day share a row)."""
+    edate = exam_date(plan)
+    rows = [{"date": plan["grade6_from"], "label": "6年スタート（過去問は全問で）"},
+            {"date": plan["reserve_from"], "label": "直前期（各校の最新年度の過去問）"},
+            {"date": (edate - dt.timedelta(weeks=DEADLINE_WEEKS)).isoformat(), "label": "最終目標の正答率に到達"}]
+    by_day: dict[str, list[str]] = {}
+    for s in (plan["first"], plan["second"], *plan.get("extra_schools", [])):
+        if s not in CONFIG["schools"]:       # no 入試 data (e.g. 中央 is only practice material)
+            continue
+        by_day.setdefault(exam_date(plan, s).isoformat(), []).append(CONFIG["schools"].get(s, {}).get("name", s))
+    rows += [{"date": d, "label": "入試：" + "・".join(names), "exam": True} for d, names in by_day.items()]
+    return sorted(rows, key=lambda r: r["date"])
+
+
+def roadmap(attempts: list[dict], exam_meta: dict[str, dict], plan: dict, now: dt.datetime,
+            scheduled: dict[str, list[str]] | None = None) -> dict:
+    """Projected new-exam schedule from now to the exam, assuming each week's plan is done: per week the
+    queue fills plan.weekly_minutes x (1 - review_share) (the rest stays for やり直し). Weeks whose list is
+    already frozen (`scheduled` = {weekStart: [examId]}) are taken as is. 小5-filtered work comes back at 6年."""
+    scheduled = scheduled or {}
+    ws = week_start(now)
+    end = exam_date(plan)
+    new_budget = round(plan["weekly_minutes"] * (1 - plan["review_share"]))
+    sim: set[tuple[str, int | None]] = set()      # (examId, grade filter) assumed done by the plan
+    weeks = []
+    while ws.date() < end:
+        g = grade_now(plan, ws)
+        key = ws.date().isoformat()
+        done = done_exams(attempts, exam_meta, g) | {
+            e for e, sg in sim if g or sg is None or filtered_count(exam_meta[e], sg) >= (exam_meta[e].get("item_count") or 0)}
+        if key in scheduled:
+            items = [e for e in scheduled[key] if e in exam_meta]
+        else:
+            items, used = [], 0
+            for eid in exam_queue(exam_meta, plan, ws):
+                if eid in done:
+                    continue
+                m = minutes(exam_meta[eid], filtered_count(exam_meta[eid], g) or exam_meta[eid].get("item_count") or 1)
+                if used + m > new_budget * OVERRUN and items:
+                    break
+                items.append(eid)
+                used += m
+        sim |= {(e, g) for e in items}
+        weeks.append({"weekStart": key, "grade": g, "phase": phase_of(plan, ws.date()),
+                      "items": [{"examId": e, "label": label(exam_meta[e]), "subject": exam_meta[e].get("subject"),
+                                 "minutes": minutes(exam_meta[e], filtered_count(exam_meta[e], g) or exam_meta[e].get("item_count") or 1)}
+                                for e in items]})
+        ws += dt.timedelta(weeks=1)
+    last = max((i for i, w in enumerate(weeks) if w["items"]), default=None)
+    return {"weeks": weeks, "milestones": milestones(plan), "examDate": end.isoformat(),
+            "newBudget": new_budget, "finishWeek": weeks[last]["weekStart"] if last is not None else None,
+            "totalExams": sum(len(w["items"]) for w in weeks)}
+
+
+def history(weekly_docs: list[dict], attempts: list[dict], before: str) -> list[dict]:
+    """Past weeks' 課題: assigned vs done (from the frozen weeklyGoals docs)."""
+    out = []
+    for d in sorted(weekly_docs, key=lambda d: d.get("weekStart", "")):
+        asg = d.get("assignments") or {}
+        if not d.get("weekStart") or d["weekStart"] >= before or not asg.get("items"):
+            continue
+        done = assignment_status(asg, attempts, d["weekStart"])
+        out.append({"weekStart": d["weekStart"], "items": len(asg["items"]), "done": sum(done),
+                    "minutes": sum(i["minutes"] for i in asg["items"]),
+                    "doneMinutes": sum(i["minutes"] for i, x in zip(asg["items"], done) if x),
+                    "missed": [i["label"] for i, x in zip(asg["items"], done) if not x]})
+    return out

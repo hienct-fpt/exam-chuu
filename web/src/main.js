@@ -10,6 +10,7 @@ import { renderParent } from './views/parent.js';
 import { renderJoin } from './views/join.js';
 import { renderRedo } from './views/redo.js';
 import { parentRedirect } from './roles.js';
+import { renderPlan } from './views/plan.js';
 
 const app = document.getElementById('app');
 const userBox = document.getElementById('user');
@@ -17,7 +18,7 @@ let user = null;
 let cleanup = null;
 
 const ROUTES = { '': renderHome, exam: renderExam, attempt: renderAttempt, result: renderResult, history: renderHistory,
-  dashboard: renderDashboard, practice: renderPractice, parent: renderParent, join: renderJoin, redo: renderRedo };
+  dashboard: renderDashboard, practice: renderPractice, parent: renderParent, join: renderJoin, redo: renderRedo, plan: renderPlan };
 
 function route() {
   if (cleanup) { cleanup(); cleanup = null; }

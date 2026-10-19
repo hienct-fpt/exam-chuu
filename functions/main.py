@@ -19,8 +19,8 @@ from firebase_admin import auth, firestore, initialize_app
 from firebase_functions import firestore_fn, https_fn, options, scheduler_fn
 
 from analytics import outcomes, topic_stats, weekly_series, subject_summary, item_history
-from goals import (exam_scores, next_week, plan_of, topic_frequency, week_goals, week_start, weekly_assignments,
-                   with_actuals)
+from goals import (exam_scores, history, next_week, plan_of, roadmap, topic_frequency, week_goals, week_start,
+                   weekly_assignments, with_actuals)
 from grader import grade_submission, virtual_exam
 
 initialize_app()
@@ -48,6 +48,7 @@ def refresh_topic_stats(db, uid: str) -> dict:
     outs = outcomes(attempts, subject_of)
     stats = topic_stats(outs)
     goals = current_goals(db, uid, attempts, exams, outs, stats)
+    plan_doc = overall_plan(db, uid, attempts, exams, goals)
     doc = {
         "topics": stats,
         "subjects": subject_summary(stats),
@@ -57,9 +58,25 @@ def refresh_topic_stats(db, uid: str) -> dict:
         "updatedAt": dt.datetime.now(dt.timezone.utc),
         "attemptCount": len(attempts),
         "goals": goals,
+        "plan": plan_doc,
     }
     db.document(f"students/{uid}/topicStats/summary").set(doc)
     return doc
+
+
+def overall_plan(db, uid: str, attempts: list[dict], exams: dict, goals: dict) -> dict:
+    """全体計画: past weeks (assigned vs done), then the projected schedule to the exam; this week's and an
+    early-made next week's lists are used as frozen."""
+    profile = db.document(f"students/{uid}").get().to_dict() or {}
+    plan = plan_of(profile.get("plan"))
+    meta = {k: v for k, v in exams.items() if v.get("school") != "minsan"}
+    scheduled = {}
+    for g in (goals, goals.get("next") or {}):
+        if g.get("weekStart") and g.get("assignments"):
+            scheduled[g["weekStart"]] = [i["examId"] for i in g["assignments"]["items"] if i["kind"] == "new"]
+    docs = [d.to_dict() for d in db.collection(f"students/{uid}/weeklyGoals").stream()]
+    return {**roadmap(attempts, meta, plan, dt.datetime.now(dt.timezone.utc), scheduled),
+            "history": history(docs, attempts, goals["weekStart"])}
 
 
 def current_goals(db, uid: str, attempts: list[dict], exams: dict, outs: list[dict], stats: dict) -> dict:

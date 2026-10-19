@@ -89,3 +89,13 @@ ul.assignments { list-style: none; padding: 0; margin: 4px 0 8px; }
 ul.assignments li { padding: 4px 0; border-bottom: 1px dashed var(--line); }
 ul.assignments li.done { color: var(--muted); }
 .badge.review { background: #fef3c7; color: #92400e; }
+
+/* 全体計画 (views/plan.js) */
+.plan-card details.month { border-top: 1px solid var(--line); padding: 6px 0; }
+.plan-card details.month summary { cursor: pointer; font-weight: 600; }
+.plan-card tr.current td { background: #eff6ff; }
+.plan-card .nowrap { white-space: nowrap; }
+.plan-card .milestone { font-size: 13px; color: var(--warn); font-weight: 600; }
+.plan-card .milestone.exam { color: var(--ng); }
+.phase { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; background: #e5e7eb; white-space: nowrap; }
+.phase.p5 { background: #dcfce7; } .phase.p6 { background: #dbeafe; } .phase.pk { background: #fef3c7; } .phase.pc { background: #fee2e2; }
