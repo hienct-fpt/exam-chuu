@@ -143,6 +143,18 @@ describe('mock api + views', () => {
       .toEqual({ answers: server, restored: false });
   });
 
+  it('result 解説: map from bank bigs, one collapsible block per 大問 with a crop', async () => {
+    const { explainMap, explainCard } = await import('../src/views/result.js');
+    const map = await explainMap(['kumiwake_2026_r1_math', EXAM]);
+    expect(map['kumiwake_2026_r1_math|2']).toBe('q/kumiwake_2026_r1_math/x2.png');
+    expect(map['kumiwake_2026_r1_math|1']).toBeUndefined();      // 計算: no 解説 in the source
+    expect(Object.keys(map).some((k) => k.startsWith(EXAM))).toBe(false);   // school papers: answers only
+    const html = explainCard(map, [['kumiwake_2026_r1_math', 1], ['kumiwake_2026_r1_math', 2]]);
+    expect(html).toContain('大問2 の解説');
+    expect(html).not.toContain('大問1 の解説');
+    expect(explainCard(map, [[EXAM, 1]])).toBe('');
+  });
+
   it('history lists the graded attempt', async () => {
     const { renderHistory } = await import('../src/views/history.js');
     const app = document.createElement('main');

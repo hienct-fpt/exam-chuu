@@ -1,4 +1,4 @@
-"""Run the whole offline pipeline: inventory -> segment -> render -> answer keys -> build.
+"""Run the whole offline pipeline: inventory -> segment -> render -> kaisetsu -> answer keys -> build.
 
 usage: python pipeline/run_all.py [all | math japanese science social ...]   (default: all)
 """
@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import inventory, segment, render, answer_key, answer_key_generic, build  # noqa: E402
+import inventory, segment, render, kaisetsu, answer_key, answer_key_generic, build  # noqa: E402
 
 
 def main() -> None:
@@ -17,6 +17,7 @@ def main() -> None:
     inventory.main(subjects=None if subs == ("all",) else subs)
     segment.main()
     render.main()
+    kaisetsu.main()              # 組分け 解説 crops (after render: it wipes q/)
     answer_key.main()            # math (position-matched 模範解答)
     answer_key_generic.main()    # science / social (table cells), japanese (vertical columns), shinagawa (tree + transcribed overrides)
     build.main()

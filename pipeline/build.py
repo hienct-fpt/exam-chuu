@@ -90,7 +90,9 @@ def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
                            "answer_type": s.get("answer_type") or "text", "parts": s.get("parts"),
                            "unit": s.get("unit", ""), "options": s.get("options"), "note": s.get("note")}
             item_ids.append(iid)
+        explain = f"q/{eid}/x{bno}.png"   # 解説 crop (kaisetsu.py), shown on the result page only
         bigs_out.append({"no": bno, "image": big_img, "stem_image": big_stem,
+                         "explain_image": explain if (OUT / explain).exists() else None,
                          "sub_count": len(b.get("subs", [])), "items": item_ids,
                          "grade": bt.get("grade"), "topic": unified_topic(bt.get("topic"), subj),
                          "topic_detail": bt.get("topic"), "bunya": bunya_for(bt.get("topic"), subj)})

@@ -5,11 +5,32 @@ const fmt = (v) => (Array.isArray(v) ? v.map((x) => x || '—').join(' / ') : (v
 const pct = (c, n) => (n ? Math.round(100 * c / n) : 0);
 const TYPE_LABEL = { set: '順不同', sequence: '並べかえ', essay: '記述', manual: '作図' };
 
+/** {"examId|big": image} of the 解説 crops (bank bigs[].explain_image, 組分け only) for the exams in a result. */
+export async function explainMap(examIds) {
+  const map = {};
+  for (const eid of examIds) {
+    try {
+      for (const b of (await loadExam(eid)).bigs || []) if (b.explain_image) map[`${eid}|${b.no}`] = b.explain_image;
+    } catch { /* exam removed from the bank */ }
+  }
+  return map;
+}
+
+/** 解説 card: one collapsible block per 大問 that has a solution crop. Shown only after grading. */
+export function explainCard(explain, bigs, label = () => '') {
+  const rows = bigs.filter(([eid, big]) => explain[`${eid}|${big}`]);
+  if (!rows.length) return '';
+  return `<div class="card" id="kaisetsu"><h2>解説 <small class="muted">(解き方・考え方)</small></h2>
+    ${rows.map(([eid, big]) => `<details class="kaisetsu" data-kx="${esc(`${eid}|${big}`)}"><summary>${esc(label(eid))} 大問${big} の解説</summary>
+      <img class="qimg" src="/${explain[`${eid}|${big}`]}" loading="lazy" alt="大問${big} 解説"></details>`).join('')}</div>`;
+}
+
 export async function renderResult({ app }, arg) {
   const [attemptId, qs] = String(arg || '').split('?');
   const uid = new URLSearchParams(qs || '').get('uid'); // set when the parent opens a child's attempt from #/parent
   let title = null;
   let examLabel = () => '';
+  let explain = null;
   const isAdmin = Boolean(currentUser()?.admin);
   const unsub = watchAttempt(attemptId, async (a) => {
     if (!a) { app.innerHTML = '<div class="card">結果が見つかりません。</div>'; return; }
@@ -33,6 +54,10 @@ export async function renderResult({ app }, arg) {
       return;
     }
     const r = a.result;
+    const eidOf = (it) => it.examId || a.examId;
+    if (explain === null) explain = await explainMap([...new Set(Object.values(r.perItem).map(eidOf).filter(Boolean))]);
+    const bigKeys = [...new Map(Object.values(r.perItem).map((it) => [`${eidOf(it)}|${it.big}`, [eidOf(it), it.big]])).values()]
+      .sort(([e1, b1], [e2, b2]) => String(e1).localeCompare(String(e2)) || b1 - b2);
     const items = Object.entries(r.perItem).sort(([, x], [, y]) => String(x.examId).localeCompare(String(y.examId)) || x.big - y.big
       || String(x.path || x.sub).localeCompare(String(y.path || y.sub), 'ja', { numeric: true }));
     const topics = Object.entries(r.perTopic || {}).sort(([, x], [, y]) => pct(x.correct, x.items) - pct(y.correct, y.items));
@@ -69,9 +94,16 @@ export async function renderResult({ app }, arg) {
           <td>${esc(fmt(it.student))} <span class="muted">${esc(it.unit && !it.unit.includes('・') ? it.unit : '')}</span>
             ${(it.pending || it.manual) && isAdmin ? `<div class="grade-btns"><button data-mg="1" data-sid="${sid}" class="${it.manual && it.correct ? 'primary' : ''}">○ 正解</button><button data-mg="0" data-sid="${sid}" class="${it.manual && !it.correct ? 'danger' : ''}">× 不正解</button></div>` : ''}
             ${it.pending && !isAdmin ? '<div class="hint warn">採点待ち</div>' : ''}</td>
-          <td>${esc(fmt(it.expected))}${it.variants && it.variants.length ? ` <small class="muted">(${it.variants.map(esc).join(', ')})</small>` : ''}${it.note ? `<div class="hint">${esc(it.note)}</div>` : ''}${it.source?.url ? `<div class="hint"><a href="${esc(it.source.url)}" target="_blank" rel="noopener">解説 (${esc(it.source.site || 'source')})</a> <small class="muted">${esc(it.source.school || '')} ${it.source.year || ''}</small></div>` : ''}</td>
+          <td>${esc(fmt(it.expected))}${it.variants && it.variants.length ? ` <small class="muted">(${it.variants.map(esc).join(', ')})</small>` : ''}${it.note ? `<div class="hint">${esc(it.note)}</div>` : ''}${it.source?.url ? `<div class="hint"><a href="${esc(it.source.url)}" target="_blank" rel="noopener">解説 (${esc(it.source.site || 'source')})</a> <small class="muted">${esc(it.source.school || '')} ${it.source.year || ''}</small></div>` : ''}${explain[`${eidOf(it)}|${it.big}`] ? `<div class="hint"><button class="link" data-open-kx="${esc(`${eidOf(it)}|${it.big}`)}">解説を見る</button></div>` : ''}</td>
           <td>${it.image ? `<img class="thumb" src="/${it.image}" loading="lazy" onclick="this.classList.toggle('open')">` : ''}</td>
-        </tr>`).join('')}</table></div>`;
+        </tr>`).join('')}</table></div>
+      ${explainCard(explain, bigKeys, isPractice ? examLabel : () => '')}`;
+    for (const b of app.querySelectorAll('button[data-open-kx]')) {
+      b.onclick = () => {
+        const d = [...app.querySelectorAll('details.kaisetsu')].find((x) => x.dataset.kx === b.dataset.openKx);
+        if (d) { d.open = true; d.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      };
+    }
     app.querySelector('#onlywrong').onchange = (e) => {
       for (const tr of app.querySelectorAll('#items tr[data-ok]')) tr.style.display = e.target.checked && tr.dataset.ok === 'true' ? 'none' : '';
     };

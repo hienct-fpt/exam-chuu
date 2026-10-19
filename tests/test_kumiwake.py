@@ -12,6 +12,7 @@ import fitz  # noqa: E402
 from common import nfkc  # noqa: E402
 import inventory  # noqa: E402
 import japanese  # noqa: E402
+import kaisetsu  # noqa: E402
 import segment  # noqa: E402
 
 PDFS = ROOT / "kumiwake_past"
@@ -57,3 +58,15 @@ def test_japanese_tiers():
     assert b2[0]["page"] == 1 and b2[0]["x1"] == b1[0]["x0"]
     # a page wholly inside one 大問 is a single full-page region
     assert any(r["y0"] == japanese.TIERS[0][0] and r["y1"] == japanese.TIERS[1][1] for r in bigs[2]["regions"])
+
+
+def test_kaisetsu_regions_skip_answer_table_and_score_pages():
+    """解説 blocks start where the boxed numbering restarts; nothing is cut from the 正答率/評価/順位 pages."""
+    doc = fitz.open(_pdf("2026年3月公開組分けテスト５年　第１回結果.pdf"))
+    reg = kaisetsu.explain_regions(doc)
+    assert sorted(reg["math"]) == [2, 3, 4, 5, 6, 7, 8]          # 大問1 (計算) has no 解説
+    assert sorted(reg["japanese"]) == [3, 4] and sorted(reg["science"]) == [2, 3, 4, 5]
+    assert reg["math"][2][0]["page"] == 1 and reg["math"][2][0]["y0"] > 250   # below the answer table
+    assert [r["page"] for r in reg["japanese"][3]] == [4, 5]               # continues over the page break
+    stop = next(i for i, p in enumerate(doc) if kaisetsu.STOP in p.get_text())
+    assert all(r["page"] < stop for s in reg.values() for rs in s.values() for r in rs)

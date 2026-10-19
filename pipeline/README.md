@@ -7,7 +7,7 @@ python pipeline/run_all.py all        # all subjects (P2+)
 python -m pytest tests -q
 ```
 
-Steps: `inventory` -> `segment` -> `render` -> `answer_key` -> `build`.
+Steps: `inventory` -> `segment` -> `render` -> `kaisetsu` -> `answer_key` -> `build`.
 
 Outputs in `pipeline/out/`:
 
@@ -15,7 +15,7 @@ Outputs in `pipeline/out/`:
 |---|---|
 | `exams.json` | inventory of exams and PDF paths |
 | `segments/{exam}.json` | 大問/小問 regions (page, y0, y1) |
-| `q/{exam}/*.png` | question crops (`q1.png` whole 大問, `q1_stem.png`, `q1-2.png` 小問) |
+| `q/{exam}/*.png` | question crops (`q1.png` whole 大問, `q1_stem.png`, `q1-2.png` 小問); `x1.png` = 大問 1 解説 (組分け only, from 結果.pdf's 解答と解説 pages; shown on the result page after grading) |
 | `pages/{exam}/` | full pages + `answer.png` for QA |
 | `preview/{exam}.html` | contact sheet for visual QA |
 | `answers/{exam}.json` | slots + extracted answers + confidence |

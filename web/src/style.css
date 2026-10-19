@@ -77,3 +77,9 @@ a.button.primary { background: var(--accent); color: #fff; border-color: var(--a
 .goal-card tr.goal-done td:first-child { color: var(--ok); font-weight: 700; }
 .goal-card tr.goal-low td:first-child { color: var(--ng); font-weight: 700; }
 .goal-card .chips { margin: 0; }
+
+/* 解説 (result page, views/result.js) */
+button.link { background: none; border: none; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; font-size: 13px; }
+details.kaisetsu { border-top: 1px solid var(--line); padding: 8px 0; }
+details.kaisetsu summary { cursor: pointer; font-weight: 600; }
+details.kaisetsu .qimg { margin-top: 8px; }
