@@ -278,12 +278,14 @@ def test_history_assigned_vs_done():
 
 def test_upcoming_planned_material(monkeypatch):
     monkeypatch.setitem(goals.CONFIG, "upcoming", {
-        "kumiwake": {"from": "2026-10", "until": "2026-12", "day": 22},
+        "kumiwake": {"day": 22, "rounds": [{"month": "2026-10", "label": "5年 第6回"}, {"month": "2026-11", "label": "5年 第7回"},
+                                           {"month": "2027-03", "label": "6年 第1回"}]},
         "papers": [{"school": "kyoritsu", "year": 2027, "available": "2027-02-15"},
                    {"school": "shinagawa", "year": 2025, "available": "2027-02-15"}]})     # 2025 already real
     meta = {**META, "kumiwake_2026_r6_math": {**_meta("kumiwake", 2026, "r6", "math"), "session_label": "第6回 (10月)"}}
     up = goals.upcoming_meta(meta)
-    assert sorted(k for k in up if "kumiwake" in k) == ["planned:kumiwake_202611_math", "planned:kumiwake_202612_math"]  # 10月 is real
+    assert sorted(k for k in up if "kumiwake" in k) == ["planned:kumiwake_202611_math", "planned:kumiwake_202703_math"]  # 10月 is real
+    assert up["planned:kumiwake_202703_math"]["session_label"] == "6年 第1回 (3月・予定)"
     assert up["planned:kumiwake_202611_math"]["available"] == "2026-11-22"
     assert sorted(k for k in up if "kyoritsu" in k) == ["planned:kyoritsu_2027_2-1_math"]   # modelled on the latest real year
     assert not any("shinagawa" in k for k in up)
@@ -298,6 +300,6 @@ def test_upcoming_planned_material(monkeypatch):
 
 def test_phases_follow_juku_terms():
     assert [goals.phase_of(PLAN, dt.date.fromisoformat(d)) for d in
-            ("2026-12-28", "2027-01-04", "2027-08-30", "2027-09-06", "2027-12-06")] ==         ["5年", "6年 前期", "6年 前期", "6年 後期", "直前期"]
+            ("2026-12-28", "2027-01-04", "2027-05-31", "2027-06-07", "2027-12-06")] ==         ["5年", "6年 前期", "6年 前期", "6年 後期", "直前期"]
     labels = [m["label"] for m in goals.milestones(PLAN)]
     assert labels[:2] == ["6年 前期スタート（過去問は全問で）", "6年 後期スタート（過去問を本番形式で）"]

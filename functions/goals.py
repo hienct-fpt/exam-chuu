@@ -383,12 +383,12 @@ def next_week(goals_out: dict, outs: list[dict], attempts: list[dict], exam_meta
 # --------------------------------------------------------------- 全体計画 (roadmap to the exam)
 
 def term2_from(plan: dict) -> dt.date:
-    """6年 後期 (juku second term, 過去問 season) starts in September of the 6年 year."""
-    return dt.date(dt.date.fromisoformat(plan["grade6_from"]).year, 9, 1)
+    """6年 後期 (juku second term, 過去問 season)."""
+    return dt.date.fromisoformat(plan["term2_from"])
 
 
 def phase_of(plan: dict, day: dt.date) -> str:
-    """Juku terms: 5年 -> 6年 前期 (from grade6_from) -> 6年 後期 (September, 過去問) -> 直前期 (reserve_from)."""
+    """Juku terms: 5年 -> 6年 前期 (grade6_from) -> 6年 後期 (term2_from, 過去問) -> 直前期 (reserve_from)."""
     if day < dt.date.fromisoformat(plan["grade6_from"]):
         return "5年"
     if day < term2_from(plan):
@@ -438,17 +438,17 @@ def upcoming_meta(exam_meta: dict[str, dict]) -> dict[str, dict]:
         tmpl = {}
         for m in sorted((m for m in real if m.get("school") == "kumiwake"), key=lambda m: (m.get("year") or 0, str(m.get("session")))):
             tmpl[m.get("subject")] = m
-        y, mo = int(kc["from"][:4]), int(kc["from"][5:])
-        while f"{y}-{mo:02d}" <= kc["until"]:
-            ym = f"{y}-{mo:02d}"
-            if ym not in have:
-                for subj, t in tmpl.items():
-                    out[f"planned:kumiwake_{y}{mo:02d}_{subj}"] = {
-                        **{k: t.get(k) for k in ("school", "school_name", "subject", "subject_label", "time_limit_min",
-                                                 "item_count", "grade_counts")},
-                        "year": y, "session": f"~{ym}", "session_label": f"{mo}月（予定）",
-                        "available": f"{ym}-{kc.get('day', 22):02d}", "planned": True}
-            y, mo = (y + 1, 1) if mo == 12 else (y, mo + 1)
+        for rnd in kc.get("rounds") or []:
+            ym = rnd["month"]
+            if ym in have:
+                continue
+            y, mo = int(ym[:4]), int(ym[5:])
+            for subj, t in tmpl.items():
+                out[f"planned:kumiwake_{y}{mo:02d}_{subj}"] = {
+                    **{k: t.get(k) for k in ("school", "school_name", "subject", "subject_label", "time_limit_min",
+                                             "item_count", "grade_counts")},
+                    "year": y, "session": f"~{ym}", "session_label": f"{rnd.get('label', '')} ({mo}月・予定)",
+                    "available": f"{ym}-{kc.get('day', 22):02d}", "planned": True}
     for pc in up.get("papers") or []:
         rows = [m for m in real if m.get("school") == pc["school"]]
         if not rows or any(m.get("year") == pc["year"] for m in rows):

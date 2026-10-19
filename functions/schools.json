@@ -8,12 +8,20 @@
     "weekly_minutes": 180,
     "review_share": 0.34,
     "grade6_from": "2027-01-01",
+    "term2_from": "2027-06-01",
     "reserve_from": "2027-12-01",
     "extra_schools": ["sakaehigashi", "chuo"]
   },
   "upcoming": {
-    "_doc": "Material the parent adds later, used only by the 全体計画 projection (shown as 予定): a 組分け round every month (available from `day`), each school's next 入試 papers from `available`. A planned round disappears once the real exam is in the bank.",
-    "kumiwake": {"from": "2026-11", "until": "2027-12", "day": 22},
+    "_doc": "Material the parent adds later, used only by the 全体計画 projection (shown as 予定): the remaining 組分け rounds (9 per grade; month = YYYY-MM of the test, available from `day`), each school's next 入試 papers from `available`. A planned round disappears once the real exam of that month is in the bank. 6年 months are assumed to follow the 5年 calendar (3,5,6,7,8,10,11,12,1).",
+    "kumiwake": {"day": 22, "rounds": [
+      {"month": "2026-11", "label": "5年 第7回"}, {"month": "2026-12", "label": "5年 第8回"},
+      {"month": "2027-01", "label": "5年 第9回"},
+      {"month": "2027-03", "label": "6年 第1回"}, {"month": "2027-05", "label": "6年 第2回"},
+      {"month": "2027-06", "label": "6年 第3回"}, {"month": "2027-07", "label": "6年 第4回"},
+      {"month": "2027-08", "label": "6年 第5回"}, {"month": "2027-10", "label": "6年 第6回"},
+      {"month": "2027-11", "label": "6年 第7回"}, {"month": "2027-12", "label": "6年 第8回"},
+      {"month": "2028-01", "label": "6年 第9回"}]},
     "papers": [{"school": "kyoritsu", "year": 2027, "available": "2027-02-15"},
                {"school": "shinagawa", "year": 2027, "available": "2027-02-15"}]
   },
