@@ -4,8 +4,117 @@
     {
       "no": 1,
       "label": "1",
-      "stem": null,
-      "subs": [],
+      "stem": {
+        "page": 1,
+        "y0": 41,
+        "y1": 67
+      },
+      "subs": [
+        {
+          "key": "1",
+          "label": "(1)",
+          "stem": null,
+          "subs": [],
+          "regions": [
+            {
+              "page": 1,
+              "y0": 80,
+              "y1": 110
+            }
+          ]
+        },
+        {
+          "key": "2",
+          "label": "(2)",
+          "stem": null,
+          "subs": [],
+          "regions": [
+            {
+              "page": 1,
+              "y0": 198,
+              "y1": 229
+            }
+          ]
+        },
+        {
+          "key": "3",
+          "label": "(3)",
+          "stem": null,
+          "subs": [],
+          "regions": [
+            {
+              "page": 1,
+              "y0": 322,
+              "y1": 362
+            }
+          ]
+        },
+        {
+          "key": "4",
+          "label": "(4)",
+          "stem": null,
+          "subs": [],
+          "regions": [
+            {
+              "page": 1,
+              "y0": 462,
+              "y1": 541
+            }
+          ]
+        },
+        {
+          "key": "5",
+          "label": "(5)",
+          "stem": null,
+          "subs": [],
+          "regions": [
+            {
+              "page": 2,
+              "y0": 42,
+              "y1": 162
+            }
+          ]
+        },
+        {
+          "key": "6",
+          "label": "(6)",
+          "stem": null,
+          "subs": [],
+          "regions": [
+            {
+              "page": 2,
+              "y0": 241,
+              "y1": 321
+            }
+          ]
+        },
+        {
+          "key": "7",
+          "label": "(7)",
+          "stem": null,
+          "subs": [],
+          "regions": [
+            {
+              "page": 2,
+              "y0": 399,
+              "y1": 512
+            }
+          ]
+        },
+        {
+          "key": "8",
+          "label": "(8)",
+          "stem": null,
+          "subs": [],
+          "regions": [
+            {
+              "page": 2,
+              "y0": 519,
+              "y1": 657
+            }
+          ]
+        }
+      ],
       "regions": [
         {
           "page": 1,

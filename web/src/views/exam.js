@@ -112,7 +112,8 @@ function skippedNote(b, skipped, gradeFilter) {
 function renderBlock(b, answers, keyOf, showExam, skipped = [], gradeFilter = null) {
   const note = skippedNote(b, skipped, gradeFilter);
   const shown = new Set();
-  const topic = b.items[0].topic ? `<span class="badge">${esc(b.items[0].topic)}</span>` : '';
+  // a 大問 of 小問集合 (e.g. 共立 2, 栄東 1) spans several 分野 -> one badge per distinct topic
+  const topic = [...new Set(b.items.map((i) => i.topic).filter(Boolean))].map((t) => `<span class="badge">${esc(t)}</span>`).join('');
   const { tags, origin } = sourceHead(b.items);
   const allShared = b.items.every((i) => i.shared_image);
   let html = `<div class="card big" id="big-${b.big}" data-block="${esc(b.key)}">

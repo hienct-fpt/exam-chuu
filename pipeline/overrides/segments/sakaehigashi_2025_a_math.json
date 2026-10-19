@@ -1,14 +1,9 @@
 {
   "bigs": [
-    {"no": 1, "label": "1", "stem": null, "subs": [],
-     "regions": [{"page": 1, "y0": 0, "y1": 2000}, {"page": 2, "y0": 0, "y1": 2000}]},
-    {"no": 2, "label": "2", "stem": null, "subs": [],
-     "regions": [{"page": 3, "y0": 0, "y1": 2000}]},
-    {"no": 3, "label": "3", "stem": null, "subs": [],
-     "regions": [{"page": 5, "y0": 0, "y1": 2000}]},
-    {"no": 4, "label": "4", "stem": null, "subs": [],
-     "regions": [{"page": 7, "y0": 0, "y1": 2000}]},
-    {"no": 5, "label": "5", "stem": null, "subs": [],
-     "regions": [{"page": 9, "y0": 0, "y1": 2000}]}
+    {"no": 1, "label": "1", "stem": {"page": 1, "y0": 39, "y1": 67}, "subs": [{"key": "1", "label": "(1)", "stem": null, "subs": [], "regions": [{"page": 1, "y0": 78, "y1": 110}]}, {"key": "2", "label": "(2)", "stem": null, "subs": [], "regions": [{"page": 1, "y0": 196, "y1": 228}]}, {"key": "3", "label": "(3)", "stem": null, "subs": [], "regions": [{"page": 1, "y0": 320, "y1": 381}]}, {"key": "4", "label": "(4)", "stem": null, "subs": [], "regions": [{"page": 1, "y0": 479, "y1": 543}]}, {"key": "5", "label": "(5)", "stem": null, "subs": [], "regions": [{"page": 2, "y0": 45, "y1": 127}]}, {"key": "6", "label": "(6)", "stem": null, "subs": [], "regions": [{"page": 2, "y0": 164, "y1": 246}]}, {"key": "7", "label": "(7)", "stem": null, "subs": [], "regions": [{"page": 2, "y0": 282, "y1": 444}]}, {"key": "8", "label": "(8)", "stem": null, "subs": [], "regions": [{"page": 2, "y0": 482, "y1": 603}]}], "regions": [{"page": 1, "y0": 0, "y1": 2000}, {"page": 2, "y0": 0, "y1": 2000}]},
+    {"no": 2, "label": "2", "stem": null, "subs": [], "regions": [{"page": 3, "y0": 0, "y1": 2000}]},
+    {"no": 3, "label": "3", "stem": null, "subs": [], "regions": [{"page": 5, "y0": 0, "y1": 2000}]},
+    {"no": 4, "label": "4", "stem": null, "subs": [], "regions": [{"page": 7, "y0": 0, "y1": 2000}]},
+    {"no": 5, "label": "5", "stem": null, "subs": [], "regions": [{"page": 9, "y0": 0, "y1": 2000}]}
   ]
 }
