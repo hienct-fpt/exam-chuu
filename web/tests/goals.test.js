@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { assignmentList, daysUntil, goalCard, goalStatus } from '../src/views/goals.js';
+import { assignmentList, daysUntil, goalCard, goalStatus, weekSummary } from '../src/views/goals.js';
+import { parentRedirect } from '../src/roles.js';
 import { redoItems } from '../src/views/redo.js';
 
 const goals = {
@@ -61,5 +62,32 @@ describe('今週の課題', () => {
     const stats = { goals: g, itemHistory: { 'x#1': { correct: false }, 'x#2': { correct: true }, 'y#1': { correct: false } } };
     expect(redoItems(stats, 'kumiwake_2026_r1_math')).toEqual(['kumiwake_2026_r1_math#2-1']);
     expect(redoItems(stats, 'x')).toEqual(['x#1']);
+  });
+});
+
+describe('先取り / 保護者', () => {
+  const items = [{ kind: 'new', examId: 'a', label: 'A', minutes: 50 }];
+  const g = { ...goals, assignments: { grade: 5, budget: 180, remaining: 3, items }, assignmentsDone: [true],
+    next: { weekStart: '2026-10-26', assignments: { grade: 5, budget: 180, items: [{ kind: 'new', examId: 'b', label: 'B', minutes: 35 }] },
+      assignmentsDone: [false] } };
+
+  it('shows next week once this week is all done', () => {
+    const html = assignmentList(g);
+    expect(html).toContain('来週の課題');
+    expect(html).toContain('先取りOK');
+    expect(html).toContain('href="#/exam/b?g=5"');
+    expect(assignmentList({ ...g, next: undefined })).not.toContain('来週の課題');
+  });
+
+  it('parent summary line and redirect of student pages', () => {
+    expect(weekSummary(g)).toContain('1 / 1');
+    expect(weekSummary(g)).toContain('✅');
+    expect(weekSummary(undefined)).toBe('');
+    for (const page of ['', 'exam', 'dashboard', 'practice', 'history', 'redo', 'attempt']) {
+      expect(parentRedirect({ admin: true }, page)).toBe(true);
+      expect(parentRedirect({ admin: false }, page)).toBe(false);
+    }
+    expect(parentRedirect({ admin: true }, 'parent')).toBe(false);
+    expect(parentRedirect({ admin: true }, 'result')).toBe(false);   // grading a child's attempt
   });
 });

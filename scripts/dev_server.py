@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "functions"))
 from analytics import outcomes, topic_stats, weak_topics, weekly_series, subject_summary, item_history, practice_set  # noqa: E402
-from goals import exam_scores, plan_of, topic_frequency, week_goals, weekly_assignments, with_actuals  # noqa: E402
+from goals import exam_scores, next_week, plan_of, topic_frequency, week_goals, weekly_assignments, with_actuals  # noqa: E402
 from grader import grade_submission, virtual_exam  # noqa: E402
 
 OUT = ROOT / "pipeline" / "out"
@@ -73,6 +73,9 @@ def stats(req: dict) -> dict:
     goals = week_goals(outs, exam_scores(attempts, EXAM_META, PLAN), st, TOPIC_FREQ, PLAN, now)
     goals["assignments"] = weekly_assignments(outs, attempts, EXAM_META, PLAN, now)
     summary["goals"] = with_actuals(goals, outs, attempts)
+    nxt = next_week(summary["goals"], outs, attempts, EXAM_META, PLAN, now)   # not persisted locally
+    if nxt:
+        summary["goals"]["next"] = nxt
     return summary
 
 

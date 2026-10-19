@@ -9,6 +9,7 @@ import { renderPractice } from './views/practice.js';
 import { renderParent } from './views/parent.js';
 import { renderJoin } from './views/join.js';
 import { renderRedo } from './views/redo.js';
+import { parentRedirect } from './roles.js';
 
 const app = document.getElementById('app');
 const userBox = document.getElementById('user');
@@ -23,6 +24,7 @@ function route() {
   const hash = location.hash.replace(/^#/, '') || '/';
   const [, page, arg] = hash.match(/^\/([^/]*)\/?(.*)$/) || [];
   if (!user) { renderLogin(app, page, arg); return; }
+  if (parentRedirect(user, page)) { location.replace('#/parent'); return; }
   document.querySelectorAll('#topbar nav a').forEach((a) => a.classList.toggle('on', a.getAttribute('href') === `#/${page || ''}`));
   const run = ROUTES[page || ''];
   if (!run) { app.innerHTML = '<div class="card">ページが見つかりません。<a href="#/">一覧へ</a></div>'; return; }
@@ -34,6 +36,8 @@ onAuth((u) => {
   user = u;
   userBox.innerHTML = u ? `<span>${u.name}${u.admin ? ' <span class="badge">保護者</span>' : ''}${isMock ? ' (mock)' : ''}</span><button id="logout">ログアウト</button>` : '';
   document.getElementById('nav-parent').hidden = !u?.admin;
+  document.querySelectorAll('#topbar .student-only').forEach((a) => { a.hidden = Boolean(u?.admin); });
+  document.querySelector('#topbar .brand').setAttribute('href', u?.admin ? '#/parent' : '#/');
   document.getElementById('nav-join').hidden = !u || u.admin;
   const lo = document.getElementById('logout');
   if (lo) lo.onclick = () => signOut();

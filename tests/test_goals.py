@@ -214,3 +214,24 @@ def test_assignment_status():
             {"status": "graded", "examId": None, "items": ["b#1"], "redoOf": "b", "submittedAt": "2026-10-21T00:00:00+00:00"},
             {"status": "graded", "examId": "c", "submittedAt": "2026-10-10T00:00:00+00:00"}]     # before the week
     assert goals.assignment_status(asg, atts, "2026-10-19") == [True, True, False]
+
+
+def test_next_week_only_when_all_done_and_counts_early_work():
+    week = goals.weekly_assignments([], [], META, PLAN, MON)
+    out = {"weekStart": "2026-10-19", "assignments": week,
+           "assignmentsDone": goals.assignment_status(week, [], "2026-10-19")}
+    assert goals.next_week(out, [], [], META, PLAN, MON) is None            # nothing done yet
+    first = [{"status": "graded", "examId": it["examId"], "submittedAt": "2026-10-21T00:00:00+00:00"}
+             for it in week["items"]]
+    out["assignmentsDone"] = goals.assignment_status(week, first, "2026-10-19")
+    assert goals.all_done(out)
+    wed = dt.datetime(2026, 10, 21, 12, tzinfo=JST)
+    nxt = goals.next_week(out, [], first, META, PLAN, wed)
+    assert nxt["weekStart"] == "2026-10-26"
+    assert not {i["examId"] for i in nxt["assignments"]["items"]} & {i["examId"] for i in week["items"]}
+    # work done ahead (Thursday, before next Monday) counts toward next week's frozen list
+    eid = nxt["assignments"]["items"][0]["examId"]
+    early = first + [{"status": "graded", "examId": eid, "submittedAt": "2026-10-22T00:00:00+00:00"}]
+    assert goals.assignment_status(nxt["assignments"], early, "2026-10-26")[0] is True
+    again = goals.next_week(out, [], early, META, PLAN, wed, existing=nxt["assignments"])
+    assert again["assignments"] is nxt["assignments"]                       # frozen list reused

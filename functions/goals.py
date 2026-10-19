@@ -319,7 +319,7 @@ def review_units(outs: list[dict], exam_meta: dict[str, dict], g: int | None, ws
 
 
 def weekly_assignments(outs: list[dict], attempts: list[dict], exam_meta: dict[str, dict], plan: dict,
-                       now: dt.datetime) -> dict:
+                       now: dt.datetime, created: dt.datetime | None = None) -> dict:
     """This week's work within plan.weekly_minutes: やり直し up to review_share of the time, the rest new exams
     in queue order (an unfinished assignment stays at the head of the queue next week)."""
     ws = week_start(now)
@@ -342,13 +342,15 @@ def weekly_assignments(outs: list[dict], attempts: list[dict], exam_meta: dict[s
                         "label": label(exam_meta[eid]), "minutes": m})
             nused += m
     return {"grade": g, "budget": budget, "items": new + review,
-            "remaining": len(pending) - len(new), "queue": len(pending)}
+            "remaining": len(pending) - len(new), "queue": len(pending),
+            "createdAt": (created or ws).isoformat()}
 
 
 def assignment_status(assign: dict, attempts: list[dict], week_start_iso: str) -> list[bool]:
     """Done flags for this week's assignments: a graded attempt of the exam (new) or a graded やり直し set
-    (redoOf = exam) submitted since the week started."""
-    ws = dt.datetime.fromisoformat(week_start_iso).replace(tzinfo=JST)
+    (redoOf = exam) submitted since the list was made (week start, or earlier for a week worked ahead)."""
+    ws = (dt.datetime.fromisoformat(assign["createdAt"]) if assign.get("createdAt")
+          else dt.datetime.fromisoformat(week_start_iso).replace(tzinfo=JST))
     graded = [a for a in attempts if a.get("status") == "graded" and _t(a.get("submittedAt") or a.get("gradedAt")) >= ws]
     out = []
     for it in assign.get("items") or []:
@@ -357,3 +359,20 @@ def assignment_status(assign: dict, attempts: list[dict], week_start_iso: str) -
         else:
             out.append(any(a.get("redoOf") == it["examId"] for a in graded))
     return out
+
+
+def all_done(goals_out: dict) -> bool:
+    items = (goals_out.get("assignments") or {}).get("items") or []
+    return bool(items) and all(goals_out.get("assignmentsDone") or [False])
+
+
+def next_week(goals_out: dict, outs: list[dict], attempts: list[dict], exam_meta: dict[str, dict], plan: dict,
+              now: dt.datetime, existing: dict | None = None) -> dict | None:
+    """Once this week's 課題 are all done: next week's list so the child can work ahead. `existing` = the list
+    already frozen for next week (main.py stores it on first use, so early work counts toward it)."""
+    if not all_done(goals_out):
+        return None
+    nws = dt.datetime.fromisoformat(goals_out["weekStart"]).replace(tzinfo=JST) + dt.timedelta(weeks=1)
+    asg = existing or weekly_assignments(outs, attempts, exam_meta, plan, nws, created=now)
+    return {"weekStart": nws.date().isoformat(), "assignments": asg,
+            "assignmentsDone": assignment_status(asg, attempts, nws.date().isoformat())}

@@ -1,7 +1,7 @@
 import { currentUser, listChildren, listStudentAttempts, listPendingAttempts, getTopicStats, loadIndex,
   createInvite, listInvites, deleteInvite, unlinkChild, resetChildPassword } from '../api.js';
 import { weeklyChart } from './dashboard.js';
-import { goalCard } from './goals.js';
+import { goalCard, weekSummary } from './goals.js';
 
 // 保護者ページ (admin claim only): #/parent = grading queue + one card per child, #/parent/<uid> = one child's record.
 const SUBJ = { math: '算数', science: '理科', social: '社会', japanese: '国語' };
@@ -107,6 +107,7 @@ async function renderOverview(app) {
             <button data-unlink="${esc(s.uid)}" data-name="${esc(s.name)}">連携解除</button></span></div>
         <div class="muted">受験 ${stats.attemptCount || 0} 回 · 直近${graded.length}回の平均 ${pct(avg)}
           · 最終 ${last ? `${when(last.startedAt)} (${esc(name(last))})` : 'なし'}</div>
+        ${weekSummary(stats.goals)}
         <div class="chips">${Object.entries(SUBJ).filter(([k]) => stats.subjects?.[k]).map(([k, label]) =>
           `<span class="chip">${label} ${pct(stats.subjects[k].accuracy)} <small class="muted">${stats.subjects[k].attempts}問</small></span>`).join('')}</div>
         ${weak.length ? `<div>弱点: ${weak.map(([t, v]) => `<span class="chip weak">${esc(t)} <small>${pct(v.mastery)}</small></span>`).join(' ')}</div>` : ''}

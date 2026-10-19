@@ -20,20 +20,44 @@ export function goalStatus(g, a) {
 }
 const ICON = { done: '✅', progress: '▶', low: '⚠️' };
 
+/** One line for the parent overview: 今週の課題 progress + countdown. */
+export function weekSummary(goals) {
+  if (!goals?.weekStart) return '';
+  const items = goals.assignments?.items || [];
+  const done = goals.assignmentsDone || [];
+  const min = items.reduce((n, it, i) => n + (done[i] ? it.minutes : 0), 0);
+  const total = items.reduce((n, it) => n + it.minutes, 0);
+  const n = done.filter(Boolean).length;
+  return `<div>今週の課題 <b>${n} / ${items.length}</b> <small class="muted">(${min} / ${total}分)</small>${items.length && n === items.length ? ' ✅' : ''}
+    · ${esc(goals.firstName)} 入試まで <b>${daysUntil(goals.examDate)}</b> 日</div>`;
+}
+
 /** 今週の課題: new exams + やり直し within the weekly time budget (goals.assignments, frozen per week). */
+function taskList(asg, done, links) {
+  const href = (it) => (it.kind === 'new' ? `#/exam/${it.examId}${asg.grade ? `?g=${asg.grade}` : ''}` : `#/redo/${encodeURIComponent(it.examId)}`);
+  return `<ul class="assignments">${asg.items.map((it, i) => `<li class="${done[i] ? 'done' : ''}">${done[i] ? '✅' : '⬜'}
+      <span class="badge ${it.kind}">${it.kind === 'new' ? '新しい問題' : 'やり直し'}</span>
+      ${links && !done[i] ? `<a href="${href(it)}">${esc(it.label)}</a>` : esc(it.label)}
+      <small class="muted">${it.kind === 'review' ? `間違い・未回答 ${it.items.length}問 · ` : ''}${it.minutes}分</small></li>`).join('')}</ul>`;
+}
+
+const minutesOf = (asg, done) => [asg.items.reduce((n, it, i) => n + (done[i] ? it.minutes : 0), 0),
+  asg.items.reduce((n, it) => n + it.minutes, 0)];
+
 export function assignmentList(goals, { links = true } = {}) {
   const asg = goals?.assignments;
   if (!asg?.items?.length) return '';
   const done = goals.assignmentsDone || [];
-  const total = asg.items.reduce((n, it) => n + it.minutes, 0);
-  const doneMin = asg.items.reduce((n, it, i) => n + (done[i] ? it.minutes : 0), 0);
-  const href = (it) => (it.kind === 'new' ? `#/exam/${it.examId}${asg.grade ? `?g=${asg.grade}` : ''}` : `#/redo/${encodeURIComponent(it.examId)}`);
-  const rows = asg.items.map((it, i) => `<li class="${done[i] ? 'done' : ''}">${done[i] ? '✅' : '⬜'}
-      <span class="badge ${it.kind}">${it.kind === 'new' ? '新しい問題' : 'やり直し'}</span>
-      ${links && !done[i] ? `<a href="${href(it)}">${esc(it.label)}</a>` : esc(it.label)}
-      <small class="muted">${it.kind === 'review' ? `間違い・未回答 ${it.items.length}問 · ` : ''}${it.minutes}分</small></li>`).join('');
+  const [doneMin, total] = minutesOf(asg, done);
+  const nx = goals.next;
+  const ahead = nx?.assignments?.items?.length ? (() => {
+    const [nd, nt] = minutesOf(nx.assignments, nx.assignmentsDone || []);
+    return `<h3>来週の課題 <span class="badge new">先取りOK</span> <small class="muted">${md(nx.weekStart)}〜 · ${nd} / ${nt}分</small></h3>
+      <p class="ok small">今週の課題はぜんぶ終わりました 🎉 来週の分を先に進められます（ここで解いた分は来週の課題に数えます）。</p>
+      ${taskList(nx.assignments, nx.assignmentsDone || [], links)}`;
+  })() : '';
   return `<h3>今週の課題 <small class="muted">${doneMin} / ${total}分（目安 ${Math.round(asg.budget / 60 * 10) / 10}時間）</small></h3>
-    <ul class="assignments">${rows}</ul>
+    ${taskList(asg, done, links)}${ahead}
     <p class="muted small">新しい問題：組分け → ${esc(goals.firstName)}・${esc(goals.secondName)}の過去問（古い年度から）→ 併願校の順。各校の最新年度は直前期用に残します。
       やり直し：前に解いた回の間違い・未回答だけをもう一度。残り ${asg.remaining} 回分${asg.grade ? `（小${asg.grade}までの問題）` : ''}。</p>`;
 }

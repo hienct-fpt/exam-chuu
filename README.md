@@ -191,4 +191,8 @@ each page (similar to how `answer_key_ai.py` already reads scanned 模範解答 
   each target school's latest year is held back until `reserve_from` (直前期). Until `grade6_from` exams are
   assigned with the 小5 filter; from 6年 a filtered-only attempt counts as not done. Time = 制限時間 scaled to the
   assigned items; a week may run 10% over. Unfinished work stays at the head of next week's queue.
+  Once every 課題 of the week is done, next week's list is made (and frozen, `createdAt` = now) so the child
+  can work ahead; work done early counts toward it, and on Monday the week keeps that list.
+- 保護者 (admin) accounts don't take tests: the student pages (`web/src/roles.js`) redirect to `#/parent`; the
+  overview shows each child's 今週の課題 progress, the child page the full goal card (no links).
 - UI: `web/src/views/goals.js` card on the dashboard and on the parent's child page.

@@ -4,9 +4,11 @@ import { getTopicStats, loadExam, createAttempt, getAttempt, examTitle } from '.
 // (the list frozen in this week's 課題, else the live item history), graded like any practice set.
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-/** Wrong / blank item ids of one exam: this week's assignment if present, else the latest outcome per item. */
+/** Wrong / blank item ids of one exam: the 課題's frozen list if present, else the latest outcome per item. */
 export function redoItems(stats, examId) {
-  const a = (stats.goals?.assignments?.items || []).find((x) => x.kind === 'review' && x.examId === examId);
+  // next week's list first: it only exists once this week's are all done (the same exam may be in both)
+  const a = [...(stats.goals?.next?.assignments?.items || []), ...(stats.goals?.assignments?.items || [])]
+    .find((x) => x.kind === 'review' && x.examId === examId);
   if (a?.items?.length) return a.items;
   return Object.entries(stats.itemHistory || {})
     .filter(([id, h]) => id.startsWith(`${examId}#`) && !h.correct).map(([id]) => id).sort();

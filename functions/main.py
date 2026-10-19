@@ -19,7 +19,8 @@ from firebase_admin import auth, firestore, initialize_app
 from firebase_functions import firestore_fn, https_fn, options, scheduler_fn
 
 from analytics import outcomes, topic_stats, weekly_series, subject_summary, item_history
-from goals import exam_scores, plan_of, topic_frequency, week_goals, week_start, weekly_assignments, with_actuals
+from goals import (exam_scores, next_week, plan_of, topic_frequency, week_goals, week_start, weekly_assignments,
+                   with_actuals)
 from grader import grade_submission, virtual_exam
 
 initialize_app()
@@ -69,13 +70,14 @@ def current_goals(db, uid: str, attempts: list[dict], exams: dict, outs: list[di
     ws = week_start(dt.datetime.now(dt.timezone.utc))
     ref = db.document(f"students/{uid}/weeklyGoals/{ws.date().isoformat()}")
     snap = ref.get()
+    data = snap.to_dict() if snap.exists else None
     meta = {k: v for k, v in exams.items() if v.get("school") != "minsan"}
-    if snap.exists:
-        goals = snap.to_dict()
+    if data and "subjects" in data:
+        goals = data
         if "assignments" not in goals:   # week frozen before 今週の課題 existed
             goals["assignments"] = weekly_assignments(outs, attempts, meta, plan, ws)
             ref.update({"assignments": goals["assignments"]})
-    else:
+    else:                                # new week (data = only the 課題 made early while working ahead)
         official = [d.to_dict() for d in db.collection(f"students/{uid}/kumiwakeScores").stream()]
         items = []
         for d in db.collection("exams").where("school", "in", [plan["first"], plan["second"]]).select(["school", "subject", "items"]).stream():
@@ -84,9 +86,19 @@ def current_goals(db, uid: str, attempts: list[dict], exams: dict, outs: list[di
         prev = db.document(f"students/{uid}/weeklyGoals/{(ws - dt.timedelta(weeks=1)).date().isoformat()}").get()
         goals = week_goals(outs, exam_scores(attempts, exams, plan, official), stats, topic_frequency(items, plan), plan,
                            ws, prev.to_dict() if prev.exists else None)
-        goals["assignments"] = weekly_assignments(outs, attempts, meta, plan, ws)
+        goals["assignments"] = (data or {}).get("assignments") or weekly_assignments(outs, attempts, meta, plan, ws)
         ref.set(goals)
-    return with_actuals(goals, outs, attempts)
+    out = with_actuals(goals, outs, attempts)
+    nws = (ws + dt.timedelta(weeks=1)).date().isoformat()
+    nref = db.document(f"students/{uid}/weeklyGoals/{nws}")
+    nsnap = nref.get() if out.get("assignmentsDone") and all(out["assignmentsDone"]) else None
+    existing = ((nsnap.to_dict() or {}).get("assignments") if nsnap and nsnap.exists else None)
+    nxt = next_week(out, outs, attempts, meta, plan, dt.datetime.now(dt.timezone.utc), existing)
+    if nxt:
+        if not existing:     # freeze next week's list now, so work done ahead counts toward it
+            nref.set({"weekStart": nws, "assignments": nxt["assignments"]}, merge=True)
+        out["next"] = nxt
+    return out
 
 
 def _grade(db, data: dict) -> dict:
