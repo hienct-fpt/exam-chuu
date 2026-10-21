@@ -47,10 +47,15 @@ export async function renderPractice({ app }, arg) {
   let includePending = false; // manual/essay items (e.g. min-san imports) need a parent to grade them
 
   function preview() {
-    const picked = pickPractice(all.items, selected.size ? selected : null, stats.itemHistory || {}, { n, gradeFilter, includePending });
+    const topicSet = selected.size ? selected : null;
+    let picked = pickPractice(all.items, topicSet, stats.itemHistory || {}, { n, gradeFilter, includePending });
+    // 記述 / 作文 have parent-graded questions only: rather than an empty set, take them (the parent marks ○/×)
+    const autoPending = !picked.length && !includePending;
+    if (autoPending) picked = pickPractice(all.items, topicSet, stats.itemHistory || {}, { n, gradeFilter, includePending: true });
     const el = app.querySelector('#preview');
     el.innerHTML = picked.length
-      ? `<div class="muted">${picked.length} 問 · ${[...new Set(picked.map((p) => p.examLabel))].join(' / ')}</div>
+      ? `${autoPending ? '<div class="hint warn">この分野は記述など保護者が採点する問題だけなので、それを出題します（提出後に保護者が○×をつけます）。</div>' : ''}
+         <div class="muted">${picked.length} 問 · ${[...new Set(picked.map((p) => p.examLabel))].join(' / ')}</div>
          <ul class="muted small">${picked.slice(0, 12).map((p) => `<li>${esc(p.examLabel)} 大問${p.big} ${esc(p.label)} <small>${esc(p.topic_detail || p.topic || '')}</small>${stats.itemHistory?.[p.id] ? (stats.itemHistory[p.id].correct ? ' ○' : ' <span class="ng">×前回不正解</span>') : ' <span class="badge">未</span>'}</li>`).join('')}${picked.length > 12 ? '<li>…</li>' : ''}</ul>`
       : '<div class="muted">該当する問題がありません（分野または学年フィルタを変えてください）</div>';
     app.querySelector('#start').disabled = !picked.length;
