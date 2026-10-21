@@ -64,7 +64,10 @@ echo "-- building web (production) --"
 (cd web && npm run build)
 
 echo "-- firebase deploy: firestore rules/indexes, functions, hosting --"
-firebase deploy --only firestore:rules,firestore:indexes,functions,hosting --project "$PROJECT"
+# The CLI loads functions/main.py locally to list the functions; the default 10 s is too short on this machine
+# ("User code failed to load ... Timeout after 10000"), so give discovery 2 minutes.
+FUNCTIONS_DISCOVERY_TIMEOUT=${FUNCTIONS_DISCOVERY_TIMEOUT:-120} \
+  firebase deploy --only firestore:rules,firestore:indexes,functions,hosting --project "$PROJECT"
 
 if [[ "$SKIP_IMPORT" == 0 ]]; then
   echo "-- importing exam catalog + answer keys into Firestore --"
