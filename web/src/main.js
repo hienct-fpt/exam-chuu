@@ -1,4 +1,4 @@
-import { onAuth, signOut, isMock } from './api.js';
+import { onAuth, signOut, isMock, setMockRole } from './api.js';
 import { renderLogin } from './views/login.js';
 import { renderHome } from './views/home.js';
 import { renderExam, renderAttempt } from './views/exam.js';
@@ -35,13 +35,16 @@ function route() {
 
 onAuth((u) => {
   user = u;
-  userBox.innerHTML = u ? `<span>${u.name}${u.admin ? ' <span class="badge">保護者</span>' : ''}${isMock ? ' (mock)' : ''}</span><button id="logout">ログアウト</button>` : '';
+  const roleSwitch = u && isMock ? `<button id="mock-role">${u.admin ? '生徒ビューへ' : '保護者ビューへ'}</button>` : '';
+  userBox.innerHTML = u ? `<span>${u.name}${u.admin ? ' <span class="badge">保護者</span>' : ''}${isMock ? ' (mock)' : ''}</span>${roleSwitch}<button id="logout">ログアウト</button>` : '';
   document.getElementById('nav-parent').hidden = !u?.admin;
   document.querySelectorAll('#topbar .student-only').forEach((a) => { a.hidden = Boolean(u?.admin); });
   document.querySelector('#topbar .brand').setAttribute('href', u?.admin ? '#/parent' : '#/');
   document.getElementById('nav-join').hidden = !u || u.admin;
   const lo = document.getElementById('logout');
   if (lo) lo.onclick = () => signOut();
+  const rs = document.getElementById('mock-role');
+  if (rs) rs.onclick = () => { setMockRole(u.admin ? 'student' : 'parent'); location.hash = u.admin ? '#/' : '#/parent'; location.reload(); };
   route();
 });
 window.addEventListener('hashchange', route);

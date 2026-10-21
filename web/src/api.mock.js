@@ -1,13 +1,19 @@
 // Mock backend: attempts in localStorage, grading + analytics via scripts/dev_server.py.
 const KEY = 'exam-chuu.attempts';
-// VITE_MOCK_ADMIN=0 runs as a plain student (no ○/× buttons, no 保護者 page); default = parent view too.
-const user = { uid: 'local', name: 'テスト生徒', email: 'local@example.com', admin: import.meta.env.VITE_MOCK_ADMIN !== '0' };
+// Role of the single mock user: 保護者 (admin: ○/× buttons, 保護者 page) or 生徒. Start value from VITE_MOCK_ADMIN
+// (dev:mock = parent, dev:mock:student = student); the topbar switch (setMockRole) overrides it in localStorage.
+const ROLE = 'exam-chuu.mockRole';
+const storedRole = localStorage.getItem(ROLE);
+const user = { uid: 'local', name: 'テスト生徒', email: 'local@example.com',
+  admin: storedRole ? storedRole === 'parent' : import.meta.env.VITE_MOCK_ADMIN !== '0' };
 const load = () => JSON.parse(localStorage.getItem(KEY) || '{}');
 const save = (all) => localStorage.setItem(KEY, JSON.stringify(all));
 const watchers = new Map();
 const notify = (id) => (watchers.get(id) || []).forEach((cb) => cb(load()[id]));
 
 export function currentUser() { return user; }
+/** Mock only: switch between the parent and the student view (same local data). Caller reloads the page. */
+export function setMockRole(role) { localStorage.setItem(ROLE, role); }
 export function onAuth(cb) { setTimeout(() => cb(user), 0); return () => {}; }
 export async function signIn() {}
 export async function signOut() {}

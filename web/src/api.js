@@ -40,3 +40,4 @@ export const { onAuth, signIn, signOut, currentUser, createAttempt, saveAnswers,
   createInvite, listInvites, deleteInvite, redeemInvite, unlinkChild,
   signInWithLoginId, createChildAccount, resetChildPassword } = impl;
 export const isMock = MOCK;
+export const setMockRole = impl.setMockRole || (() => {});

@@ -8,6 +8,7 @@ description: ローカル開発サーバー(mock 採点サーバー + Vite)を�
 **フロントエンド(Vite, :5173):** `cd web && npm run dev:mock`
 
 引数 `student` が渡された場合は、フロントエンドを `npm run dev:mock:student`(生徒ビュー)で起動します。
+起動後もトップバーの「生徒ビューへ / 保護者ビューへ」ボタンで切り替えられます(選択は localStorage に保存され、こちらが優先)。
 
 前提: `web/public/bank` がなければ先に `python scripts/sync_assets.py` を実行する(`pipeline/out` が必要)。`web/node_modules` がなければ `cd web && npm install`。
 

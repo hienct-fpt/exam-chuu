@@ -25,7 +25,8 @@ cd web && npm install && npm run dev:mock   # http://localhost:5173  (VITE_MOCK=
 
 Mock mode: no login, attempts stored in the browser, grading result computed by `dev_server.py`.
 The mock user テスト生徒 has the parent (admin) view by default; `npm run dev:mock:student` (`VITE_MOCK_ADMIN=0`)
-runs it as a plain student. Both share the same localStorage attempts, so you can switch to check each side.
+runs it as a plain student. Both share the same localStorage attempts. The topbar button 「生徒ビューへ / 保護者ビューへ」
+switches the role at runtime (kept in localStorage `exam-chuu.mockRole`, which then wins over `VITE_MOCK_ADMIN`).
 
 ## 2. Firebase setup (once)
 
