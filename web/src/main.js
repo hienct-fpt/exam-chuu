@@ -39,6 +39,8 @@ onAuth((u) => {
   user = u;
   const roleSwitch = u && isMock ? `<button id="mock-role">${u.admin ? '生徒ビューへ' : '保護者ビューへ'}</button>` : '';
   userBox.innerHTML = u ? `<span>${u.name}${u.admin ? ' <span class="badge">保護者</span>' : ''}${isMock ? ' (mock)' : ''}</span>${roleSwitch}<button id="logout">ログアウト</button>` : '';
+  document.body.classList.toggle('kid', Boolean(u) && !u.admin);   // student mode: the kid theme (style.css)
+  document.body.classList.toggle('parent', Boolean(u?.admin));     // 保護者: calm slate / navy theme
   document.getElementById('nav-parent').hidden = !u?.admin;
   document.querySelectorAll('#topbar .student-only').forEach((a) => { a.hidden = Boolean(u?.admin); });
   document.querySelectorAll('#topbar .parent-only').forEach((a) => { a.hidden = !u?.admin; });

@@ -34,9 +34,12 @@ export function weekSummary(goals) {
 }
 
 /** 今週の課題: new exams + やり直し within the weekly time budget (goals.assignments, frozen per week). */
+/** Link of one 課題: やり直し -> the redo sheet, new / 2回目 -> the exam (new ones 小N まで when graded). */
+export const taskHref = (asg, it) => (it.kind === 'review' ? `#/redo/${encodeURIComponent(it.examId)}`
+  : `#/exam/${it.examId}${asg.grade && it.kind === 'new' ? `?g=${asg.grade}` : ''}`);
+
 function taskList(asg, done, links) {
-  const href = (it) => (it.kind === 'review' ? `#/redo/${encodeURIComponent(it.examId)}`
-    : `#/exam/${it.examId}${asg.grade && it.kind === 'new' ? `?g=${asg.grade}` : ''}`);
+  const href = (it) => taskHref(asg, it);
   return `<ul class="assignments">${asg.items.map((it, i) => `<li class="${done[i] ? 'done' : ''}">${done[i] ? '✅' : '⬜'}
       <span class="badge ${it.kind}">${KIND[it.kind] || it.kind}</span>
       ${links && !done[i] ? `<a href="${href(it)}">${esc(it.label)}</a>` : esc(it.label)}
@@ -64,7 +67,7 @@ export function assignmentList(goals, { links = true } = {}) {
       やり直し：前に解いた回の間違い・未回答だけをもう一度。残り ${asg.remaining} 回分${asg.grade ? `（小${asg.grade}までの問題）` : ''}。</p>`;
 }
 
-export function goalCard(goals, { gradeQ = '', practice = true } = {}) {
+export function goalCard(goals, { gradeQ = '', practice = true, tasks = true } = {}) {
   if (!goals?.subjects) return '';
   const end = new Date(Date.parse(goals.weekStart) + 6 * 86400e3).toISOString().slice(0, 10);
   const days = daysUntil(goals.examDate);
@@ -91,7 +94,7 @@ export function goalCard(goals, { gradeQ = '', practice = true } = {}) {
     <div class="big-head"><h2 style="margin:0">今週の目標</h2><span class="muted">${md(goals.weekStart)}〜${md(end)}</span>
       <span style="margin-left:auto">第一志望 ${esc(goals.firstName)} 入試まで <b class="countdown">${days}</b> 日
 </span></div>
-    ${assignmentList(goals, { links: practice })}
+    ${tasks ? assignmentList(goals, { links: practice }) : ''}
     <table><tr><th>科目</th><th>解いた問題</th><th>正答率 今週 / 目標</th><th>実力 → 最終目標</th><th>重点分野</th></tr>${rows}</table>
     <p class="muted small">目標は毎週月曜に先週までの結果から自動で決まります（${esc(md(goals.deadline))}までに最終目標に届くペース、残り${goals.weeksLeft}週）。
       最終目標＝${esc(goals.firstName)}・${esc(goals.secondName)}の公表データ（合格者平均、未公表なら受験者平均＋5%）のうち高い方${bases ? `（${esc(bases)}）` : ''}。

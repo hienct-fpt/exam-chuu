@@ -22,6 +22,8 @@ from analytics import outcomes, topic_stats, weekly_series, subject_summary, ite
 from goals import (exam_scores, history, next_week, plan_of, roadmap, topic_frequency, week_goals, week_start,
                    weekly_assignments, with_actuals)
 from grader import grade_submission, virtual_exam
+from hensachi import hensachi_report
+import goals as goals_mod
 
 initialize_app()
 options.set_global_options(region="asia-northeast1", max_instances=5)
@@ -49,6 +51,9 @@ def refresh_topic_stats(db, uid: str) -> dict:
     stats = topic_stats(outs)
     goals = current_goals(db, uid, attempts, exams, outs, stats)
     plan_doc = overall_plan(db, uid, attempts, exams, goals)
+    profile = db.document(f"students/{uid}").get().to_dict() or {}
+    hensachi = hensachi_report(attempts, exams, goals_mod.CONFIG["schools"], plan_of(profile.get("plan")),
+                               dt.datetime.now(dt.timezone.utc))
     doc = {
         "topics": stats,
         "subjects": subject_summary(stats),
@@ -59,6 +64,7 @@ def refresh_topic_stats(db, uid: str) -> dict:
         "attemptCount": len(attempts),
         "goals": goals,
         "plan": plan_doc,
+        "hensachi": hensachi,
     }
     db.document(f"students/{uid}/topicStats/summary").set(doc)
     return doc

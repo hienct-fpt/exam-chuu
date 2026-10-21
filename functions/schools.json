@@ -29,9 +29,11 @@
   "schools": {
     "kyoritsu": {
       "name": "共立女子",
+      "_yotsuya_source": "四谷大塚 学校別ページ (yotsuyaotsuka.com/juken/data/?code=169 / 288), 「最新の2027年中学受験対応」, 2026-10-22 確認 — yotsuya = 合格可能性80% (Aライン) / 50% (Cライン) 偏差値; 共立 2/3午後 (英語4技能型・合科型) は 四谷の「3日午後2科」と別なので未設定. applicants = _source の受験者数・合格者数. used by functions/hensachi.py",
       "sessions": {
         "2-1": {
           "label": "2/1入試",
+          "yotsuya": {"y80": 50, "y50": 46}, "applicants": {"examinees": 408, "passed": 182},
           "date": "02-01",
           "subjects": {
             "japanese": {
@@ -58,6 +60,7 @@
         },
         "2-2": {
           "label": "2/2入試",
+          "yotsuya": {"y80": 49, "y50": 45}, "applicants": {"examinees": 433, "passed": 179},
           "date": "02-02",
           "subjects": {
             "japanese": {
@@ -117,10 +120,12 @@
     },
     "shinagawa": {
       "name": "品川女子学院中等部",
+      "_yotsuya_source": "四谷大塚 学校別ページ (yotsuyaotsuka.com/juken/data/?code=169 / 288), 「最新の2027年中学受験対応」, 2026-10-22 確認 — yotsuya = 合格可能性80% (Aライン) / 50% (Cライン) 偏差値; 共立 2/3午後 (英語4技能型・合科型) は 四谷の「3日午後2科」と別なので未設定. applicants = _source の受験者数・合格者数. used by functions/hensachi.py",
       "_source": "parent, 2026-10-19 (2026年度入試結果: 第1回 募集90 受験317 合格134 実質2.4倍 / 算数1教科 20・266・135・2.0倍 / 第2回 60・308・104・3.0倍 / 第3回 30・196・35・5.6倍)",
       "sessions": {
         "r1": {
           "label": "第1回",
+          "yotsuya": {"y80": 51, "y50": 47}, "applicants": {"examinees": 317, "passed": 134},
           "date": "02-01",
           "subjects": {
             "japanese": {
@@ -153,6 +158,7 @@
         },
         "m1": {
           "label": "算数1教科",
+          "yotsuya": {"y80": 57, "y50": 54}, "applicants": {"examinees": 266, "passed": 135},
           "date": "02-01",
           "subjects": {
             "math": {
@@ -171,6 +177,7 @@
         },
         "r2": {
           "label": "第2回",
+          "yotsuya": {"y80": 52, "y50": 48}, "applicants": {"examinees": 308, "passed": 104},
           "date": "02-02",
           "subjects": {
             "japanese": {

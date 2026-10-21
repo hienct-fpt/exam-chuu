@@ -1,4 +1,6 @@
-import { getTopicStats, loadAllItems } from '../api.js';
+import { getTopicStats, loadAllItems, listAttempts, currentUser } from '../api.js';
+import { heroCard, taskCards, cheerCard } from '../kid.js';
+import { activityLine } from '../activity.js';
 import { gradeFilterFromPref } from './home.js';
 import { goalCard } from './goals.js';
 
@@ -24,7 +26,7 @@ export function weeklyChart(weekly) {
 
 export async function renderDashboard({ app }) {
   app.innerHTML = '<div class="card">読み込み中…</div>';
-  const [stats, all] = await Promise.all([getTopicStats(), loadAllItems()]);
+  const [stats, all, attempts] = await Promise.all([getTopicStats(), loadAllItems(), listAttempts(300)]);
   const gf = gradeFilterFromPref(); // number | null
   const gradeQ = gf ? `&g=${gf}` : '';
   // items per topic (pool size), respecting the grade preference
@@ -35,20 +37,30 @@ export async function renderDashboard({ app }) {
     pool[k] = (pool[k] || 0) + 1;
   }
   const subjects = ['math', 'science', 'social', 'japanese'];
+  const subjectOf = (examId) => all.banks[examId]?.subject || 'math';
+  const me = currentUser()?.name || '';
+  // kid layout: greeting + this week, task cards | がんばりコーナー; the old detail stays below, folded
+  const top = `${heroCard(me, stats.goals, attempts)}
+    <div class="kid-grid">
+      <section><h2 class="kid-h">📚 今週の課題</h2>${taskCards(stats.goals, subjectOf) || '<div class="card muted">今週の課題はまだありません。</div>'}
+        ${nextWeek(stats.goals, subjectOf)}</section>
+      <section><h2 class="kid-h">🏅 がんばりコーナー</h2>${cheerCard(attempts, stats.goals)}</section>
+    </div>`;
   const topics = stats.topics || {};
   const done = Object.values(topics).reduce((n, t) => n + t.attempts, 0);
   if (!done) {
-    app.innerHTML = `${goalCard(stats.goals, { gradeQ })}<div class="card"><h1>ダッシュボード</h1><p class="muted">まだ採点済みの結果がありません。上の「今週の課題」から始めましょう。</p></div>`;
+    app.innerHTML = `${top}<div class="card"><p class="muted">さいしょの課題を「▶ はじめる」から解いてみよう！</p></div>`;
     return;
   }
   const weakAll = Object.entries(topics).filter(([, t]) => t.weak).sort(([, a], [, b]) => a.mastery - b.mastery);
-  app.innerHTML = `${goalCard(stats.goals, { gradeQ })}
-    <div class="card"><h1>ダッシュボード</h1>
-      <div class="muted">受験 ${stats.attemptCount} 回 · 解答 ${done} 問 · 弱点分野 ${weakAll.length}
+  app.innerHTML = `${top}
+    ${weakTabs(topics, gradeQ)}
+    <details class="card kid-more"><summary>くわしく見る（目標・正答率・分野ごと）</summary>
+    ${goalCard(stats.goals, { gradeQ })}
+    <div class="card"><div>${activityLine(attempts)}</div>
+      <div class="muted">解答 ${done} 問 · 弱点分野 ${weakAll.length}
         ${gf ? `· <span class="badge">小${gf}までの問題で練習</span>` : ''}</div>
       <h3>週ごとの正答率</h3>${weeklyChart(stats.weekly)}
-      ${weakAll.length ? `<h3>いま弱い分野</h3><div class="chips">${weakAll.slice(0, 6).map(([t, s]) =>
-        `<a class="chip weak" href="#/practice/${s.subject}?topic=${encodeURIComponent(t)}${gradeQ}">${esc(t)} <small>${pct(s.mastery)}</small></a>`).join('')}</div>` : '<p class="ok">弱点分野はありません 🎉</p>'}
     </div>
     ${subjects.filter((s) => Object.values(topics).some((t) => t.subject === s)).map((s) => {
       const rows = Object.entries(topics).filter(([, t]) => t.subject === s)
@@ -72,5 +84,52 @@ export async function renderDashboard({ app }) {
       Object.entries(pool).filter(([k]) => !topics[k.split('|')[1]]).sort().map(([k, n]) => {
         const [s, t] = k.split('|');
         return `<a class="chip" href="#/practice/${s}?topic=${encodeURIComponent(t)}${gradeQ}">${SUBJ[s]} · ${esc(t)} <small>${n}問</small></a>`;
-      }).join('') || '<span class="muted">なし</span>'}</div></div>`;
+      }).join('') || '<span class="muted">なし</span>'}</div></div>
+    </details>`;
+  bindWeakTabs(app);
+}
+
+const SUBJECT_CLS = { math: 's-math', japanese: 's-japanese', science: 's-science', social: 's-social' };
+const SUBJECT_ICON = { math: '🧮', japanese: '📖', science: '🔬', social: '🌏' };
+
+/**
+ * にがてを練習しよう, one tab per 教科: that 教科's weak 分野 as big practice buttons (weakest first);
+ * a 教科 without weak 分野 shows its 3 lowest ones as 「もう少し」. The 教科 with most weak 分野 opens first.
+ */
+export function weakTabs(topics, gradeQ = '') {
+  const subs = ['math', 'japanese', 'science', 'social'].filter((k) => Object.values(topics).some((t) => t.subject === k && t.mastery != null));
+  if (!subs.length) return '';
+  const of = (k) => Object.entries(topics).filter(([, t]) => t.subject === k && t.mastery != null).sort(([, a], [, b]) => a.mastery - b.mastery);
+  const weakN = (k) => of(k).filter(([, t]) => t.weak).length;
+  const first = [...subs].sort((a, b) => weakN(b) - weakN(a))[0];
+  const btn = (k, [t, v]) => `<a class="kid-weak-btn ${SUBJECT_CLS[k]}" href="#/practice/${k}?topic=${encodeURIComponent(t)}${gradeQ}">${esc(t)} <small>${pct(v.mastery)}</small></a>`;
+  const panel = (k) => {
+    const weak = of(k).filter(([, t]) => t.weak);
+    return `<div class="kid-tab-panel" data-panel="${k}" ${k === first ? '' : 'hidden'}>${weak.length
+      ? `<div class="kid-weak-list">${weak.map((r) => btn(k, r)).join('')}</div>`
+      : `<p class="ok">${SUBJ[k]}は にがてな分野がないよ 🎉</p><p class="muted small">もう少しでもっと強くなれる分野</p>
+        <div class="kid-weak-list">${of(k).slice(0, 3).map((r) => btn(k, r)).join('')}</div>`}
+      <p><a class="kid-go-all ${SUBJECT_CLS[k]}" href="#/practice/${k}?weak=1${gradeQ}">${SUBJECT_ICON[k]} ${SUBJ[k]}の弱点練習をはじめる</a></p></div>`;
+  };
+  return `<div class="card kid-weak"><h2 class="kid-h">💪 にがてを練習しよう</h2>
+    <div class="kid-tabs" role="tablist">${subs.map((k) => `<button role="tab" class="kid-tab ${SUBJECT_CLS[k]} ${k === first ? 'on' : ''}" data-tab="${k}">
+      ${SUBJECT_ICON[k]} ${SUBJ[k]}${weakN(k) ? ` <span class="kid-tab-n">${weakN(k)}</span>` : ''}</button>`).join('')}</div>
+    ${subs.map(panel).join('')}</div>`;
+}
+
+/** Tab switching for weakTabs (no re-render). */
+export function bindWeakTabs(root) {
+  for (const b of root.querySelectorAll('.kid-tab[data-tab]')) {
+    b.onclick = () => {
+      for (const x of root.querySelectorAll('.kid-tab')) x.classList.toggle('on', x === b);
+      for (const p of root.querySelectorAll('.kid-tab-panel')) p.hidden = p.dataset.panel !== b.dataset.tab;
+    };
+  }
+}
+
+/** 来週の課題 (先取りOK) once this week is all done. */
+function nextWeek(goals, subjectOf) {
+  const nx = goals?.next;
+  if (!nx?.assignments?.items?.length) return '';
+  return `<h2 class="kid-h">🚀 来週の分も先にできるよ</h2>${taskCards({ ...nx, weekStart: nx.weekStart }, subjectOf)}`;
 }

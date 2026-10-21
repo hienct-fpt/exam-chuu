@@ -1,8 +1,9 @@
 import { isMock, hasMockKid2, setMockKid2, currentUser, listChildren, listStudentAttempts, listPendingAttempts, getTopicStats, loadIndex,
   createInvite, listInvites, deleteInvite, unlinkChild, resetChildPassword } from '../api.js';
 import { weeklyChart } from './dashboard.js';
-import { goalCard, weekSummary } from './goals.js';
-import { planCard } from './plan.js';
+import { goalCard } from './goals.js';
+import { activityLine, improvementCard } from '../activity.js';
+import { kpiCards, weakAnalysis, subjectBreakdown, hensachiCard } from '../parent-ui.js';
 import { childPicker, bindChildPicker, setSelectedChild } from '../children.js';
 
 // 保護者ページ (admin claim only): #/parent = grading queue + one card per child, #/parent/<uid> = one child's record.
@@ -128,7 +129,7 @@ async function renderOverview(app) {
   const [kids, name, invites] = await Promise.all([listChildren(), attemptNamer(), listInvites()]);
   const data = await Promise.all(kids.map(async (s) => {
     const [pending, recent, stats] = await Promise.all([
-      listPendingAttempts(s.uid), listStudentAttempts(s.uid, 20), getTopicStats(s.uid)]);
+      listPendingAttempts(s.uid), listStudentAttempts(s.uid, 200), getTopicStats(s.uid)]);
     return { s, pending, recent, stats };
   }));
   const queue = data.flatMap(({ s, pending }) => pending.map((a) => ({ s, a })))
@@ -138,9 +139,19 @@ async function renderOverview(app) {
   app.innerHTML = `
     <div class="card"><h1>保護者ページ</h1>
       <div class="muted">連携中の子ども ${kids.length} 人 · 採点待ち ${queue.length} 回分 (${pendingTotal} 問)</div></div>
-    ${inviteCard(invites)}
-    ${isMock ? `<div class="card muted small">mock: <button id="mock-kid2">${hasMockKid2() ? '2人目の子どもを外す' : '2人目の子ども（記録なし）を追加'}</button></div>` : ''}
-    ${kids.length ? '' : '<div class="card muted">まだ連携している子どもがいません。上の招待コードで追加してください。</div>'}
+    ${kids.length ? '' : '<div class="card muted">まだ連携している子どもがいません。下の「子どもを追加」で招待コードを作ってください。</div>'}
+    ${data.map(({ s, recent, stats }) => {
+      const last = recent[0];
+      const weak = weakTopics(stats, 3);
+      return `<div class="card p-child">
+        <div class="p-head-row"><div><h2 style="margin:0">${esc(s.name)} <small class="muted">${s.loginId ? `ID: ${esc(s.loginId)}` : esc(s.email || '')}</small></h2>
+          <div class="muted small">${activityLine(recent)} · 最終 ${last ? `${when(last.startedAt)} (${esc(name(last))})` : 'なし'}</div></div>
+          <div class="p-head-side"><a class="button primary" href="#/parent/${encodeURIComponent(s.uid)}">詳しく見る</a>
+            <button data-unlink="${esc(s.uid)}" data-name="${esc(s.name)}">連携解除</button></div></div>
+        ${kpiCards(stats, recent, { compact: true })}
+        ${weak.length ? `<div class="small">弱点: ${weak.map(([t, v]) => `<span class="chip weak">${esc(t)} <small>${pct(v.mastery)}</small></span>`).join(' ')}</div>` : ''}
+      </div>`;
+    }).join('')}
     <div class="card" ${kids.length ? '' : 'hidden'}><h2>採点待ち <small class="muted">(記述・作図 — 古い順)</small></h2>
       ${queue.length ? `<table><tr><th>提出</th>${kids.length > 1 ? '<th>生徒</th>' : ''}<th>試験 / 練習</th><th>仮の得点</th><th>採点待ち</th><th></th></tr>
       ${queue.map(({ s, a }) => `<tr>
@@ -152,23 +163,9 @@ async function renderOverview(app) {
         <td><a class="button primary" href="${resultLink(s.uid, a)}">採点する</a></td></tr>`).join('')}
       </table>` : '<p class="ok">採点待ちはありません。</p>'}
     </div>
-    ${data.map(({ s, recent, stats }) => {
-      const graded = recent.filter((a) => a.status === 'graded');
-      const avg = graded.length ? graded.reduce((n, a) => n + (a.percent || 0), 0) / graded.length / 100 : null;
-      const last = recent[0];
-      const weak = weakTopics(stats);
-      return `<div class="card">
-        <div class="big-head"><h2 style="margin:0">${esc(s.name)}</h2><span class="muted">${s.loginId ? `ID: ${esc(s.loginId)}` : esc(s.email || '')}</span>
-          <span style="margin-left:auto"><a class="button" href="#/parent/${encodeURIComponent(s.uid)}">詳しく見る</a>
-            <button data-unlink="${esc(s.uid)}" data-name="${esc(s.name)}">連携解除</button></span></div>
-        <div class="muted">受験 ${stats.attemptCount || 0} 回 · 直近${graded.length}回の平均 ${pct(avg)}
-          · 最終 ${last ? `${when(last.startedAt)} (${esc(name(last))})` : 'なし'}</div>
-        ${weekSummary(stats.goals)}
-        <div class="chips">${Object.entries(SUBJ).filter(([k]) => stats.subjects?.[k]).map(([k, label]) =>
-          `<span class="chip">${label} ${pct(stats.subjects[k].accuracy)} <small class="muted">${stats.subjects[k].attempts}問</small></span>`).join('')}</div>
-        ${weak.length ? `<div>弱点: ${weak.map(([t, v]) => `<span class="chip weak">${esc(t)} <small>${pct(v.mastery)}</small></span>`).join(' ')}</div>` : ''}
-      </div>`;
-    }).join('')}`;
+    ${inviteCard(invites)}
+    ${isMock ? `<div class="card muted small">mock: <button id="mock-kid2">${hasMockKid2() ? '2人目の子どもを外す' : '2人目の子ども（記録なし）を追加'}</button></div>` : ''}
+`;
   bindInviteCard(app, () => renderOverview(app));
   const k2 = app.querySelector('#mock-kid2');
   if (k2) k2.onclick = () => { setMockKid2(!hasMockKid2()); renderOverview(app); };
@@ -182,32 +179,31 @@ async function renderChild(app, uid) {
     return;
   }
   setSelectedChild(uid);   // 計画 opens the same child next
-  const [name, attempts, stats] = await Promise.all([attemptNamer(), listStudentAttempts(uid, 100), getTopicStats(uid)]);
-  const weak = weakTopics(stats, 10);
+  const [name, attempts, stats] = await Promise.all([attemptNamer(), listStudentAttempts(uid, 300), getTopicStats(uid)]);
   const pendingN = attempts.filter((a) => a.status === 'graded' && a.pendingCount > 0).length;
   const groups = groupAttempts(attempts, name);
   const totalSec = groups.reduce((n, g) => n + g.totalSec, 0);
 
   app.innerHTML = `
-    <div class="card"><p><a href="#/parent">← 保護者ページ</a></p>
-      ${childPicker(kids, s, (k) => `#/parent/${encodeURIComponent(k.uid)}`)}
-      <h1>${esc(s.name)} <small class="muted">${s.loginId ? `ログインID: ${esc(s.loginId)}` : esc(s.email || '')}</small></h1>
-      ${s.loginId ? '<p><button id="reset-pw">パスワードを変更</button></p>' : ''}
-      <div class="muted">受験 ${stats.attemptCount || 0} 回 · 採点待ち ${pendingN} 回分</div>
-      <h3>週ごとの正答率</h3>${weeklyChart(stats.weekly) || '<p class="muted">データなし</p>'}
+    <div class="card p-head">
+      <div class="p-head-row"><div>
+        <p class="small"><a href="#/parent">← 保護者ページ</a></p>
+        <h1>${esc(s.name)} <small class="muted">${s.loginId ? `ID: ${esc(s.loginId)}` : esc(s.email || '')}</small></h1>
+        <div class="muted small">${activityLine(attempts)} · 採点待ち ${pendingN} 回分</div></div>
+        <div class="p-head-side">${childPicker(kids, s, (k) => `#/parent/${encodeURIComponent(k.uid)}`)}
+          ${s.loginId ? '<button id="reset-pw">パスワードを変更</button>' : ''}</div></div>
     </div>
-    ${goalCard(stats.goals, { practice: false })}
-    ${planCard(stats, { links: false, charts: true })}
-    <div class="two-col">
-      <div class="card"><h2>教科別</h2><table><tr><th>教科</th><th>正答率</th><th>解答数</th></tr>
-        ${Object.entries(SUBJ).filter(([k]) => stats.subjects?.[k]).map(([k, label]) =>
-          `<tr><td>${label}</td><td>${pct(stats.subjects[k].accuracy)}</td><td>${stats.subjects[k].attempts}</td></tr>`).join('')
-          || '<tr><td colspan="3" class="muted">まだありません</td></tr>'}</table></div>
-      <div class="card"><h2>弱点分野 <small class="muted">(習熟度の低い順)</small></h2><table><tr><th>分野</th><th>正解 / 解答</th><th>習熟度</th></tr>
-        ${weak.map(([t, v]) => `<tr class="weak"><td>${esc(t)} <small class="muted">${SUBJ[v.subject] || ''}</small></td>
-          <td>${v.correct} / ${v.attempts}</td><td>${pct(v.mastery)}</td></tr>`).join('')
-          || '<tr><td colspan="3" class="ok">弱点分野はありません</td></tr>'}</table></div>
+    ${kpiCards(stats, attempts)}
+    ${hensachiCard(stats.hensachi)}
+    <div class="p-grid">
+      <div><div class="card p-card"><h2>週ごとの正答率</h2>${weeklyChart(stats.weekly) || '<p class="muted">データなし</p>'}</div>
+        ${improvementCard(attempts)}
+        <p class="muted small">今週の課題・全体計画・予定／実績のグラフは <a href="#/plan">計画</a> タブで見られます。</p></div>
+      <div>${weakAnalysis(stats, attempts)}
+        ${subjectBreakdown(stats, attempts)}
+      </div>
     </div>
+    <details class="card"><summary><b>今週の目標（教科別）</b></summary>${goalCard(stats.goals, { practice: false, tasks: false })}</details>
     <div class="card"><h2>受験記録 <small class="muted">${groups.length} 試験 · ${attempts.length} 回 · 合計 ${totalSec ? duration(totalSec) : '—'}</small></h2>
       <label class="muted"><input type="checkbox" id="onlypending"> 採点待ちのみ表示</label>
       ${attemptLog(uid, groups)}

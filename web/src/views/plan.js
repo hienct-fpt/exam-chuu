@@ -1,6 +1,7 @@
 import { getTopicStats, currentUser, listChildren } from '../api.js';
 import { daysUntil } from './goals.js';
 import { selectedChild, childPicker, bindChildPicker } from '../children.js';
+import { weekTimeline } from '../parent-ui.js';
 
 // 全体計画 (#/plan for the child, a card on the parent's child page): topicStats/summary.plan from
 // functions/goals.py — past weeks (assigned vs done), this / next week, the projected weeks to the exam, milestones.
@@ -87,7 +88,7 @@ export function cumulativeChart(series, { milestones = [] } = {}) {
   const xTicks = pts.map((p, i) => {
     const m = Number(p.week.slice(5, 7));
     if (i && m === Number(pts[i - 1].week.slice(5, 7))) return '';
-    if (i && ((m - 1) % 3 || x(i) - lastTick < 80)) return '';   // no label colliding with the previous one
+    if (i && ((m - 1) % 3 || x(i) - lastTick < 120)) return '';   // no label colliding with the previous one
     lastTick = x(i);
     const txt = m === 1 || i === 0 ? `${p.week.slice(0, 4)}年${m}月` : `${m}月`;
     return `<line x1="${x(i)}" x2="${x(i)}" y1="${H - B}" y2="${H - B + 4}" class="grid"></line>
@@ -197,10 +198,12 @@ export async function renderPlan({ app }) {
       app.innerHTML = '<div class="card"><h1>全体計画</h1><p class="muted">連携している子どもがいません。<a href="#/parent">保護者ページ</a>で追加してください。</p></div>';
       return;
     }
-    const card = planCard(await getTopicStats(k.uid), { links: false, charts: true });
+    const stats = await getTopicStats(k.uid);
+    const card = planCard(stats, { links: false, charts: true });
     const title = `<h2 style="margin:0">全体計画 <small class="muted">${esc(k.name)}</small></h2>`;
     app.innerHTML = (kids.length > 1 ? `<div class="card">${childPicker(kids, k)}</div>` : '')
-      + (card ? card.replace('<h2 style="margin:0">全体計画</h2>', title) : `<div class="card">${title}<p class="muted">まだ計画がありません。</p></div>`);
+      + `<div class="p-grid plan-grid"><div>${card ? card.replace('<h2 style="margin:0">全体計画</h2>', title) : `<div class="card">${title}<p class="muted">まだ計画がありません。</p></div>`}</div>
+        <div>${weekTimeline(stats.goals) || '<div class="card p-card"><h2>今週の課題</h2><p class="muted">今週の課題はまだありません。</p></div>'}</div></div>`;
     bindChildPicker(app, () => renderPlan({ app }));
     return;
   }
