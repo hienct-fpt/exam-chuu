@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { assignmentList, daysUntil, goalCard, goalStatus, weekSummary } from '../src/views/goals.js';
-import { parentRedirect } from '../src/roles.js';
+import { parentRedirect, roleRedirect } from '../src/roles.js';
 import { redoItems } from '../src/views/redo.js';
 
 const goals = {
@@ -87,9 +87,13 @@ describe('先取り / 保護者', () => {
     expect(weekSummary(g)).toContain('1 / 1');
     expect(weekSummary(g)).toContain('✅');
     expect(weekSummary(undefined)).toBe('');
-    for (const page of ['', 'exam', 'dashboard', 'practice', 'history', 'redo', 'attempt']) {
+    for (const page of ['exam', 'dashboard', 'practice', 'history', 'redo', 'attempt']) {
       expect(parentRedirect({ admin: true }, page)).toBe(true);
       expect(parentRedirect({ admin: false }, page)).toBe(false);
+    }
+    for (const page of ['', 'plan', 'preview']) {          // the parent's pages: the child goes to 今週の課題
+      expect(roleRedirect({ admin: true }, page)).toBeNull();
+      expect(roleRedirect({ admin: false }, page)).toBe('#/dashboard');
     }
     expect(parentRedirect({ admin: true }, 'parent')).toBe(false);
     expect(parentRedirect({ admin: true }, 'result')).toBe(false);   // grading a child's attempt

@@ -28,8 +28,10 @@ export async function createAttempt(examId, mode = 'exam', extra = {}) {
   save(all);
   return id;
 }
-export async function saveAnswers(id, answers) {
-  const all = load(); all[id].answers = answers; all[id].updatedAt = new Date().toISOString(); save(all);
+export async function saveAnswers(id, answers, meta = {}) {
+  const all = load(); all[id].answers = answers; all[id].updatedAt = new Date().toISOString();
+  if (Number.isFinite(meta.activeSec)) all[id].activeSec = meta.activeSec;
+  save(all);
 }
 
 async function gradeNow(id) {
@@ -47,9 +49,10 @@ async function gradeNow(id) {
   save(cur); notify(id);
 }
 
-export async function submitAttempt(id, answers) {
+export async function submitAttempt(id, answers, meta = {}) {
   const all = load();
-  Object.assign(all[id], { answers, status: 'submitted', submittedAt: new Date().toISOString() });
+  Object.assign(all[id], { answers, status: 'submitted', submittedAt: new Date().toISOString(),
+    ...(Number.isFinite(meta.activeSec) ? { activeSec: meta.activeSec } : {}) });
   save(all); notify(id);
   await gradeNow(id);
 }
@@ -64,7 +67,15 @@ export async function setManualGrade(id, sid, correct) {
 const INV = 'exam-chuu.invites', LINK = 'exam-chuu.linked';
 const invites = () => JSON.parse(localStorage.getItem(INV) || '{}');
 const linked = () => localStorage.getItem(LINK) === '1';
-export async function listChildren() { return linked() ? [{ uid: user.uid, name: user.name, email: user.email }] : []; }
+// A second child (mock only, no attempts of its own) to try the screens of a parent with several children.
+const KID2 = 'exam-chuu.mockKid2';
+const kid2 = { uid: 'local2', name: 'テスト生徒2', email: 'local2@example.com' };
+export const hasMockKid2 = () => localStorage.getItem(KID2) === '1';
+export function setMockKid2(on) { if (on) localStorage.setItem(KID2, '1'); else localStorage.removeItem(KID2); }
+const isKid2 = (uid) => uid === kid2.uid;
+export async function listChildren() {
+  return [...(linked() ? [{ uid: user.uid, name: user.name, email: user.email }] : []), ...(hasMockKid2() ? [kid2] : [])];
+}
 export async function listMyParents() { return linked() ? [{ uid: 'mock-parent', name: '保護者 (mock)' }] : []; }
 export async function createInvite() {
   const code = Math.random().toString(36).slice(2, 8).toUpperCase();
@@ -86,13 +97,19 @@ export async function redeemInvite(code) {
   localStorage.setItem(LINK, '1');
   return { parentName: '保護者 (mock)' };
 }
-export async function unlinkChild() { localStorage.removeItem(LINK); }
+export async function unlinkChild(uid) { if (isKid2(uid)) setMockKid2(false); else localStorage.removeItem(LINK); }
 // Mock is always signed in, so the signed-out sign-up screen never shows; these keep the API surface identical.
 export async function signInWithLoginId() {}
 export async function createChildAccount({ code }) { return redeemInvite(code); }
 export async function resetChildPassword() {}
-export async function listStudentAttempts(_uid, max = 100) { return (await listAttempts()).slice(0, max); }
-export async function listPendingAttempts() {
+export async function getAnswerKey(examId) {
+  const r = await fetch(`/api/answers/${encodeURIComponent(examId)}`);
+  if (!r.ok) throw new Error(`dev_server ${r.status}`);
+  return (await r.json()).items || {};
+}
+export async function listStudentAttempts(uid, max = 100) { return isKid2(uid) ? [] : (await listAttempts()).slice(0, max); }
+export async function listPendingAttempts(uid) {
+  if (isKid2(uid)) return [];
   return Object.values(load()).filter((a) => a.status === 'graded' && a.pendingCount > 0);
 }
 export function watchAttempt(id, cb) {
@@ -109,10 +126,10 @@ export async function findInProgress(examId, gradeFilter = null) {
     && (a.gradeFilter || null) === (gradeFilter || null)) || null;
 }
 /** Topic mastery summary computed by dev_server from the graded attempts (mirrors students/{uid}/topicStats/summary). */
-export async function getTopicStats() {
-  const attempts = Object.values(load()).filter((a) => a.status === 'graded');
+export async function getTopicStats(uid = null) {
+  const attempts = isKid2(uid) ? [] : Object.values(load()).filter((a) => a.status === 'graded');
   const r = await fetch('/api/stats', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ attempts, studentName: user.name }) });
+    body: JSON.stringify({ attempts, studentName: isKid2(uid) ? kid2.name : user.name }) });
   if (!r.ok) throw new Error(`dev_server ${r.status}`);
   return r.json();
 }

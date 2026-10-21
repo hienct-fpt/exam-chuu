@@ -90,7 +90,7 @@ export function goalCard(goals, { gradeQ = '', practice = true } = {}) {
   return `<div class="card goal-card">
     <div class="big-head"><h2 style="margin:0">今週の目標</h2><span class="muted">${md(goals.weekStart)}〜${md(end)}</span>
       <span style="margin-left:auto">第一志望 ${esc(goals.firstName)} 入試まで <b class="countdown">${days}</b> 日
-        ${practice ? '<a class="small" href="#/plan">全体計画 →</a>' : ''}</span></div>
+</span></div>
     ${assignmentList(goals, { links: practice })}
     <table><tr><th>科目</th><th>解いた問題</th><th>正答率 今週 / 目標</th><th>実力 → 最終目標</th><th>重点分野</th></tr>${rows}</table>
     <p class="muted small">目標は毎週月曜に先週までの結果から自動で決まります（${esc(md(goals.deadline))}までに最終目標に届くペース、残り${goals.weeksLeft}週）。

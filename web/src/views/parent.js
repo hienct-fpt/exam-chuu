@@ -1,8 +1,9 @@
-import { currentUser, listChildren, listStudentAttempts, listPendingAttempts, getTopicStats, loadIndex,
+import { isMock, hasMockKid2, setMockKid2, currentUser, listChildren, listStudentAttempts, listPendingAttempts, getTopicStats, loadIndex,
   createInvite, listInvites, deleteInvite, unlinkChild, resetChildPassword } from '../api.js';
 import { weeklyChart } from './dashboard.js';
 import { goalCard, weekSummary } from './goals.js';
 import { planCard } from './plan.js';
+import { childPicker, bindChildPicker, setSelectedChild } from '../children.js';
 
 // 保護者ページ (admin claim only): #/parent = grading queue + one card per child, #/parent/<uid> = one child's record.
 const SUBJ = { math: '算数', science: '理科', social: '社会', japanese: '国語' };
@@ -20,6 +21,59 @@ async function attemptNamer() {
     const e = meta[a.examId];
     return e ? `${e.school_name || ''} ${e.year}年度 ${e.session_label} ${e.subject_label}` : a.examId;
   };
+}
+
+/** Working time of an attempt in seconds: recorded activeSec, else ~ start→submit when that is plausible (older attempts). */
+export function attemptSeconds(a) {
+  if (Number.isFinite(a.activeSec) && a.activeSec > 0) return { sec: a.activeSec, approx: false };
+  if (!a.startedAt || !a.submittedAt) return null;
+  const sec = (Date.parse(a.submittedAt) - Date.parse(a.startedAt)) / 1000;
+  return sec > 0 && sec <= 3 * 3600 ? { sec, approx: true } : null;   // longer = left open overnight, not working time
+}
+export const duration = (sec) => {
+  const m = Math.max(1, Math.round(sec / 60));
+  return m < 60 ? `${m}分` : `${Math.floor(m / 60)}時間${m % 60 ? `${m % 60}分` : ''}`;
+};
+const timeCell = (t) => (t ? `${t.approx ? '<span class="muted" title="開始〜提出の時間（作業時間の記録がない回）">約</span>' : ''}${duration(t.sec)}` : '—');
+
+/** Attempts per 試験: a redo / practice set of one exam joins that exam; other practice sets are one group per title. */
+export function groupAttempts(attempts, name) {
+  const groups = new Map();
+  for (const a of attempts) {
+    const key = a.examId || a.redoOf || `practice:${a.title || name(a)}`;
+    if (!groups.has(key)) groups.set(key, { key, label: a.examId || a.redoOf ? name({ ...a, examId: a.examId || a.redoOf, mode: 'exam', items: null }) : name(a), list: [] });
+    groups.get(key).list.push(a);
+  }
+  for (const g of groups.values()) {
+    g.list.sort((x, y) => String(x.startedAt || '').localeCompare(String(y.startedAt || '')));   // 1回目 first
+    const times = g.list.map(attemptSeconds).filter(Boolean);
+    g.totalSec = times.reduce((n, t) => n + t.sec, 0);
+    g.approx = times.some((t) => t.approx);
+    g.graded = g.list.filter((a) => a.status === 'graded');
+    g.last = g.list[g.list.length - 1];
+    g.pending = g.list.some((a) => a.status === 'graded' && a.pendingCount > 0);
+  }
+  return [...groups.values()].sort((x, y) => String(y.last.startedAt || '').localeCompare(String(x.last.startedAt || '')));
+}
+
+const KIND_OF = (a) => (a.redoOf ? 'やり直し' : a.mode === 'practice' ? '練習' : a.gradeFilter ? `小${a.gradeFilter}まで` : '全問');
+
+function attemptLog(uid, groups) {
+  if (!groups.length) return '<p class="muted">まだ受験していません。</p>';
+  return groups.map((g) => `<details class="exam-log" data-pending="${g.pending}">
+    <summary><b>${esc(g.label)}</b>
+      <span class="muted">${g.list.length}回 · 合計 ${g.totalSec ? `${g.approx ? '約' : ''}${duration(g.totalSec)}` : '—'}</span>
+      <span class="trend">${g.graded.map((a) => `<span class="chip ${a.percent < 60 ? 'weak' : ''}">${a.percent}%</span>`).join('<span class="muted">→</span>')}</span>
+      ${g.pending ? '<span class="warn small">採点待ちあり</span>' : ''}</summary>
+    <table><tr><th>回</th><th>日時</th><th>種類</th><th>作業時間</th><th>結果</th><th></th></tr>
+    ${g.list.map((a, i) => `<tr>
+      <td>${i + 1}回目</td><td class="nowrap">${when(a.startedAt)}</td>
+      <td><span class="badge">${KIND_OF(a)}</span></td>
+      <td class="nowrap">${timeCell(attemptSeconds(a))}${a.timeLimitMin ? ` <small class="muted">/ 制限${a.timeLimitMin}分</small>` : ''}</td>
+      <td>${a.status === 'graded' ? `${a.score} / ${a.max} (${a.percent}%)${a.pendingCount ? ` <small class="warn">採点待ち${a.pendingCount}</small>` : ''}`
+        : `<span class="badge ${a.status}">${STATUS[a.status] || a.status}</span>`}</td>
+      <td>${a.status === 'in_progress' ? '' : `<a href="${resultLink(uid, a)}">${a.status === 'graded' && a.pendingCount > 0 ? '採点する' : '結果'}</a>`}</td>
+    </tr>`).join('')}</table></details>`).join('');
 }
 
 function weakTopics(stats, n = 5) {
@@ -85,6 +139,7 @@ async function renderOverview(app) {
     <div class="card"><h1>保護者ページ</h1>
       <div class="muted">連携中の子ども ${kids.length} 人 · 採点待ち ${queue.length} 回分 (${pendingTotal} 問)</div></div>
     ${inviteCard(invites)}
+    ${isMock ? `<div class="card muted small">mock: <button id="mock-kid2">${hasMockKid2() ? '2人目の子どもを外す' : '2人目の子ども（記録なし）を追加'}</button></div>` : ''}
     ${kids.length ? '' : '<div class="card muted">まだ連携している子どもがいません。上の招待コードで追加してください。</div>'}
     <div class="card" ${kids.length ? '' : 'hidden'}><h2>採点待ち <small class="muted">(記述・作図 — 古い順)</small></h2>
       ${queue.length ? `<table><tr><th>提出</th>${kids.length > 1 ? '<th>生徒</th>' : ''}<th>試験 / 練習</th><th>仮の得点</th><th>採点待ち</th><th></th></tr>
@@ -115,6 +170,8 @@ async function renderOverview(app) {
       </div>`;
     }).join('')}`;
   bindInviteCard(app, () => renderOverview(app));
+  const k2 = app.querySelector('#mock-kid2');
+  if (k2) k2.onclick = () => { setMockKid2(!hasMockKid2()); renderOverview(app); };
 }
 
 async function renderChild(app, uid) {
@@ -124,20 +181,23 @@ async function renderChild(app, uid) {
     app.innerHTML = '<div class="card"><p>この生徒とは連携していません。</p><a href="#/parent">← 保護者ページ</a></div>';
     return;
   }
+  setSelectedChild(uid);   // 計画 opens the same child next
   const [name, attempts, stats] = await Promise.all([attemptNamer(), listStudentAttempts(uid, 100), getTopicStats(uid)]);
   const weak = weakTopics(stats, 10);
   const pendingN = attempts.filter((a) => a.status === 'graded' && a.pendingCount > 0).length;
-  const onlyPending = (a) => a.status === 'graded' && a.pendingCount > 0;
+  const groups = groupAttempts(attempts, name);
+  const totalSec = groups.reduce((n, g) => n + g.totalSec, 0);
 
   app.innerHTML = `
     <div class="card"><p><a href="#/parent">← 保護者ページ</a></p>
+      ${childPicker(kids, s, (k) => `#/parent/${encodeURIComponent(k.uid)}`)}
       <h1>${esc(s.name)} <small class="muted">${s.loginId ? `ログインID: ${esc(s.loginId)}` : esc(s.email || '')}</small></h1>
       ${s.loginId ? '<p><button id="reset-pw">パスワードを変更</button></p>' : ''}
       <div class="muted">受験 ${stats.attemptCount || 0} 回 · 採点待ち ${pendingN} 回分</div>
       <h3>週ごとの正答率</h3>${weeklyChart(stats.weekly) || '<p class="muted">データなし</p>'}
     </div>
     ${goalCard(stats.goals, { practice: false })}
-    ${planCard(stats, { links: false })}
+    ${planCard(stats, { links: false, charts: true })}
     <div class="two-col">
       <div class="card"><h2>教科別</h2><table><tr><th>教科</th><th>正答率</th><th>解答数</th></tr>
         ${Object.entries(SUBJ).filter(([k]) => stats.subjects?.[k]).map(([k, label]) =>
@@ -148,18 +208,11 @@ async function renderChild(app, uid) {
           <td>${v.correct} / ${v.attempts}</td><td>${pct(v.mastery)}</td></tr>`).join('')
           || '<tr><td colspan="3" class="ok">弱点分野はありません</td></tr>'}</table></div>
     </div>
-    <div class="card"><h2>受験記録</h2>
+    <div class="card"><h2>受験記録 <small class="muted">${groups.length} 試験 · ${attempts.length} 回 · 合計 ${totalSec ? duration(totalSec) : '—'}</small></h2>
       <label class="muted"><input type="checkbox" id="onlypending"> 採点待ちのみ表示</label>
-      ${attempts.length ? `<table id="attempts"><tr><th>日時</th><th>試験 / 練習</th><th>範囲</th><th>状態</th><th>得点</th><th></th></tr>
-      ${attempts.map((a) => `<tr data-pending="${onlyPending(a)}">
-        <td>${when(a.startedAt)}</td>
-        <td>${esc(name(a))}</td>
-        <td>${a.gradeFilter ? `<span class="badge">小${a.gradeFilter}まで</span>` : '<span class="badge">全問</span>'}</td>
-        <td><span class="badge ${a.status}">${STATUS[a.status] || a.status}</span>${a.pendingCount ? ` <small class="warn">採点待ち${a.pendingCount}</small>` : ''}</td>
-        <td>${a.status === 'graded' ? `${a.score} / ${a.max} (${a.percent}%)` : ''}</td>
-        <td>${a.status === 'in_progress' ? '' : `<a href="${resultLink(uid, a)}">${onlyPending(a) ? '採点する' : '結果'}</a>`}</td>
-      </tr>`).join('')}</table>` : '<p class="muted">まだ受験していません。</p>'}
+      ${attemptLog(uid, groups)}
     </div>`;
+  bindChildPicker(app);
   const pw = app.querySelector('#reset-pw');
   if (pw) pw.onclick = async () => {
     const p = prompt(`${s.name} の新しいパスワード (6文字以上)`);
@@ -172,6 +225,6 @@ async function renderChild(app, uid) {
   };
   const cb = app.querySelector('#onlypending');
   if (cb) cb.onchange = () => {
-    for (const tr of app.querySelectorAll('#attempts tr[data-pending]')) tr.style.display = cb.checked && tr.dataset.pending !== 'true' ? 'none' : '';
+    for (const d of app.querySelectorAll('details.exam-log')) d.style.display = cb.checked && d.dataset.pending !== 'true' ? 'none' : '';
   };
 }

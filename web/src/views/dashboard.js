@@ -38,7 +38,7 @@ export async function renderDashboard({ app }) {
   const topics = stats.topics || {};
   const done = Object.values(topics).reduce((n, t) => n + t.attempts, 0);
   if (!done) {
-    app.innerHTML = `${goalCard(stats.goals, { gradeQ })}<div class="card"><h1>ダッシュボード</h1><p class="muted">まだ採点済みの結果がありません。<a href="#/">試験一覧</a>から始めましょう。</p></div>`;
+    app.innerHTML = `${goalCard(stats.goals, { gradeQ })}<div class="card"><h1>ダッシュボード</h1><p class="muted">まだ採点済みの結果がありません。上の「今週の課題」から始めましょう。</p></div>`;
     return;
   }
   const weakAll = Object.entries(topics).filter(([, t]) => t.weak).sort(([, a], [, b]) => a.mastery - b.mastery);

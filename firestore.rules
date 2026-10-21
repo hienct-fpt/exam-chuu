@@ -8,7 +8,9 @@ service cloud.firestore {
 
     // Answer keys: never readable from the client. Cloud Functions use the Admin SDK (bypasses rules).
     match /answerKeys/{examId} {
-      allow read, write: if false;
+      // 保護者 (admin claim) only: the 試験一覧 preview shows the answers. Students never read keys.
+      allow read: if isAdmin();
+      allow write: if false;
     }
 
     // Public catalog (metadata only, no answers).

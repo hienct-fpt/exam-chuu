@@ -74,12 +74,14 @@ export async function createAttempt(examId, mode = 'exam', extra = {}) {
   });
   return ref.id;
 }
-export async function saveAnswers(attemptId, answers) {
-  await updateDoc(attemptRef(attemptId), { answers, updatedAt: serverTimestamp() });
+/** meta.activeSec = working time on the sheet so far (exam.js activeTimer). */
+export async function saveAnswers(attemptId, answers, meta = {}) {
+  await updateDoc(attemptRef(attemptId), { answers, ...activeOf(meta), updatedAt: serverTimestamp() });
 }
-export async function submitAttempt(attemptId, answers) {
-  await updateDoc(attemptRef(attemptId), { answers, status: 'submitted', submittedAt: serverTimestamp(), updatedAt: serverTimestamp() });
+export async function submitAttempt(attemptId, answers, meta = {}) {
+  await updateDoc(attemptRef(attemptId), { answers, ...activeOf(meta), status: 'submitted', submittedAt: serverTimestamp(), updatedAt: serverTimestamp() });
 }
+const activeOf = (meta) => (Number.isFinite(meta.activeSec) ? { activeSec: meta.activeSec } : {});
 export async function setManualGrade(attemptId, sid, correct, uid = null) {
   await updateDoc(attemptRef(attemptId, uid), { [`manualGrades.${sid}`]: correct, updatedAt: serverTimestamp() });
 }
@@ -133,6 +135,11 @@ export async function redeemInvite(code) {
 }
 export async function unlinkChild(childUid) {
   await httpsCallable(functions, 'unlink_child')({ childUid });
+}
+/** 保護者 only (firestore.rules): {slotId: {answer, variants, unit, answer_type, parts, note}} of one exam. */
+export async function getAnswerKey(examId) {
+  const snap = await getDoc(doc(db, 'answerKeys', examId));
+  return snap.exists() ? snap.data().items || {} : {};
 }
 export async function listStudentAttempts(uid, max = 100) {
   const q = query(attempts(uid), orderBy('startedAt', 'desc'), limit(max));

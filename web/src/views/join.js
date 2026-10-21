@@ -8,7 +8,7 @@ export async function renderJoin({ app }, arg) {
   if (parents.length) { // already linked: no second code
     app.innerHTML = `<div class="card"><h1>保護者と連携</h1>
       <p>連携中: ${parents.map((p) => `<span class="chip">${esc(p.name)}</span>`).join(' ')}</p>
-      <p><a href="#/">試験一覧へ</a></p></div>`;
+      <p><a href="#/dashboard">ダッシュボードへ</a></p></div>`;
     return;
   }
   app.innerHTML = `<div class="card"><h1>保護者と連携</h1>
@@ -30,7 +30,7 @@ export async function renderJoin({ app }, arg) {
       const { parentName } = await redeemInvite(code);
       e.target.remove();
       msg.className = 'ok';
-      msg.innerHTML = `${esc(parentName)} と連携しました。<a href="#/">試験一覧へ</a>`;
+      msg.innerHTML = `${esc(parentName)} と連携しました。<a href="#/dashboard">ダッシュボードへ</a>`;
     } catch (err) {
       msg.className = 'ng'; msg.textContent = err.message;
       btn.disabled = false;

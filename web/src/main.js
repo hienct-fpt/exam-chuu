@@ -9,8 +9,9 @@ import { renderPractice } from './views/practice.js';
 import { renderParent } from './views/parent.js';
 import { renderJoin } from './views/join.js';
 import { renderRedo } from './views/redo.js';
-import { parentRedirect } from './roles.js';
+import { roleRedirect } from './roles.js';
 import { renderPlan } from './views/plan.js';
+import { renderPreview } from './views/preview.js';
 
 const app = document.getElementById('app');
 const userBox = document.getElementById('user');
@@ -18,17 +19,18 @@ let user = null;
 let cleanup = null;
 
 const ROUTES = { '': renderHome, exam: renderExam, attempt: renderAttempt, result: renderResult, history: renderHistory,
-  dashboard: renderDashboard, practice: renderPractice, parent: renderParent, join: renderJoin, redo: renderRedo, plan: renderPlan };
+  dashboard: renderDashboard, practice: renderPractice, parent: renderParent, join: renderJoin, redo: renderRedo, plan: renderPlan, preview: renderPreview };
 
 function route() {
   if (cleanup) { cleanup(); cleanup = null; }
   const hash = location.hash.replace(/^#/, '') || '/';
   const [, page, arg] = hash.match(/^\/([^/]*)\/?(.*)$/) || [];
   if (!user) { renderLogin(app, page, arg); return; }
-  if (parentRedirect(user, page)) { location.replace('#/parent'); return; }
+  const to = roleRedirect(user, page);
+  if (to) { location.replace(to); return; }
   document.querySelectorAll('#topbar nav a').forEach((a) => a.classList.toggle('on', a.getAttribute('href') === `#/${page || ''}`));
   const run = ROUTES[page || ''];
-  if (!run) { app.innerHTML = '<div class="card">ページが見つかりません。<a href="#/">一覧へ</a></div>'; return; }
+  if (!run) { app.innerHTML = `<div class="card">ページが見つかりません。<a href="${user.admin ? '#/parent' : '#/dashboard'}">戻る</a></div>`; return; }
   Promise.resolve(run({ app, user }, arg)).then((c) => { cleanup = typeof c === 'function' ? c : null; })
     .catch((e) => { console.error(e); app.innerHTML = `<div class="card ng">エラー: ${e.message}</div>`; });
 }
@@ -39,12 +41,13 @@ onAuth((u) => {
   userBox.innerHTML = u ? `<span>${u.name}${u.admin ? ' <span class="badge">保護者</span>' : ''}${isMock ? ' (mock)' : ''}</span>${roleSwitch}<button id="logout">ログアウト</button>` : '';
   document.getElementById('nav-parent').hidden = !u?.admin;
   document.querySelectorAll('#topbar .student-only').forEach((a) => { a.hidden = Boolean(u?.admin); });
-  document.querySelector('#topbar .brand').setAttribute('href', u?.admin ? '#/parent' : '#/');
+  document.querySelectorAll('#topbar .parent-only').forEach((a) => { a.hidden = !u?.admin; });
+  document.querySelector('#topbar .brand').setAttribute('href', u?.admin ? '#/parent' : '#/dashboard');
   document.getElementById('nav-join').hidden = !u || u.admin;
   const lo = document.getElementById('logout');
   if (lo) lo.onclick = () => signOut();
   const rs = document.getElementById('mock-role');
-  if (rs) rs.onclick = () => { setMockRole(u.admin ? 'student' : 'parent'); location.hash = u.admin ? '#/' : '#/parent'; location.reload(); };
+  if (rs) rs.onclick = () => { setMockRole(u.admin ? 'student' : 'parent'); location.hash = u.admin ? '#/dashboard' : '#/parent'; location.reload(); };
   route();
 });
 window.addEventListener('hashchange', route);

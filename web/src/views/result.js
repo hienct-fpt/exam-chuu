@@ -51,7 +51,7 @@ export async function renderResult({ app }, arg) {
     if (a.status !== 'graded') {
       app.innerHTML = `<div class="card"><h1>${esc(title)} ${scope}</h1>
         <p>${a.status === 'error' ? `<span class="ng">採点エラー: ${esc(a.error || '')}</span>` : '採点中… しばらくお待ちください。'}</p>
-        <a href="#/">一覧へ</a></div>`;
+        <a href="#/dashboard">ダッシュボード</a></div>`;
       return;
     }
     const r = a.result;
@@ -75,7 +75,7 @@ export async function renderResult({ app }, arg) {
           ${pending ? ` · <span class="warn">採点待ち ${pending} 問（記述・作図は保護者が採点）</span>` : ''}
           · 提出 ${a.submittedAt ? new Date(a.submittedAt).toLocaleString('ja-JP') : ''}</div>
         <p>${uid ? `<a href="#/parent/${encodeURIComponent(uid)}">← 生徒の記録へ</a> · <a href="#/parent">保護者ページ</a>`
-          : `<a href="${retry}">${isPractice ? '同じ分野でもう一度' : 'もう一度挑戦'}</a> · <a href="#/dashboard">ダッシュボード</a> · <a href="#/">一覧へ</a>`}</p>
+          : `<a href="${retry}">${isPractice ? '同じ分野でもう一度' : 'もう一度挑戦'}</a> · <a href="#/dashboard">ダッシュボード</a>`}</p>
       </div>
       <div class="two-col">
         <div class="card"><h2>${isPractice ? '過去問別' : '大問別'}</h2><table><tr><th>${isPractice ? '出典' : '大問'}</th><th>正解</th><th>正答率</th></tr>

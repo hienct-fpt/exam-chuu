@@ -1,4 +1,4 @@
-import { loadIndex, listAttempts, examTitle } from '../api.js';
+import { loadIndex, listAttempts, examTitle, currentUser, listChildren, listStudentAttempts } from '../api.js';
 
 const SUBJ = { math: '算数', japanese: '国語', science: '理科', social: '社会' };
 const GRADE_KEY = 'exam-chuu.grade';
@@ -46,8 +46,33 @@ export function yearOptions(index) {
   return [...m.entries()].sort(([a], [b]) => Number(b) - Number(a));
 }
 
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+/** 試験一覧 is the parent's page: the tiles open the read-only preview and show every linked child's results. */
+async function childrenAttempts() {
+  const kids = await listChildren();
+  return Promise.all(kids.map(async (k) => ({ kid: k, attempts: await listStudentAttempts(k.uid, 200) })));
+}
+
+/** {examId|scope: best graded attempt}, {examId: tries} of one attempt list. */
+function bestOf(attempts) {
+  const best = {}, tries = {};
+  for (const a of attempts) {
+    const id = a.examId || a.redoOf;
+    if (id) tries[id] = (tries[id] || 0) + 1;
+    if (a.status !== 'graded') continue;
+    const k = `${a.examId}|${a.gradeFilter || 'all'}`;
+    if (!best[k] || a.percent > best[k].percent) best[k] = a;
+  }
+  return { best, tries };
+}
+
 export async function renderHome({ app }) {
-  const [fullIndex, attempts] = await Promise.all([loadIndex(), listAttempts(200)]);
+  const parent = Boolean(currentUser()?.admin);
+  const [fullIndex, perKid] = await Promise.all([loadIndex(),
+    parent ? childrenAttempts() : listAttempts(200).then((attempts) => [{ kid: null, attempts }])]);
+  const attempts = perKid.flatMap((p) => p.attempts);
+  const kidStats = perKid.map((p) => ({ kid: p.kid, ...bestOf(p.attempts) }));
   const grade = getGradePref(); // '4' | '5' | 'all'
   const gf = gradeFilterFromPref(grade); // number | null
   const school = getSchoolPref(); // 'all' | school id
@@ -56,12 +81,6 @@ export async function renderHome({ app }) {
   const showYears = years.length > 1;
   const year = showYears && years.some(([y]) => y === getYearPref()) ? getYearPref() : 'all';
   const index = year === 'all' ? bySchool : bySchool.filter((e) => String(e.year) === year);
-  const best = {};
-  for (const a of attempts) {
-    if (a.status !== 'graded') continue;
-    const k = `${a.examId}|${a.gradeFilter || 'all'}`;
-    if (!best[k] || a.percent > best[k].percent) best[k] = a;
-  }
   const inProg = new Set(attempts.filter((a) => a.status === 'in_progress').map((a) => `${a.examId}|${a.gradeFilter || 'all'}`));
   const q = gf ? `?g=${gf}` : '';
   const scopeKey = (id) => `${id}|${gf || 'all'}`;
@@ -83,15 +102,19 @@ export async function renderHome({ app }) {
     </div>
     <div class="exam-grid">${index.map((e) => {
       const n = count(e);
-      const b = best[scopeKey(e.id)];
-      return `<a class="card exam-tile ${n ? '' : 'disabled'}" href="#/exam/${e.id}${q}">
+      return `<a class="card exam-tile ${n ? '' : 'disabled'}" href="${parent ? `#/preview/${e.id}` : `#/exam/${e.id}${q}`}">
       <div class="muted">${e.school_name}</div>
       <h2>${examTitle(e)} ${SUBJ[e.subject] || e.subject_label}</h2>
       ${e.schools ? `<div class="muted small">${e.schools.slice(0, 4).join('・')}${e.schools.length > 4 ? ` ほか${e.schools.length - 4}校` : ''}</div>` : ''}
       <div class="muted">${gf ? `小${gf}まで ${n} 問 <small>(全 ${e.item_count} 問)</small>` : `${e.item_count} 問 <small>(${gradeBreakdown(e)})</small>`} · ${e.time_limit_min} 分</div>
       <div style="margin-top:8px">
-        ${inProg.has(scopeKey(e.id)) ? '<span class="badge submitted">続きから</span> ' : ''}
-        ${b ? `<span class="badge graded">最高 ${b.score}/${b.max} (${b.percent}%)</span>` : '<span class="badge">未受験</span>'}
+        ${!parent && inProg.has(scopeKey(e.id)) ? '<span class="badge submitted">続きから</span> ' : ''}
+        ${kidStats.map(({ kid, best, tries }) => {
+          const b = best[scopeKey(e.id)];
+          return `<div class="kid-result">${kidStats.length > 1 ? `<small class="muted">${esc(kid.name)}</small> ` : ''}${b
+            ? `<span class="badge graded">最高 ${b.score}/${b.max} (${b.percent}%)</span>` : '<span class="badge">未受験</span>'}
+            ${tries[e.id] ? `<span class="muted small">${tries[e.id]}回</span>` : ''}</div>`;
+        }).join('')}
       </div></a>`;
     }).join('')}</div>`;
 

@@ -6,6 +6,7 @@ POST /api/grade   exam:     {examId, answers, itemIds?, gradeFilter?, manualGrad
 POST /api/stats   {attempts:[graded attempts]} -> topicStats summary (same shape as students/{uid}/topicStats/summary)
                   + suggestions per subject + goals (今週の目標, computed fresh: no weekly freeze locally)
 GET  /api/health
+GET  /api/answers/{examId} -> {items: {slotId: key}}   (answerKeys/{examId}; the parent's 試験一覧 preview)
 
 usage: python scripts/dev_server.py [port=8790]     (Vite proxies /api here when VITE_MOCK=1)
 """
@@ -97,6 +98,8 @@ class H(BaseHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         if self.path.startswith("/api/health"):
             return self._json(200, {"ok": True, "exams": len(INDEX), "items": len(BANK_ITEMS)})
+        if self.path.startswith("/api/answers/"):
+            return self._json(200, {"items": keys_for(self.path.rsplit("/", 1)[1].split("?")[0])})
         self._json(404, {"error": "not found"})
 
     def do_POST(self) -> None:  # noqa: N802

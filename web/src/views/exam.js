@@ -77,6 +77,27 @@ export function mergeDraft(serverAnswers, serverUpdatedAt, draft) {
   return { answers: { ...(serverAnswers || {}), ...draft.answers }, restored: true };
 }
 
+/**
+ * Working time on one sheet: counts while the tab is visible and the child is active; a gap of more than IDLE_MS
+ * without any input / scroll counts only up to IDLE_MS (left the desk). Carries on across sessions (start = saved sec).
+ */
+export const IDLE_MS = 10 * 60e3;
+export function activeTimer(startSec = 0, now = () => Date.now()) {
+  let ms = startSec * 1000;
+  let since = null;
+  let last = now();
+  const flush = () => {
+    const t = now();
+    if (since != null) { ms += Math.max(0, Math.min(t, last + IDLE_MS) - since); since = t; }
+  };
+  return {
+    show() { flush(); since = now(); last = since; },
+    hide() { flush(); since = null; },
+    touch() { flush(); last = now(); if (since == null) since = last; },
+    seconds() { flush(); return Math.round(ms / 1000); },
+  };
+}
+
 /** Group items into blocks: one block per (exam, 大問). */
 function blocks(items, banks) {
   const map = new Map();
@@ -151,6 +172,8 @@ async function renderSheet(app, sheet) {
   const answers = { ...merged.answers };
   let attemptId = sheet.attemptId;
   const startedAt = sheet.startedAt || new Date();
+  const timer = activeTimer(sheet.activeSec || 0);
+  if (document.visibilityState !== 'hidden') timer.show();
   app.innerHTML = `
     <div class="card"><h1>${sheet.title}</h1><div class="muted">${sheet.subtitle}</div></div>
     <form id="sheet" autocomplete="off">
@@ -194,20 +217,26 @@ async function renderSheet(app, sheet) {
   async function persist() {
     dirty = false; clearTimeout(saveTimer);
     const seen = edits;
-    await saveAnswers(await ensureAttempt(), answers);
+    await saveAnswers(await ensureAttempt(), answers, { activeSec: timer.seconds() });
     if (seen === edits) clearDraft(draftKey);
     savestate.textContent = '保存済み';
   }
   const persistSafe = () => persist().catch((e) => { dirty = true; savestate.textContent = '保存失敗'; console.error(e); });
   const scheduleSave = () => { dirty = true; clearTimeout(saveTimer); saveTimer = setTimeout(persistSafe, 800); };
   /** Leaving the page / hiding the tab: send pending edits now instead of waiting for the debounce. */
-  const flush = () => { if (dirty && !submitted) persistSafe(); };
+  // also when only the working time moved on (reading without typing): an attempt that already exists keeps it
+  const flush = () => { if ((dirty || attemptId) && !submitted) persistSafe(); };
   const onChange = () => {
+    timer.touch();
     collect(); edits++; writeDraft(draftKey, answers);
     savestate.textContent = '保存中…'; scheduleSave();
   };
   if (merged.restored) { savestate.textContent = '前回の入力を復元しました'; scheduleSave(); }
-  const onHide = () => { if (document.visibilityState === 'hidden') flush(); };
+  const onHide = () => {
+    if (document.visibilityState === 'hidden') { timer.hide(); flush(); } else timer.show();
+  };
+  const onActivity = () => timer.touch();
+  for (const ev of ['pointerdown', 'keydown', 'scroll', 'wheel', 'touchstart']) window.addEventListener(ev, onActivity, { passive: true });
   document.addEventListener('visibilitychange', onHide);
   window.addEventListener('pagehide', flush);
   form.addEventListener('input', onChange);
@@ -237,7 +266,7 @@ async function renderSheet(app, sheet) {
     btn.disabled = true; btn.textContent = '提出中…';
     try {
       clearTimeout(saveTimer);
-      await submitAttempt(await ensureAttempt(), answers);
+      await submitAttempt(await ensureAttempt(), answers, { activeSec: timer.seconds() });
       submitted = true; clearDraft(draftKey);
       clearInterval(tick);
       location.hash = `#/result/${attemptId}`;
@@ -249,6 +278,7 @@ async function renderSheet(app, sheet) {
   return () => {
     clearInterval(tick); flush(); clearTimeout(saveTimer);
     document.removeEventListener('visibilitychange', onHide);
+    for (const ev of ['pointerdown', 'keydown', 'scroll', 'wheel', 'touchstart']) window.removeEventListener(ev, onActivity);
     window.removeEventListener('pagehide', flush);
   };
 }
@@ -258,7 +288,7 @@ export async function renderExam({ app, user }, arg) {
   const { examId, gradeFilter } = parseExamArg(arg);
   const exam = await loadExam(examId);
   const items = selectItems(exam, gradeFilter);
-  if (!items.length) { app.innerHTML = `<div class="card">この試験には該当する問題がありません。<a href="#/">一覧へ</a></div>`; return; }
+  if (!items.length) { app.innerHTML = `<div class="card">この試験には該当する問題がありません。<a href="#/dashboard">ダッシュボードへ</a></div>`; return; }
   const itemIds = items.map((it) => slotId(it.id));
   const timeLimit = scaledTimeLimit(exam, items);
   const attempt = await findInProgress(examId, gradeFilter);
@@ -268,7 +298,7 @@ export async function renderExam({ app, user }, arg) {
     items, banks: { [examId]: exam }, keyOf: (it) => slotId(it.id), timeLimit, showExam: false,
     skipped: exam.items.filter((it) => !items.includes(it)), gradeFilter,
     attemptId: attempt ? attempt.id : null, answers: attempt?.answers, updatedAt: attempt?.updatedAt,
-    startedAt: attempt ? new Date(attempt.startedAt) : null, draftKey: `${user?.uid || 'anon'}:exam:${examId}:${gradeFilter || 'all'}`,
+    startedAt: attempt ? new Date(attempt.startedAt) : null, activeSec: attempt?.activeSec || 0, draftKey: `${user?.uid || 'anon'}:exam:${examId}:${gradeFilter || 'all'}`,
     createExtra: () => [examId, gradeFilter ? 'practice' : 'exam', { itemIds, gradeFilter, timeLimitMin: timeLimit }],
   });
 }
@@ -276,7 +306,7 @@ export async function renderExam({ app, user }, arg) {
 /** Cross-exam practice attempt created by the practice view: #/attempt/{attemptId} */
 export async function renderAttempt({ app, user }, attemptId) {
   const a = await getAttempt(attemptId);
-  if (!a) { app.innerHTML = '<div class="card">見つかりません。<a href="#/">一覧へ</a></div>'; return; }
+  if (!a) { app.innerHTML = '<div class="card">見つかりません。<a href="#/dashboard">ダッシュボードへ</a></div>'; return; }
   if (a.status !== 'in_progress') { location.hash = `#/result/${attemptId}`; return; }
   if (a.mode !== 'practice' || !a.items) { location.hash = `#/exam/${a.examId}${a.gradeFilter ? `?g=${a.gradeFilter}` : ''}`; return; }
   const all = await loadAllItems(a.subject || null);
@@ -287,7 +317,7 @@ export async function renderAttempt({ app, user }, attemptId) {
     title: `${esc(a.title || '練習')} ${a.gradeFilter ? `<span class="badge">小${a.gradeFilter}まで</span>` : ''}`,
     subtitle: `${items.length} 問 · ${[...new Set(items.map((i) => i.examLabel))].length} 回分の過去問から · 目安 ${timeLimit} 分`,
     items, banks: all.banks, keyOf: (it) => it.id, timeLimit, showExam: true,
-    attemptId, answers: a.answers, updatedAt: a.updatedAt, startedAt: new Date(a.startedAt),
+    attemptId, answers: a.answers, updatedAt: a.updatedAt, startedAt: new Date(a.startedAt), activeSec: a.activeSec || 0,
     draftKey: `${user?.uid || 'anon'}:attempt:${attemptId}`,
     createExtra: () => [null, 'practice', {}],
   });
