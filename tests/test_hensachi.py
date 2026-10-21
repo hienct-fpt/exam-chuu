@@ -60,3 +60,19 @@ def test_report_uses_own_school_papers_first_and_tracks_the_trend():
     assert set(shin["coverage"].values()) == {"other"}                  # no 品川 paper yet -> other results, flagged
     assert rep["assumptions"]["spread"] == 0.18
     assert hensachi_report([], META, SCHOOLS, PLAN, now)["sessions"][0]["estimate"] is None
+
+
+def test_kumiwake_hensachi_from_all_test_takers_average():
+    from hensachi import KUMIWAKE_POP, kumiwake_report
+    meta = {f"kumiwake_2026_r{r}_{s}": {"school": "kumiwake", "subject": s} for r in (1, 2) for s in ("math", "japanese", "science", "social")}
+    pop = {k: KUMIWAKE_POP[k] for k in meta}
+    attempts = [att(f"kumiwake_2026_r1_{s}", 60, "06-01") for s in ("math", "japanese", "science", "social")]
+    attempts += [att("kumiwake_2026_r1_math", 95, "06-20")]                  # a later retry does not count
+    attempts += [att("kumiwake_2026_r2_math", 70, "07-01")]
+    rep = kumiwake_report(attempts, meta, pop)
+    r1, r2 = rep["rounds"]
+    m = pop["kumiwake_2026_r1_math"]
+    assert r1["subjects"]["math"]["y"] == pytest.approx(50 + 10 * (120 - m["mean"]) / (0.18 * 200), abs=0.05)
+    assert r1["total"] is not None and r2["total"] is None                    # 4科 only with all four
+    assert "math" in rep["trend"] and "total" not in rep["trend"]
+    assert set(KUMIWAKE_POP["kumiwake_2026_r1_math"]) == {"max", "mean", "rows"}   # all-test-taker figures only

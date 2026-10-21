@@ -7,9 +7,19 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<
 const pct = (v) => (v == null ? '—' : `${Math.round(v * 100)}%`);
 const SUBJ = { math: '算数', japanese: '国語', science: '理科', social: '社会' };
 
-/** Average % of the last `n` graded 本番 / 範囲指定, and of the `n` before (for the trend). */
-export function examAverage(attempts, n = 5) {
-  const ex = attempts.filter((a) => a.status === 'graded' && ['exam', 'range'].includes(kindOf(a)))
+/** Subject of an attempt: stored on practice sets, else from its graded items, else from the exam id suffix. */
+export function subjectOfAttempt(a) {
+  if (a.subject) return a.subject;
+  const it = Object.values(a.result?.perItem || {}).find((x) => x.subject);
+  if (it) return it.subject;
+  const m = String(a.examId || '').match(/_(math|japanese|science|social)$/);
+  return m ? m[1] : null;
+}
+
+/** Average % of the last `n` graded 本番 / 範囲指定 (optionally one subject), and of the `n` before (for the trend). */
+export function examAverage(attempts, n = 5, subject = null) {
+  const ex = attempts.filter((a) => a.status === 'graded' && ['exam', 'range'].includes(kindOf(a))
+      && (!subject || subjectOfAttempt(a) === subject))
     .sort((x, y) => String(y.submittedAt || y.startedAt || '').localeCompare(String(x.submittedAt || x.startedAt || '')));
   const avg = (l) => (l.length ? l.reduce((s, a) => s + (a.percent || 0), 0) / l.length : null);
   return { now: avg(ex.slice(0, n)), before: avg(ex.slice(n, 2 * n)), count: Math.min(n, ex.length) };
@@ -31,6 +41,17 @@ const trend = (now, before) => {
   return d === 0 ? '<span class="kpi-trend">→ 前の5回と同じ</span>'
     : `<span class="kpi-trend ${d > 0 ? 'up' : 'down'}">${d > 0 ? '▲' : '▼'} ${Math.abs(d)}pt 前の5回より</span>`;
 };
+/** 本番の正答率 per subject: last-5 average and the change against the 5 before. */
+function subjectAverages(attempts) {
+  const rows = Object.entries(SUBJ).map(([k, label]) => [label, examAverage(attempts, 5, k)]).filter(([, a]) => a.now != null);
+  if (!rows.length) return '<div class="kpi-value">—</div><div class="kpi-sub">本番を解くと表示されます</div>';
+  return `<div class="kpi-subjects">${rows.map(([label, a]) => {
+    const d = a.before == null ? null : Math.round(a.now - a.before);
+    return `<div><span>${label}</span><b>${Math.round(a.now)}%</b><small class="${d > 0 ? 'up' : d < 0 ? 'down' : ''}">${d == null ? `${a.count}回`
+      : `${d > 0 ? '▲' : d < 0 ? '▼' : '→'}${Math.abs(d)}`}</small></div>`;
+  }).join('')}</div>`;
+}
+
 const bar = (v) => `<div class="kpi-bar"><div style="width:${Math.max(0, Math.min(100, Math.round(v * 100)))}%"></div></div>`;
 
 /** Four KPI cards: this week's time, 課題 done, recent 本番 average, gap to the final target. */
@@ -49,9 +70,8 @@ export function kpiCards(stats, attempts, { compact = false } = {}) {
     <div class="kpi"><div class="kpi-label">今週の課題</div>
       <div class="kpi-value">${doneN}<small> / ${items.length}</small></div>
       ${items.length ? `${bar(doneN / items.length)}<div class="kpi-sub">${doneN === items.length ? '✅ 完了' : `残り ${items.length - doneN}`}</div>` : ''}</div>
-    <div class="kpi"><div class="kpi-label">本番の正答率 <small>直近${avg.count || 0}回</small></div>
-      <div class="kpi-value">${avg.now == null ? '—' : `${Math.round(avg.now)}%`}</div>
-      <div class="kpi-sub">${trend(avg.now, avg.before)}</div></div>
+    <div class="kpi"><div class="kpi-label">本番の正答率 <small>教科ごと 直近5回</small></div>
+      ${subjectAverages(attempts)}</div>
     ${hensachiKpi(stats?.hensachi, gap, g)}
   </div>`;
 }
@@ -134,6 +154,50 @@ export function hensachiCard(h) {
       合格ライン上の点数＝四谷大塚 50% 偏差値、80% ライン＝合格可能性 80% になるように換算しています。受験生の点数の散らばり（各教科 満点の${Math.round((a.spread ?? 0.18) * 100)}%）、
       教科間の相関（${a.rho ?? 0.6}）、当日のぶれは公表されていないため仮定です。模試の偏差値とは別の参考値です。自校の過去問がない教科は他の問題の得点率で代用しています（「他」）。</p>
       ${h.source ? `<p>出典: ${esc(h.source)}</p>` : ''}</details>
+  </div>`;
+}
+
+/** 組分けテストの推定偏差値: per round 4科 + each subject, trend per round. Different population from the
+ * schools' 80% / 50% lines (合不合), so those are only mentioned, never drawn as if comparable. */
+export function kumiwakeCard(k) {
+  const rounds = k?.rounds || [];
+  if (!rounds.length) return '';
+  const cols = [['total', '4科'], ['math', '算数'], ['japanese', '国語'], ['science', '理科'], ['social', '社会']];
+  const val = (r, c) => (c === 'total' ? r.total : r.subjects[c]?.y);
+  const cell = (v) => (v == null ? '<td class="num muted">—</td>' : `<td class="num ${v >= 55 ? 'hi' : v < 45 ? 'lo' : ''}"><b>${v.toFixed(1)}</b></td>`);
+  const tr = k.trend || {};
+  const trendCell = (c) => (tr[c] == null ? '<td class="num muted">—</td>'
+    : `<td class="num ${tr[c] > 0 ? 'up' : tr[c] < 0 ? 'down' : ''}">${tr[c] > 0 ? '▲' : tr[c] < 0 ? '▼' : '→'} ${Math.abs(tr[c]).toFixed(1)}</td>`);
+  // chart: 4科 (or 算数 when no round has all four) per round
+  const key = rounds.some((r) => r.total != null) ? 'total' : 'math';
+  const pts = rounds.map((r) => [r, val(r, key)]).filter(([, v]) => v != null);
+  let chart = '';
+  if (pts.length >= 2) {
+    const W = 520, H = 160, L = 34, R = 20, T = 12, B = 24;
+    const ys = pts.map(([, v]) => v).concat([50]);
+    const lo = Math.floor(Math.min(...ys) - 3), hi = Math.ceil(Math.max(...ys) + 3);
+    const X = (i) => L + (W - L - R) * (i / (pts.length - 1));
+    const Y = (v) => T + (H - T - B) * (1 - (v - lo) / (hi - lo));
+    const ticks = [];
+    for (let v = Math.ceil(lo / 5) * 5; v <= hi; v += 5) ticks.push(v);
+    chart = `<figure class="viz"><figcaption>${key === 'total' ? '4科' : '算数'}の推定偏差値（組分け）</figcaption>
+      <svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="組分けの推定偏差値の推移">
+        ${ticks.map((v) => `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" class="grid"></line><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end" class="axis">${v}</text>`).join('')}
+        <line x1="${L}" x2="${W - R}" y1="${Y(50)}" y2="${Y(50)}" class="ref50"></line>
+        <polyline points="${pts.map(([, v], i) => `${X(i)},${Y(v)}`).join(' ')}" fill="none" stroke="#2563eb" stroke-width="2"></polyline>
+        ${pts.map(([r, v], i) => `<circle cx="${X(i)}" cy="${Y(v)}" r="4" fill="#2563eb" stroke="#fff" stroke-width="1.5"><title>第${r.round}回 ${v}</title></circle>
+          <text x="${X(i)}" y="${H - 6}" text-anchor="middle" class="axis">第${r.round}回</text>`).join('')}
+      </svg></figure>`;
+  }
+  return `<div class="card p-card hensachi-card"><h2>組分けテストの推定偏差値 <small class="muted">アプリでの得点 × 全受験者の正答率</small></h2>
+    <div class="table-scroll"><table><tr><th>回</th>${cols.map(([, l]) => `<th>${l}</th>`).join('')}</tr>
+      ${rounds.map((r) => `<tr><td>第${r.round}回 <small class="muted">${r.year}</small></td>${cols.map(([c]) => cell(val(r, c))).join('')}</tr>`).join('')}
+      <tr class="trend-row"><td>傾向 <small class="muted">1回あたり</small></td>${cols.map(([c]) => trendCell(c)).join('')}</tr></table></div>
+    ${chart}
+    <details class="small muted"><summary>この推定について</summary>
+      <p>組分けテストの結果表にある全受験者の正答率（各問の 配点 × 正答率）から平均点を出し、アプリで解いた最初の1回の得点と比べています。
+      点数の散らばりは公表されていないため満点の18%と仮定しています（教科間の相関 0.6）。本物の組分けの偏差値とは別の参考値です。
+      組分けの受験者（四谷大塚の生徒）は合不合判定テストより層が上なので、学校の 80% / 50% ライン（合不合の偏差値）とは直接比べられません。</p></details>
   </div>`;
 }
 

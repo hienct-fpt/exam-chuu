@@ -22,7 +22,7 @@ from analytics import outcomes, topic_stats, weekly_series, subject_summary, ite
 from goals import (exam_scores, history, next_week, plan_of, roadmap, topic_frequency, week_goals, week_start,
                    weekly_assignments, with_actuals)
 from grader import grade_submission, virtual_exam
-from hensachi import hensachi_report
+from hensachi import KUMIWAKE_POP, hensachi_report, kumiwake_report
 import goals as goals_mod
 
 initialize_app()
@@ -64,7 +64,7 @@ def refresh_topic_stats(db, uid: str) -> dict:
         "attemptCount": len(attempts),
         "goals": goals,
         "plan": plan_doc,
-        "hensachi": hensachi,
+        "hensachi": {**hensachi, "kumiwake": kumiwake_report(attempts, exams, KUMIWAKE_POP)},
     }
     db.document(f"students/{uid}/topicStats/summary").set(doc)
     return doc

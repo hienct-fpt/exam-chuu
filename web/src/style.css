@@ -293,3 +293,11 @@ details.subj > summary.subj-row::after { content: '▸'; color: #94a3b8; } detai
 .viz .ref50 { stroke: #b45309; stroke-dasharray: 2 4; }
 .viz text.ref80 { fill: #15803d; stroke: none; font-size: 11px; } .viz text.ref50 { fill: #b45309; stroke: none; font-size: 11px; }
 .kpi.dark .kpi-prob { color: #fde047; }
+/* 本番 per subject (KPI) + 組分け card */
+.kpi-subjects { display: grid; gap: 3px; margin-top: 6px; }
+.kpi-subjects > div { display: grid; grid-template-columns: 34px 44px 1fr; align-items: baseline; font-size: 13px; }
+.kpi-subjects b { font-size: 16px; } .kpi-subjects small { color: #64748b; font-weight: 700; }
+.kpi-subjects small.up { color: #15803d; } .kpi-subjects small.down { color: #b91c1c; }
+.hensachi-card td.hi b { color: #15803d; } .hensachi-card td.lo b { color: #b91c1c; }
+.hensachi-card td.up { color: #15803d; font-weight: 700; } .hensachi-card td.down { color: #b91c1c; font-weight: 700; }
+.hensachi-card tr.trend-row td { border-top: 2px solid #e2e8f0; }

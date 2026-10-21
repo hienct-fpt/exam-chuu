@@ -28,7 +28,9 @@ function route() {
   if (!user) { renderLogin(app, page, arg); return; }
   const to = roleRedirect(user, page);
   if (to) { location.replace(to); return; }
-  document.querySelectorAll('#topbar nav a').forEach((a) => a.classList.toggle('on', a.getAttribute('href') === `#/${page || ''}`));
+  // a tab is "on" for every URL of its page (#/practice/math, #/practice/social?weak=1 … all light up 練習)
+  const pageOf = (href) => (href.replace(/^#\/?/, '').split(/[/?]/)[0] || '');
+  document.querySelectorAll('#topbar nav a').forEach((a) => a.classList.toggle('on', pageOf(a.getAttribute('href')) === (page || '')));
   const run = ROUTES[page || ''];
   if (!run) { app.innerHTML = `<div class="card">ページが見つかりません。<a href="${user.admin ? '#/parent' : '#/dashboard'}">戻る</a></div>`; return; }
   Promise.resolve(run({ app, user }, arg)).then((c) => { cleanup = typeof c === 'function' ? c : null; })

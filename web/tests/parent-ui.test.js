@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { examAverage, targetGap, kpiCards, weakAnalysis, weekTimeline } from '../src/parent-ui.js';
 
-const ex = (t, percent, extra = {}) => ({ status: 'graded', examId: 'e', mode: 'exam', submittedAt: t, percent, ...extra });
+const ex = (t, percent, extra = {}) => ({ status: 'graded', examId: 'e_math', mode: 'exam', submittedAt: t, percent, ...extra });
 
 describe('保護者 KPI', () => {
   it('recent 本番 average and trend ignore practice sets', () => {

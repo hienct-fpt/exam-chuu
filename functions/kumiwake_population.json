@@ -1,0 +1,122 @@
+{
+ "kumiwake_2026_r6_math": {
+  "max": 200,
+  "mean": 101.9,
+  "rows": 25
+ },
+ "kumiwake_2026_r6_japanese": {
+  "max": 150,
+  "mean": 90.7,
+  "rows": 45
+ },
+ "kumiwake_2026_r6_science": {
+  "max": 100,
+  "mean": 48.5,
+  "rows": 36
+ },
+ "kumiwake_2026_r6_social": {
+  "max": 100,
+  "mean": 56.9,
+  "rows": 50
+ },
+ "kumiwake_2026_r1_math": {
+  "max": 200,
+  "mean": 104.2,
+  "rows": 25
+ },
+ "kumiwake_2026_r1_japanese": {
+  "max": 150,
+  "mean": 83.1,
+  "rows": 54
+ },
+ "kumiwake_2026_r1_science": {
+  "max": 100,
+  "mean": 60.9,
+  "rows": 35
+ },
+ "kumiwake_2026_r1_social": {
+  "max": 100,
+  "mean": 59.2,
+  "rows": 50
+ },
+ "kumiwake_2026_r2_math": {
+  "max": 200,
+  "mean": 108.2,
+  "rows": 26
+ },
+ "kumiwake_2026_r2_japanese": {
+  "max": 150,
+  "mean": 80.5,
+  "rows": 50
+ },
+ "kumiwake_2026_r2_science": {
+  "max": 100,
+  "mean": 62.8,
+  "rows": 35
+ },
+ "kumiwake_2026_r2_social": {
+  "max": 100,
+  "mean": 58.8,
+  "rows": 50
+ },
+ "kumiwake_2026_r3_math": {
+  "max": 200,
+  "mean": 108.8,
+  "rows": 25
+ },
+ "kumiwake_2026_r3_japanese": {
+  "max": 150,
+  "mean": 79.4,
+  "rows": 49
+ },
+ "kumiwake_2026_r3_science": {
+  "max": 100,
+  "mean": 51.7,
+  "rows": 35
+ },
+ "kumiwake_2026_r3_social": {
+  "max": 100,
+  "mean": 54.3,
+  "rows": 50
+ },
+ "kumiwake_2026_r4_math": {
+  "max": 200,
+  "mean": 105.6,
+  "rows": 26
+ },
+ "kumiwake_2026_r4_japanese": {
+  "max": 150,
+  "mean": 82.7,
+  "rows": 54
+ },
+ "kumiwake_2026_r4_science": {
+  "max": 100,
+  "mean": 62.2,
+  "rows": 35
+ },
+ "kumiwake_2026_r4_social": {
+  "max": 100,
+  "mean": 50.6,
+  "rows": 50
+ },
+ "kumiwake_2026_r5_math": {
+  "max": 200,
+  "mean": 108.3,
+  "rows": 25
+ },
+ "kumiwake_2026_r5_japanese": {
+  "max": 150,
+  "mean": 84.7,
+  "rows": 48
+ },
+ "kumiwake_2026_r5_science": {
+  "max": 100,
+  "mean": 51.9,
+  "rows": 36
+ },
+ "kumiwake_2026_r5_social": {
+  "max": 100,
+  "mean": 46.0,
+  "rows": 50
+ }
+}

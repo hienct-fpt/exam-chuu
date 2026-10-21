@@ -3,7 +3,7 @@ import { isMock, hasMockKid2, setMockKid2, currentUser, listChildren, listStuden
 import { weeklyChart } from './dashboard.js';
 import { goalCard } from './goals.js';
 import { activityLine, improvementCard } from '../activity.js';
-import { kpiCards, weakAnalysis, subjectBreakdown, hensachiCard } from '../parent-ui.js';
+import { kpiCards, weakAnalysis, subjectBreakdown, hensachiCard, kumiwakeCard } from '../parent-ui.js';
 import { childPicker, bindChildPicker, setSelectedChild } from '../children.js';
 
 // 保護者ページ (admin claim only): #/parent = grading queue + one card per child, #/parent/<uid> = one child's record.
@@ -195,6 +195,7 @@ async function renderChild(app, uid) {
     </div>
     ${kpiCards(stats, attempts)}
     ${hensachiCard(stats.hensachi)}
+    ${kumiwakeCard(stats.hensachi?.kumiwake)}
     <div class="p-grid">
       <div><div class="card p-card"><h2>週ごとの正答率</h2>${weeklyChart(stats.weekly) || '<p class="muted">データなし</p>'}</div>
         ${improvementCard(attempts)}

@@ -19,7 +19,9 @@ and the month the 80% line is reached at that pace.
 from __future__ import annotations
 
 import datetime as dt
+import json
 import math
+from pathlib import Path
 from statistics import NormalDist
 
 SPREAD = 0.18      # applicants' SD per subject as a share of its max (typical 中学入試 subject test)
@@ -27,6 +29,8 @@ RHO = 0.6          # correlation between subjects
 DAY_NOISE = 0.5    # child's exam-day variation, share of the applicants' total SD
 RECENT = 3         # latest whole exams per subject, weights 3:2:1
 Z80 = NormalDist().inv_cdf(0.8)
+POPULATION_FILE = Path(__file__).resolve().parent / "kumiwake_population.json"
+KUMIWAKE_POP = json.loads(POPULATION_FILE.read_text(encoding="utf-8")) if POPULATION_FILE.exists() else {}
 _N = NormalDist()
 
 
@@ -160,3 +164,51 @@ def hensachi_report(attempts: list[dict], exam_meta: dict[str, dict], schools: d
     return {"sessions": sessions,
             "assumptions": {"spread": SPREAD, "rho": RHO, "dayNoise": DAY_NOISE, "recent": RECENT},
             "source": (schools.get(plan.get("first")) or {}).get("_yotsuya_source")}
+
+
+# ---------------------------------------------------------------- 組分けテスト
+# kumiwake_population.json (pipeline/seitouritsu.py): all test-takers' average score per round and subject
+# (Σ 配点 × 正答率 of the 正答率一覧). 偏差値 = 50 + 10 · (score − mean) / SD with the same assumed SD (SPREAD × max).
+# The 組分け population (四谷大塚 students) is not the 合不合 one behind the schools' 80% / 50% lines: shown apart.
+def kumiwake_report(attempts: list[dict], exam_meta: dict[str, dict], population: dict) -> dict:
+    """{"rounds": [{round, year, subjects: {s: {y, pct, meanPct}}, total}], "trend": {s | "total": per round}}.
+    The FIRST graded whole attempt of each 組分け exam counts (closest to the real test; later ones are review)."""
+    first: dict[str, dict] = {}
+    for a in sorted(attempts, key=lambda a: str(a.get("submittedAt") or a.get("gradedAt") or "")):
+        eid = a.get("examId") or ""
+        meta = exam_meta.get(eid)
+        if (not meta or meta.get("school") != "kumiwake" or a.get("status") != "graded" or a.get("percent") is None
+                or a.get("items") or a.get("redoOf") or eid in first or eid not in population):
+            continue
+        first[eid] = a
+    rounds: dict[tuple[str, int], dict] = {}
+    for eid, a in first.items():
+        parts = eid.split("_")          # kumiwake_2026_r1_math
+        key = (parts[1], int(parts[2][1:]))
+        pop = population[eid]
+        sd = SPREAD * pop["max"]
+        score = a["percent"] / 100 * pop["max"]
+        r = rounds.setdefault(key, {"year": key[0], "round": key[1], "subjects": {}, "_raw": {}})
+        r["subjects"][parts[3]] = {"y": round(50 + 10 * (score - pop["mean"]) / sd, 1), "pct": a["percent"],
+                                   "meanPct": round(100 * pop["mean"] / pop["max"])}
+        r["_raw"][parts[3]] = (score, pop["mean"], sd)
+    out = []
+    for key in sorted(rounds):
+        r = rounds[key]
+        raw = r.pop("_raw")
+        r["total"] = None
+        if len(raw) == 4:                # 4科: sum of scores against the sum of means, correlated SD
+            sds = [v[2] for v in raw.values()]
+            sd_t = math.sqrt(sum(s * s for s in sds) + 2 * RHO * sum(sds[i] * sds[j] for i in range(4) for j in range(i + 1, 4)))
+            r["total"] = round(50 + 10 * (sum(v[0] for v in raw.values()) - sum(v[1] for v in raw.values())) / sd_t, 1)
+        out.append(r)
+    trend = {}
+    for k in ["total", "math", "japanese", "science", "social"]:
+        pts = [(i, (r["total"] if k == "total" else (r["subjects"].get(k) or {}).get("y"))) for i, r in enumerate(out)]
+        pts = [(i, y) for i, y in pts if y is not None]
+        if len(pts) >= 2:
+            mx = sum(i for i, _ in pts) / len(pts)
+            my = sum(y for _, y in pts) / len(pts)
+            den = sum((i - mx) ** 2 for i, _ in pts)
+            trend[k] = round(sum((i - mx) * (y - my) for i, y in pts) / den, 2) if den else None
+    return {"rounds": out, "trend": trend}

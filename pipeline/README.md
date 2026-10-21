@@ -17,6 +17,7 @@ Outputs in `pipeline/out/`:
 | `segments/{exam}.json` | 大問/小問 regions (page, y0, y1) |
 | `q/{exam}/*.png` | question crops (`q1.png` whole 大問, `q1_stem.png`, `q1-2.png` 小問); `x1.png` = 大問 1 解説 (組分け only, from 結果.pdf's 解答と解説 pages; shown on the result page after grading) |
 | `qtext/{exam}.json` | `{crop path: html}` for 算数・理科・社会 crops that are plain text (text layer, no figure / table / fraction). `build.py` ships it as `bank["texts"]`; the web shows the text instead of the PNG and `sync_assets.py` doesn't copy those PNGs. Common markup only: `<ruby>`, `<b>`, `<u>`, `<sup>/<sub>`, `.qbox` (framed word / empty blank), `.qframe` (framed paragraph), `.maru`, `em.kt` (傍点). Force a PNG with `overrides/qtext.json` `{"keep_image": ["q/{exam}/q2-3.png"]}` |
+| `functions/kumiwake_population.json` | `seitouritsu.py`: all test-takers' average per 組分け round × subject (Σ 配点 × 正答率 of the 正答率一覧, read left of the 結果 column only — the child's results are never extracted). Used by `functions/hensachi.py` for the 組分け 推定偏差値 |
 | `preview/qtext.html` | QA sheet for qtext: every text crop next to its PNG |
 | `pages/{exam}/` | full pages + `answer.png` for QA |
 | `preview/{exam}.html` | contact sheet for visual QA |
