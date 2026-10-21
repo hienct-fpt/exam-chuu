@@ -4,6 +4,7 @@ Outputs:
   out/bank/{exam_id}.json   public: exam meta, 大問 list, items WITHOUT answers (ships to Hosting)
   out/bank/index.json       list of exams (+ grade_counts)
   out/answers_all.json      secret: {item_id: {answer, variants, answer_type, parts, options}}  (-> Firestore answerKeys)
+  bank["texts"]             {crop path: html} for the crops qtext.py turned into text (the web shows it instead of the PNG)
 
 item_id = f"{exam_id}#{slot_id}"   slot_id = "1-1" / "1-7-2" / "2-1-1"
 Slot <-> question tree: the slot path is matched against node keys; the deepest matching node supplies the
@@ -97,7 +98,10 @@ def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
                          "grade": bt.get("grade"), "topic": unified_topic(bt.get("topic"), subj),
                          "topic_detail": bt.get("topic"), "bunya": bunya_for(bt.get("topic"), subj)})
     grade_counts = Counter(str(i["grade"] or "?") for i in items)
+    qtext = load_json(OUT / "qtext" / f"{eid}.json", {}) or {}
+    shown = {p for i in items for p in [i["image"], *i["stem_images"]]} | {b["stem_image"] for b in bigs_out}
     pub = {**{k: v for k, v in ex.items() if k != "files"}, "bigs": bigs_out, "items": items,
+           "texts": {p: h for p, h in qtext.items() if p in shown},
            "item_count": len(items), "grade_counts": dict(grade_counts),
            "manual_count": sum(1 for i in items if i["answer_type"] in ("manual", "essay"))}
     return pub, secret

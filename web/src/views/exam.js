@@ -1,4 +1,5 @@
 import { loadExam, loadAllItems, createAttempt, saveAnswers, submitAttempt, findInProgress, getAttempt, examTitle } from '../api.js';
+import { qimg } from '../qimg.js';
 
 const slotId = (itemId) => itemId.split('#')[1];
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -120,20 +121,20 @@ function renderBlock(b, answers, keyOf, showExam, skipped = [], gradeFilter = nu
     <div class="big-head"><span class="big-no">${b.big}</span><span class="muted">${b.items.length} 問</span>${topic}${tags}
       ${origin || showExam ? `<span style="margin-left:auto">${origin}${showExam ? ` <span class="muted small">${esc(b.examLabel)}</span>` : ''}</span>` : ''}</div>`;
   if (allShared && b.items.every((i) => i.image === b.items[0].image)) {
-    if (b.stem_image) html += `<img class="qimg" src="/${b.stem_image}" loading="lazy">`;
-    for (const st of b.items[0].stem_images || []) html += `<img class="qimg stem" src="/${st}" loading="lazy">`;
-    html += `<img class="qimg" src="/${b.items[0].image}" loading="lazy">
+    if (b.stem_image) html += qimg(b.stem_image);
+    for (const st of b.items[0].stem_images || []) html += qimg(st, 'qimg stem');
+    html += `${qimg(b.items[0].image)}
       <div class="item shared"><div>${b.items.map((it) => inputFor(it, keyOf(it), answers[keyOf(it)])).join('')}</div></div>`;
     return html + note + '</div>';
   }
-  if (b.stem_image) { html += `<img class="qimg" src="/${b.stem_image}" loading="lazy">`; shown.add(b.stem_image); }
+  if (b.stem_image) { html += qimg(b.stem_image); shown.add(b.stem_image); }
   let lastImage = null;
   for (const it of b.items) {
-    for (const st of it.stem_images || []) if (!shown.has(st)) { html += `<img class="qimg stem" src="/${st}" loading="lazy">`; shown.add(st); }
+    for (const st of it.stem_images || []) if (!shown.has(st)) { html += qimg(st, 'qimg stem'); shown.add(st); }
     const k = keyOf(it);
     if (it.shared_image && it.image === lastImage) html += `<div class="item shared"><div>${inputFor(it, k, answers[k])}</div></div>`;
-    else if (it.shared_image) html += `<img class="qimg" src="/${it.image}" loading="lazy"><div class="item shared"><div>${inputFor(it, k, answers[k])}</div></div>`;
-    else html += `<div class="item"><img class="qimg" src="/${it.image}" loading="lazy"><div>${inputFor(it, k, answers[k])}</div></div>`;
+    else if (it.shared_image) html += `${qimg(it.image)}<div class="item shared"><div>${inputFor(it, k, answers[k])}</div></div>`;
+    else html += `<div class="item">${qimg(it.image)}<div>${inputFor(it, k, answers[k])}</div></div>`;
     lastImage = it.image;
   }
   return html + note + '</div>';

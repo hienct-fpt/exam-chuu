@@ -1,4 +1,6 @@
 // Backend facade. Two implementations: Firebase (production) and mock (localStorage + scripts/dev_server.py).
+import { registerTexts } from './qimg.js';
+
 const MOCK = import.meta.env.VITE_MOCK === '1';
 
 let indexCache = null;
@@ -13,7 +15,9 @@ export async function loadExam(examId) {
   if (!bankCache.has(examId)) {
     const r = await fetch(`/bank/${examId}.json`, { cache: 'no-cache' });
     if (!r.ok) throw new Error(`exam not found: ${examId}`);
-    bankCache.set(examId, await r.json());
+    const bank = await r.json();
+    registerTexts(bank);
+    bankCache.set(examId, bank);
   }
   return bankCache.get(examId);
 }

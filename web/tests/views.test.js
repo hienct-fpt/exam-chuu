@@ -72,7 +72,11 @@ describe('mock api + views', () => {
     const inputs = app.querySelectorAll('input[data-sid]');
     const expected = exam.items.reduce((n, it) => n + (it.parts ? it.parts.length : 1), 0);
     expect(inputs.length).toBe(expected); // 23 items, two multi (AD/BC, 2 parts) -> 25 inputs
-    expect(app.querySelectorAll('img.qimg').length).toBeGreaterThan(20);
+    expect(app.querySelectorAll('.qimg').length).toBeGreaterThan(20); // PNG crops + crops shown as text
+    const textCrops = Object.keys(exam.texts || {});
+    expect(textCrops.length).toBeGreaterThan(0);
+    expect(app.querySelectorAll('div.qimg.qtext').length).toBeGreaterThan(0);
+    for (const p of textCrops) expect(app.querySelector(`img[src="/${p}"]`)).toBeNull();
     expect(app.querySelectorAll('#big-5 input[data-sid]').length).toBe(8); // あ〜く share one image
 
     // type answers

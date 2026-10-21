@@ -1,4 +1,5 @@
 import { loadExam, loadIndex, watchAttempt, currentUser, setManualGrade } from '../api.js';
+import { qimg } from '../qimg.js';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fmt = (v) => (Array.isArray(v) ? v.map((x) => x || '—').join(' / ') : (v === '' || v == null ? '—' : String(v)));
@@ -95,7 +96,7 @@ export async function renderResult({ app }, arg) {
             ${(it.pending || it.manual) && isAdmin ? `<div class="grade-btns"><button data-mg="1" data-sid="${sid}" class="${it.manual && it.correct ? 'primary' : ''}">○ 正解</button><button data-mg="0" data-sid="${sid}" class="${it.manual && !it.correct ? 'danger' : ''}">× 不正解</button></div>` : ''}
             ${it.pending && !isAdmin ? '<div class="hint warn">採点待ち</div>' : ''}</td>
           <td>${esc(fmt(it.expected))}${it.variants && it.variants.length ? ` <small class="muted">(${it.variants.map(esc).join(', ')})</small>` : ''}${it.note ? `<div class="hint">${esc(it.note)}</div>` : ''}${it.source?.url ? `<div class="hint"><a href="${esc(it.source.url)}" target="_blank" rel="noopener">解説 (${esc(it.source.site || 'source')})</a> <small class="muted">${esc(it.source.school || '')} ${it.source.year || ''}</small></div>` : ''}${explain[`${eidOf(it)}|${it.big}`] ? `<div class="hint"><button class="link" data-open-kx="${esc(`${eidOf(it)}|${it.big}`)}">解説を見る</button></div>` : ''}</td>
-          <td>${it.image ? `<img class="thumb" src="/${it.image}" loading="lazy" onclick="this.classList.toggle('open')">` : ''}</td>
+          <td class="qcell">${qimg(it.image, 'thumb')}</td>
         </tr>`).join('')}</table></div>
       ${explainCard(explain, bigKeys, isPractice ? examLabel : () => '')}`;
     for (const b of app.querySelectorAll('button[data-open-kx]')) {
@@ -104,6 +105,7 @@ export async function renderResult({ app }, arg) {
         if (d) { d.open = true; d.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       };
     }
+    for (const t of app.querySelectorAll('#items .thumb')) t.onclick = () => t.classList.toggle('open');
     app.querySelector('#onlywrong').onchange = (e) => {
       for (const tr of app.querySelectorAll('#items tr[data-ok]')) tr.style.display = e.target.checked && tr.dataset.ok === 'true' ? 'none' : '';
     };
