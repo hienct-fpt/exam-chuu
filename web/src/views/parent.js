@@ -201,6 +201,8 @@ async function renderChild(app, uid) {
         ${improvementCard(attempts)}
         <p class="muted small">今週の課題・全体計画・予定／実績のグラフは <a href="#/plan">計画</a> タブで見られます。</p></div>
       <div>${weakAnalysis(stats, attempts)}
+        <div class="card p-card"><h2>🎯 取るべき問題</h2><p class="muted small">組分けで正答率が高いのに落とした問題（偏差値に一番効く）</p>
+          <a class="button primary" href="#/toru/?uid=${encodeURIComponent(uid)}">一覧を見る</a></div>
         ${subjectBreakdown(stats, attempts)}
       </div>
     </div>

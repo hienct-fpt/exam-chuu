@@ -20,7 +20,8 @@ from render import node_name
 from bunya_map import bunya_for, unified_topic
 
 TAGS = ROOT / "pipeline" / "tags"
-EXPLANATIONS = ROOT / "pipeline" / "explanations"   # {exam_id}.json {"explanations": {slot_id: 解き方}} (official keys stay untouched)
+EXPLANATIONS = ROOT / "pipeline" / "explanations"
+POPULATION = ROOT / "functions" / "kumiwake_population.json"   # seitouritsu.py: 組分け 配点 / 正答率 per answer slot   # {exam_id}.json {"explanations": {slot_id: 解き方}} (official keys stay untouched)
 
 
 def load_tags(eid: str) -> tuple[dict, dict]:
@@ -43,6 +44,7 @@ def resolve(big: dict, path: list[str]) -> tuple[dict, list[str], list[dict], bo
 def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
     big_tags, item_tags = load_tags(eid)
     howto = (load_json(EXPLANATIONS / f"{eid}.json", {}) or {}).get("explanations", {})
+    rates = slot_rates(eid, ans["slots"])
     items: list[dict] = []
     secret: dict[str, dict] = {}
     bigs_out = []
@@ -88,6 +90,7 @@ def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
                 "topic_detail": tag.get("topic"), "difficulty": tag.get("difficulty"),
                 "bunya": bunya_for(tag.get("topic"), subj),
                 "note": s.get("note"),
+                **({"rate": rates[s["id"]]} if s["id"] in rates else {}),   # 正答率 % of all test-takers (組分け)
             })
             secret[iid] = {"answer": s.get("answer"), "variants": s.get("variants", []),
                            "answer_type": s.get("answer_type") or "text", "parts": s.get("parts"),
@@ -111,6 +114,17 @@ def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
            "item_count": len(items), "grade_counts": dict(grade_counts),
            "manual_count": sum(1 for i in items if i["answer_type"] in ("manual", "essay"))}
     return pub, secret
+
+
+def slot_rates(eid: str, slots: list[dict]) -> dict[str, float]:
+    """{slot id: 正答率 %} from the 正答率一覧 rows -- only when rows and slots line up (same count, same 配点)."""
+    pop = (load_json(POPULATION, {}) or {}).get(eid)
+    if not pop or "rates" not in pop:
+        return {}
+    if len(pop["rates"]) != len(slots) or pop["points"] != [s.get("points") for s in slots]:
+        print(f"[build] {eid}: 正答率一覧 rows do not match the answer slots, no rates")
+        return {}
+    return {s["id"]: r for s, r in zip(slots, pop["rates"])}
 
 
 def a_path(node: dict, big: dict, bno: int) -> list[str]:

@@ -4,7 +4,10 @@ Reads ONLY the 配点 and 正答率 columns of the 正答率一覧 pages of kumi
 the left of its 「結果」 header, so the child's own per-question results are never extracted. Only all-test-taker
 figures are written:
 
-  functions/kumiwake_population.json  {"kumiwake_2026_r1_math": {"max": 200, "mean": 128.4, "rows": 25}, ...}
+  functions/kumiwake_population.json  {"kumiwake_2026_r1_math": {"max": 200, "mean": 128.4, "rows": 25,
+                                        "points": [8, ...], "rates": [92.3, ...]}, ...}
+
+`rates` (正答率 % per row = per answer slot) become item["rate"] in build.py -> the 取るべき問題 list.
 
 mean = Σ 配点 × 正答率. A subject whose 配点 do not add up to its full marks is reported and skipped.
 (pipeline/kaisetsu.py still stops before these pages; this step needs nothing else from them.)
@@ -74,7 +77,9 @@ def main() -> None:
             if total != FULL[subject]:
                 print(f"[seitouritsu] {eid}: 配点 sum {total} != {FULL[subject]}, skipped")
                 continue
-            out[eid] = {"max": total, "mean": round(sum(p * r / 100 for p, r in rows), 1), "rows": len(rows)}
+            # points / rates per row (= per answer slot, in sheet order): build.py gives each item its 正答率
+            out[eid] = {"max": total, "mean": round(sum(p * r / 100 for p, r in rows), 1), "rows": len(rows),
+                        "points": [p for p, _ in rows], "rates": [r for _, r in rows]}
             print(f"[seitouritsu] {eid}: mean {out[eid]['mean']} / {total} ({len(rows)} rows)")
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"[seitouritsu] {len(out)} subject-rounds -> {OUT}")

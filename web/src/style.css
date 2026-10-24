@@ -133,6 +133,14 @@ details.exam-log table { margin-top: 6px; }
 .answer-key { padding: 6px 0 10px; border-bottom: 1px dashed var(--line); margin-bottom: 8px; }
 .answer-key b { color: var(--ok); }
 details.howto { margin-top: 6px; font-size: 13px; }
+.toru-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.toru-table { width: 100%; }
+.toru-table td:first-child { white-space: nowrap; color: var(--ng); }
+.toru-table td:nth-child(2), .toru-table td:nth-child(3) { white-space: nowrap; }
+.toru-table td.qcell { width: 55%; }
+.toru-table .thumb { max-width: 100%; }
+.toru-table .thumb.qtext { font-size: 13px; max-width: none; }
+.toru-th .chip { cursor: pointer; }
 tr.howto-row td { border-top: none; padding-top: 0; }
 details.howto summary { cursor: pointer; color: var(--accent); }
 details.howto > div { line-height: 1.7; padding-left: 4px; }

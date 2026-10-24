@@ -95,6 +95,12 @@ Each question is tagged with `grade` (5 = 小5までの内容で解ける, 6 = �
 Home screen toggle 「小5までの問題」 opens `#/exam/{id}?g=5`: only 小5 items, shorter time limit, graded on that subset.
 The result page shows 分野別 correctness so weak topics stand out. Edit tags, then `python pipeline/build.py && python scripts/sync_assets.py`.
 
+**取るべき問題** (`#/toru`, child; `#/toru/?uid=<child>` read-only for the parent): 組分け questions that ≥ N % of all
+test-takers got right (N = 40/50/60/70, default 50) but whose latest answer was wrong or blank — the points that cost the
+most 偏差値 — with one practice set per 教科. The 正答率 per question comes from the 正答率一覧 (`seitouritsu.py` keeps
+`points` / `rates` per row in `functions/kumiwake_population.json`, still read left of the 結果 column only); `build.py`
+puts it on each 組分け item as `rate` when the rows line up with the answer slots (same count, same 配点).
+
 ## 6. Subjects and answer types
 
 **解き方 (worked explanations)**: every 共立・品川・中央 question has one (1,588 total). Source: `pipeline/explanations/{exam_id}.json`

@@ -12,6 +12,7 @@ import { renderRedo } from './views/redo.js';
 import { roleRedirect } from './roles.js';
 import { renderPlan } from './views/plan.js';
 import { renderPreview } from './views/preview.js';
+import { renderToru } from './views/toru.js';
 
 const app = document.getElementById('app');
 const userBox = document.getElementById('user');
@@ -19,7 +20,8 @@ let user = null;
 let cleanup = null;
 
 const ROUTES = { '': renderHome, exam: renderExam, attempt: renderAttempt, result: renderResult, history: renderHistory,
-  dashboard: renderDashboard, practice: renderPractice, parent: renderParent, join: renderJoin, redo: renderRedo, plan: renderPlan, preview: renderPreview };
+  dashboard: renderDashboard, practice: renderPractice, parent: renderParent, join: renderJoin, redo: renderRedo, plan: renderPlan, preview: renderPreview,
+  toru: renderToru };
 
 function route() {
   if (cleanup) { cleanup(); cleanup = null; }

@@ -75,4 +75,8 @@ def test_kumiwake_hensachi_from_all_test_takers_average():
     assert r1["subjects"]["math"]["y"] == pytest.approx(50 + 10 * (120 - m["mean"]) / (0.18 * 200), abs=0.05)
     assert r1["total"] is not None and r2["total"] is None                    # 4科 only with all four
     assert "math" in rep["trend"] and "total" not in rep["trend"]
-    assert set(KUMIWAKE_POP["kumiwake_2026_r1_math"]) == {"max", "mean", "rows"}   # all-test-taker figures only
+    # all-test-taker figures only: totals + per-question 配点 / 正答率 (取るべき問題); never the child's 結果
+    e = KUMIWAKE_POP["kumiwake_2026_r1_math"]
+    assert set(e) == {"max", "mean", "rows", "points", "rates"}
+    assert len(e["points"]) == len(e["rates"]) == e["rows"] and sum(e["points"]) == e["max"]
+    assert all(isinstance(r, float) and 0 <= r <= 100 for r in e["rates"])

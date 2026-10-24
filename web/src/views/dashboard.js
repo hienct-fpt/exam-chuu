@@ -55,6 +55,9 @@ export async function renderDashboard({ app }) {
   const weakAll = Object.entries(topics).filter(([, t]) => t.weak).sort(([, a], [, b]) => a.mastery - b.mastery);
   app.innerHTML = `${top}
     ${weakTabs(topics, gradeQ)}
+    <div class="card kid-toru"><h2 class="kid-h">🎯 取るべき問題</h2>
+      <p>組分けテストで、みんなの半分以上が正解しているのに まちがえた問題だよ。ここを取れると偏差値が上がりやすい！</p>
+      <p><a class="button primary" href="#/toru">取るべき問題を見る</a></p></div>
     <details class="card kid-more"><summary>くわしく見る（目標・正答率・分野ごと）</summary>
     ${goalCard(stats.goals, { gradeQ })}
     <div class="card"><div>${activityLine(attempts)}</div>
