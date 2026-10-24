@@ -61,8 +61,11 @@ service cloud.firestore {
           && resource.data.status == 'in_progress'
           && request.resource.data.status in ['in_progress', 'submitted']
           && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['result', 'score', 'gradedAt', 'examId', 'startedAt', 'manualGrades', 'itemIds', 'gradeFilter']))
-          // Linked parent: ○/× on 記述・作図 only; the Cloud Function regrades.
-          || (isParentOf(uid) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['manualGrades', 'updatedAt']));
+          // After grading the student only tags why an answer was wrong (mistakes, no regrade).
+          || (isOwner(uid) && resource.data.status == 'graded'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['mistakes', 'updatedAt']))
+          // Linked parent: ○/× on 記述・作図 (the Cloud Function regrades) and the mistake tags.
+          || (isParentOf(uid) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['manualGrades', 'mistakes', 'updatedAt']));
         allow delete: if false;
       }
 

@@ -334,3 +334,46 @@ def test_focus_window_retakes_whole_papers(no_upcoming):
     assert r["retakes"] > 0 and any(i.get("retake") for w in focus_weeks for i in w["items"])
     assert not any(i.get("retake") for w in r["weeks"] if not ("2027-06-28" <= w["weekStart"] <= "2027-11-30") for i in w["items"])
     assert any(m["date"] == "2027-07-01" and m["label"].startswith("過去問集中") for m in r["milestones"])
+
+
+# ---------------------------------------------------------------- 今週の課題 weighted by the gap to the target
+def _unit(eid, subject, minutes, acc):
+    return {"kind": "review", "examId": eid, "subject": subject, "label": eid, "items": [f"{eid}#1-1"],
+            "minutes": minutes, "accuracy": acc}
+
+
+def test_subject_gaps_from_week_goals():
+    subs = {"math": {"target": 0.7, "level": 0.5}, "social": {"target": 0.6, "level": 0.65},
+            "science": {"target": 0.6, "level": None}}
+    assert goals.subject_gaps(subs) == {"math": 0.2, "social": 0.0}   # above target -> 0, no level -> left out
+
+
+def test_review_time_follows_the_gap():
+    units = [_unit("m1", "math", 20, 0.4), _unit("m2", "math", 20, 0.5), _unit("m3", "math", 20, 0.6),
+             _unit("s1", "social", 20, 0.1), _unit("s2", "social", 20, 0.2)]
+    plain = goals.pick_review(sorted(units, key=lambda u: u["accuracy"]), 60, None)
+    assert [u["examId"] for u in plain] == ["s1", "s2", "m1"]                # lowest accuracy first
+    weighted = goals.pick_review(units, 60, {"math": 0.25, "social": 0.0})
+    # math (gap 0.25) gets ~93% of the time; social is already at its target, its small floor share fits no unit
+    assert sorted(u["examId"] for u in weighted) == ["m1", "m2", "m3"]
+    both = goals.pick_review(units, 60, {"math": 0.2, "social": 0.2})
+    assert sorted(u["examId"] for u in both) == ["m1", "s1", "s2"]           # equal gaps -> half each (lowest accuracy)
+    sh = goals.review_shares({"math": 0.25, "social": 0.0}, ["math", "social"])
+    assert sh["math"] > 0.9 and sh["social"] > 0                              # the floor keeps social in
+    assert goals.review_shares({"math": 0.2}, ["math", "science"])["science"] == pytest.approx(0.5)   # no level = average
+
+
+def test_gap_order_keeps_sets_but_puts_the_biggest_gap_first():
+    meta = {f"k_{s}": {"school": "kyoritsu", "year": 2024, "session": "2-1", "subject": s} for s in ("math", "japanese", "science", "social")}
+    meta.update({f"n_{s}": {"school": "kyoritsu", "year": 2025, "session": "2-1", "subject": s} for s in ("math", "science")})
+    q = ["k_math", "k_japanese", "k_science", "k_social", "n_math", "n_science"]
+    out = goals.gap_order(q, meta, {"science": 0.3, "social": 0.1, "math": 0.0})
+    assert out == ["k_science", "k_social", "k_math", "k_japanese", "n_science", "n_math"]   # sets stay in order
+    assert goals.gap_order(q, meta, None) == q
+
+
+def test_weekly_assignments_report_gaps(no_upcoming):
+    meta = {"k_math": {"school": "kyoritsu", "year": 2024, "session": "2-1", "subject": "math", "item_count": 20, "time_limit_min": 50}}
+    a = goals.weekly_assignments([], [], meta, PLAN, MON, gaps={"math": 0.1})
+    assert a["gaps"] == {"math": 0.1} and a["reviewShares"] == {}
+    assert "gaps" not in goals.weekly_assignments([], [], meta, PLAN, MON)

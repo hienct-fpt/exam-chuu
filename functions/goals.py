@@ -23,6 +23,7 @@ from statistics import median
 
 JST = dt.timezone(dt.timedelta(hours=9))
 SUBJECTS = ("math", "japanese", "science", "social")
+GAP_FLOOR = 0.02      # やり直し share floor per subject (accuracy share added to its gap before weighting)
 CONFIG = json.loads((Path(__file__).resolve().parent / "schools.json").read_text(encoding="utf-8"))
 
 DEFAULT_TARGET = 0.70   # final target while the school's 合格点 is unknown (flagged 仮)
@@ -350,21 +351,78 @@ def retake_order(last: dict[str, tuple[dt.datetime, float]], exam_meta: dict[str
     return [r[3] for r in sorted(rows)]
 
 
+def subject_gaps(goal_subjects: dict | None) -> dict[str, float]:
+    """{subject: target − current level} (accuracy share, ≥ 0) from week_goals()["subjects"]; no level -> left out."""
+    return {s: round(max(0.0, v["target"] - v["level"]), 4) for s, v in (goal_subjects or {}).items()
+            if v.get("level") is not None and v.get("target") is not None}
+
+
+def review_shares(gaps: dict[str, float], subjects) -> dict[str, float]:
+    """Share of the やり直し time per subject ∝ its gap to the target (+ a small floor, so no subject with
+    wrong answers gets nothing; a subject without a level counts as the average gap)."""
+    known = [gaps[s] for s in subjects if s in gaps]
+    avg = sum(known) / len(known) if known else 0.0
+    w = {s: (gaps.get(s, avg) + GAP_FLOOR) for s in subjects}
+    tot = sum(w.values()) or 1.0
+    return {s: round(v / tot, 3) for s, v in w.items()}
+
+
+def pick_review(units: list[dict], minutes_budget: int, gaps: dict[str, float] | None) -> list[dict]:
+    """やり直し within the budget. Without gaps: lowest accuracy first. With gaps: each subject first gets its
+    gap-weighted share (its own units, lowest accuracy first), then the time left goes to the biggest gaps."""
+    if not gaps:
+        out, used = [], 0
+        for u in units:
+            if used + u["minutes"] <= minutes_budget:
+                out.append(u)
+                used += u["minutes"]
+        return out
+    shares = review_shares(gaps, sorted({u["subject"] for u in units}))
+    out, used, spent = [], 0, {}
+    for u in units:                                       # pass 1: each subject within its share
+        s = u["subject"]
+        if spent.get(s, 0) + u["minutes"] <= shares.get(s, 0) * minutes_budget and used + u["minutes"] <= minutes_budget:
+            out.append(u)
+            used += u["minutes"]
+            spent[s] = spent.get(s, 0) + u["minutes"]
+    rest = sorted((u for u in units if u not in out), key=lambda u: (-gaps.get(u["subject"], 0), u["accuracy"], u["examId"]))
+    for u in rest:                                        # pass 2: leftover time, biggest gap first
+        if used + u["minutes"] <= minutes_budget:
+            out.append(u)
+            used += u["minutes"]
+    return out
+
+
+def gap_order(queue: list[str], exam_meta: dict[str, dict], gaps: dict[str, float] | None) -> list[str]:
+    """Keep the queue order of the sets (組分け round / school year+回), but inside one set put the subject with the
+    biggest gap first — if the week's time runs out mid-set, the subject furthest from its target is not the one cut."""
+    if not gaps:
+        return queue
+    key = lambda e: (exam_meta[e].get("school"), exam_meta[e].get("year"), str(exam_meta[e].get("session")))
+    out, i = [], 0
+    while i < len(queue):
+        j = i
+        while j < len(queue) and key(queue[j]) == key(queue[i]):
+            j += 1
+        out += sorted(queue[i:j], key=lambda e: -gaps.get(exam_meta[e].get("subject"), 0))   # stable within ties
+        i = j
+    return out
+
+
 def weekly_assignments(outs: list[dict], attempts: list[dict], exam_meta: dict[str, dict], plan: dict,
-                       now: dt.datetime, created: dt.datetime | None = None) -> dict:
+                       now: dt.datetime, created: dt.datetime | None = None, gaps: dict[str, float] | None = None) -> dict:
     """This week's work within plan.weekly_minutes: やり直し up to review_share of the time, the rest new exams
-    in queue order (an unfinished assignment stays at the head of the queue next week)."""
+    in queue order (an unfinished assignment stays at the head of the queue next week). `gaps` (subject_gaps of the
+    week's goals) weights the やり直し time by each subject's gap to its target and orders subjects inside a set."""
     ws = week_start(now)
     g = grade_now(plan, ws)
     budget = plan["weekly_minutes"]
-    review, used = [], 0
-    for u in review_units(outs, exam_meta, g, ws):
-        if used + u["minutes"] <= round(budget * plan["review_share"]):
-            review.append(u)
-            used += u["minutes"]
+    units = review_units(outs, exam_meta, g, ws)
+    review = pick_review(units, round(budget * plan["review_share"]), gaps)
+    used = sum(u["minutes"] for u in review)
     done = done_exams(attempts, exam_meta, g)
     new, nused = [], 0
-    pending = [eid for eid in exam_queue(exam_meta, plan, ws) if eid not in done]
+    pending = gap_order([eid for eid in exam_queue(exam_meta, plan, ws) if eid not in done], exam_meta, gaps)
     for eid in pending:
         m = minutes(exam_meta[eid], filtered_count(exam_meta[eid], g) or exam_meta[eid].get("item_count") or 1)
         if used + nused + m > budget * OVERRUN and new:
@@ -381,9 +439,13 @@ def weekly_assignments(outs: list[dict], attempts: list[dict], exam_meta: dict[s
             new.append({"kind": "retake", "examId": eid, "subject": exam_meta[eid].get("subject"),
                         "label": label(exam_meta[eid]), "minutes": m})
             nused += m
-    return {"grade": g, "budget": budget, "items": new + review,
-            "remaining": len(pending) - len(new), "queue": len(pending),
-            "createdAt": (created or ws).isoformat()}
+    out = {"grade": g, "budget": budget, "items": new + review,
+           "remaining": len(pending) - len(new), "queue": len(pending),
+           "createdAt": (created or ws).isoformat()}
+    if gaps:   # shown on 今週の課題: why the やり直し time is split the way it is
+        out["gaps"] = gaps
+        out["reviewShares"] = review_shares(gaps, sorted({u["subject"] for u in units})) if units else {}
+    return out
 
 
 def assignment_status(assign: dict, attempts: list[dict], week_start_iso: str) -> list[bool]:
@@ -413,7 +475,8 @@ def next_week(goals_out: dict, outs: list[dict], attempts: list[dict], exam_meta
     if not all_done(goals_out):
         return None
     nws = dt.datetime.fromisoformat(goals_out["weekStart"]).replace(tzinfo=JST) + dt.timedelta(weeks=1)
-    asg = existing or weekly_assignments(outs, attempts, exam_meta, plan, nws, created=now)
+    asg = existing or weekly_assignments(outs, attempts, exam_meta, plan, nws, created=now,
+                                         gaps=subject_gaps(goals_out.get("subjects")))
     return {"weekStart": nws.date().isoformat(), "assignments": asg,
             "assignmentsDone": assignment_status(asg, attempts, nws.date().isoformat())}
 

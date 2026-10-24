@@ -142,6 +142,10 @@ details.howto { margin-top: 6px; font-size: 13px; }
 .toru-table .thumb.qtext { font-size: 13px; max-width: none; }
 .toru-th .chip { cursor: pointer; }
 .toru-gain { background: #ecfdf5; border-radius: 8px; padding: 8px 12px; }
+.mistake-pick { margin-top: 4px; } select.mistake { font-size: 12px; padding: 2px 4px; }
+.mistake-bars .mb-row { display: grid; grid-template-columns: 7em 1fr 2.5em 3em; gap: 8px; align-items: center; margin: 4px 0; }
+.mb-bar { background: #f1f5f9; border-radius: 4px; height: 12px; overflow: hidden; } .mb-bar i { display: block; height: 100%; }
+.mb-careless { background: #f59e0b; } .mb-knowledge { background: #3b82f6; } .mb-time { background: #8b5cf6; } .mb-hard { background: #94a3b8; }
 .sim-card table { width: auto; } .sim-card .up { color: var(--ok); font-weight: 600; }
 tr.howto-row td { border-top: none; padding-top: 0; }
 details.howto summary { cursor: pointer; color: var(--accent); }

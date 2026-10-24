@@ -107,6 +107,16 @@ the same estimate in the browser: "+N点 in this 教科" -> 推定偏差値 / �
 round the 偏差値 per point. The 取るべき問題 page shows what getting that list right would have done to the latest round.
 (Production summaries get the new fields on the child's next graded attempt.)
 
+**まちがいの原因**: on the result page every wrong / blank answer has a cause picker (ケアレスミス / 知らなかった / 時間切れ /
+むずかしすぎ) -> `attempt.mistakes.{sid}`. `firestore.rules` lets the student change only `mistakes` (+`updatedAt`) on a
+graded attempt and a linked parent `manualGrades` / `mistakes`; the grading trigger ignores it (regrades on manualGrades
+only). The parent's child page counts causes per 教科 (`web/src/mistakes.js`) with advice for the biggest one.
+
+**今週の課題 weighted by the gap**: `goals.weekly_assignments(..., gaps=subject_gaps(goals["subjects"]))` — the やり直し
+time is split per 教科 ∝ (target − level + 0.02) (`pick_review`: each 教科 within its share, leftover to the biggest
+gap); new exams keep the queue order of the sets but within one set the biggest gap goes first (`gap_order`). The
+assignments carry `gaps` / `reviewShares`, shown as 「やり直しの時間の配分」 under 今週の課題. No level yet -> no weighting.
+
 ## 6. Subjects and answer types
 
 **解き方 (worked explanations)**: every 共立・品川・中央 question has one (1,588 total). Source: `pipeline/explanations/{exam_id}.json`

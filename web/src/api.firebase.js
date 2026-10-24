@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut as fbSignOut, onAuthStateChanged } from 'firebase/auth';
 import {
   getFirestore, doc, collection, addDoc, setDoc, updateDoc, deleteDoc, getDoc, getDocs, onSnapshot,
-  query, where, orderBy, limit, serverTimestamp, Timestamp,
+  query, where, orderBy, limit, serverTimestamp, Timestamp, deleteField,
 } from 'firebase/firestore';
 import { getFunctions, httpsCallable } from 'firebase/functions';
 
@@ -84,6 +84,10 @@ export async function submitAttempt(attemptId, answers, meta = {}) {
 const activeOf = (meta) => (Number.isFinite(meta.activeSec) ? { activeSec: meta.activeSec } : {});
 export async function setManualGrade(attemptId, sid, correct, uid = null) {
   await updateDoc(attemptRef(attemptId, uid), { [`manualGrades.${sid}`]: correct, updatedAt: serverTimestamp() });
+}
+/** Why a wrong answer was wrong (まちがいの原因): mistakes.{sid} = careless | knowledge | time | hard, '' clears it. */
+export async function setMistake(attemptId, sid, cause, uid = null) {
+  await updateDoc(attemptRef(attemptId, uid), { [`mistakes.${sid}`]: cause || deleteField(), updatedAt: serverTimestamp() });
 }
 export function watchAttempt(attemptId, cb, uid = null) {
   return onSnapshot(attemptRef(attemptId, uid), (snap) => cb(snap.exists() ? norm(snap) : null));

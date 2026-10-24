@@ -19,8 +19,8 @@ from firebase_admin import auth, firestore, initialize_app
 from firebase_functions import firestore_fn, https_fn, options, scheduler_fn
 
 from analytics import outcomes, topic_stats, weekly_series, subject_summary, item_history
-from goals import (exam_scores, history, next_week, plan_of, roadmap, topic_frequency, week_goals, week_start,
-                   weekly_assignments, with_actuals)
+from goals import (exam_scores, history, next_week, plan_of, roadmap, subject_gaps, topic_frequency, week_goals,
+                   week_start, weekly_assignments, with_actuals)
 from grader import grade_submission, virtual_exam
 from hensachi import KUMIWAKE_POP, hensachi_report, kumiwake_report
 import goals as goals_mod
@@ -98,7 +98,7 @@ def current_goals(db, uid: str, attempts: list[dict], exams: dict, outs: list[di
     if data and "subjects" in data:
         goals = data
         if "assignments" not in goals:   # week frozen before 今週の課題 existed
-            goals["assignments"] = weekly_assignments(outs, attempts, meta, plan, ws)
+            goals["assignments"] = weekly_assignments(outs, attempts, meta, plan, ws, gaps=subject_gaps(goals.get("subjects")))
             ref.update({"assignments": goals["assignments"]})
     else:                                # new week (data = only the 課題 made early while working ahead)
         official = [d.to_dict() for d in db.collection(f"students/{uid}/kumiwakeScores").stream()]
@@ -109,7 +109,8 @@ def current_goals(db, uid: str, attempts: list[dict], exams: dict, outs: list[di
         prev = db.document(f"students/{uid}/weeklyGoals/{(ws - dt.timedelta(weeks=1)).date().isoformat()}").get()
         goals = week_goals(outs, exam_scores(attempts, exams, plan, official), stats, topic_frequency(items, plan), plan,
                            ws, prev.to_dict() if prev.exists else None)
-        goals["assignments"] = (data or {}).get("assignments") or weekly_assignments(outs, attempts, meta, plan, ws)
+        goals["assignments"] = (data or {}).get("assignments") or weekly_assignments(
+            outs, attempts, meta, plan, ws, gaps=subject_gaps(goals.get("subjects")))
         ref.set(goals)
     out = with_actuals(goals, outs, attempts)
     nws = (ws + dt.timedelta(weeks=1)).date().isoformat()

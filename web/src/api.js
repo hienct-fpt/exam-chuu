@@ -38,7 +38,7 @@ export const { onAuth, signIn, signOut, currentUser, createAttempt, saveAnswers,
   watchAttempt, getAttempt, listAttempts, findInProgress, getTopicStats,
   listChildren, listMyParents, listStudentAttempts, listPendingAttempts,
   createInvite, listInvites, deleteInvite, redeemInvite, unlinkChild,
-  signInWithLoginId, createChildAccount, resetChildPassword, getAnswerKey } = impl;
+  signInWithLoginId, createChildAccount, resetChildPassword, getAnswerKey, setMistake } = impl;
 export const isMock = MOCK;
 export const setMockRole = impl.setMockRole || (() => {});
 export const hasMockKid2 = impl.hasMockKid2 || (() => false);

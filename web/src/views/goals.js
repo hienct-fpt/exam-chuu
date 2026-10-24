@@ -64,7 +64,18 @@ export function assignmentList(goals, { links = true } = {}) {
   return `<h3>今週の課題 <small class="muted">${doneMin} / ${total}分（目安 ${Math.round(asg.budget / 60 * 10) / 10}時間）</small></h3>
     ${taskList(asg, done, links)}${ahead}
     <p class="muted small">新しい問題：組分け → ${esc(goals.firstName)}・${esc(goals.secondName)}の過去問（古い年度から）→ 併願校の順。各校の最新年度は直前期用に残します。
-      やり直し：前に解いた回の間違い・未回答だけをもう一度。残り ${asg.remaining} 回分${asg.grade ? `（小${asg.grade}までの問題）` : ''}。</p>`;
+      やり直し：前に解いた回の間違い・未回答だけをもう一度。残り ${asg.remaining} 回分${asg.grade ? `（小${asg.grade}までの問題）` : ''}。</p>
+    ${gapLine(asg)}`;
+}
+
+/** Why the やり直し time is split this way: share per 教科 ∝ its gap to the target (goals.py pick_review). */
+export function gapLine(asg) {
+  const sh = asg?.reviewShares || {};
+  const ks = Object.keys(SUBJ).filter((k) => sh[k] != null).sort((a, b) => sh[b] - sh[a]);
+  if (!ks.length) return '';
+  const gap = (k) => (asg.gaps?.[k] != null ? `目標まで ${Math.round(asg.gaps[k] * 100)}pt` : '目標データなし');
+  return `<p class="small gap-line">⚖️ やり直しの時間の配分：${ks.map((k) => `<b>${SUBJ[k]} ${Math.round(sh[k] * 100)}%</b> <small class="muted">(${gap(k)})</small>`).join('・')}
+    — 目標との差が大きい教科を多めにしています。同じ年度の教科は差が大きい順に出します。</p>`;
 }
 
 export function goalCard(goals, { gradeQ = '', practice = true, tasks = true } = {}) {

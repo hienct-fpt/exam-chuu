@@ -2,6 +2,7 @@
 import { weekSeconds } from './kid.js';
 import { kindOf, practiceImprovement } from './activity.js';
 import { duration } from './views/parent.js';
+import { gapLine } from './views/goals.js';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const pct = (v) => (v == null ? '—' : `${Math.round(v * 100)}%`);
@@ -254,6 +255,6 @@ export function weekTimeline(goals) {
   return `<div class="card p-card"><h2>今週の課題</h2><div class="timeline">${asg.items.map((it, i) => `
     <div class="tl-row ${done[i] ? 'done' : ''}"><span class="tl-dot"></span>
       <div><div class="tl-meta">${KIND[it.kind] || ''} · ${it.minutes}分</div>
-        <div class="tl-title">${done[i] ? '✅ ' : ''}${esc(it.label)}</div></div></div>`).join('')}</div></div>`;
+        <div class="tl-title">${done[i] ? '✅ ' : ''}${esc(it.label)}</div></div></div>`).join('')}</div>${gapLine(asg)}</div>`;
 }
 

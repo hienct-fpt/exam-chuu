@@ -62,6 +62,14 @@ export async function setManualGrade(id, sid, correct) {
   save(all);
   await gradeNow(id);
 }
+export async function setMistake(id, sid, cause) {
+  const all = load();
+  const m = { ...(all[id].mistakes || {}) };
+  if (cause) m[sid] = cause; else delete m[sid];
+  all[id].mistakes = m;
+  save(all);
+  notify(id);
+}
 // Mock has a single local student; the `uid` args of the parent views are accepted and ignored.
 // Invite codes + the link flag live in localStorage, so dev:mock (parent) and dev:mock:student share them.
 const INV = 'exam-chuu.invites', LINK = 'exam-chuu.linked';
