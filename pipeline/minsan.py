@@ -239,7 +239,9 @@ def ai_key(it: dict, ai: dict | None) -> tuple[dict, dict]:
 def build() -> None:
     items: dict[str, dict] = load_json(MS / "items.json", {}) or {}
     ai_results: dict[str, dict] = load_json(MS / "ai" / "results.json", {}) or {}
-    usable = [it for it in items.values() if it.get("grade") and (PNG / f"{it['id']}.png").exists()]
+    exclude = load_json(ROOT / "pipeline" / "overrides" / "minsan_exclude.json", {}) or {}   # already in a school exam
+    usable = [it for it in items.values() if it.get("grade") and (PNG / f"{it['id']}.png").exists()
+              and it["id"] not in exclude]
     skipped = len(items) - len(usable)
     for f in (OUT / "bank").glob("minsan_*.json"):   # regrouping changes exam ids -> drop stale sets
         f.unlink()
@@ -286,7 +288,7 @@ def build() -> None:
         print(f"[minsan] {ylabel}: {len(lst)} items -> {k} sets", flush=True)
     dump_json(MS / "answers.json", answers)
     print(f"[minsan] {len(answers)} items in {n_sets} sets ({SET_MINUTES} min, <= {SET_SIZE} problems), "
-          f"skipped {skipped} (no grade / no png) -> run python pipeline/build.py to refresh index / answers_all", flush=True)
+          f"skipped {skipped} (no grade / no png / in minsan_exclude) -> run python pipeline/build.py to refresh index / answers_all", flush=True)
 
 
 def main() -> None:
