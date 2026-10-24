@@ -4,6 +4,7 @@ import { weeklyChart } from './dashboard.js';
 import { goalCard } from './goals.js';
 import { activityLine, improvementCard } from '../activity.js';
 import { kpiCards, weakAnalysis, subjectBreakdown, hensachiCard, kumiwakeCard } from '../parent-ui.js';
+import { simulatorCard, bindSimulator } from '../simulator.js';
 import { childPicker, bindChildPicker, setSelectedChild } from '../children.js';
 
 // 保護者ページ (admin claim only): #/parent = grading queue + one card per child, #/parent/<uid> = one child's record.
@@ -196,6 +197,7 @@ async function renderChild(app, uid) {
     ${kpiCards(stats, attempts)}
     ${hensachiCard(stats.hensachi)}
     ${kumiwakeCard(stats.hensachi?.kumiwake)}
+    ${simulatorCard(stats.hensachi)}
     <div class="p-grid">
       <div><div class="card p-card"><h2>週ごとの正答率</h2>${weeklyChart(stats.weekly) || '<p class="muted">データなし</p>'}</div>
         ${improvementCard(attempts)}
@@ -212,6 +214,7 @@ async function renderChild(app, uid) {
       ${attemptLog(uid, groups)}
     </div>`;
   bindChildPicker(app);
+  bindSimulator(app, stats.hensachi);
   const pw = app.querySelector('#reset-pw');
   if (pw) pw.onclick = async () => {
     const p = prompt(`${s.name} の新しいパスワード (6文字以上)`);

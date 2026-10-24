@@ -80,3 +80,17 @@ def test_kumiwake_hensachi_from_all_test_takers_average():
     assert set(e) == {"max", "mean", "rows", "points", "rates"}
     assert len(e["points"]) == len(e["rates"]) == e["rows"] and sum(e["points"]) == e["max"]
     assert all(isinstance(r, float) and 0 <= r <= 100 for r in e["rates"])
+
+
+def test_report_exports_what_the_simulator_needs():
+    """web/src/simulator.js recomputes the estimate from model + levels: same 偏差値 / 合格可能性 as estimate()."""
+    from statistics import NormalDist
+    now = dt.datetime(2026, 10, 1, tzinfo=dt.timezone.utc)
+    attempts = [att(f"k2026_{s}", p, "09-20") for s, p in (("math", 60), ("japanese", 70), ("science", 55), ("social", 65))]
+    x = next(s for s in hensachi_report(attempts, META, SCHOOLS, PLAN, now)["sessions"] if s["estimate"])
+    m, lv = x["model"], x["levels"]
+    score = sum(lv[s] * mx for s, mx in m["max"].items())
+    z = (score - m["line"]) / m["sigmaC"]
+    y = x["y50"] + (x["y80"] - x["y50"]) / Z80 * z
+    assert y == pytest.approx(x["estimate"]["y"], abs=0.06)
+    assert NormalDist().cdf(z) == pytest.approx(x["estimate"]["prob"], abs=0.002)

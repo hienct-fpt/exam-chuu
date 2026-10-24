@@ -160,6 +160,10 @@ def hensachi_report(attempts: list[dict], exam_meta: dict[str, dict], schools: d
                 "estimate": cur, "series": series, "trendPerMonth": slope, "reach80": reach,
                 "coverage": {s: (lv[s][1] if s in lv else None) for s in model["subjects"]},
                 "first": school == plan.get("first"),
+                # for the 偏差値シミュレーター (web/src/simulator.js recomputes estimate() with added points)
+                "model": {"max": {s: v["max"] for s, v in model["subjects"].items()}, "line": round(model["line"], 2),
+                          "sigmaC": round(DAY_NOISE * model["sd_total"], 3)},
+                "levels": {s: round(lv[s][0], 4) for s in lv},
             })
     return {"sessions": sessions,
             "assumptions": {"spread": SPREAD, "rho": RHO, "dayNoise": DAY_NOISE, "recent": RECENT},
@@ -190,7 +194,8 @@ def kumiwake_report(attempts: list[dict], exam_meta: dict[str, dict], population
         score = a["percent"] / 100 * pop["max"]
         r = rounds.setdefault(key, {"year": key[0], "round": key[1], "subjects": {}, "_raw": {}})
         r["subjects"][parts[3]] = {"y": round(50 + 10 * (score - pop["mean"]) / sd, 1), "pct": a["percent"],
-                                   "meanPct": round(100 * pop["mean"] / pop["max"])}
+                                   "meanPct": round(100 * pop["mean"] / pop["max"]),
+                                   "max": pop["max"], "sd": round(sd, 2), "examId": eid}
         r["_raw"][parts[3]] = (score, pop["mean"], sd)
     out = []
     for key in sorted(rounds):
@@ -201,6 +206,7 @@ def kumiwake_report(attempts: list[dict], exam_meta: dict[str, dict], population
             sds = [v[2] for v in raw.values()]
             sd_t = math.sqrt(sum(s * s for s in sds) + 2 * RHO * sum(sds[i] * sds[j] for i in range(4) for j in range(i + 1, 4)))
             r["total"] = round(50 + 10 * (sum(v[0] for v in raw.values()) - sum(v[1] for v in raw.values())) / sd_t, 1)
+            r["sdTotal"] = round(sd_t, 2)
         out.append(r)
     trend = {}
     for k in ["total", "math", "japanese", "science", "social"]:

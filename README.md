@@ -101,6 +101,12 @@ most 偏差値 — with one practice set per 教科. The 正答率 per question 
 `points` / `rates` per row in `functions/kumiwake_population.json`, still read left of the 結果 column only); `build.py`
 puts it on each 組分け item as `rate` when the rows line up with the answer slots (same count, same 配点).
 
+**偏差値シミュレーター** (parent's child page): `hensachi_report` also exports each target 回's model (max per 教科, pass
+line, sigmaC) and the child's level per 教科, and `kumiwake_report` the max / SD per 教科 — `web/src/simulator.js` recomputes
+the same estimate in the browser: "+N点 in this 教科" -> 推定偏差値 / 合格可能性, points to the 80% line, and per 組分け
+round the 偏差値 per point. The 取るべき問題 page shows what getting that list right would have done to the latest round.
+(Production summaries get the new fields on the child's next graded attempt.)
+
 ## 6. Subjects and answer types
 
 **解き方 (worked explanations)**: every 共立・品川・中央 question has one (1,588 total). Source: `pipeline/explanations/{exam_id}.json`

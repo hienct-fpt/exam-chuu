@@ -1,5 +1,6 @@
 import { getTopicStats, loadAllItems, createAttempt, currentUser } from '../api.js';
 import { qimg } from '../qimg.js';
+import { kumiwakeSim, toruPoints } from '../simulator.js';
 
 // 取るべき問題: #/toru (child) / #/toru?uid=<child> (parent, read-only)
 // 組分け questions that most test-takers got right (正答率 ≥ threshold, from the 正答率一覧 via build.py item.rate)
@@ -46,12 +47,25 @@ export async function renderToru({ app }, arg) {
     const list = toruList(stats.itemHistory, items, threshold);
     const subs = ORDER.filter((k) => list[k]?.length);
     const total = subs.reduce((n, k) => n + list[k].length, 0);
+    const rounds = stats.hensachi?.kumiwake?.rounds || [];
+    const last = rounds[rounds.length - 1];
+    let gain = '';
+    if (last) {
+      const pts = toruPoints(last, list), now = kumiwakeSim(last), then = kumiwakeSim(last, pts);
+      const got = Object.values(pts).reduce((a, b) => a + b, 0);
+      if (now && then && got) {
+        gain = then.total != null && last.total != null
+          ? `第${last.round}回のこの問題をぜんぶ取れていたら：4科の偏差値 <b>${last.total.toFixed(1)} → ${then.total.toFixed(1)}</b>（+${got}点）`
+          : `第${last.round}回のこの問題をぜんぶ取れていたら：${Object.entries(pts).filter(([, p]) => p).map(([s, p]) => `${SUBJ[s]} ${last.subjects[s].y.toFixed(1)} → <b>${then.subjects[s].toFixed(1)}</b>（+${p}点）`).join('、')}`;
+      }
+    }
     app.innerHTML = `
       <div class="card">
         ${uid ? `<p><a href="#/parent/${encodeURIComponent(uid)}">← 生徒の記録へ</a></p>` : ''}
         <h1>🎯 取るべき問題</h1>
         <p>組分けテストで、受験者の<b>${threshold}%以上が正解</b>しているのに、前回まちがえた（または空らんだった）問題です。
           ここを取れるようになると、偏差値がいちばん上がりやすくなります。</p>
+        ${gain ? `<p class="toru-gain">📈 ${gain}</p>` : ''}
         <p class="toru-th">正答率 ${THRESHOLDS.map((t) => `<button class="chip ${t === threshold ? 'on' : ''}" data-th="${t}">${t}%以上</button>`).join(' ')}
           <span class="muted">· ${total}問</span></p>
         ${readOnly ? '<p class="hint">練習はお子さんの画面の「取るべき問題」から始められます。</p>' : ''}

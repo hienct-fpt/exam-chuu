@@ -141,6 +141,8 @@ details.howto { margin-top: 6px; font-size: 13px; }
 .toru-table .thumb { max-width: 100%; }
 .toru-table .thumb.qtext { font-size: 13px; max-width: none; }
 .toru-th .chip { cursor: pointer; }
+.toru-gain { background: #ecfdf5; border-radius: 8px; padding: 8px 12px; }
+.sim-card table { width: auto; } .sim-card .up { color: var(--ok); font-weight: 600; }
 tr.howto-row td { border-top: none; padding-top: 0; }
 details.howto summary { cursor: pointer; color: var(--accent); }
 details.howto > div { line-height: 1.7; padding-left: 4px; }
