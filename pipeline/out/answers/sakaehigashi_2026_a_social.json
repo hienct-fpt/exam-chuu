@@ -1,76 +1,103 @@
 {
+  "exam_id": "sakaehigashi_2026_a_social",
   "slots": [
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "1-1",
       "big": 1,
       "label": "問1",
       "unit": "",
-      "options": null,
       "parts": [
-        {
-          "label": "A",
-          "answer": null
-        },
-        {
-          "label": "B",
-          "answer": null
-        },
-        {
-          "label": "C",
-          "answer": null
-        },
-        {
-          "label": "D",
-          "answer": null
-        }
+        "A",
+        "B",
+        "C",
+        "D"
       ],
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": [
+        "平野",
+        "川",
+        "山地",
+        "島"
+      ],
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "石狩|石狩平野",
+        "十勝|十勝川",
+        "北見|北見山地",
+        "国後|国後島"
+      ],
       "variants": [],
-      "note": "地図中のA(平野)・B(河川)・C(山地)・D(島)の名称をそれぞれ漢字で答える(北海道の地形)。模範解答なしのため保護者採点。"
+      "note": "解答欄に「平野」「川」「山地」「島」が印刷されている。",
+      "explanation": "地図の位置から北海道の地形を答えます。\nA 旭川の方から日本海へ流れる石狩川の下流に広がる平野 → 石狩平野。\nB 中央の山から南東へ流れ、太平洋に注ぐ川 → 十勝川(下流は十勝平野)。\nC 旭川の北東にある、北西から南東へのびる山地 → 北見山地。\nD 知床半島の東にある細長い島(北方領土) → 国後島。そのさらに北東の大きな島が択捉島です。\n答え A 石狩 B 十勝 C 北見 D 国後",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "1-2",
       "big": 1,
       "label": "問2",
       "unit": "",
-      "options": null,
       "parts": [
-        {
-          "label": "あ",
-          "answer": null
-        },
-        {
-          "label": "い",
-          "answer": null
-        }
+        "あ",
+        "い"
       ],
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "泥炭地|泥炭",
+        "客土"
+      ],
       "variants": [],
-      "note": "A平野(石狩平野)の土壌改良に関する説明文中の空欄「あ」「い」にあてはまる語句を漢字で答える。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "石狩平野の土地改良の話です。\nあ 植物がくさりきらずにたまった、水はけが悪く栄養の少ない土地 → 泥炭地。\nい ほかの土地から良い土を運び入れること → 客土。\n客土と排水路・かんがいで、石狩平野は米どころになりました。\n答え あ 泥炭地 い 客土",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "1-3",
       "big": 1,
       "label": "問3",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "ウ",
       "variants": [],
-      "note": "留萌・旭川・釧路のいずれかの雨温図(ア~ウ)のうち「留萌」にあてはまるものを記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "留萌は日本海側なので、冬の北西の季節風で雪が多く、冬(11〜1月)の降水量が多くなります。\nイ 夏も20℃に届かずすずしく、冬の降水が少ない → 太平洋側で夏に霧が出る釧路。\nア 冬の気温が最も低い(1月-7℃くらい)→ 内陸の旭川。\nウ 冬の降水量が多く(11月は約140mm)、冬の気温はアより高め → 留萌。\n答え ウ",
+      "unofficial": true,
+      "ai_confidence": "medium"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "1-4",
       "big": 1,
       "label": "問4",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
@@ -79,34 +106,50 @@
         "オ",
         "カ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "ア",
       "variants": [],
-      "note": "カレーライスに使う野菜(たまねぎ・にんじん・ばれいしょ)の収穫量上位県の表からE・Fの組み合わせを記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "1位はどれも北海道なので、2〜4位で見分けます。\nE 兵庫(淡路島)・佐賀 → たまねぎ。\nF 千葉・徳島・青森 → にんじん。\nG 長崎・鹿児島 → ばれいしょ(じゃがいも)。\n答え ア",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "1-5",
       "big": 1,
       "label": "問5",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "エ",
       "variants": [],
-      "note": "都道府県別製造品出荷額等割合のグラフ(ア~エ)のうち「北海道」にあてはまるものを記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "北海道は農業・漁業がさかんなので、食料品の割合がとても高くなります。\nエ 食料品35.9%、石油・石炭製品(室蘭・苫小牧)、鉄鋼(室蘭)→ 北海道。\nア 食料品・電子部品・飲料飼料 → 宮崎。\nイ 輸送用機械が34.7% → 自動車工業の群馬。\nウ 石油・化学・鉄鋼 → 京葉工業地域の千葉。\n答え エ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "1-6",
       "big": 1,
       "label": "問6",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
@@ -115,283 +158,419 @@
         "オ",
         "カ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "ア",
       "variants": [],
-      "note": "漁港別水揚げ量の移り変わりグラフのあ~う(釧路・銚子・焼津)の組み合わせを記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "1980年代はイワシが大量にとれ、北の釧路は100万トン以上と日本一でした。その後イワシが減って急に落ちこみました → あ 釧路。\n銚子も80年代にイワシで増え、今は水揚げ量日本一(2020年ごろ約28万トン)→ い 銚子。\n焼津はマグロ・カツオの遠洋漁業の基地で、量の変化が小さい → う 焼津。\n答え ア",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
       "id": "1-7",
       "big": 1,
       "label": "問7",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "ウ",
       "variants": [],
-      "note": "都道府県別の鉄道輸送・自動車保有台数・国内線旅客数の表(ア~エ)のうち「北海道」にあてはまるものを記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "エ JRの鉄道がない(0)→ 沖縄。\nア 旅客輸送がとても多く、車の保有台数が少ない → 東京。\nイ 車の保有台数が多く、旅客輸送も多い(東海道新幹線)→ 愛知。\nウ 貨物輸送が最も多く、広くて移動に飛行機を使うので国内線旅客も多い → 北海道。\n答え ウ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
       "id": "1-8",
       "big": 1,
       "label": "問8",
       "unit": "",
-      "options": null,
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": "ふだんとちがう自然の中で働くことで社員がリフレッシュでき、仕事の意欲や効率が上がる。また、地元の高校生や企業との交流を通して新しい発想や人とのつながりが生まれ、新しい事業や将来の人材の確保につながる。",
       "variants": [],
-      "note": "東京都に本社を置く企業Aが北海道でワーケーションを実施することで期待できるメリットを説明する記述問題。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "文章の「自然の中での体験活動」「地元の高校生や企業との交流」がヒントです。\n要素1:自然の中で心身がリフレッシュし、社員の意欲・仕事の効率(生産性)が上がる。\n要素2:地元の人や企業との交流で新しいアイデア・人脈が得られ、新しいビジネスにつながる。\n(ほかに)若手社員の成長、会社のイメージアップ、将来の人材確保なども可。\n企業A(会社)にとってのメリットとして書くことが大切です(北海道のメリットだけではだめ)。",
+      "unofficial": true,
+      "ai_confidence": "medium"
     },
     {
+      "path": [
+        "9"
+      ],
+      "confidence": "manual",
       "id": "1-9",
       "big": 1,
       "label": "問9",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "エ",
       "variants": [],
-      "note": "サミット・ワシントン条約・京都議定書・世界遺産条約など国際会議や条約に関する文のうち正しいものを記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "エ 世界遺産はUNESCO(国連教育科学文化機関)の世界遺産条約にもとづいて登録されます → 正しい。\nア 伊勢志摩サミットは2016年。2023年は広島サミット。\nイ 水鳥の湿地を守るのはラムサール条約。ワシントン条約は絶滅のおそれのある野生動植物の取り引きを規制する条約。\nウ 京都議定書で削減目標が課されたのは先進国だけ。すべての国が目標を出すのはパリ協定。\n答え エ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "10"
+      ],
+      "confidence": "manual",
       "id": "1-10",
       "big": 1,
       "label": "問10",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "イ",
       "variants": [],
-      "note": "ふるさと納税受入額上位10自治体の【資料I】【資料II】から読み取れる内容として最もふさわしいものを記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "イ 2011年度は釜石市・相馬市・岩手県・福島県・山元町・宮城県の6つが被災地で、半数以上 → 正しい。\nア 2008年度で23区や県庁所在都市は広島市・札幌市・杉並区・文京区・神戸市・大阪市の6つ(6割)で、8割以上ではない。\nウ 資料IIでは「返礼品の充実」が増えた理由の1位。返礼品を送らなくなったのではない。\nエ 都城市は2014・2017・2020・2024年度と4回入っている。\n答え イ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "2-1",
       "big": 2,
       "label": "問1",
       "unit": "議席",
-      "options": null,
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "125",
       "variants": [],
-      "note": "令和7年7月20日投開票の第27回参議院議員通常選挙で争われた議席数(空欄A)を算用数字で答える。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "参議院の定数は248人で、3年ごとに半数を改選します。\n248 ÷ 2 = 124議席。\nこれに欠員1名の補充(補欠選挙)が加わるので 124 + 1 = 125。\n答え 125",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "2-2",
       "big": 2,
       "label": "問2",
       "unit": "",
-      "options": null,
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "公職選挙法",
       "variants": [],
-      "note": "参議院議員の定数を定めている法律の名前を漢字で答える。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "国会議員の定数や選挙のしかたは「公職選挙法」で定められています。\n(憲法は「法律で定める」としているだけで、人数は書いていません。)\n答え 公職選挙法",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "2-3",
       "big": 2,
       "label": "問3",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "イ",
       "variants": [],
-      "note": "「衆議院の優越」の一例として空欄Bにあてはまる文を記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "内閣不信任案の決議は衆議院だけができます(衆議院の優越)→ イ。\nア 憲法改正の発議は衆参それぞれ総議員の3分の2以上の賛成が必要で、両院は対等。\nウ 国政調査権は両院とも持っている。\nエ 弾劾裁判所は両院の議員で構成する。\n答え イ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "2-4",
       "big": 2,
       "label": "問4",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "エ",
       "variants": [],
-      "note": "下線部②ヤマト政権に関する文として正しいものを記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "ヤマト政権では、豪族が「臣」「連」などの姓(かばね)を与えられ、政治に参加しました → エ。\nア 「親魏倭王」の称号は3世紀に卑弥呼が受けたもの。\nイ 5世紀の倭の五王は中国に従う形で使いを送っており、対等ではない(対等をめざしたのは7世紀の遣隋使)。\nウ 本拠は奈良盆地(大和)。\n答え エ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "2-5",
       "big": 2,
       "label": "問5",
       "unit": "",
-      "options": null,
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
-      "variants": [],
-      "note": "下線部③に関して、埼玉県秩父から献上された銅で朝廷がつくった貨幣の名前を漢字で答える。模範解答なしのため保護者採点。"
+      "part_units": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "和同開珎",
+      "variants": [
+        "和同開寳",
+        "和同開宝"
+      ],
+      "note": null,
+      "explanation": "708年、武蔵国秩父(埼玉県)から銅が献上され、年号を和銅とし、貨幣がつくられました。\nこれが和同開珎です。\n答え 和同開珎",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "2-6",
       "big": 2,
       "label": "問6",
       "unit": "",
-      "options": null,
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
-      "variants": [],
-      "note": "下線部④の和歌がおさめられている和歌集の名前を漢字で答える。模範解答なしのため保護者採点。"
+      "part_units": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "万葉集",
+      "variants": [
+        "萬葉集"
+      ],
+      "note": null,
+      "explanation": "「大君は神にしませば」は柿本人麻呂の歌で、奈良時代にまとめられた日本最古の和歌集『万葉集』におさめられています。\n答え 万葉集",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
       "id": "2-7",
       "big": 2,
       "label": "問7",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "イ",
       "variants": [],
-      "note": "1220年著の歴史書の資料と現代語訳から、下線部『日本国の乱逆』が示すできごとを記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "資料は慈円の『愚管抄』です。鳥羽上皇が亡くなった1156年の直後におきた内乱 → 保元の乱。\n保元の乱では、平清盛・源義朝を味方にした後白河天皇が崇徳上皇に勝ちました → イ。\nア 平将門の乱は935年で鳥羽上皇より前。\nウ 壇ノ浦で平氏をほろぼしたのは源義経らで1185年。平清盛はすでに亡くなっていた。\nエ 承久の乱(1221年)は資料が書かれた1220年より後。\n答え イ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
       "id": "2-8",
       "big": 2,
       "label": "問8",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "ウ",
       "variants": [],
-      "note": "下線部⑥後醍醐天皇がおこなった建武の新政について正しい文を記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "建武の新政では、天皇の住まい(大内裏)をつくるため、武士などに負担(税)をかけようとして不満が高まりました → ウ。\nア 後醍醐天皇は尊氏を征夷大将軍にしなかった(尊氏は北朝から任命された)。\nイ 管領は室町幕府の役職。\nエ 吉野に移ったのは新政が失敗した後(南北朝時代)。\n答え ウ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "9"
+      ],
+      "confidence": "manual",
       "id": "2-9",
       "big": 2,
       "label": "問9",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "イ",
       "variants": [],
-      "note": "下線部⑦明治新政府の政策について正しい文を記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "1879年、琉球藩を廃止して沖縄県を置きました(琉球処分) → イ。\nア 五か条の御誓文ではキリスト教は解禁されていない(五榜の掲示で禁止を続けた)。\nウ 徴兵令は満20歳以上の男子で、免除もあった。\nエ 大名が東京に移住させられたのは廃藩置県(1871年)のとき。版籍奉還では土地と人民を返しただけ。\n答え イ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "10"
+      ],
+      "confidence": "manual",
       "id": "2-10",
       "big": 2,
       "label": "問10",
       "unit": "",
-      "options": null,
       "parts": [
-        {
-          "label": "2番目",
-          "answer": null
-        },
-        {
-          "label": "4番目",
-          "answer": null
-        }
+        "2番目",
+        "4番目"
       ],
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "イ",
+        "ウ"
+      ],
       "variants": [],
-      "note": "大日本帝国憲法制定前後のできごとア~エを年代の古い順に並べたとき、2番目と4番目にくる記号をそれぞれ答える。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "年代を確認します。\nエ 国会開設の勅諭 1881年\nイ 伊藤博文が初代内閣総理大臣 1885年\nア 三国干渉(遼東半島の返還) 1895年\nウ 日英同盟 1902年\n順番は エ→イ→ア→ウ。\n答え 2番目 イ、4番目 ウ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "11"
+      ],
+      "confidence": "manual",
       "id": "2-11",
       "big": 2,
       "label": "問11",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "エ",
       "variants": [],
-      "note": "沖縄戦での戦死者数の資料から読み取れることとして最もふさわしいものを記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "表に「正規軍(県外出身日本兵)6万5908人」とあり、沖縄県外出身の兵も沖縄戦で亡くなった → エ。\nア 死因(銃撃など)は表にない。\nイ アメリカは海軍4907人が最も多く、陸軍4675人より多い。\nウ 一般住民の年齢は表からはわからない。\n答え エ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "12"
+      ],
+      "confidence": "manual",
       "id": "2-12",
       "big": 2,
       "label": "問12",
       "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
       "options": [
         "ア",
         "イ",
         "ウ",
         "エ"
       ],
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "answer": "ウ",
       "variants": [],
-      "note": "下線部⑩GHQによる日本の民主化政策について正しい文を記号で選ぶ。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "GHQは軍隊を解散させ、戦争を指導した人を公職から追放しました → ウ。\nア 農地改革で多くの小作人が自作農になった(逆)。\nイ 労働組合をつくる権利を保障したのは労働組合法。労働基準法は労働条件の最低基準を定めた法律。\nエ 学制は明治時代(1872年)。戦後は教育基本法。\n答え ウ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "13"
+      ],
+      "confidence": "manual",
       "id": "2-13",
       "big": 2,
       "label": "問13",
       "unit": "",
-      "options": null,
       "parts": [
-        {
-          "label": "2番目",
-          "answer": null
-        },
-        {
-          "label": "4番目",
-          "answer": null
-        }
+        "2番目",
+        "4番目"
       ],
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "ア",
+        "エ"
+      ],
       "variants": [],
-      "note": "戦後の日本に関するア~エを年代の古い順に並べたとき、2番目と4番目にくる記号をそれぞれ答える。模範解答なしのため保護者採点。"
+      "note": null,
+      "explanation": "年代を確認します。\nイ サンフランシスコ平和条約の発効 1952年\nア 日ソ共同宣言 1956年\nウ 日韓基本条約 1965年\nエ 日中共同声明 1972年\n順番は イ→ア→ウ→エ。\n答え 2番目 ア、4番目 エ",
+      "unofficial": true,
+      "ai_confidence": "high"
     }
   ]
 }
