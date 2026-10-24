@@ -230,7 +230,7 @@ def scan_sakaehigashi() -> dict[str, dict]:
             "id": eid, "school": "sakaehigashi", "school_name": "栄東中学校",
             "year": year, "session": "a", "session_label": "A日程",
             "subject": subject, "subject_label": m["subject"],
-            "time_limit_min": 45 if subject in ("math", "japanese") else 30,
+            "time_limit_min": 50 if subject in ("math", "japanese") else 25,   # cover: 算数・国語 50分, 社会・理科合わせて50分
             "files": {},
         })
         ex["files"]["question" if m["kind"] == "問題" else "answer"] = str(pdf.relative_to(ROOT)).replace("\\", "/")

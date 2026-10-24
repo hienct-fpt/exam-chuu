@@ -1033,7 +1033,7 @@
     "session_label": "A日程",
     "subject": "japanese",
     "subject_label": "国語",
-    "time_limit_min": 45,
+    "time_limit_min": 50,
     "files": {
       "question": "sakaehigashi_past/2025年度/栄東中学校_2025年国語問題.pdf",
       "answer": "sakaehigashi_past/2025年度/栄東中学校_2025年国語回答.pdf"
@@ -1048,7 +1048,7 @@
     "session_label": "A日程",
     "subject": "math",
     "subject_label": "算数",
-    "time_limit_min": 45,
+    "time_limit_min": 50,
     "files": {
       "question": "sakaehigashi_past/2025年度/栄東中学校_2025年算数問題.pdf",
       "answer": "sakaehigashi_past/2025年度/栄東中学校_2025年算数回答.pdf"
@@ -1063,7 +1063,7 @@
     "session_label": "A日程",
     "subject": "science",
     "subject_label": "理科",
-    "time_limit_min": 30,
+    "time_limit_min": 25,
     "files": {
       "question": "sakaehigashi_past/2025年度/栄東中学校_2025年理科問題.pdf",
       "answer": "sakaehigashi_past/2025年度/栄東中学校_2025年理科回答.pdf"
@@ -1078,24 +1078,10 @@
     "session_label": "A日程",
     "subject": "social",
     "subject_label": "社会",
-    "time_limit_min": 30,
+    "time_limit_min": 25,
     "files": {
       "question": "sakaehigashi_past/2025年度/栄東中学校_2025年社会問題.pdf",
       "answer": "sakaehigashi_past/2025年度/栄東中学校_2025年社会回答.pdf"
-    }
-  },
-  "sakaehigashi_2026_a_japanese": {
-    "id": "sakaehigashi_2026_a_japanese",
-    "school": "sakaehigashi",
-    "school_name": "栄東中学校",
-    "year": 2026,
-    "session": "a",
-    "session_label": "A日程",
-    "subject": "japanese",
-    "subject_label": "国語",
-    "time_limit_min": 45,
-    "files": {
-      "question": "sakaehigashi_past/2026年度/栄東中学校_2026年国語問題.pdf"
     }
   },
   "sakaehigashi_2026_a_math": {
@@ -1107,7 +1093,7 @@
     "session_label": "A日程",
     "subject": "math",
     "subject_label": "算数",
-    "time_limit_min": 45,
+    "time_limit_min": 50,
     "files": {
       "question": "sakaehigashi_past/2026年度/栄東中学校_2026年算数問題.pdf"
     }
@@ -1121,7 +1107,7 @@
     "session_label": "A日程",
     "subject": "science",
     "subject_label": "理科",
-    "time_limit_min": 30,
+    "time_limit_min": 25,
     "files": {
       "question": "sakaehigashi_past/2026年度/栄東中学校_2026年理科問題.pdf"
     }
@@ -1135,7 +1121,7 @@
     "session_label": "A日程",
     "subject": "social",
     "subject_label": "社会",
-    "time_limit_min": 30,
+    "time_limit_min": 25,
     "files": {
       "question": "sakaehigashi_past/2026年度/栄東中学校_2026年社会問題.pdf"
     }

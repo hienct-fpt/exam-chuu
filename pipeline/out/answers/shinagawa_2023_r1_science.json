@@ -1,6 +1,11 @@
 {
+  "exam_id": "shinagawa_2023_r1_science",
   "slots": [
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "1-1",
       "big": 1,
       "label": "I(1)",
@@ -17,6 +22,10 @@
       "note": null
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "1-2",
       "big": 1,
       "label": "I(2)",
@@ -28,6 +37,10 @@
       "note": null
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "1-3",
       "big": 1,
       "label": "I(3)①",
@@ -39,6 +52,10 @@
       "note": null
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "1-4",
       "big": 1,
       "label": "I(3)②",
@@ -50,6 +67,10 @@
       "note": null
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "1-5",
       "big": 1,
       "label": "I(3)③",
@@ -67,6 +88,10 @@
       ]
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "1-6",
       "big": 1,
       "label": "I(3)④",
@@ -84,6 +109,10 @@
       "note": null
     },
     {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
       "id": "1-7",
       "big": 1,
       "label": "II(1)",
@@ -95,6 +124,10 @@
       "note": null
     },
     {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
       "id": "1-8",
       "big": 1,
       "label": "II(2)",
@@ -106,6 +139,10 @@
       "note": null
     },
     {
+      "path": [
+        "9"
+      ],
+      "confidence": "manual",
       "id": "1-9",
       "big": 1,
       "label": "II(3)",
@@ -123,6 +160,10 @@
       "note": null
     },
     {
+      "path": [
+        "10"
+      ],
+      "confidence": "manual",
       "id": "1-10",
       "big": 1,
       "label": "II(4)",
@@ -134,6 +175,10 @@
       "note": null
     },
     {
+      "path": [
+        "11"
+      ],
+      "confidence": "manual",
       "id": "1-11",
       "big": 1,
       "label": "II(5)",
@@ -145,6 +190,10 @@
       "note": null
     },
     {
+      "path": [
+        "12"
+      ],
+      "confidence": "manual",
       "id": "1-12",
       "big": 1,
       "label": "II(6)",
@@ -162,6 +211,10 @@
       "note": null
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "2-1",
       "big": 2,
       "label": "(1)",
@@ -173,6 +226,10 @@
       "note": null
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "2-2",
       "big": 2,
       "label": "(2)",
@@ -184,6 +241,10 @@
       "note": null
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "2-3",
       "big": 2,
       "label": "(3)",
@@ -195,6 +256,10 @@
       "note": null
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "2-4",
       "big": 2,
       "label": "(4)",
@@ -206,6 +271,10 @@
       "note": null
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "2-5",
       "big": 2,
       "label": "(5)",
@@ -217,6 +286,10 @@
       "note": null
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "2-6",
       "big": 2,
       "label": "(6)",
@@ -228,6 +301,10 @@
       "note": null
     },
     {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
       "id": "2-7",
       "big": 2,
       "label": "(7)",
@@ -239,6 +316,10 @@
       "note": null
     },
     {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
       "id": "2-8",
       "big": 2,
       "label": "(8)",
@@ -250,6 +331,10 @@
       "note": null
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "3-1",
       "big": 3,
       "label": "(1)",
@@ -261,6 +346,10 @@
       "note": null
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "3-2",
       "big": 3,
       "label": "(2)",
@@ -272,6 +361,10 @@
       "note": null
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "3-3",
       "big": 3,
       "label": "(3)①",
@@ -287,6 +380,10 @@
       "note": null
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "3-4",
       "big": 3,
       "label": "(3)②",
@@ -305,6 +402,10 @@
       "note": null
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "3-5",
       "big": 3,
       "label": "(4)",
@@ -324,6 +425,10 @@
       "note": null
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "3-6",
       "big": 3,
       "label": "(5)",
@@ -343,6 +448,10 @@
       ]
     },
     {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
       "id": "3-7",
       "big": 3,
       "label": "(6)",
@@ -359,13 +468,17 @@
       "note": null
     },
     {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
       "id": "3-8",
       "big": 3,
       "label": "(7)",
       "unit": "",
       "parts": null,
       "answer_type": "essay",
-      "answer": null,
+      "answer": "なわばりを守る労力が、なわばりによる利益を大きく上回るようになるから。",
       "variants": [],
       "note": "「利益」「労力」の語句を必ず使い35字以内で、なわばりをもつアユの割合が低くなる理由を説明する。模範解答例: なわばりを守る労力が、なわばりによる利益を大きく上回るようになるから。"
     }

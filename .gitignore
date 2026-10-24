@@ -26,3 +26,4 @@ extensions/*.env.*
 .claude/settings.local.json
 .claude/logs/
 .playwright-mcp/
+joshigakuin_past/

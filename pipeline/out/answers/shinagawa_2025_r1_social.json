@@ -1,6 +1,11 @@
 {
+  "exam_id": "shinagawa_2025_r1_social",
   "slots": [
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "1-1",
       "big": 1,
       "label": "問1(1)",
@@ -18,6 +23,10 @@
       "note": null
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "1-2",
       "big": 1,
       "label": "問1(2)i",
@@ -32,6 +41,10 @@
       "note": null
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "1-3",
       "big": 1,
       "label": "問1(2)ii",
@@ -49,6 +62,10 @@
       "note": null
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "1-4",
       "big": 1,
       "label": "問1(3)",
@@ -61,6 +78,10 @@
       "note": null
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "1-5",
       "big": 1,
       "label": "問2(1)",
@@ -68,11 +89,15 @@
       "parts": null,
       "answer_type": "essay",
       "options": null,
-      "answer": null,
+      "answer": "日本国内で、この分野の労働力が不足しているため。",
       "variants": [],
       "note": "模範解答: 日本国内で、この分野の労働力が不足しているため。"
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "1-6",
       "big": 1,
       "label": "問2(2)",
@@ -91,6 +116,10 @@
       "note": "選択肢: ア.ベトナム イ.ブラジル ウ.タイ エ.インド"
     },
     {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
       "id": "1-7",
       "big": 1,
       "label": "問3(1)",
@@ -103,6 +132,10 @@
       "note": null
     },
     {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
       "id": "1-8",
       "big": 1,
       "label": "問3(2)",
@@ -120,6 +153,10 @@
       "note": null
     },
     {
+      "path": [
+        "9"
+      ],
+      "confidence": "manual",
       "id": "1-9",
       "big": 1,
       "label": "問3(3)",
@@ -137,6 +174,10 @@
       "note": null
     },
     {
+      "path": [
+        "10"
+      ],
+      "confidence": "manual",
       "id": "1-10",
       "big": 1,
       "label": "問3(4)",
@@ -154,6 +195,10 @@
       "note": null
     },
     {
+      "path": [
+        "11"
+      ],
+      "confidence": "manual",
       "id": "1-11",
       "big": 1,
       "label": "問3(5)",
@@ -171,6 +216,10 @@
       "note": null
     },
     {
+      "path": [
+        "12"
+      ],
+      "confidence": "manual",
       "id": "1-12",
       "big": 1,
       "label": "問4(1)",
@@ -178,11 +227,15 @@
       "parts": null,
       "answer_type": "essay",
       "options": null,
-      "answer": null,
+      "answer": "奈良から短時間で移動できる大阪や京都に宿泊施設が多くあるため。",
       "variants": [],
       "note": "模範解答: 奈良から短時間で移動できる大阪や京都に宿泊施設が多くあるため。"
     },
     {
+      "path": [
+        "13"
+      ],
+      "confidence": "manual",
       "id": "1-13",
       "big": 1,
       "label": "問4(2)",
@@ -197,6 +250,10 @@
       "note": null
     },
     {
+      "path": [
+        "14"
+      ],
+      "confidence": "manual",
       "id": "1-14",
       "big": 1,
       "label": "問5",
@@ -214,6 +271,10 @@
       "note": null
     },
     {
+      "path": [
+        "15"
+      ],
+      "confidence": "manual",
       "id": "1-15",
       "big": 1,
       "label": "問6",
@@ -226,6 +287,10 @@
       "note": null
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "2-1",
       "big": 2,
       "label": "問1",
@@ -240,6 +305,10 @@
       "note": "解答らんは「＿＿＿石器」の形式(空欄の後ろに「石器」が印刷済み)。空欄には「磨製」が入る。"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "2-2",
       "big": 2,
       "label": "問2(1)",
@@ -257,6 +326,10 @@
       "note": null
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "2-3",
       "big": 2,
       "label": "問2(2)",
@@ -275,6 +348,10 @@
       "note": null
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "2-4",
       "big": 2,
       "label": "問3",
@@ -287,6 +364,10 @@
       "note": null
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "2-5",
       "big": 2,
       "label": "問4(1)",
@@ -304,6 +385,10 @@
       "note": null
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "2-6",
       "big": 2,
       "label": "問4(2)",
@@ -321,6 +406,10 @@
       "note": null
     },
     {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
       "id": "2-7",
       "big": 2,
       "label": "問5(1)",
@@ -336,6 +425,10 @@
       "note": null
     },
     {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
       "id": "2-8",
       "big": 2,
       "label": "問5(2)",
@@ -353,6 +446,10 @@
       "note": null
     },
     {
+      "path": [
+        "9"
+      ],
+      "confidence": "manual",
       "id": "2-9",
       "big": 2,
       "label": "問5(3)",
@@ -370,6 +467,10 @@
       "note": null
     },
     {
+      "path": [
+        "10"
+      ],
+      "confidence": "manual",
       "id": "2-10",
       "big": 2,
       "label": "問5(4)",
@@ -385,6 +486,10 @@
       "note": null
     },
     {
+      "path": [
+        "11"
+      ],
+      "confidence": "manual",
       "id": "2-11",
       "big": 2,
       "label": "問6",
@@ -402,6 +507,10 @@
       "note": null
     },
     {
+      "path": [
+        "12"
+      ],
+      "confidence": "manual",
       "id": "2-12",
       "big": 2,
       "label": "問7",
@@ -419,6 +528,10 @@
       "note": null
     },
     {
+      "path": [
+        "13"
+      ],
+      "confidence": "manual",
       "id": "2-13",
       "big": 2,
       "label": "問8(1)",
@@ -431,6 +544,10 @@
       "note": null
     },
     {
+      "path": [
+        "14"
+      ],
+      "confidence": "manual",
       "id": "2-14",
       "big": 2,
       "label": "問8(2)",
@@ -443,6 +560,10 @@
       "note": null
     },
     {
+      "path": [
+        "15"
+      ],
+      "confidence": "manual",
       "id": "2-15",
       "big": 2,
       "label": "問9(1)",
@@ -460,6 +581,10 @@
       "note": null
     },
     {
+      "path": [
+        "16"
+      ],
+      "confidence": "manual",
       "id": "2-16",
       "big": 2,
       "label": "問9(2)",
@@ -477,6 +602,10 @@
       "note": null
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "3-1",
       "big": 3,
       "label": "問1(1)",
@@ -489,6 +618,10 @@
       "note": null
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "3-2",
       "big": 3,
       "label": "問1(2)i",
@@ -496,11 +629,15 @@
       "parts": null,
       "answer_type": "essay",
       "options": null,
-      "answer": null,
+      "answer": "憲法制定後に主張されるようになった権利だから。",
       "variants": [],
       "note": "模範解答: 憲法制定後に主張されるようになった権利だから。"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "3-3",
       "big": 3,
       "label": "問1(2)ii",
@@ -520,6 +657,10 @@
       "note": null
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "3-4",
       "big": 3,
       "label": "問1(3)",
@@ -540,6 +681,10 @@
       "note": null
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "3-5",
       "big": 3,
       "label": "問2",
@@ -556,6 +701,10 @@
       "note": null
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "3-6",
       "big": 3,
       "label": "問3",
@@ -573,6 +722,10 @@
       "note": null
     },
     {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
       "id": "3-7",
       "big": 3,
       "label": "問4",
@@ -590,6 +743,10 @@
       "note": null
     },
     {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
       "id": "3-8",
       "big": 3,
       "label": "問5",
@@ -597,7 +754,7 @@
       "parts": null,
       "answer_type": "essay",
       "options": null,
-      "answer": null,
+      "answer": "Bの道はAの道に比べて交通量が多く、危険なため。",
       "variants": [],
       "note": "模範解答: Bの道はAの道に比べて交通量が多く、危険なため。"
     }
