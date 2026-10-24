@@ -1,6 +1,6 @@
 ---
 name: import-exam
-description: 新しい過去問・テスト(共立 kyoritsu_past/<年度>、品川、栄東、中大附属、四谷大塚 組分け など)の PDF をアプリに取り込むときの手順。「この年度の過去問をアプリに載せて」「新しい組分けを追加」「〇〇_past/2023年度 を取り込んで」と言われたとき、inventory → segments → 解答キー → tags → build → 確認 → デプロイまでを通しで行う。スキャン PDF(テキスト層なし)の手動切り出しもここ。
+description: 新しい過去問・テスト(共立 kyoritsu_past/<年度>、品川、栄東、中大附属、四谷大塚 組分け など)の PDF をアプリに取り込むときの手順。「この年度の過去問をアプリに載せて」「新しい組分けを追加」「〇〇_past/2023年度 を取り込んで」と言われたとき、inventory → segments → 解答キー → 解き方(explanation) → tags → build → 確認 → デプロイまでを通しで行う。解き方だけ後から足す・公式解答がない試験のキーを作るときもここ。スキャン PDF(テキスト層なし)の手動切り出しもここ。
 ---
 
 # 過去問セットの取り込み
@@ -28,12 +28,15 @@ python -c "import fitz,glob; [print(f, len(d:=fitz.open(f)), d[0].rect, d[0].rot
 | 解答用紙 | 別 PDF / 問題 PDF の最終ページ / なし | 解答欄(slot)の並び・単位・「計算式」欄 |
 | 子どもの答案・成績 | 組分けの `回答.pdf`・`結果.pdf` | **読み取り・出荷禁止**(slot 配置の確認だけ。`結果.pdf` の解説・正答率一覧の扱いは README / memory 参照) |
 
-公式の解答がありそうなのに見つからないときは、自分で解かずに**どこにあるかユーザーに聞く**。
+公式の解答がありそうなのに見つからないときは、自分で解かずに**どこにあるかユーザーに聞く**(見つからないと言われたら § 5「公式の解答がない試験」)。
 
 ## 2. inventory(`pipeline/inventory.py`)
 
 - 既存スキャナ(`scan_kyoritsu` / `scan_shinagawa` / `scan_kumiwake`)のファイル名規則に合うか確認。合わなければ規則を足す
   (例: 2023 共立の `sansu-mondai.pdf` / `sansu-kaito.pdf` → `RE_KYO_ROMAJI` + 回は表紙から読んで `KYO_ROMAJI_SESSION`)。
+  中央 2024–25 も同じ命名 → `scan_chuo` が `RE_KYO_ROMAJI` + `CHUO_ROMAJI_SESSION` で拾う。新しい年度は回を表紙で確認して辞書に足す。
+- 1 試験 1 エージェントで取り込める(中央 2024–25 の 7 試験を並列: segments・answers・explanations・tags を各自が新規作成、
+  コード・exams.json・pipeline/out は触らせない)。その後こちらで inventory → 対象試験だけ segment/render → answer_key_generic → build。
 - 元 PDF は必ず学校ごとのフォルダ `{school}_past/{year}年度/` に置く(git 管理外。新しい学校なら `.gitignore` に `{school}_past/` を足す)。
   `pipeline/in/` のような共通の置き場は使わない。新しい学校は `scan_{school}()` を書いて `SCANNERS` に登録する(`exams.json` を手で編集しない)。
 - 実行前に `pipeline/out/exams.json` をスクラッチパッドにバックアップ。実行後 `git diff pipeline/out/exams.json` で**追加だけ**であることを確認。
@@ -79,25 +82,84 @@ slot の id は `大問-小問[-枝]`、セグメントの key の並びと一�
 
 配点が公表されていなければ `points` は省略(1 点扱い)。
 
-**解き方(explanation)**: 公式キーのある試験は `pipeline/explanations/{exam_id}.json` `{"explanations": {slot_id: "…
-…"}}`(キー本体は触らない)、
-キーを自作した試験は slot に直接 `"explanation": "…
-…"`(小5–6 向け、要点→計算→「答え …」)を書くと、採点後の結果画面と保護者の「問題と答え」に
-「解き方を見る」で出る。answerKeys(秘密側)にだけ入るので、提出前には見えない。
-**公式の解答がない場合**(ユーザーが探しても見つからないと言ったときだけ): 自分たちで解いて `"unofficial": true`(画面に「AI作成・非公式」)。
-1 試験 1 エージェントで解かせ、算数・理科は**別エージェントに独立に解かせて突き合わせる**。食い違いは図・本文を自分で見て決める。
-公式キーがある場合も、解き方を書くエージェントに「公式の答えに到達できない slot は書かずに disagree で報告」させる
-(共立 2025 2-2 算数 か・け は学校の模範解答の数え漏れだった → 正しい値 + 学校の値を variants で両方正解、note で説明)。
-全 slot がキー通りの入力で正解になるか(`examcore.grading.grade`)を確認してから overrides に入れる。
+## 5. 解き方(explanation)
 
-## 5. 分野タグ(`pipeline/tags/{exam}.json`)
+採点後の結果画面で問題ごとに「解き方を見る」(全幅の折りたたみ行)として出る。保護者の「問題と答え」プレビューにも出る。
+**新しい試験を入れたら解き方まで作るのが標準**(共立・品川・中央は全問あり)。組分けは公式の解説画像(`kaisetsu.py`)、
+みんなの算数はサイトの解説リンクがあるので対象外。
+
+### 置き場所とデータの流れ
+
+| 試験の種類 | 置き場所 |
+|---|---|
+| 公式キーあり(共立・品川・栄東 2025 など) | `pipeline/explanations/{exam_id}.json` = `{"exam_id": "...", "explanations": {"1-1": "…", ...}}`。**キー本体(overrides/answers)は触らない** |
+| キーを自作(中央 2026 など) | `overrides/answers/{exam_id}.json` の各 slot に `"explanation"` と `"unofficial": true` |
+
+`build.py` が secret 側(`answers_all.json` → Firestore `answerKeys`)にだけ入れる → `functions/grader.py` が採点結果の
+`perItem[sid].explanation` / `.unofficial` にコピー → `web/src/views/result.js` の `howto()` が表示(`unofficial` なら
+「AI作成・非公式」バッジ)。公開 bank(`web/public/bank`)には入らないので、**提出前には見えない**。
+
+### 文面のルール(小5–6 向け、日本語)
+
+- 3〜10 行、`\n` 区切り、プレーンテキスト(LaTeX・Markdown なし。分数は 3/4、× ÷ は可)。
+- 1 行目に考え方(「速さの比で考えます。」)→ 途中の計算 → 最終行「答え …」(単位つき、**公式の答えと一致**)。
+- 選択肢: 正解の理由 + 紛らわしい選択肢がなぜ違うか。知識問題: 事実 + 覚え方。国語: 決め手になる本文の語句を示す。
+- 記述(essay): 満点に必要な要素を並べてから模範解答。作図(manual)・公式の答えがない slot: 自分の解答で「答え(例) …」。
+
+### 作り方(エージェントに分担)
+
+1. 1 エージェントあたり 1〜3 試験(同じ年度・教科の 2/1・2/2 をまとめる)。並列は 1 波 15 前後まで。
+2. 指示書(下のテンプレート)をスクラッチパッドに置き、各エージェントには exam_id と出力先だけ渡す。
+3. 出力は `{"exam_id", "explanations": {...}, "disagree": [{"id","official","mine","why"}]}`。
+   **公式の答えに到達できない slot は解き方を書かずに `disagree` に入れさせる**(作り話の解き方を防ぐ)。
+4. 戻ってきたら:
+   - 全 slot id が `explanations` にあるか(欠け・余分なし)をスクリプトで確認して `pipeline/explanations/` に書く。
+   - `disagree` は**自分で確かめる**(算数は Python で全数チェック、図・答案スキャン `pages/{exam}/answer.png` や
+     `answer_scan` を見る)。キーの抽出ミスか学校の誤りかを切り分ける。
+   - 報告に出てくる「キーの note がおかしい」「別解・模範解答が欠けている」も同様に確認して直す。
+
+キーの直し方(実例):
+- 学校の模範解答の誤り(共立 2025 2-2 算数 か・け は 1 通り数え漏れ): `overrides/answers` の部分パッチで
+  `answer` = 正しい値、`variants` = 学校の値、`note` に理由 →どちらでも ○。
+- 抽出ミス(共立 2024 2-2 社会「34字」が variants に混入、共立 2026 2-1 国語 5-4 の読点位置): 部分パッチで修正。
+- 手書きスキャンの転記ミス(品川 2018 r1 理科 2-9/2-10 の月の形が左右逆): スキャンを見て `note` を修正。
+
+### 公式の解答がない試験
+
+**ユーザーが「探したが見つからない、作って」と言ったときだけ**自分たちで解く(勝手に解かない。まず場所を聞く)。
+- 1 試験 1 エージェントで答え+解き方を作る。算数・理科は**別エージェントに答えだけ独立に解かせて突き合わせる**。
+- 食い違いは図・本文を自分で見て決める(中央 2026 2回 理科 2-5 は 図5 を読んで ウ・カ に決定)。
+- slot に `"unofficial": true`、`ai_confidence`(high/medium/low)を残し、medium/low はユーザーに一覧で報告。
+- overrides に入れる前に、全 slot がキー通りの入力で正解になるか `examcore.grading.grade` で自己採点する
+  (multi の `"a|b"` は最初の候補で試す。①〜④ の選択肢は 1 / ① / １ どれでも通る)。
+
+### エージェント用テンプレート(公式キーあり)
+
+```
+Repo: C:/Users/HienCT/workspace/exam-chuu. Read-only: write only <OUT_DIR>/<exam_id>.json.
+Official key (ground truth): pipeline/out/answers/<exam_id>.json (slots: id, label, unit, parts, answer_type, answer, variants, note).
+Question PDF: pipeline/out/exams.json -> files.question (+ page_range). Text: python -I -c "import fitz,sys;
+sys.stdout.reconfigure(encoding='utf-8'); d=fitz.open(sys.argv[1]); [print('=== page',i,'\n',p.get_text()) for i,p in enumerate(d)]"
+"<pdf>" > <scratch>.txt, then Read the txt (-I ignores PYTHONIOENCODING). Scans have no text.
+Images: pipeline/out/q/<exam_id>/q{大問}-{小問}.png, q{n}_stem.png, pipeline/out/pages/<exam_id>/p*.png (国語 = 縦書き pages).
+Output: {"exam_id", "explanations": {slot_id: text}, "disagree": [{"id","official","mine","why"}]} covering every slot id.
+Text: Japanese for a 小5–6 child, 3–10 lines joined with "\n", key idea -> steps -> last line 「答え …」 = official answer.
+Verify 算数・理科 calculations with Python (Fraction / enumeration). If you cannot reach the official answer, do not
+invent an explanation: put the slot in disagree. Slots with no official answer: own solution, last line 「答え(例) …」.
+Final message: per exam count + every disagree entry.
+```
+
+確認: `python pipeline/build.py` 後に `answers_all.json` で学校ごとの `explanation` 件数、公開 bank に `explanation` が
+含まれないこと、`/start` で 1 試験提出して「解き方を見る」が出ることを見る。
+
+## 6. 分野タグ(`pipeline/tags/{exam}.json`)
 
 `{"bigs": {"1": {"grade": 5, "topic": "..."}}, "items": {"2-1": {"topic": "...", "grade": 6}}}`
 - `topic` は**既存ラベルを優先**(`pipeline/bunya_map.py` にあるもの)。新ラベルを使うなら同じファイルの対応表に足す
   (`tests/test_bunya_map.py` が未対応ラベルで落ちる)。
 - `grade`: 5 = 小5までの内容で解ける、6 = 小6 内容が必要(算数: 比・相似・速さと比 → 6。理科: 天体・回路・気体計算 → 6。社会: 地理 → 5、歴史・公民・時事 → 6)。
 
-## 6. ビルドと確認
+## 7. ビルドと確認
 
 ```bash
 python pipeline/run_all.py            # バックグラウンドで。スキャン分だけなら segment/render/answer_key_generic/build を個別に呼んでもよい
@@ -109,11 +171,11 @@ python scripts/sync_assets.py
 - 画面で確認するなら `/start`(mock サーバー + Vite)→ 新しい試験を開いて問題画像と解答欄を見る → `/stop`。
 - README の試験数・学校ごとの説明(§ 6)を更新。新しい学校ならホームの学校フィルタ(`web/`)も。
 
-## 7. 出す
+## 8. 出す
 
 - `/deploy`(`scripts/deploy.sh`: pytest → sync → build → firebase deploy → `import_bank.py` で Firestore に exams / answerKeys)。本番反映なので**ユーザーの承認を得てから**。
 - コミットはユーザーに頼まれたら。メッセージ例: `feat: 共立女子 2023年度 2/1入試 (算数・理科・社会, scanned)` + 本文に slot 数・手入力した理由・推測した箇所。
 
 ## 報告に入れること
 
-試験 id と教科ごとの slot 数 / 記述・作図(保護者採点)の数 / 欠けている教科・資料 / 推測で決めた箇所(回の判定、解答欄の区切り、分野・学年タグ)/ テストとデプロイの結果。
+試験 id と教科ごとの slot 数 / 記述・作図(保護者採点)の数 / 解き方の件数と disagree の扱い / 欠けている教科・資料 / 推測で決めた箇所(回の判定、解答欄の区切り、分野・学年タグ)/ テストとデプロイの結果。

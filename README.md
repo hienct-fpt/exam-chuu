@@ -103,9 +103,10 @@ on the slot in `overrides/answers` (中央, whose keys we made ourselves, `unoff
 answer key only; the grader copies it into the result, so it appears under 「解き方を見る」 after submitting (and in the
 parent's 問題と答え preview). 組分け uses the official 解説 images instead, みんなの算数 links to the site's 解説.
 
-88 exams are processed: 27 kyoritsu (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語, plus 2023 2-1 × 算数・理科・社会 —
+95 exams are processed: 27 kyoritsu (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語, plus 2023 2-1 × 算数・理科・社会 —
 scanned spreads, crops in `overrides/segments`, keys transcribed into `overrides/answers`; no 国語 in the source), 23 shinagawa
-(2018 + 2023–2026 × 第1回/第2回 × 算数・理科・社会, plus 算数1教科), 8 chuo (2026 × 1回/2回 × 算数・理科・社会・国語),
+(2018 + 2023–2026 × 第1回/第2回 × 算数・理科・社会, plus 算数1教科), 15 chuo (2026 × 1回/2回 × 算数・理科・社会・国語; 2024 第1回 × 4 subjects and 2025 第1回 × 算数・理科・社会 —
+scanned, crops/keys in overrides, official 解答 except 2024 国語 which is AI-made `unofficial`),
 6 sakaehigashi (2025–2026 × 算数・理科・社会) and 24 kumiwake
 (四谷大塚 公開組分けテスト 5年 第1〜6回 × 4 subjects), plus the min-san.com offline copy (§ below). The home page has
 a school filter (すべて / 共立女子 / 品川女子学院中等部 / 栄東中学校 / 中央大学附属 / 四谷大塚 組分け /

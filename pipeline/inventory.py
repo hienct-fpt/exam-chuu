@@ -184,22 +184,38 @@ SAKAEHIGASHI = ROOT / "sakaehigashi_past"
 RE_SAKAE = re.compile(r"^栄東中学校_(?P<year>\d{4})年(?P<subject>算数|国語|理科|社会)(?P<kind>問題|回答)\.pdf$")
 
 
+# 2024-25 come as scans named like kyoritsu 2023 (`sansu-mondai.pdf` + text-layer `sansu-kaito.pdf`); the round is read
+# off the 問題 cover (both 第1回)
+CHUO_ROMAJI_SESSION = {2024: "1", 2025: "1"}
+
+
 def scan_chuo() -> dict[str, dict]:
-    """中央大学附属: 問題 only (no 解答 PDF) -- keys are in overrides/answers as full slot lists."""
+    """中央大学附属: 2026 問題 only (keys made by us, unofficial); 2024-25 scanned 問題 + 解答. Segments/answers: full
+    override lists."""
     exams: dict[str, dict] = {}
     for pdf in sorted(CHUO.glob("*年度/*.pdf")):
-        if not (m := RE_CHUO.match(pdf.name)):
+        rel = str(pdf.relative_to(ROOT)).replace("\\", "/")
+        if m := RE_CHUO.match(pdf.name):
+            year, label, rnd, kind = int(m["year"]), m["subject"], nfkc(m["round"]), "問題"
+            session_label = m["label"]
+        elif (m := RE_KYO_ROMAJI.match(pdf.name)) and (y := RE_YEAR.search(pdf.parent.name)) \
+                and int(y.group(1)) in CHUO_ROMAJI_SESSION:
+            year, label, kind = int(y.group(1)), ROMAJI_SUBJECT[m["subject"]], ROMAJI_KIND[m["kind"]]
+            rnd = CHUO_ROMAJI_SESSION[year]
+            session_label = f"第{rnd}回"
+        else:
             continue
-        year, subject, rnd = int(m["year"]), SUBJECT_MAP[m["subject"]], nfkc(m["round"])
+        subject = SUBJECT_MAP[label]
         eid = f"chuo_{year}_{rnd}_{subject}"
-        exams[eid] = {
+        ex = exams.setdefault(eid, {
             "id": eid, "school": "chuo", "school_name": "中央大学附属中学校",
-            "year": year, "session": rnd, "session_label": m["label"],
-            "subject": subject, "subject_label": m["subject"],
+            "year": year, "session": rnd, "session_label": session_label,
+            "subject": subject, "subject_label": label,
             "time_limit_min": 50 if subject in ("math", "japanese") else 30,
-            "files": {"question": str(pdf.relative_to(ROOT)).replace("\\", "/")},
-        }
-    return exams
+            "files": {},
+        })
+        ex["files"]["question" if kind == "問題" else "answer"] = rel
+    return {k: v for k, v in exams.items() if "question" in v["files"]}
 
 
 def scan_sakaehigashi() -> dict[str, dict]:

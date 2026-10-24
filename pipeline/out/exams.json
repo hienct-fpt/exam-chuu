@@ -1,4 +1,108 @@
 {
+  "chuo_2024_1_japanese": {
+    "id": "chuo_2024_1_japanese",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2024,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "japanese",
+    "subject_label": "国語",
+    "time_limit_min": 50,
+    "files": {
+      "question": "chuo_past/2024年度/kokugo-mondai.pdf"
+    }
+  },
+  "chuo_2024_1_math": {
+    "id": "chuo_2024_1_math",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2024,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "answer": "chuo_past/2024年度/sansu-kaito.pdf",
+      "question": "chuo_past/2024年度/sansu-mondai.pdf"
+    }
+  },
+  "chuo_2024_1_science": {
+    "id": "chuo_2024_1_science",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2024,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "answer": "chuo_past/2024年度/rika-kaito.pdf",
+      "question": "chuo_past/2024年度/rika-mondai.pdf"
+    }
+  },
+  "chuo_2024_1_social": {
+    "id": "chuo_2024_1_social",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2024,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "answer": "chuo_past/2024年度/shakai-kaito.pdf",
+      "question": "chuo_past/2024年度/shakai-mondai.pdf"
+    }
+  },
+  "chuo_2025_1_math": {
+    "id": "chuo_2025_1_math",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2025,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 50,
+    "files": {
+      "answer": "chuo_past/2025年度/sansu-kaito.pdf",
+      "question": "chuo_past/2025年度/sansu-mondai.pdf"
+    }
+  },
+  "chuo_2025_1_science": {
+    "id": "chuo_2025_1_science",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2025,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "answer": "chuo_past/2025年度/rika-kaito.pdf",
+      "question": "chuo_past/2025年度/rika-mondai.pdf"
+    }
+  },
+  "chuo_2025_1_social": {
+    "id": "chuo_2025_1_social",
+    "school": "chuo",
+    "school_name": "中央大学附属中学校",
+    "year": 2025,
+    "session": "1",
+    "session_label": "第1回",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "answer": "chuo_past/2025年度/shakai-kaito.pdf",
+      "question": "chuo_past/2025年度/shakai-mondai.pdf"
+    }
+  },
   "chuo_2026_1_japanese": {
     "id": "chuo_2026_1_japanese",
     "school": "chuo",
