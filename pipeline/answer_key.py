@@ -345,7 +345,7 @@ def main() -> None:
         if ex["subject"] != "math" or ex["school"] != "kyoritsu":
             continue  # other subjects: answer_key_generic.py; shinagawa: answer_key_tree.py
         if "sheet" not in f or "answer" not in f:
-            print(f"[answers] {eid}: missing sheet/answer, skip")
+            print(f"[answers] {eid}: no sheet/answer pdf -> answer_key_generic.py (override slot list)")
             continue
         slots = build_slots(fitz.open(ROOT / f["sheet"]))
         assign(slots, fitz.open(ROOT / f["answer"]))

@@ -5,7 +5,7 @@ description: コードベースの未使用コードと非効率な箇所を洗�
 # コードベースの最適化
 
 次の範囲を対象に最適化を実施してください: `functions/`, `web/src/`, `scripts/`, `pipeline/*.py`。
-**対象外**: `pipeline/out/`, `pipeline/in/`, `web/public/`, `web/dist/`, `*_past/`, `node_modules/`, `functions/venv/`(生成物・元データ)。
+**対象外**: `pipeline/out/`, `web/public/`, `web/dist/`, `*_past/`, `node_modules/`, `functions/venv/`(生成物・元データ)。
 
 1. **洗い出す**:
    - 未使用の関数、変数、import、`style.css` の未使用クラス

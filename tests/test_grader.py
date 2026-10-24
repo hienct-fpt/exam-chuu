@@ -80,3 +80,14 @@ def test_manual_grading_of_essays():
     assert r["score"] == 2
     r2 = grade_submission(answers, keys, exam, manual_grades={"1-1": True})
     assert r2["pendingCount"] == 0 and r2["score"] == 3 and r2["perItem"]["1-1"]["manual"]
+
+
+def test_explanation_reaches_the_result_only_from_the_key():
+    """解き方 lives in the secret answer key; the grader copies it (and the 非公式 flag) into the graded result."""
+    exam = {"items": [{"id": "x#1-1", "big": 1, "sub": 1, "label": "(1)", "answer_type": "number", "points": 1},
+                      {"id": "x#1-2", "big": 1, "sub": 2, "label": "(2)", "answer_type": "number", "points": 1}]}
+    keys = {"1-1": {"answer_type": "number", "answer": "6", "explanation": "2×3=6\n答え 6", "unofficial": True},
+            "1-2": {"answer_type": "number", "answer": "5"}}
+    pi = grade_submission({"1-1": "6", "1-2": "4"}, keys, exam)["perItem"]
+    assert pi["1-1"]["explanation"] == "2×3=6\n答え 6" and pi["1-1"]["unofficial"]
+    assert pi["1-2"]["explanation"] is None and not pi["1-2"]["unofficial"]

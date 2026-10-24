@@ -22,7 +22,7 @@ color: blue
 - **保護者権限**: `admin` custom claim を持つ保護者だけが、**リンク済みの子ども**の attempt を閲覧・○/× 採点できる
 - **親子リンク**: `students/{child}.parents` / `students/{parent}.children` は Cloud Functions(`redeem_invite`, `unlink_child`, `create_child_account`)だけが書く
 - **個人情報**: メールアドレスや project id などの実値は git 管理外(`web/.env.local`, `functions/.env`)
-- **著作権のある過去問 PDF**: `*_past/`, `pipeline/in/` はリポジトリに入れない
+- **著作権のある過去問 PDF**: `*_past/` はリポジトリに入れない
 
 ## 優先チェック項目(優先度順)
 

@@ -1,0 +1,380 @@
+{
+  "exam_id": "kyoritsu_2023_2-1_science",
+  "slots": [
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "1-1",
+      "big": 1,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "options": null,
+      "answer": [
+        "ア",
+        "イ",
+        "エ"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "1-2",
+      "big": 1,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "1-3",
+      "big": 1,
+      "label": "(3)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ウ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "1-4",
+      "big": 1,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "1-5",
+      "big": 1,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "manual",
+      "options": null,
+      "answer": null,
+      "variants": [],
+      "note": "作図。模範解答: 月の地平線の上に地球が半円(上半分)だけ見える図"
+    },
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "2-1",
+      "big": 2,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "オ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "2-2",
+      "big": 2,
+      "label": "(2)",
+      "unit": "",
+      "parts": [
+        "ことば",
+        "記号"
+      ],
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "赤血球|ヘモグロビン",
+        "ア"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "3",
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "2-3-1",
+      "big": 2,
+      "label": "(3)①",
+      "unit": "",
+      "parts": [
+        "吸うとき",
+        "はくとき"
+      ],
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "イ",
+        "ウ"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "3",
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "2-3-2",
+      "big": 2,
+      "label": "(3)②",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "2-4",
+      "big": 2,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "3-1",
+      "big": 3,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "3-2",
+      "big": 3,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "set",
+      "options": null,
+      "answer": [
+        "ア",
+        "エ"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "3-3",
+      "big": 3,
+      "label": "(3)",
+      "unit": "",
+      "parts": [
+        "方位磁針A",
+        "方位磁針B"
+      ],
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "ア",
+        "ウ"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "3-4",
+      "big": 3,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "エ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "3-5",
+      "big": 3,
+      "label": "(5)",
+      "unit": "",
+      "parts": [
+        "図5",
+        "図6"
+      ],
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "イ",
+        "ア"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "4-1",
+      "big": 4,
+      "label": "(1)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "4-2",
+      "big": 4,
+      "label": "(2)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ア",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "4-3",
+      "big": 4,
+      "label": "(3)",
+      "unit": "",
+      "parts": [
+        "(い)",
+        "(う)"
+      ],
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "二酸化炭素",
+        "酸素"
+      ],
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "4-4",
+      "big": 4,
+      "label": "(4)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": "ステンレス皿と酸素が反応しないことを確認するため。",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "4-5",
+      "big": 4,
+      "label": "(5)",
+      "unit": "",
+      "parts": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "イ",
+      "variants": [],
+      "note": null
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "4-6",
+      "big": 4,
+      "label": "(6)",
+      "unit": ":",
+      "parts": null,
+      "answer_type": "ratio",
+      "options": null,
+      "answer": "3:2",
+      "variants": [],
+      "note": "マグネシウム:結合した(う)"
+    }
+  ]
+}

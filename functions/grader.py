@@ -75,6 +75,8 @@ def grade_submission(answers: dict, keys: dict, exam: dict, item_ids: list[str] 
             "expected": key["answer"] if key else None,
             "variants": (key.get("variants") or []) if key else [],
             "note": (key or {}).get("note"),
+            "explanation": (key or {}).get("explanation"),   # 解き方: in answerKeys only, so shown after grading
+            "unofficial": bool((key or {}).get("unofficial")),  # AI-made key (no official 解答)
             "source": it.get("source"),  # imported items (min-san): {school, year, stars, tags, url, ...}
             "partsCorrect": list(res.parts_correct) if res else [],
             "points": points, "earned": points if correct else 0,

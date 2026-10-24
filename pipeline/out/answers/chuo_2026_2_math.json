@@ -1,180 +1,335 @@
 {
+  "exam_id": "chuo_2026_2_math",
   "slots": [
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "1-1",
       "big": 1,
       "label": "(1)",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "fraction",
+      "options": null,
+      "answer": "1/59",
       "variants": [],
-      "note": "1-2÷{3-4÷(5-6÷7)}の四則混合計算(整数)の値を求める"
+      "note": null,
+      "explanation": "いちばん内側のかっこから順に計算します。\n6÷7=6/7、5-6/7=29/7\n4÷29/7=28/29、3-28/29=59/29\n2÷59/29=58/59\n1-58/59=1/59\n答え 1/59",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "1-2",
       "big": 1,
       "label": "(2)",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
-      "variants": [],
-      "note": "125-{(□+5÷6)×60-24×(5/6+2/3)}=96の□にあてはまる数を求める逆算"
+      "part_units": null,
+      "answer_type": "fraction",
+      "options": null,
+      "answer": "1/4",
+      "variants": [
+        "0.25"
+      ],
+      "note": null,
+      "explanation": "わかるところを先に計算してから逆算します。\n24×(5/6+2/3)=24×3/2=36\n125-{ }=96 なので { }=29\n(□+5÷6)×60-36=29 より (□+5/6)×60=65\n□+5/6=65÷60=13/12\n□=13/12-10/12=3/12=1/4\n答え 1/4",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "1-3",
       "big": 1,
       "label": "(3)",
       "unit": "ページ",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "225",
       "variants": [],
-      "note": "本を3日間で読み終える場面で、1日目は全体の2/5より35ページ多く、2日目は残りの半分、3日目は全体の2/9を読んだときの本の全ページ数を求める分配算"
+      "note": null,
+      "explanation": "全体を①として考えます。\n1日目の残りは ①-(2/5+35)=3/5-35ページ\n2日目はその半分なので、3日目もその半分 3/10-35/2 ページを読みます。\nこれが全体の2/9なので 3/10-2/9=7/90 が 35/2 ページにあたります。\n全体=35/2÷7/90=225\n答え 225ページ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "1-4",
       "big": 1,
       "label": "(4)",
       "unit": "個",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "25",
       "variants": [],
-      "note": "1から400までの整数のうち、4でも6でも割り切れて、かつ16では割り切れない数の個数を求める"
+      "note": null,
+      "explanation": "4でも6でも割り切れる数は12の倍数です。\n400÷12=33あまり4 なので12の倍数は33個。\nその中で16でも割り切れるのは、12と16の最小公倍数48の倍数です。\n400÷48=8あまり16 なので8個。\n33-8=25\n答え 25個",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "1-5",
       "big": 1,
       "label": "(5)",
       "unit": "点",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "59",
       "variants": [],
-      "note": "A~Fの6人の平均点72点、D・E・Fの3人の平均点78点、AはBより17点高く、BはCより2点高いという条件からCの得点を求める"
+      "note": null,
+      "explanation": "合計点で考えます。\n6人の合計 72×6=432点、D・E・Fの合計 78×3=234点\nA・B・Cの合計 432-234=198点\nBはC+2点、AはB+17=C+19点\nCの3つ分+2+19=198 より Cの3つ分=177\nC=177÷3=59\n答え 59点",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "1-6",
       "big": 1,
       "label": "(6)",
       "unit": "",
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "parts": [
+        "A",
+        "B"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "3",
+        "12"
+      ],
       "variants": [],
-      "note": "1/A+2/B=1/2となる整数A,Bの組み合わせのうち、Bが最も大きくなるときのA,Bの値をそれぞれ求める"
+      "note": null,
+      "explanation": "Bを大きくするには、2/Bを小さく、つまり1/Aをできるだけ1/2に近く(大きく)します。\n1/Aは1/2より小さいので、Aは3以上です。\nA=3のとき 2/B=1/2-1/3=1/6 なので B=12(整数になります)。\nほかには(A,B)=(4,8),(6,6),(10,5) などがありますが、Bが最も大きいのはA=3のときです。\n答え A=3、B=12",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
       "id": "1-7",
       "big": 1,
       "label": "(7)",
       "unit": "度",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "52",
       "variants": [],
-      "note": "長方形の紙を点線で折ってできた図で、12°の角の情報から角xの大きさを求める(折り紙と角度)"
+      "note": null,
+      "explanation": "折り返した角は等しいことを使います。下の頂点をP、上の辺の点を左からQ、Rとします。\n左の折り目PQと下の辺の角を●、右の折り目PRと下の辺の角を○とします。\n図2では、左側を折った紙のふちがPRに重なっているので、180-●×2=○。\n右側を折った紙のふちとPQの間が12°なので、180-●-○×2=12。\n2つの式から ●=64°、○=52°。\n角xは、上の辺QRと2本の紙のふちでできる三角形の角です。Qでの角は180-64×2=52°、Rでの角は180-52×2=76°。\nx=180-52-76=52\n答え 52度",
+      "unofficial": true,
+      "ai_confidence": "medium"
     },
     {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
       "id": "1-8",
       "big": 1,
       "label": "(8)",
       "unit": "cm2",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "36.64",
       "variants": [],
-      "note": "正方形と円を重ね、接する4点のうち2点(8cmの線分)を結んだ図の斜線部分の面積を求める(円周率3.14使用)"
+      "note": null,
+      "explanation": "円の半径を□cmとすると、8cmの線は、半径2本でできる直角二等辺三角形の斜辺です。\nその三角形の面積は 8×8÷4=16 なので □×□÷2=16、□×□=32。\n正方形の面積は (□×2)×(□×2)=32×4=128、円の面積は 32×3.14=100.48。\nすみの4か所は 128-100.48=27.52\n左上の弓形は 32×3.14÷4-16=25.12-16=9.12\n27.52+9.12=36.64\n答え 36.64cm2",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "2-1",
       "big": 2,
       "label": "(1)",
       "unit": "番目",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "29",
       "variants": [],
-      "note": "1,3,1,5,3,1,7,5,3,1,…と並ぶ数列で、はじめて15が出てくるのは最初から数えて何番目かを求める"
+      "note": null,
+      "explanation": "(1),(3,1),(5,3,1),(7,5,3,1),…と組に分けます。\n第□組は □×2-1 から始まり、□個の数があります。\n15から始まるのは 15=8×2-1 なので第8組。\n第7組までに 1+2+…+7=28個あるので、15は29番目。\n答え 29番目",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "2-2",
       "big": 2,
       "label": "(2)",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "23",
       "variants": [],
-      "note": "同じ数列で、はじめから数えて80番目の数を求める"
+      "note": null,
+      "explanation": "1+2+…+12=78 なので、第12組の最後が78番目です。\n第13組は 13×2-1=25 から始まり 25,23,21,… と続きます。\n79番目が25、80番目が23です。\n答え 23",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "3-1",
       "big": 3,
       "label": "(1)",
       "unit": "倍",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "fraction",
+      "options": null,
+      "answer": "12/175",
       "variants": [],
-      "note": "正四面体OABCで辺OAを3:4に分ける点D、辺OB・OCを2:3に分ける点E・Fを結んでできる四面体ODEFの体積が、正四面体OABCの体積の何倍かを求める"
+      "note": null,
+      "explanation": "同じ頂点Oをもつ三角すいの体積比は、3本の辺の比をかけて求められます。\nOD/OA=3/7、OE/OB=2/5、OF/OC=2/5\n3/7×2/5×2/5=12/175\n答え 12/175倍",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "3-2",
       "big": 3,
       "label": "(2)",
       "unit": "cm3",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "171",
       "variants": [],
-      "note": "正四面体OABCの体積が350cm3のとき、辺の分点・中点D,E,F,L,M,Nを結んでできる八面体の体積を求める"
+      "note": null,
+      "explanation": "八面体は、正四面体から4つのすみの三角すいを切り取った立体です(三角形DEL、EMF、FND は正四面体の面の上にあります)。\nOのすみ ODEF:350×12/175=24\nAのすみ ADLN:AD/AO=4/7、AL/AB=1/2、AN/AC=1/2 → 350×4/7×1/2×1/2=50\nBのすみ BELM:BE/BO=3/5 → 350×3/5×1/2×1/2=52.5\nCのすみ CFMN:同じく52.5\n350-24-50-52.5-52.5=171\n答え 171cm3",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "4-1",
       "big": 4,
       "label": "(1)",
-      "unit": "km/時",
+      "unit": "km",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "22",
       "variants": [],
-      "note": "A-C間を往復する船X(静水時速14km)とB-C間を往復する船Yの位置を表すグラフから、船Yの静水での速さ(時速)を求める"
+      "note": null,
+      "explanation": "グラフから船YはB→C(下り)8kmに20分かかります。下りの速さは 8÷20/60=時速24km。\nCで20分とまって40分に出発し、64分にBに着くので、上り8kmに24分。上りの速さは 8÷24/60=時速20km。\n静水での速さ=(下り+上り)÷2=(24+20)÷2=22\n(川の流れは (24-20)÷2=時速2km)\n答え 時速22km",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "4-2",
       "big": 4,
       "label": "(2)",
       "unit": "km",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "12",
       "variants": [],
-      "note": "B-C間の距離8kmとグラフの時間の情報から、A地点からC地点までの距離を求める"
+      "note": null,
+      "explanation": "流れは時速2kmなので、船Xの下りは時速16km、上りは時速12km。\n船XはA→C、Cで15分とまり、C→Aで120分にAに着きます。動いていた時間は120-15=105分。\n同じ距離を進むのにかかる時間の比は 下り:上り=1/16:1/12=3:4\n下りの時間は 105×3/7=45分\nAC=16×45/60=12\n答え 12km",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "4-3",
       "big": 4,
       "label": "(3)",
       "unit": "分",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "100",
       "variants": [],
-      "note": "船X・Yの往復の様子を表すグラフ中の時刻(あ)にあたる分の値を求める"
+      "note": null,
+      "explanation": "(あ)は、Cから上ってきた船XがB地点を通る時刻です。\n船Xは45分にCに着き、15分とまって60分にCを出発します。\nCからBまで8kmを時速12kmで上るので 8÷12=2/3時間=40分。\n60+40=100\n答え 100",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "4-4",
       "big": 4,
       "label": "(4)",
       "unit": "km",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
-      "variants": [],
-      "note": "船Xと船Yがそれぞれ A地点・B地点を同時に出発してから2回目にすれ違う地点が、B地点から何km離れているかを求める"
+      "part_units": null,
+      "answer_type": "fraction",
+      "options": null,
+      "answer": "32/15",
+      "variants": [
+        "2 2/15"
+      ],
+      "note": null,
+      "explanation": "1回目のすれ違いは、Cを40分に出た船Yと、Cに向かう船Xが42分すぎに出会うときです。\n2回目は、Cを60分に出て上る船Xと、Bを84分に出て下る船Yが出会うときです。\n84分のとき、船Xは60分から24分上っているので、Cから 12×24/60=4.8km、つまりBから 8-4.8=3.2km のところにいます。\nここから2つの船は向かい合って進み、近づく速さは 12+24=時速36km。\n出会うまで 3.2÷36=4/45時間。\n船YがBから進む距離は 24×4/45=32/15km\n答え 32/15km(2と2/15km)",
+      "unofficial": true,
+      "ai_confidence": "high"
     }
   ]
 }

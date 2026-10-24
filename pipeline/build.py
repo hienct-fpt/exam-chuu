@@ -20,6 +20,7 @@ from render import node_name
 from bunya_map import bunya_for, unified_topic
 
 TAGS = ROOT / "pipeline" / "tags"
+EXPLANATIONS = ROOT / "pipeline" / "explanations"   # {exam_id}.json {"explanations": {slot_id: 解き方}} (official keys stay untouched)
 
 
 def load_tags(eid: str) -> tuple[dict, dict]:
@@ -41,6 +42,7 @@ def resolve(big: dict, path: list[str]) -> tuple[dict, list[str], list[dict], bo
 
 def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
     big_tags, item_tags = load_tags(eid)
+    howto = (load_json(EXPLANATIONS / f"{eid}.json", {}) or {}).get("explanations", {})
     items: list[dict] = []
     secret: dict[str, dict] = {}
     bigs_out = []
@@ -90,6 +92,10 @@ def build_exam(eid: str, ex: dict, seg: dict, ans: dict) -> tuple[dict, dict]:
             secret[iid] = {"answer": s.get("answer"), "variants": s.get("variants", []),
                            "answer_type": s.get("answer_type") or "text", "parts": s.get("parts"),
                            "unit": s.get("unit", ""), "options": s.get("options"), "note": s.get("note")}
+            if s.get("explanation") or howto.get(s["id"]):   # 解き方, shown on the result page after grading
+                secret[iid]["explanation"] = s.get("explanation") or howto[s["id"]]
+            if s.get("unofficial"):    # key made by us (no official 解答 available)
+                secret[iid]["unofficial"] = True
             item_ids.append(iid)
         explain = f"q/{eid}/x{bno}.png"   # 解説 crop (kaisetsu.py), shown on the result page only
         bigs_out.append({"no": bno, "image": big_img, "stem_image": big_stem,

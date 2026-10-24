@@ -132,6 +132,11 @@ details.exam-log table { margin-top: 6px; }
 /* 問題の確認 (preview.js) */
 .answer-key { padding: 6px 0 10px; border-bottom: 1px dashed var(--line); margin-bottom: 8px; }
 .answer-key b { color: var(--ok); }
+details.howto { margin-top: 6px; font-size: 13px; }
+tr.howto-row td { border-top: none; padding-top: 0; }
+details.howto summary { cursor: pointer; color: var(--accent); }
+details.howto > div { line-height: 1.7; padding-left: 4px; }
+details.howto[open] { background: #f8fafc; border-radius: 6px; padding: 6px 8px; }
 .exam-log-line { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 6px; }
 .exam-log-line .chip { font-size: 12px; padding: 1px 8px; cursor: default; }
 /* 保護者 with several children (children.js) */

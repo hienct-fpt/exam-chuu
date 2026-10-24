@@ -97,7 +97,14 @@ The result page shows 分野別 correctness so weak topics stand out. Edit tags,
 
 ## 6. Subjects and answer types
 
-85 exams are processed: 24 kyoritsu (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語), 23 shinagawa
+**解き方 (worked explanations)**: every 共立・品川・中央 question has one (1,588 total). Source: `pipeline/explanations/{exam_id}.json`
+(`{"explanations": {slot_id: text}}`, for exams with an official key — the key files stay untouched) or an `explanation` field
+on the slot in `overrides/answers` (中央, whose keys we made ourselves, `unofficial: true`). `build.py` puts it in the secret
+answer key only; the grader copies it into the result, so it appears under 「解き方を見る」 after submitting (and in the
+parent's 問題と答え preview). 組分け uses the official 解説 images instead, みんなの算数 links to the site's 解説.
+
+88 exams are processed: 27 kyoritsu (2024–2026 × 2-1/2-2 × 算数・理科・社会・国語, plus 2023 2-1 × 算数・理科・社会 —
+scanned spreads, crops in `overrides/segments`, keys transcribed into `overrides/answers`; no 国語 in the source), 23 shinagawa
 (2018 + 2023–2026 × 第1回/第2回 × 算数・理科・社会, plus 算数1教科), 8 chuo (2026 × 1回/2回 × 算数・理科・社会・国語),
 6 sakaehigashi (2025–2026 × 算数・理科・社会) and 24 kumiwake
 (四谷大塚 公開組分けテスト 5年 第1〜6回 × 4 subjects), plus the min-san.com offline copy (§ below). The home page has
@@ -129,18 +136,20 @@ and the answers are transcribed by hand into `pipeline/overrides/answers/shinaga
 **Chuo (中央大学附属)**: 算数・理科・社会 have real per-問 crops via `SUBJECT_RULES["chuo_math"/"chuo_science"/"chuo_social"]`
 in `segment.py` (chuo's 大問 box-digit sits further right than kyoritsu's, and `（１）`-style markers split across
 3 spans/fonts — both handled there without touching kyoritsu's thresholds). 国語 stays page-only, same as kyoritsu.
-社会's answers are AI-read descriptions (`answer_type: manual`, no scanned 解答用紙), not auto-extracted; grade/topic
+No official 解答 could be found, so all 8 keys were solved by us (AI, 算数・理科 cross-checked by an independent
+second solve) and carry `"unofficial": true` + an `explanation` (解き方) per slot — the result page shows them after
+grading with an 「AI作成・非公式」 badge; only the 記述 stay parent-graded; grade/topic
 were tagged per item by reading each question, not defaulted from the 大問 (see § 5 rubric: 地理→5, 歴史/公民/時事→6
 for 社会; base-curriculum 生物・地層 → 5 vs 回路・波・気体計算・天体 → 6 for 理科).
 
-**Known gap**: chuo, sakaehigashi and shinagawa 2023–25 (imported from `pipeline/in/`) have no scanner in
-`pipeline/inventory.py` — their `out/exams.json` entries were added by hand in an earlier session (and
-`out/` is git-ignored, so they only live on this machine). `inventory.main()` now keeps such entries on a
-re-scan (schools without a scanner + anything whose question PDF is under `pipeline/in/`) instead of wiping
-them. Their answer keys are full slot lists in `overrides/answers/{exam_id}.json` (`"slots": [...]`);
-`answer_key_generic.py` copies such a list to `out/answers/` for any exam without a 解答用紙, so editing the
-override + `python pipeline/run_all.py` (or `answer_key_generic.py <exam_id>` + `build.py`) is enough — no more
-hand-copying into `out/answers`. Add a `scan_chuo`/`scan_sakaehigashi` to rebuild the entries from scratch.
+**Source folders**: every school keeps its PDFs in its own git-ignored `{school}_past/` folder, one sub-folder per
+year, and `pipeline/inventory.py` rebuilds `out/exams.json` from the file names (`scan_kyoritsu`, `scan_shinagawa`,
+`scan_kumiwake`, `scan_chuo`, `scan_sakaehigashi`): `chuo_past/2026年度/`, `sakaehigashi_past/{2025,2026}年度/`,
+`shinagawa_past/{2023,2024,2025}年度_入試問題解答/` (the scanned `品川女子学院_{year}年…` files). The scanned exams
+(chuo 社会, sakaehigashi, shinagawa 2023–25, kyoritsu 2023) keep their crops and answer keys as full lists in
+`overrides/segments/{exam_id}.json` (`"bigs": [...]`) and `overrides/answers/{exam_id}.json` (`"slots": [...]`);
+`answer_key_generic.py` / `answer_key_tree.py` copy such a list to `out/answers/`, so editing the override +
+`python pipeline/run_all.py` (or `answer_key_generic.py <exam_id>` + `build.py`) is enough.
 
 **Kumiwake (四谷大塚 公開組分けテスト, 5年 2026 第1〜6回)**: `kumiwake_past/` (git-ignored) is scanned by
 `inventory.scan_kumiwake()` into `kumiwake_2026_r{1-6}_{subject}` (第6回 came without 回答 sheets). The `…回答.pdf` files are **the child's own scored

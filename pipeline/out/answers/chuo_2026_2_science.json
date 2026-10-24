@@ -1,180 +1,334 @@
 {
+  "exam_id": "chuo_2026_2_science",
   "slots": [
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "1-1",
       "big": 1,
       "label": "問1",
       "unit": "秒",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "fraction",
+      "options": null,
+      "answer": "5/4",
       "variants": [],
-      "note": "Aさんのこぶしの動き(5秒間で4回転)の周期を分数の秒数で求める"
+      "note": null,
+      "explanation": "5秒間で4回転するので、1回転にかかる時間は 5÷4 を計算します。\n5÷4 = 5/4(秒)\n分子が分母より大きいので仮分数のまま答えます。\n答え 5/4 秒",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "1-2",
       "big": 1,
       "label": "問2",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "②",
       "variants": [],
-      "note": "①の位置から動き始めて45/32秒たったときのこぶしの位置を図1(b)の①~⑧から選ぶ"
+      "note": null,
+      "explanation": "45/32秒が何周期分かを考えます。\n45/32 ÷ 5/4 = 45/32 × 4/5 = 9/8(回転)\n9/8回転 = 1回転 + 1/8回転 です。\n1回転すると①にもどり、そこから反時計回りに1/8回転(となりの位置へ1つ)進みます。\n①の次は(反時計回りなので左上の)②です。\n答え ②",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "1-3",
       "big": 1,
       "label": "問3",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "G",
       "variants": [],
-      "note": "図2(b)の状態から7/8周期後の波形で「山」の位置をA~Lから選ぶ"
+      "note": null,
+      "explanation": "図2(a)で、A~Lのこぶしの位置は ⑧⑦⑥⑤④③②①⑧⑦⑥⑤ です(Hが①=真上)。\n1/8周期ごとに、どのこぶしも反時計回りに1つ先の位置へ進みます。\n7/8周期後は7つ進む=1つもどるのと同じなので、①(真上)にくるのは今②にいる人です。\n②にいるのはGさんだけです。\n答え G",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "1-4",
       "big": 1,
       "label": "問4",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ア",
       "variants": [],
-      "note": "図2(b)からの波形の動き方(進む向きと4/8周期ごとの逆転)として正しいものをア~エから選ぶ"
+      "note": null,
+      "explanation": "1/8周期後に真上(①)にくるのは、今⑧にいる人=Hの右どなりのIさんです。\nつまり山は1/8周期ごとに1人ずつ右へ移ります。\nどの人も同じ向きに回り続けるので、向きが逆転することはありません。\n(イ)(エ)は左へ進むので×、(ウ)は逆転しないので×。\n答え ア",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "1-5",
       "big": 1,
       "label": "問5",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ア",
       "variants": [],
-      "note": "音が伝わる・風が吹く・温度が高くなるのうち波であるものをア~ウから選ぶ"
+      "note": null,
+      "explanation": "音は、空気が振動し、その振動がとなりへとなりへと伝わっていく波です。\n風は空気そのものが移動する現象で、波ではありません。\n温度が高くなるのも振動が伝わる現象ではありません。\n答え ア",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "2-1",
       "big": 2,
       "label": "問1",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "化石",
       "variants": [],
-      "note": "地層に残る大昔の生き物のからだや生活のあとを何というか漢字で答える"
+      "note": null,
+      "explanation": "大昔の生き物のからだや、足あと・すあとなど生活していたあとが地層に残ったものを化石といいます。\n答え 化石",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "2-2",
       "big": 2,
       "label": "問2",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "イ",
       "variants": [],
-      "note": "現在の地球上で見られるハチュウ類を図のア~オから1つ選ぶ"
+      "note": null,
+      "explanation": "ハチュウ類はカメ・ヘビ・トカゲ・ワニなどです。\n(ア)カエルは両生類、(ウ)スズメは鳥類、(エ)コウモリはほ乳類、(オ)メダカは魚類です。\n(イ)のカメがハチュウ類です。\n答え イ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "2-3",
       "big": 2,
       "label": "問3",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "set",
+      "options": null,
+      "answer": [
+        "ア",
+        "オ"
+      ],
       "variants": [],
-      "note": "あたたかく浅い海に生活していたと考えられる生き物(示準化石)をア~オから2つ選ぶ"
+      "note": null,
+      "explanation": "あたたかく浅い海を示す生き物(示相化石)を選びます。\nサンゴはあたたかくて浅いきれいな海にすみます。\nアサリは浅い海(砂浜の干潟など)にすみます。\nシジミは河口や湖など淡水が混じる所、ホタテは冷たい海、ザリガニは川や池(淡水)にすみます。\n答え ア、オ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "2-4",
       "big": 2,
       "label": "問4",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "イ",
       "variants": [],
-      "note": "実験2の結果から、水の流れで遠くまで運ばれるもの(い)と、斜面から最も遠くに堆積した①(う)の組合せをア~カから選ぶ"
+      "note": null,
+      "explanation": "つぶが小さく軽いものほど水の流れで遠くまで運ばれます。\nつぶの大きさは れき>砂>どろ なので、いちばん遠くに積もる①はどろです。\nれきは重いので斜面の近くに積もります。\n答え イ(軽いもの・どろ)",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "2-5",
       "big": 2,
       "label": "問5",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "set",
+      "options": null,
+      "answer": [
+        "ウ",
+        "カ"
+      ],
       "variants": [],
-      "note": "実験3で2回目に堆積した砂・どろ・れきについて、図5の(え)の位置をたてに切ったときの柱状図として考えられるものをア~コから2つ選ぶ"
+      "note": null,
+      "explanation": "まず1回目の地層:(え)は斜面の下のはしの真上で、図5では下かられき(厚い)、その上に砂があり、どろはほとんどありません。\n水面を下げると新しい岸(川の出口)が沖の方へ移り、(え)の近くになります。\n2回目も、岸に近いほうから れき→砂→どろ の順に積もり、1か所で見ると下が大きいつぶ、上が小さいつぶになります。\n(え)は新しい岸に近いので、1回目の層の上にれきがのる(ウ)か、れきの上にさらに砂がのる(カ)が考えられます。\nどろがれきの下にある(キ)や、れきの上に砂をとばしてどろがある(ク)はこの積もり方に合いません。\n答え ウ、カ",
+      "unofficial": true,
+      "ai_confidence": "medium"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "3-1",
       "big": 3,
       "label": "問1",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "set",
+      "options": null,
+      "answer": [
+        "ア",
+        "ウ"
+      ],
       "variants": [],
-      "note": "鉄の性質について正しく書かれた文をア~エからすべて選ぶ"
+      "note": null,
+      "explanation": "(ア)鉄は金属なので電気を通す。正しい。\n(イ)鉄は塩酸には溶けて水素が出るが、水酸化ナトリウム水溶液には溶けない(溶けるのはアルミニウム)。誤り。\n(ウ)温度による体積の変わり方は 固体<液体<気体 なので、鉄は水より小さい。正しい。\n(エ)鉄を塩酸に溶かした液を蒸発させると、鉄とはちがう黄色っぽい物(塩化鉄)が残る。誤り。\n答え ア、ウ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "3-2",
       "big": 3,
       "label": "問2",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "イ",
       "variants": [],
-      "note": "実験1(1)で酸素を使い切った後、冷めてからふたを閉めたままのペットボトルの重さが49.80gよりどうなっているか選ぶ"
+      "note": null,
+      "explanation": "ふたを閉めたままなので、外から物が入ったり出たりしません。\n中の酸素が鉄と結びついても、物全体の重さは変わりません。\n答え イ(49.80gのまま)",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "3-3",
       "big": 3,
       "label": "問3",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": "酸素が使われて減った分、外から空気が入ったから。",
       "variants": [],
-      "note": "実験1(2)でふたを開けたときに「シュッ」という音がした理由を15字くらいで説明する"
+      "note": null,
+      "explanation": "ボトル内の酸素が鉄の変化に使われて、気体の量が減りました。\nそのためボトル内の気圧(気体がおす力)が外より小さくなっています。\nふたを開けると、外の空気が勢いよく入りこんで「シュッ」と音がしました。\n要素:①中の酸素が使われて減った(気圧が下がった) ②外から空気が入りこんだ\n答え(例)酸素が減った分、空気が入ったから。",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "3-4",
       "big": 3,
       "label": "問4",
       "unit": "L",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "1.7",
       "variants": [],
-      "note": "カイロ内のすべての鉄を変化させるのに必要な酸素の体積を小数第1位まで求める"
+      "note": null,
+      "explanation": "ペットボトル内の酸素は 500×0.2 = 100mL です。\nこの100mLの酸素が使われ、ふたを開けるとその分が入って 49.95-49.80 = 0.15g 重くなりました。つまり酸素100mLで0.15g増えます。\n鉄をすべて変化させるまでに増えた重さは 52.35-49.80 = 2.55g です。\n2.55÷0.15 = 17 なので、酸素は 100×17 = 1700mL = 1.7L\n答え 1.7 L",
+      "unofficial": true,
+      "ai_confidence": "medium"
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "3-5",
       "big": 3,
       "label": "問5",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "イ",
       "variants": [],
-      "note": "実験2(線香)と実験3(石灰水)の結果として最もふさわしい組合せをア~カから選ぶ"
+      "note": null,
+      "explanation": "実験2:ボトル内の酸素はすべて使い切られているので、線香の火は消えます。\n実験3:カイロは鉄が酸素と結びつくだけで、二酸化炭素は出ません。残っている気体はほとんどちっ素なので、石灰水は白くにごりません。\n答え イ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "3-6",
       "big": 3,
       "label": "問6",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "オ",
       "variants": [],
-      "note": "冬の夜空観察の文章中の①(冬の大三角を作る星)②(プレアデス星団の色)③(日本での呼び名)にあてはまる語句の組合せをア~クから選ぶ"
+      "note": null,
+      "explanation": "冬の大三角はオリオン座のベテルギウス、おおいぬ座のシリウス、こいぬ座のプロキオンを結んだ三角形です(リゲルは入りません)。\nプレアデス星団は青白い星の集まりで、日本では「すばる」とよばれます。\n北斗七星はおおぐま座の一部で別の星の並びです。\n答え オ",
+      "unofficial": true,
+      "ai_confidence": "high"
     }
   ]
 }

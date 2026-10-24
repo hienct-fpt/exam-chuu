@@ -82,8 +82,8 @@ def main(only: set[str] | None = None, verbose: bool = False) -> None:
             import answer_key_tree
             answer_key_tree.process(eid, verbose)
             continue
-        if ex["subject"] == "math" and ex["school"] == "kyoritsu":
-            continue  # answer_key.py
+        if ex["subject"] == "math" and ex["school"] == "kyoritsu" and "sheet" in ex["files"]:
+            continue  # answer_key.py (scanned years have no 解答用紙 PDF -> transcribed override list below)
         process(eid, ex, verbose)
 
 

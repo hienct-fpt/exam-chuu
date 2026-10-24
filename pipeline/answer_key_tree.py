@@ -12,7 +12,7 @@ from __future__ import annotations
 import sys
 
 from common import OUT, load_json, dump_json
-from answer_key_generic import apply_overrides
+from answer_key_generic import apply_overrides, manual_slots
 
 
 def slots_from_tree(seg: dict) -> list[dict]:
@@ -41,7 +41,8 @@ def process(eid: str, verbose: bool = True) -> list[dict] | None:
     if not seg:
         print(f"[answers] {eid}: no segments, skip")
         return None
-    slots = apply_overrides(eid, slots_from_tree(seg))
+    # a full slot list in the override (scanned shinagawa 2023-25) replaces the tree-derived slots
+    slots = manual_slots(eid) or apply_overrides(eid, slots_from_tree(seg))
     for s in slots:
         s.setdefault("path", s["id"].split("-")[1:])
         if s.get("answer_type") is None:

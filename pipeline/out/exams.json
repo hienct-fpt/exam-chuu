@@ -10,7 +10,7 @@
     "subject_label": "国語",
     "time_limit_min": 50,
     "files": {
-      "question": "pipeline/in/中央大学附属_2026年_第1回_国語問題.pdf"
+      "question": "chuo_past/2026年度/中央大学附属_2026年度_第1回_国語問題.pdf"
     }
   },
   "chuo_2026_1_math": {
@@ -24,7 +24,7 @@
     "subject_label": "算数",
     "time_limit_min": 50,
     "files": {
-      "question": "pipeline/in/中央大学附属_2026年_第1回_算数問題.pdf"
+      "question": "chuo_past/2026年度/中央大学附属_2026年度_第1回_算数問題.pdf"
     }
   },
   "chuo_2026_1_science": {
@@ -38,7 +38,7 @@
     "subject_label": "理科",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/中央大学附属_2026年_第1回_理科問題.pdf"
+      "question": "chuo_past/2026年度/中央大学附属_2026年度_第1回_理科問題.pdf"
     }
   },
   "chuo_2026_1_social": {
@@ -52,7 +52,7 @@
     "subject_label": "社会",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/中央大学附属_2026年_第1回_社会問題.pdf"
+      "question": "chuo_past/2026年度/中央大学附属_2026年度_第1回_社会問題.pdf"
     }
   },
   "chuo_2026_2_japanese": {
@@ -66,7 +66,7 @@
     "subject_label": "国語",
     "time_limit_min": 50,
     "files": {
-      "question": "pipeline/in/中央大学附属_2026年_第２回_国語問題.pdf"
+      "question": "chuo_past/2026年度/中央大学附属_2026年度_第２回_国語問題.pdf"
     }
   },
   "chuo_2026_2_math": {
@@ -80,7 +80,7 @@
     "subject_label": "算数",
     "time_limit_min": 50,
     "files": {
-      "question": "pipeline/in/中央大学附属_2026年_第２回_算数問題.pdf"
+      "question": "chuo_past/2026年度/中央大学附属_2026年度_第２回_算数問題.pdf"
     }
   },
   "chuo_2026_2_science": {
@@ -94,7 +94,7 @@
     "subject_label": "理科",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/中央大学附属_2026年_第２回_理科問題.pdf"
+      "question": "chuo_past/2026年度/中央大学附属_2026年度_第２回_理科問題.pdf"
     }
   },
   "chuo_2026_2_social": {
@@ -108,7 +108,7 @@
     "subject_label": "社会",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/中央大学附属_2026年_第２回_社会問題.pdf"
+      "question": "chuo_past/2026年度/中央大学附属_2026年度_第２回_社会問題.pdf"
     }
   },
   "kumiwake_2026_r1_japanese": {
@@ -489,6 +489,51 @@
     "files": {
       "question": "kumiwake_past/2026年10月 公開組分けテスト５年　第６回社会問題.pdf",
       "result": "kumiwake_past/2026年10月 公開組分けテスト５年　第６回結果.pdf"
+    }
+  },
+  "kyoritsu_2023_2-1_math": {
+    "id": "kyoritsu_2023_2-1_math",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2023,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "math",
+    "subject_label": "算数",
+    "time_limit_min": 45,
+    "files": {
+      "answer": "kyoritsu_past/2023年度/sansu-kaito.pdf",
+      "question": "kyoritsu_past/2023年度/sansu-mondai.pdf"
+    }
+  },
+  "kyoritsu_2023_2-1_science": {
+    "id": "kyoritsu_2023_2-1_science",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2023,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "science",
+    "subject_label": "理科",
+    "time_limit_min": 30,
+    "files": {
+      "answer": "kyoritsu_past/2023年度/rika-kaito.pdf",
+      "question": "kyoritsu_past/2023年度/rika-mondai.pdf"
+    }
+  },
+  "kyoritsu_2023_2-1_social": {
+    "id": "kyoritsu_2023_2-1_social",
+    "school": "kyoritsu",
+    "school_name": "共立女子中学校",
+    "year": 2023,
+    "session": "2-1",
+    "session_label": "2/1入試",
+    "subject": "social",
+    "subject_label": "社会",
+    "time_limit_min": 30,
+    "files": {
+      "answer": "kyoritsu_past/2023年度/shakai-kaito.pdf",
+      "question": "kyoritsu_past/2023年度/shakai-mondai.pdf"
     }
   },
   "kyoritsu_2024_2-1_japanese": {
@@ -886,8 +931,8 @@
     "subject_label": "国語",
     "time_limit_min": 45,
     "files": {
-      "question": "pipeline/in/栄東中学校_2025年国語問題.pdf",
-      "answer": "pipeline/in/栄東中学校_2025年国語回答.pdf"
+      "question": "sakaehigashi_past/2025年度/栄東中学校_2025年国語問題.pdf",
+      "answer": "sakaehigashi_past/2025年度/栄東中学校_2025年国語回答.pdf"
     }
   },
   "sakaehigashi_2025_a_math": {
@@ -901,8 +946,8 @@
     "subject_label": "算数",
     "time_limit_min": 45,
     "files": {
-      "question": "pipeline/in/栄東中学校_2025年算数問題.pdf",
-      "answer": "pipeline/in/栄東中学校_2025年算数回答.pdf"
+      "question": "sakaehigashi_past/2025年度/栄東中学校_2025年算数問題.pdf",
+      "answer": "sakaehigashi_past/2025年度/栄東中学校_2025年算数回答.pdf"
     }
   },
   "sakaehigashi_2025_a_science": {
@@ -916,8 +961,8 @@
     "subject_label": "理科",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/栄東中学校_2025年理科問題.pdf",
-      "answer": "pipeline/in/栄東中学校_2025年理科回答.pdf"
+      "question": "sakaehigashi_past/2025年度/栄東中学校_2025年理科問題.pdf",
+      "answer": "sakaehigashi_past/2025年度/栄東中学校_2025年理科回答.pdf"
     }
   },
   "sakaehigashi_2025_a_social": {
@@ -931,8 +976,8 @@
     "subject_label": "社会",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/栄東中学校_2025年社会問題.pdf",
-      "answer": "pipeline/in/栄東中学校_2025年社会回答.pdf"
+      "question": "sakaehigashi_past/2025年度/栄東中学校_2025年社会問題.pdf",
+      "answer": "sakaehigashi_past/2025年度/栄東中学校_2025年社会回答.pdf"
     }
   },
   "sakaehigashi_2026_a_japanese": {
@@ -946,7 +991,7 @@
     "subject_label": "国語",
     "time_limit_min": 45,
     "files": {
-      "question": "pipeline/in/栄東中学校_2026年国語問題.pdf"
+      "question": "sakaehigashi_past/2026年度/栄東中学校_2026年国語問題.pdf"
     }
   },
   "sakaehigashi_2026_a_math": {
@@ -960,7 +1005,7 @@
     "subject_label": "算数",
     "time_limit_min": 45,
     "files": {
-      "question": "pipeline/in/栄東中学校_2026年算数問題.pdf"
+      "question": "sakaehigashi_past/2026年度/栄東中学校_2026年算数問題.pdf"
     }
   },
   "sakaehigashi_2026_a_science": {
@@ -974,7 +1019,7 @@
     "subject_label": "理科",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/栄東中学校_2026年理科問題.pdf"
+      "question": "sakaehigashi_past/2026年度/栄東中学校_2026年理科問題.pdf"
     }
   },
   "sakaehigashi_2026_a_social": {
@@ -988,7 +1033,7 @@
     "subject_label": "社会",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/栄東中学校_2026年社会問題.pdf"
+      "question": "sakaehigashi_past/2026年度/栄東中学校_2026年社会問題.pdf"
     }
   },
   "shinagawa_2018_m1_math": {
@@ -1148,8 +1193,8 @@
     "subject_label": "算数",
     "time_limit_min": 45,
     "files": {
-      "question": "pipeline/in/品川女子学院_2023年算数問題.pdf",
-      "answer": "pipeline/in/品川女子学院_2023年算数回答.pdf"
+      "question": "shinagawa_past/2023年度_入試問題解答/品川女子学院_2023年算数問題.pdf",
+      "answer": "shinagawa_past/2023年度_入試問題解答/品川女子学院_2023年算数回答.pdf"
     }
   },
   "shinagawa_2023_r1_science": {
@@ -1163,8 +1208,8 @@
     "subject_label": "理科",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/品川女子学院_2023年理科問題.pdf",
-      "answer": "pipeline/in/品川女子学院_2023年理科回答.pdf"
+      "question": "shinagawa_past/2023年度_入試問題解答/品川女子学院_2023年理科問題.pdf",
+      "answer": "shinagawa_past/2023年度_入試問題解答/品川女子学院_2023年理科回答.pdf"
     }
   },
   "shinagawa_2023_r1_social": {
@@ -1178,8 +1223,8 @@
     "subject_label": "社会",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/品川女子学院_2023年社会問題.pdf",
-      "answer": "pipeline/in/品川女子学院_2023年社会回答.pdf"
+      "question": "shinagawa_past/2023年度_入試問題解答/品川女子学院_2023年社会問題.pdf",
+      "answer": "shinagawa_past/2023年度_入試問題解答/品川女子学院_2023年社会回答.pdf"
     }
   },
   "shinagawa_2024_r1_math": {
@@ -1193,8 +1238,8 @@
     "subject_label": "算数",
     "time_limit_min": 45,
     "files": {
-      "question": "pipeline/in/品川女子学院_2024年算数問題.pdf",
-      "answer": "pipeline/in/品川女子学院_2024年算数回答.pdf"
+      "question": "shinagawa_past/2024年度_入試問題解答/品川女子学院_2024年算数問題.pdf",
+      "answer": "shinagawa_past/2024年度_入試問題解答/品川女子学院_2024年算数回答.pdf"
     }
   },
   "shinagawa_2024_r1_science": {
@@ -1208,8 +1253,8 @@
     "subject_label": "理科",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/品川女子学院_2024年理科問題.pdf",
-      "answer": "pipeline/in/品川女子学院_2024年理科回答.pdf"
+      "question": "shinagawa_past/2024年度_入試問題解答/品川女子学院_2024年理科問題.pdf",
+      "answer": "shinagawa_past/2024年度_入試問題解答/品川女子学院_2024年理科回答.pdf"
     }
   },
   "shinagawa_2024_r1_social": {
@@ -1223,8 +1268,8 @@
     "subject_label": "社会",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/品川女子学院_2024年社会問題.pdf",
-      "answer": "pipeline/in/品川女子学院_2024年社会回答.pdf"
+      "question": "shinagawa_past/2024年度_入試問題解答/品川女子学院_2024年社会問題.pdf",
+      "answer": "shinagawa_past/2024年度_入試問題解答/品川女子学院_2024年社会回答.pdf"
     }
   },
   "shinagawa_2025_r1_math": {
@@ -1238,8 +1283,8 @@
     "subject_label": "算数",
     "time_limit_min": 45,
     "files": {
-      "question": "pipeline/in/品川女子学院_2025年算数問題.pdf",
-      "answer": "pipeline/in/品川女子学院_2025年算数回答.pdf"
+      "question": "shinagawa_past/2025年度_入試問題解答/品川女子学院_2025年算数問題.pdf",
+      "answer": "shinagawa_past/2025年度_入試問題解答/品川女子学院_2025年算数回答.pdf"
     }
   },
   "shinagawa_2025_r1_science": {
@@ -1253,8 +1298,8 @@
     "subject_label": "理科",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/品川女子学院_2025年理科問題.pdf",
-      "answer": "pipeline/in/品川女子学院_2025年理科回答.pdf"
+      "question": "shinagawa_past/2025年度_入試問題解答/品川女子学院_2025年理科問題.pdf",
+      "answer": "shinagawa_past/2025年度_入試問題解答/品川女子学院_2025年理科回答.pdf"
     }
   },
   "shinagawa_2025_r1_social": {
@@ -1268,8 +1313,8 @@
     "subject_label": "社会",
     "time_limit_min": 30,
     "files": {
-      "question": "pipeline/in/品川女子学院_2025年社会問題.pdf",
-      "answer": "pipeline/in/品川女子学院_2025年社会回答.pdf"
+      "question": "shinagawa_past/2025年度_入試問題解答/品川女子学院_2025年社会問題.pdf",
+      "answer": "shinagawa_past/2025年度_入試問題解答/品川女子学院_2025年社会回答.pdf"
     }
   },
   "shinagawa_2026_m1_math": {

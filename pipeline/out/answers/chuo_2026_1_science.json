@@ -1,180 +1,341 @@
 {
+  "exam_id": "chuo_2026_1_science",
   "slots": [
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "1-1",
       "big": 1,
       "label": "問1",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ア",
       "variants": [],
-      "note": "実験1(図1・表1)の結果からわかるダイオードの性質として最もふさわしいものをア~エから選ぶ"
+      "note": null,
+      "explanation": "②と③のちがいはダイオードの向きだけです。\n②では豆電球が光り250mA流れたのに、③では0mAで光りませんでした。\nつまりダイオードは決まった向きにしか電流を流さず、逆向きだと流れません。\n(イ)乾電池から出る電流の向きは変わりません。(ウ)①~⑤はすべて乾電池2個なので確かめられません。(エ)故障したという結果はありません(⑤は豆電球を通らない近道ができただけ)。\n答え ア",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "1-2",
       "big": 1,
       "label": "問2",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ア",
       "variants": [],
-      "note": "図2の回路⑦で切り替えスイッチを1秒ごとに切り替えたときの検流計の針の振れ方(空らん1)をア~カから選ぶ"
+      "note": null,
+      "explanation": "ダイオードの絵は、白い帯のある側へ電流が流れます(図1の②③から)。\n⑦の上の道(A)のダイオードは左→右に、下の道(B)のダイオードは右→左に電流を通します。\n上の乾電池につないだとき:電流は左→右に流れ、Aの道を通って検流計の+たんしに入るので針は右に振れます。\n下の乾電池につないだとき:電流は右→左に流れ、Bの道を通るので針は左に振れます。\n1秒ごとに切り替えるので、針は右と左に交互に振れます。\n答え ア",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "1-3",
       "big": 1,
       "label": "問3",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "キ",
       "variants": [],
-      "note": "図2の回路⑦で切り替えスイッチを1秒ごとに切り替えたときの豆電球A・Bの光り方(空らん2)をア~クから選ぶ"
+      "note": null,
+      "explanation": "問2と同じように考えます。\n電流が左→右に流れる1秒間はAの道だけに流れてAが光り、Bは消えています。\n電流が右→左に流れる次の1秒間はBの道だけに流れてBが光り、Aは消えています。\nだからAとBが1秒ごとに交互に点滅します。\n答え キ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "1-4",
       "big": 1,
       "label": "問4",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ウ",
       "variants": [],
-      "note": "図3の半波整流回路で豆電球に流れる電流の様子(空らん3)をア~エから選ぶ"
+      "note": null,
+      "explanation": "ダイオードが1個だけなので、片方の向きの電流しか通しません。\n上の乾電池につないだ1秒間は電流が流れ、下の乾電池につないだ1秒間は電流が流れません。\nだから電流は一方向だけれど、流れたり止まったりをくり返します。\n(ア)(イ)電流の大きさの話ではありません。(エ)流れ続けてはいません。\n答え ウ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "1-5",
       "big": 1,
       "label": "問5",
       "unit": "",
-      "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "parts": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "ア",
+        "イ",
+        "イ",
+        "ア"
+      ],
       "variants": [],
-      "note": "図4のPQ間に点Pから点Qへ直流を流し続けるために、空らんA~Dにダイオードをどの向き(ア・イ)でつなぐか、それぞれ答える(4つの空欄をまとめて1問として扱う)"
+      "note": null,
+      "explanation": "白い帯のある側へ電流が流れます。(ア)は左→右、(イ)は右→左に電流を通します。\n左はしの道をL、右はしの道をRとします。上の乾電池のとき電流はLから、下の乾電池のときはRから出ます。\nLから出るとき:L→A→P→(豆電球・検流計)→Q→D→R と流れればよいので、AとDは左→右=(ア)。\nRから出るとき:R→B→P→(豆電球・検流計)→Q→C→L と流れればよいので、BとCは右→左=(イ)。\nこうすると、どちらのときもPからQの向きに電流が流れます(このときCとBは逆向きなので、まちがった道に電流はもれません)。\n答え A ア、B イ、C イ、D ア",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "2-1",
       "big": 2,
       "label": "問1",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "イ",
       "variants": [],
-      "note": "ヒトの卵(卵子)がメダカの卵に比べてとても小さい理由として最もふさわしいものをア~エから選ぶ"
+      "note": null,
+      "explanation": "メダカの卵は、中の養分(卵黄)だけで育つので大きい必要があります。\nヒトの受精卵は子宮の中でたいばんができ、へそのおを通して母親から養分をもらえるので、卵は小さくてよいのです。\n(ア)ヒトの卵は数が少なく、食べられることもありません。(ウ)胎児は成長に栄養をたくさん使います。(エ)ヒトは生まれるまで約38週と長いです。\n答え イ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "2-2",
       "big": 2,
       "label": "問2",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "イ",
       "variants": [],
-      "note": "受精後10週から生まれてくるまでの残りの週数(会話文の空らん①)をア~エ(18/28/38/48)から選ぶ"
+      "note": null,
+      "explanation": "ヒトの赤ちゃんは、受精してから約38週(約266日)で生まれます。\n今は10週なので、あと 38-10=28(週)です。\n答え イ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "2-3",
       "big": 2,
       "label": "問3",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "エ",
       "variants": [],
-      "note": "心臓が手足より早い時期から動き始める理由(下線部②)として最もふさわしいものをア~エから選ぶ"
+      "note": null,
+      "explanation": "からだが育つには、どの部分にも酸素(と養分)が必要です。それを血液にのせて運ぶポンプが心臓です。\nだから心臓は手足より先にできて動き始めます。\n(ア)おなかの中の赤ちゃんは小腸で栄養を取り込んでいません(へそのおからもらう)。(イ)心臓は最も大きい臓器ではありません(最も大きいのはかん臓)。(ウ)からだを支えるのは骨です。\n答え エ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "2-4",
       "big": 2,
       "label": "問4",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "羊水",
       "variants": [],
-      "note": "赤ちゃんが浸かっている液体の名前(会話文の空らん③)を漢字で答える"
+      "note": null,
+      "explanation": "子宮の中で赤ちゃんを包み、外からのしょうげきから守っている液体を羊水といいます。\n赤ちゃんは羊水を飲みこんで呼吸の練習もします。\n漢字で答えるので「羊水」。\n答え 羊水",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "2-5",
       "big": 2,
       "label": "問5",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ウ",
       "variants": [],
-      "note": "赤ちゃんが酸素を取り込む方法(会話文の空らん④)として最もふさわしいものをア~オから選ぶ"
+      "note": null,
+      "explanation": "おなかの中の赤ちゃんは肺で呼吸できません。\n母親の血液からたいばんで酸素を受け取り、へそのおを通して体内に取り込みます。\n(ア)肺は使っていません。(イ)ヒトにえらはありません。(エ)酸素は周りの羊水からではなくお母さんからもらいます。(オ)赤ちゃんも酸素が必要です。\n答え ウ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "2-6",
       "big": 2,
       "label": "問6",
       "unit": "cm3",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "240",
       "variants": [],
-      "note": "1回300cm3・1分間20回の呼吸をするとき、表(吸う空気とはき出した息の酸素割合)を使って1分間に肺から体内に取り込む酸素の体積を求める計算問題"
+      "note": null,
+      "explanation": "吸う空気とはき出した息の酸素の割合の差が、体に取り込まれた分です。\n1回の呼吸で 300×(0.21-0.17)=300×0.04=12(cm3)。\n1分間に20回なので 12×20=240(cm3)。\n答え 240cm3",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "3-1",
       "big": 3,
       "label": "問1",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ア",
       "variants": [],
-      "note": "南極大陸の氷と北極海の氷がそれぞれすべて溶けたときの海面変化の違いについて最もふさわしいものをア~ウから選ぶ"
+      "note": null,
+      "explanation": "北極海の氷は海にういている氷です。ういている氷はとけても、その分の水は元から海の中に入っていたので、海面はほとんど変わりません(コップの氷水がとけてもあふれないのと同じ)。\n南極大陸の氷は陸の上にあるので、とけると水が新しく海に流れこみ、海面が上がります。\n答え ア",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "3-2",
       "big": 3,
       "label": "問2",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ク",
       "variants": [],
-      "note": "現在420ppmの二酸化炭素濃度に対し、80万年前(現在の約2/3)の濃度を百分率で表したものをア~クから選ぶ"
+      "note": null,
+      "explanation": "80万年前の濃度は 420×2/3=280(ppm)。\nppmは百万分率なので、280ppm は 全体の280/1000000 です。\n百分率(%)にするには100をかけて 280÷1000000×100=0.028(%)。\n答え ク",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "3-3",
       "big": 3,
       "label": "問3",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "set",
+      "options": null,
+      "answer": [
+        "ア",
+        "エ"
+      ],
       "variants": [],
-      "note": "ドライアイスと水を使った実験1・実験2の結果を踏まえ、二酸化炭素の性質として正しい文をア~オから全て選ぶ"
+      "note": null,
+      "explanation": "二酸化炭素は色もにおいもない気体で(ア)、石灰水を白くにごらせます(エ)。\n(イ)空気より重い気体です。(ウ)ものが燃えるのを助けるのは酸素です。\n(オ)ドライアイスは25℃の室内では液体にならず、固体から直接気体になります(実験1でも気体になった)。\n答え ア・エ",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "3-4",
       "big": 3,
       "label": "問4",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "set",
+      "options": null,
+      "answer": [
+        "イ",
+        "ク"
+      ],
       "variants": [],
-      "note": "実験1後のメスシリンダー内の水溶液をリトマス紙・BTB溶液で調べた結果として正しいものをア~クから全て選ぶ"
+      "note": null,
+      "explanation": "水上置かんで集めたとき、二酸化炭素の一部はメスシリンダー内の水にとけて炭酸水になります。\n炭酸水は酸性です。\n酸性なので青色リトマス紙が赤色になり、赤色リトマス紙は変化しません(イ)。\nBTB溶液は酸性で黄色になります(ク)。緑は中性、青はアルカリ性です。\n答え イ・ク",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "3-5",
       "big": 3,
       "label": "問5",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "ア",
       "variants": [],
-      "note": "「①ドライアイスが気体になると体積が750倍以上に増加した」「②水が氷になると体積が約8%増加した」という2文の正誤の組み合わせをア~エから選ぶ"
+      "note": null,
+      "explanation": "①:0.8cm3のドライアイスが615mL(=615cm3)の気体になりました。615÷0.8=768.75(倍)で750倍以上なので正しい。\n②:5mLの水が5.4mLの氷になりました。5.4÷5=1.08 なので、0.08=8%増えていて正しい。\n①も②も正しいので、答え ア",
+      "unofficial": true,
+      "ai_confidence": "high"
     }
   ]
 }

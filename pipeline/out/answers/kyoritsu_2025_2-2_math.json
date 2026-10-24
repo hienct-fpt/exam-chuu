@@ -328,11 +328,15 @@
       "parts": null,
       "work_required": false,
       "answer_type": "number",
-      "answer": "3",
-      "confidence": "high",
+      "answer": "4",
+      "confidence": "manual",
       "raw_values": [
         "3@(316,682)"
-      ]
+      ],
+      "variants": [
+        "3"
+      ],
+      "note": "学校の模範解答は か=3・け=5 ですが、全70通りを数えると 1・2・2・2・3・4・4・4・5 = 7680 になる道が2通りあるため か=4・け=6 が正しいと考えられます(どちらも正解にしています)。"
     },
     {
       "id": "6-7",
@@ -373,11 +377,15 @@
       "parts": null,
       "work_required": false,
       "answer_type": "number",
-      "answer": "5",
-      "confidence": "high",
+      "answer": "6",
+      "confidence": "manual",
       "raw_values": [
         "5@(190,733)"
-      ]
+      ],
+      "variants": [
+        "5"
+      ],
+      "note": "学校の模範解答は か=3・け=5 ですが、全70通りを数えると 1・2・2・2・3・4・4・4・5 = 7680 になる道が2通りあるため か=4・け=6 が正しいと考えられます(どちらも正解にしています)。"
     }
   ]
 }

@@ -1,32 +1,563 @@
 {
+  "exam_id": "chuo_2026_2_social",
   "slots": [
-    {"id": "1-1", "big": 1, "label": "問1", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "長崎ちゃんぽんの具材(キャベツ・たまねぎ・にんじん・ねぎ)の都道府県別収穫量順位表(2023年)から「ねぎ」にあてはまるものを①~④の中から選ぶ選択問題。"},
-    {"id": "1-2", "big": 1, "label": "問2", "unit": "", "parts": ["イ", "ロ"], "answer_type": "manual", "answer": null, "variants": [], "note": "イ: 伝統工芸品「有田焼」の産地である県(佐賀県)について述べた文としてふさわしいものを①~④から選ぶ選択問題。 ／ ロ: 熊本県に位置し、世界最大級のカルデラがあることで知られる火山の名前を漢字で答える問題(阿蘇山)。"},
-    {"id": "1-3", "big": 1, "label": "問3", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "九州に関わる出来事(高松塚古墳・元寇・八幡製鉄所・イタイイタイ病)について述べた文のうち正しいものを①~④から選ぶ選択問題。"},
-    {"id": "1-4", "big": 1, "label": "問4", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "邪馬台国の女王(卑弥呼)が使節を送った中国の王朝を①秦②漢③魏④隋から選ぶ選択問題。"},
-    {"id": "1-5", "big": 1, "label": "問5", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "都を追われ大宰府へ左遷された政治家(菅原道真)が詠んだ和歌としてふさわしいものを①~④から選ぶ選択問題。"},
-    {"id": "1-6", "big": 1, "label": "問6", "unit": "", "parts": ["イ", "ロ"], "answer_type": "manual", "answer": null, "variants": [], "note": "イ: 1582年、天正遣欧少年使節の派遣をすすめた、キリスト教布教を目的としたカトリックの組織の名前を5字で答える問題(イエズス会)。 ／ ロ: 2025年5月に第267代ローマ教皇に選ばれた人物の名前(レオ14世)を①~④から選ぶ選択問題(時事問題)。"},
-    {"id": "1-7", "big": 1, "label": "問7", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "江戸時代の出来事(あ:島原・天草一揆、い:レザノフ来航、う:オランダ商館の出島移転、え:朱印船貿易開始)を年代の古い順に並べたものを①~④から選ぶ選択問題。"},
-    {"id": "1-8", "big": 1, "label": "問8", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "鹿児島城の御楼門の石垣に銃弾・砲弾の破片跡を残した、明治時代の反乱(西南戦争)を率いた人物の名前を漢字4字で答える問題(西郷隆盛)。"},
-    {"id": "1-9", "big": 1, "label": "問9", "unit": "", "parts": ["イ", "ロ"], "answer_type": "manual", "answer": null, "variants": [], "note": "イ: 太平洋戦争中の日本について述べた文(あ:グアムの真珠湾攻撃で開戦、い:B-29の空襲で京都の南禅寺・金閣などが焼失)の正誤の組み合わせを①~④から選ぶ選択問題。 ／ ロ: 1945年7~8月に米英ソの首脳が日本の降伏条件などを話し合った、ベルリン郊外の都市名をカタカナ4字で答える問題(ポツダム)。"},
-    {"id": "1-10", "big": 1, "label": "問10", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "日本国憲法第9条の条文の空欄(ア:正義と自由/秩序、イ:威嚇/牽制、ウ:交戦権/自衛権)に入る語の組み合わせを①~④から選ぶ選択問題。"},
-    {"id": "1-11", "big": 1, "label": "問11", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "北海道・愛知県・山口県・長崎県の製造品出荷額等の割合(2022年)の表から「長崎県」にあてはまるものを①~④から選ぶ選択問題。"},
-    {"id": "1-12", "big": 1, "label": "問12", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "2025年8月に横浜で開催された国際会議として正しいものを①TICAD②G7③COP④G20から選ぶ選択問題(時事問題)。"},
-
-    {"id": "2-1", "big": 2, "label": "問1", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "江戸時代のまちのようすを描いた絵について述べた文としてふさわしいものを①~④から選ぶ選択問題(参勤交代の大名行列など)。"},
-    {"id": "2-2", "big": 2, "label": "問2", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "全国各地の「○○富士」という愛称とその山の名前の組み合わせとして正しいものを①~④から選ぶ選択問題(会津富士-磐梯山など)。"},
-    {"id": "2-3", "big": 2, "label": "問3", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "世界地図で黒く塗られた国(アメリカ・ブラジル・ドイツ・インド)のうち、人口が1億人以下の国を①~④から選ぶ選択問題。"},
-    {"id": "2-4", "big": 2, "label": "問4", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "「丙午」にあたる1906年に起きた出来事としてふさわしいものを①夏目漱石『坊っちゃん』②伊藤博文③湯川秀樹④犬養毅の中から選ぶ選択問題。"},
-    {"id": "2-5", "big": 2, "label": "問5", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "室町時代に中国(明)から幕府に与えられた貿易許可証を何というか、漢字2字で答える問題(勘合)。"},
-    {"id": "2-6", "big": 2, "label": "問6", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "江戸時代末期に描かれた、日米修好通商条約で開かれ外国人居留地が設けられた港の絵の場所を①横浜②箱館③神戸④新潟から選ぶ選択問題。"},
-    {"id": "2-7", "big": 2, "label": "問7", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "カツオが「県の魚」に指定され一本釣りで有名な県(あ)と、カツオの水揚げ量が全国1位でブランド化されている県(い)の組み合わせを①~④から選ぶ選択問題(高知県・静岡県)。"},
-    {"id": "2-8", "big": 2, "label": "問8", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "衆議院議員総選挙(小選挙区比例代表並立制)について述べた文として正しいものを①~④から選ぶ選択問題。"},
-    {"id": "2-9", "big": 2, "label": "問9", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "平安時代の出来事として正しいものを①白河天皇の院政②桓武天皇と坂上田村麻呂③藤原道長④空海と延暦寺の中から選ぶ選択問題。"},
-    {"id": "2-10", "big": 2, "label": "問10", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "彗星の記録(639年・684年・989年)をまとめた文章から読み取れることとしてふさわしいものを①~④から選ぶ選択問題。"},
-    {"id": "2-11", "big": 2, "label": "問11", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "石油産出国の利益を守るために設立され、産出量や価格の調整をおこなう組織の略称を①APEC②OECD③OPEC④UNEPから選ぶ選択問題。"},
-    {"id": "2-12", "big": 2, "label": "問12", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "明治政府がおこなった米をめぐる政策として正しいものを①減反政策②配給制③備蓄米放出④地租改正の中から選ぶ選択問題。"},
-    {"id": "2-13", "big": 2, "label": "問13", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "関東大震災の際、偏見にもとづくデマによってどのような悲劇が起きたのかを簡単に説明する記述問題。"},
-    {"id": "2-14", "big": 2, "label": "問14", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "性的指向やジェンダー・アイデンティティについて社会の理解を深めるために制定された法律を①女性活躍推進法②LGBT理解増進法③男女雇用機会均等法④男女共同参画社会基本法から選ぶ選択問題。"},
-    {"id": "2-15", "big": 2, "label": "問15", "unit": "", "parts": null, "answer_type": "manual", "answer": null, "variants": [], "note": "SNSが広がる現代で「情報が事実かどうかを調べること」を指す言葉を①データクリーニング②コンテンツフィルター③ファクトチェック④ディープラーニングから選ぶ選択問題。"}
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "1-1",
+      "big": 1,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "④",
+      "variants": [],
+      "note": null,
+      "explanation": "それぞれの野菜の産地を思い出して、表と照らし合わせます。\n①北海道・千葉・徳島・青森 → にんじん(徳島・青森が入るのが目印)。\n②群馬・愛知・千葉・茨城 → キャベツ(群馬の嬬恋村、愛知の冬キャベツ)。\n③北海道・兵庫(淡路島)・佐賀・長崎 → たまねぎ。\n④茨城・埼玉(深谷ねぎ)・千葉 → ねぎ。関東の近郊農業でつくられる野菜です。\n答え ④",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "1-2",
+      "big": 1,
+      "label": "問2",
+      "unit": "",
+      "parts": [
+        "イ",
+        "ロ"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "①",
+        "阿蘇山|阿蘇"
+      ],
+      "variants": [],
+      "note": null,
+      "explanation": "イ)有田焼は佐賀県の焼き物です。\n佐賀県は北が玄界灘、南が干潟の広がる有明海に面しているので①が正しい。\n②奄美群島・霧島山は鹿児島県、③球磨川は熊本県、④豊後水道・リアス海岸は大分県の説明です。\nロ)熊本県にある、世界最大級のカルデラをもつ火山は阿蘇山です。\n答え イ ① ロ 阿蘇山",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "1-3",
+      "big": 1,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "③",
+      "variants": [],
+      "note": null,
+      "explanation": "③八幡製鉄所(福岡県)は、日清戦争の賠償金の一部をもとに建設され、1901年に操業を始めました。正しい。\n①ワカタケル大王の名が刻まれた鉄剣は埼玉県の稲荷山古墳から出土。高松塚古墳は奈良県で、壁画が有名です。\n②元寇のときの執権は北条時宗。北条泰時は御成敗式目を定めた人です。\n④メチル水銀による病気は水俣病(熊本県)。イタイイタイ病はカドミウムが原因(富山県)です。\n答え ③",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "1-4",
+      "big": 1,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "③",
+      "variants": [],
+      "note": null,
+      "explanation": "邪馬台国の女王卑弥呼は、239年に中国の魏に使いを送り、「親魏倭王」の称号と金印を授けられました(『魏志』倭人伝)。\n漢は奴国の王が金印をもらった王朝、隋は聖徳太子が遣隋使を送った王朝です。\n答え ③",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "1-5",
+      "big": 1,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "②",
+      "variants": [],
+      "note": null,
+      "explanation": "大宰府へ左遷されたのは菅原道真です。\n②「東風吹かば…」は、道真が都を去るときに庭の梅に呼びかけてよんだ歌です。\n①は小野小町、③は藤原道長、④は阿倍仲麻呂の歌です。\n答え ②",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "1-6",
+      "big": 1,
+      "label": "問6",
+      "unit": "",
+      "parts": [
+        "イ",
+        "ロ"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "イエズス会",
+        "④"
+      ],
+      "variants": [],
+      "note": null,
+      "explanation": "イ)1582年の天正遣欧少年使節は、イエズス会の宣教師ヴァリニャーノのすすめで、大友・大村・有馬の大名が送りました。\nイエズス会はザビエルも所属していたカトリックの組織で、ちょうど5字です。\nロ)2025年5月、フランシスコ教皇の死去を受けて、アメリカ出身のレオ14世が第267代ローマ教皇に選ばれました。\n答え イ イエズス会 ロ ④",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
+      "id": "1-7",
+      "big": 1,
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "③",
+      "variants": [],
+      "note": null,
+      "explanation": "年代を確かめます。\n(え)朱印船貿易 → 江戸時代のはじめ(1600年代はじめ、家康のころ)。\n(あ)島原・天草一揆 → 1637年。\n(う)オランダ商館を出島へ移す → 1641年(鎖国の完成)。\n(い)レザノフの長崎来航 → 1804年。\nえ→あ→う→い の順です。\n答え ③",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
+      "id": "1-8",
+      "big": 1,
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "西郷隆盛",
+      "variants": [],
+      "note": null,
+      "explanation": "1877年、鹿児島の士族たちが起こした明治時代最大の反乱は西南戦争です。\nこの反乱を率いたのは西郷隆盛で、鹿児島城(鶴丸城)周辺の城山が最後の戦いの場になりました。\n答え 西郷隆盛",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "9"
+      ],
+      "confidence": "manual",
+      "id": "1-9",
+      "big": 1,
+      "label": "問9",
+      "unit": "",
+      "parts": [
+        "イ",
+        "ロ"
+      ],
+      "part_units": null,
+      "answer_type": "multi",
+      "options": null,
+      "answer": [
+        "④",
+        "ポツダム"
+      ],
+      "variants": [],
+      "note": null,
+      "explanation": "イ)(あ)真珠湾はグアムではなくハワイにあります → 誤り。\n(い)京都は大きな空襲をほとんど受けませんでした。金閣は1950年の放火で焼けたもので、空襲ではありません → 誤り。\nどちらも誤りなので④。\nロ)1945年7〜8月、ベルリン郊外のポツダムで米・英・ソの首脳が会談し、日本に降伏を求めるポツダム宣言が出されました。\n答え イ ④ ロ ポツダム",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "10"
+      ],
+      "confidence": "manual",
+      "id": "1-10",
+      "big": 1,
+      "label": "問10",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "①",
+      "variants": [],
+      "note": null,
+      "explanation": "憲法第9条の条文は「正義と秩序を基調とする国際平和を誠実に希求し、…武力による威嚇又は武力の行使は…永久にこれを放棄する」「国の交戦権は、これを認めない」です。\nア 秩序、イ 威嚇、ウ 交戦権 の組み合わせは①です。\n(自衛権は条文にない言葉、牽制も条文の言葉ではありません。)\n答え ①",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "11"
+      ],
+      "confidence": "manual",
+      "id": "1-11",
+      "big": 1,
+      "label": "問11",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "②",
+      "variants": [],
+      "note": null,
+      "explanation": "各道県の工業の特ちょうを考えます。\n①化学・石油石炭製品が上位 → 周南などの石油化学コンビナートがある山口県。\n②輸送用機械(造船)・電子部品・食料品 → 長崎の造船業が有名な長崎県。\n③食料品が1位 → 北海道。\n④輸送用機械が半分以上 → 自動車工業の愛知県。\n答え ②",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "12"
+      ],
+      "confidence": "manual",
+      "id": "1-12",
+      "big": 1,
+      "label": "問12",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "①",
+      "variants": [],
+      "note": null,
+      "explanation": "2025年8月、横浜で第9回アフリカ開発会議(TICAD9)が開かれました。\nTICADは日本が中心となってアフリカの発展を話し合う国際会議です。\n答え ①",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
+      "id": "2-1",
+      "big": 2,
+      "label": "問1",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "③",
+      "variants": [],
+      "note": null,
+      "explanation": "絵の人びとは、つばの広い黒い帽子をかぶり、日本の着物とはちがう長い服を着て、輿(こし)をかついでいます。\nこれは朝鮮から来た朝鮮通信使の行列で、将軍の代がわりなどのお祝いに江戸を訪れました。\n①大名行列なら武士の服装、②アイヌの人びとは松前藩と交易、④スペインは鎖国で来航禁止なので合いません。\n答え ③",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
+      "id": "2-2",
+      "big": 2,
+      "label": "問2",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "②",
+      "variants": [],
+      "note": null,
+      "explanation": "「会津富士」は福島県の磐梯山の愛称なので②が正しい。\n①「津軽富士」は青森県の岩木山(大山は鳥取県で「伯耆富士」)。\n③「出羽富士」は鳥海山(大雪山は北海道)。\n④「日光富士」は男体山(浅間山は群馬・長野県境)。\n答え ②",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
+      "id": "2-3",
+      "big": 2,
+      "label": "問3",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "③",
+      "variants": [],
+      "note": null,
+      "explanation": "黒い国は①アメリカ(約3.4億人)、②ブラジル(約2.1億人)、③ドイツ(約8400万人)、④インド(約14億人)です。\n1億人以下なのはドイツだけです。\n答え ③",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
+      "id": "2-4",
+      "big": 2,
+      "label": "問4",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "①",
+      "variants": [],
+      "note": null,
+      "explanation": "①夏目漱石の『坊っちゃん』は1906年に発表されました。正しい。\n②伊藤博文が初代内閣総理大臣になったのは1885年。\n③湯川秀樹のノーベル物理学賞は1949年。\n④犬養毅が暗殺された五・一五事件は1932年。\n答え ①",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
+      "id": "2-5",
+      "big": 2,
+      "label": "問5",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "text",
+      "options": null,
+      "answer": "勘合",
+      "variants": [],
+      "note": null,
+      "explanation": "室町時代、足利義満は明と貿易を始めました。\n倭寇(海賊)と区別するため、明が与えた「勘合」という合い札の許可証を使ったので、勘合貿易(日明貿易)とよばれます。\n答え 勘合",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
+      "id": "2-6",
+      "big": 2,
+      "label": "問6",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "①",
+      "variants": [],
+      "note": null,
+      "explanation": "日米修好通商条約(1858年)で開かれ、外国人居留地が設けられ、開港から長く日本最大の貿易港として栄えたのは横浜です。\n1923年は関東大震災の年で、この被害で横浜港は日本一の座を神戸港にゆずりました。\n箱館は日米和親条約で開港、神戸・新潟も開港地ですが日本最大の貿易港ではありません。\n答え ①",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "7"
+      ],
+      "confidence": "manual",
+      "id": "2-7",
+      "big": 2,
+      "label": "問7",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "④",
+      "variants": [],
+      "note": null,
+      "explanation": "(あ)カツオの一本釣りで有名な中土佐町久礼は高知県。カツオのたたきでも知られます。\n(い)「御前崎」は静岡県の地名。静岡県は焼津港などがありカツオの水揚げ量全国1位です。\n高知県・静岡県の組み合わせです。\n答え ④",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "8"
+      ],
+      "confidence": "manual",
+      "id": "2-8",
+      "big": 2,
+      "label": "問8",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "④",
+      "variants": [],
+      "note": null,
+      "explanation": "④最高裁判所の裁判官の国民審査は、衆議院議員総選挙のときにいっしょにおこなわれます。正しい。\n①逆です。小選挙区は候補者名、比例代表は政党名を書きます。\n②小選挙区と比例代表の重複立候補は認められています。\n③死票が多くなるのは、1人しか当選しない小選挙区のほうです。\n答え ④",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "9"
+      ],
+      "confidence": "manual",
+      "id": "2-9",
+      "big": 2,
+      "label": "問9",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "②",
+      "variants": [],
+      "note": null,
+      "explanation": "②桓武天皇は794年に平安京へ都を移し、坂上田村麻呂を征夷大将軍として東北の蝦夷を従わせました。正しい。\n①白河上皇は院政を始めましたが、保元の乱(1156年)で勝ったのは後白河天皇です。\n③中尊寺金色堂を建てたのは奥州藤原氏(藤原清衡)です。\n④比叡山延暦寺で天台宗を広めたのは最澄。空海は高野山金剛峯寺で真言宗です。\n答え ②",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "10"
+      ],
+      "confidence": "manual",
+      "id": "2-10",
+      "big": 2,
+      "label": "問10",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "①",
+      "variants": [],
+      "note": null,
+      "explanation": "文章にそって確かめます。\n①639年の記録で、僧の旻が「現れると飢饉が起こる」と言っています → 正しい。\n②684年の記録の「壬申の日」は日付のことで、壬申の乱(672年)の年ではありません。\n③彗星が現れたので元号を変えたのであり、順番が逆です。\n④989年は平安時代で、彗星が記録されています。\n答え ①",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "11"
+      ],
+      "confidence": "manual",
+      "id": "2-11",
+      "big": 2,
+      "label": "問11",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "③",
+      "variants": [],
+      "note": null,
+      "explanation": "石油産出国が利益を守るため、産出量や価格を調整する組織はOPEC(石油輸出国機構)です。\nAPECはアジア太平洋経済協力、OECDは経済協力開発機構、UNEPは国連環境計画です。\n答え ③",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "12"
+      ],
+      "confidence": "manual",
+      "id": "2-12",
+      "big": 2,
+      "label": "問12",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "④",
+      "variants": [],
+      "note": null,
+      "explanation": "明治政府は1873年に地租改正をおこない、それまでの米で納める年貢に代えて、地価の3%を現金で納めさせました。④が正しい。\n①減反政策は1970年ごろから(昭和)、②米の配給制は太平洋戦争のころ、③備蓄米の放出は令和の米騒動(2025年)のことです。\n答え ④",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "13"
+      ],
+      "confidence": "manual",
+      "id": "2-13",
+      "big": 2,
+      "label": "問13",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "essay",
+      "options": null,
+      "answer": "「朝鮮人が井戸に毒を入れた」「暴動を起こす」などのデマが広がり、自警団などによって多くの朝鮮人や中国人が殺害された。",
+      "variants": [],
+      "note": null,
+      "explanation": "1923年の関東大震災では、混乱の中で朝鮮人についての根拠のないうわさ(デマ)が広がりました。\n満点に必要な要素:\n・朝鮮人(や中国人)についてのデマが流れたこと(例:井戸に毒を入れた・暴動を起こす)\n・そのデマを信じた自警団・軍・警察などによって、多くの朝鮮人(や中国人)が殺害されたこと\n模範解答例 「朝鮮人が井戸に毒を入れた」などのデマが広がり、多くの朝鮮人や中国人が殺された。",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "14"
+      ],
+      "confidence": "manual",
+      "id": "2-14",
+      "big": 2,
+      "label": "問14",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "②",
+      "variants": [],
+      "note": null,
+      "explanation": "「性的指向やジェンダー・アイデンティティ」について理解を深めるために2023年に制定されたのはLGBT理解増進法です。\n①③④はいずれも女性・男女の平等に関する法律です。\n答え ②",
+      "unofficial": true,
+      "ai_confidence": "high"
+    },
+    {
+      "path": [
+        "15"
+      ],
+      "confidence": "manual",
+      "id": "2-15",
+      "big": 2,
+      "label": "問15",
+      "unit": "",
+      "parts": null,
+      "part_units": null,
+      "answer_type": "choice",
+      "options": null,
+      "answer": "③",
+      "variants": [],
+      "note": null,
+      "explanation": "情報が事実かどうかを確かめることを「ファクトチェック」といいます(fact=事実、check=確かめる)。\nデータクリーニングはデータの誤りを整える作業、コンテンツフィルターは有害な情報をさえぎる仕組み、ディープラーニングはAIの学習方法です。\n答え ③",
+      "unofficial": true,
+      "ai_confidence": "high"
+    }
   ]
 }

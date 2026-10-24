@@ -1,191 +1,349 @@
 {
+  "exam_id": "chuo_2026_1_math",
   "slots": [
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "1-1",
       "big": 1,
       "label": "(1)",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "4",
       "variants": [],
-      "note": "分数と小数が混じった四則混合計算(8÷3/2×4/3－4/3×0.7÷0.3)の値を求める"
+      "note": null,
+      "explanation": "かけ算・わり算を先に計算します。\n8÷3/2×4/3 = 8×2/3×4/3 = 64/9\n4/3×0.7÷0.3 = 4/3×7/10×10/3 = 28/9\n64/9－28/9 = 36/9 = 4\n答え 4",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "1-2",
       "big": 1,
       "label": "(2)",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "4",
       "variants": [],
-      "note": "分数・小数の四則混合式の逆算で空欄にあてはまる数を求める"
+      "note": null,
+      "explanation": "逆算で考えます。□をふくむ部分を { } のまとまりとします。\n3 1/3×(0.3－1/5) = 10/3×1/10 = 1/3\n1/3－{ }÷1.2 = 1/84 より { }÷1.2 = 1/3－1/84 = 27/84 = 9/28\n{ } = 9/28×1.2 = 27/70\n5.1－(□＋5/7) = 27/70 より □＋5/7 = 357/70－27/70 = 33/7\n□ = 33/7－5/7 = 28/7 = 4\n答え 4",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "1-3",
       "big": 1,
       "label": "(3)",
       "unit": "人",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "135",
       "variants": [],
-      "note": "男子10%増・女子20%減で今年度入学者数126人になった学校の、昨年度の入学者数の合計(人)を求める"
+      "note": null,
+      "explanation": "今年度の男子を先に求めます。\n今年度の男子 60×1.1 = 66人\n今年度の女子 126－66 = 60人\n昨年度の女子の0.8倍が60人なので、昨年度の女子 60÷0.8 = 75人\n昨年度の合計 60＋75 = 135人\n答え 135人",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "4"
+      ],
+      "confidence": "manual",
       "id": "1-4",
       "big": 1,
       "label": "(4)",
       "unit": "分",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
-      "variants": [],
-      "note": "7時から8時の間で長針と短針のつくる角が180°になる時刻(7時何分か)を求める時計算"
+      "part_units": null,
+      "answer_type": "fraction",
+      "options": null,
+      "answer": "60/11",
+      "variants": [
+        "5 5/11"
+      ],
+      "note": null,
+      "explanation": "時計算です。長針は1分に6度、短針は0.5度進むので、1分に5.5度ずつ差がちぢまります。\n7時ちょうど、短針は長針より 30×7 = 210度 先にあります。\n差が180度になるには 210－180 = 30度 ちぢめばよいので\n30÷5.5 = 60/11 = 5 5/11 分\n答え 7時5 5/11分",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "5"
+      ],
+      "confidence": "manual",
       "id": "1-5",
       "big": 1,
       "label": "(5)",
       "unit": "%",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
-      "variants": [],
-      "note": "食塩水XとYを3:4で混ぜると8.9%、3:5で混ぜると9.5%になることから食塩水Xの濃度(%)を求める"
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "2.5",
+      "variants": [
+        "5/2"
+      ],
+      "note": null,
+      "explanation": "食塩の重さで考えます。Xを3、Yを4（または5）の重さだけ混ぜたとします。\n3:4 のとき 食塩は (3＋4)×8.9 = 62.3\n3:5 のとき 食塩は (3＋5)×9.5 = 76\nちがいはYが1増えた分なので、Yの濃さは 76－62.3 = 13.7%\nXの3にふくまれる食塩 62.3－4×13.7 = 62.3－54.8 = 7.5\nXの濃さ 7.5÷3 = 2.5%\n答え 2.5%",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "6"
+      ],
+      "confidence": "manual",
       "id": "1-6",
       "big": 1,
       "label": "(6)",
       "unit": "度",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "18",
       "variants": [],
-      "note": "中心角108°のおうぎ形を点Oが弧と重なるように折ったときにできる角xの大きさ(度)を求める"
+      "note": null,
+      "explanation": "折り目の左はしをL、右の半径上の点をP、弧の右はしをR、Oが移った点をO'とします。\nO'L = OL（折り返し）で、OL = OO' = 半径なので、三角形OLO'は正三角形。角LOO' = 60度。\nよって角O'OR = 108－60 = 48度。三角形OO'Rは二等辺三角形なので 角OO'R = (180－48)÷2 = 66度。\n折り返しで角LO'P = 角LOP = 108度、角LO'O = 60度 なので 角OO'P = 108－60 = 48度。\nx = 66－48 = 18度\n答え 18度",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "2-1",
       "big": 2,
       "label": "(1)",
       "unit": "cm3",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "452.16",
       "variants": [],
-      "note": "1辺2cmの正方形6個を組み合わせた図形を直線ℓを軸に1回転させてできる立体の体積(cm3)を求める"
+      "note": null,
+      "explanation": "1段ずつ分けて円柱で考えます（正方形の1辺は2cm）。\n上の段：半径4cm、高さ2cmの円柱 4×4×3.14×2 = 32×3.14\n中の段：半径6cm、高さ2cmの円柱 6×6×3.14×2 = 72×3.14\n下の段：半径6cmから半径4cmをくりぬいた筒 (36－16)×3.14×2 = 40×3.14\n合計 (32＋72＋40)×3.14 = 144×3.14 = 452.16\n答え 452.16cm3",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "2-2",
       "big": 2,
       "label": "(2)",
       "unit": "cm2",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "477.28",
       "variants": [],
-      "note": "1辺2cmの正方形6個を組み合わせた図形を直線ℓを軸に1回転させてできる立体の表面積(cm2)を求める"
+      "note": null,
+      "explanation": "上下から見た面と、側面に分けて考えます。\n上から見える面積と下から見える面積はどちらも半径6cmの円 36×3.14 なので、上下合わせて 72×3.14\n側面：上の段の外側 4×2×3.14×2 = 16×3.14\n中の段の外側 6×2×3.14×2 = 24×3.14、下の段の外側 24×3.14、下の段の内側(半径4cm) 16×3.14\n側面の合計 80×3.14\n表面積 (72＋80)×3.14 = 152×3.14 = 477.28\n答え 477.28cm2",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "3-1",
       "big": 3,
       "label": "(1)",
       "unit": "通り",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "120",
       "variants": [],
-      "note": "円をA~Eの5部分に分けた図に、赤・青・黄・緑・ピンクの5色すべてを使い隣り合う部分が異なる色になるよう塗る場合の数(通り)を求める"
+      "note": null,
+      "explanation": "5つの部分に5色すべてを使うので、どの部分も別々の色になり、となりの条件は必ず守られます。\n5色の並べ方 5×4×3×2×1 = 120通り\n答え 120通り",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "3-2",
       "big": 3,
       "label": "(2)",
       "unit": "通り",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "6",
       "variants": [],
-      "note": "円をA~Eの5部分に分けた図に、赤・青・黄の3色で隣り合う部分が異なる色になるよう塗る場合の数(通り)を求める"
+      "note": null,
+      "explanation": "EはA～Dすべてととなり合っています。\nEの色は3通り。A～DはEと別の2色だけでぬります。\nA,B,C,Dはまわりに輪のようにつながっているので、2色を交互にぬるしかなく 2通り。\n3×2 = 6通り\n答え 6通り",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "3-3",
       "big": 3,
       "label": "(3)",
       "unit": "通り",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "72",
       "variants": [],
-      "note": "円をA~Eの5部分に分けた図に、赤・青・黄・緑の4色(使わない色があってもよい)で隣り合う部分が異なる色になるよう塗る場合の数(通り)を求める"
+      "note": null,
+      "explanation": "Eの色は4通り。A～Dは残りの3色でぬります（A-B-C-D-Aが輪になっています）。\nAとCが同じ色のとき：AとCは3通り、BとDはそれぞれ残り2通り → 3×2×2 = 12通り\nAとCがちがう色のとき：A,Cは3×2 = 6通り、BとDは残りの1色だけ → 6通り\nA～Dは 12＋6 = 18通り\n4×18 = 72通り\n答え 72通り",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "4-1",
       "big": 4,
       "label": "(1)",
       "unit": "m",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "400",
       "variants": [],
-      "note": "逆向きに走る新幹線A・Bが重なった部分の長さのグラフ(図1)から、新幹線Aの長さ(m)を求める(新幹線Bの長さ250m、A・Bはどちらも時速270km)"
+      "note": null,
+      "explanation": "すれちがいの問題です。時速270kmは 270000÷3600 = 秒速75m。\n逆向きなので、近づく速さは 75＋75 = 秒速150m。\n重なりが最大250m(Bの長さ)なので、Aのほうが長い。重なりが250mのままの1秒間に進むのは (Aの長さ－250)m。\nAの長さ－250 = 150×1 = 150\nAの長さ = 400m\n答え 400m",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "4-2",
       "big": 4,
       "label": "(2)",
       "unit": "秒",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "4",
       "variants": [],
-      "note": "新幹線Cが新幹線Bを追い越す際の重なり部分の長さのグラフ(図2)にある(あ)にあてはまる時間(秒)を求める"
+      "note": null,
+      "explanation": "追いこしの問題です。重なりの最大が200mなので、Cの長さは200m（Bより短い）。\n重なりが0から200mになるまでの16秒で、CはBより200m多く進みます。\n速さの差 200÷16 = 秒速12.5m\n重なりが200mのままの時間(あ)は、BとCの長さの差50mを差の速さで進む時間なので\n50÷12.5 = 4秒\n答え 4秒",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "4-3",
       "big": 4,
       "label": "(3)",
       "unit": "km/時",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "number",
+      "options": null,
+      "answer": "315",
       "variants": [],
-      "note": "新幹線CがBを追い越す際の重なり部分の長さのグラフ(図2)の情報から、新幹線Cの速さ(時速何km)を求める"
+      "note": null,
+      "explanation": "(2)より、CはBより秒速12.5m速いです。\nBは秒速75mなので、Cは 75＋12.5 = 秒速87.5m\n時速になおすと 87.5×3600 = 315000m = 315km\n答え 時速315km",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "1"
+      ],
+      "confidence": "manual",
       "id": "5-1",
       "big": 5,
       "label": "(1)",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "ratio",
+      "options": null,
+      "answer": "3:1",
       "variants": [],
-      "note": "正方形ABCDにAG=GD、BH=HF=FIとなる点を取った図で、BE:ECを最も簡単な整数の比で求める"
+      "note": null,
+      "explanation": "相似な三角形で考えます。正方形の1辺を6とします。\nBF:FI = 2:1 で、三角形FBCと三角形FIDは相似なので、FC:FD = 2:1、DI = 6÷2 = 3。FC = 4、FD = 2。\nHはBFの真ん中なので、Hは BC から 4÷2 = 2、AB から 6÷2 = 3 の位置。\nAからHへ、たて 6－2 = 4 下がる間に横に3進むので、BCまで(たて6)では横に 3×6/4 = 4.5 進みます。\nBE = 4.5、EC = 6－4.5 = 1.5\nBE:EC = 4.5:1.5 = 3:1\n答え 3:1",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "2"
+      ],
+      "confidence": "manual",
       "id": "5-2",
       "big": 5,
       "label": "(2)",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "ratio",
+      "options": null,
+      "answer": "6:4:5:5",
       "variants": [],
-      "note": "正方形ABCDにAG=GD、BH=HF=FIとなる点を取った図で、AJ:JH:HE:EKを最も簡単な整数の比で求める"
+      "note": null,
+      "explanation": "直線AK上の点を、ABからの横のきょりで比べます（1辺を60とします）。\nHはBFの真ん中なので横30、Eは(1)より横45、Kは横60。\nJはAKとBGの交わる点。AからBへたて60下がるとき、AKは横45進み、BGはBから横30進む（Gは上の真ん中）。\nJの位置：Aから下がった量を□とすると、AK上では横 = □×45/60、BG上では横 = (60－□)×30/60。\nこれが等しいので □×3/4 = (60－□)÷2 → □ = 24、Jの横 = 24×3/4 = 18。\nA0、J18、H30、E45、K60 なので\nAJ:JH:HE:EK = 18:12:15:15 = 6:4:5:5\n答え 6:4:5:5",
+      "unofficial": true,
+      "ai_confidence": "high"
     },
     {
+      "path": [
+        "3"
+      ],
+      "confidence": "manual",
       "id": "5-3",
       "big": 5,
       "label": "(3)",
       "unit": "",
       "parts": null,
-      "answer_type": "manual",
-      "answer": null,
+      "part_units": null,
+      "answer_type": "ratio",
+      "options": null,
+      "answer": "19:60",
       "variants": [],
-      "note": "五角形GJHFDの面積と正方形ABCDの面積の比を最も簡単な整数の比で求める"
+      "note": null,
+      "explanation": "正方形の面積を全体から引いて求めます（1辺を30、面積900とします）。\n座標：B(0,0)、A(0,30)、D(30,30)、G(15,30)、F(30,20)、H(15,10)、J(9,18)。\n五角形GJHFDを、四角形GHFD と 三角形GJH に分けます。\n四角形GHFDは台形：GH = 20、FD = 10（どちらもたての辺）、間の横15 → (20＋10)×15÷2 = 225\n三角形GJH：底辺GH = 20、高さ 15－9 = 6 → 20×6÷2 = 60\n合計 225＋60 = 285\n285:900 = 19:60\n答え 19:60",
+      "unofficial": true,
+      "ai_confidence": "high"
     }
   ]
 }

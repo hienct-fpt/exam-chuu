@@ -26,6 +26,13 @@ export function explainCard(explain, bigs, label = () => '') {
       <img class="qimg" src="/${explain[`${eid}|${big}`]}" loading="lazy" alt="大問${big} 解説"></details>`).join('')}</div>`;
 }
 
+/** 解き方 (worked solution from answerKeys, copied into the result by the grader) as a collapsible block. */
+export function howto(it) {
+  if (!it.explanation) return '';
+  const lines = String(it.explanation).split('\n').map((l) => `<div>${esc(l)}</div>`).join('');
+  return `<details class="howto"><summary>解き方を見る${it.unofficial ? ' <small class="badge" title="公式の解答が見つからないため AI が作成">AI作成・非公式</small>' : ''}</summary>${lines}</details>`;
+}
+
 export async function renderResult({ app }, arg) {
   const [attemptId, qs] = String(arg || '').split('?');
   const uid = new URLSearchParams(qs || '').get('uid'); // set when the parent opens a child's attempt from #/parent
@@ -97,7 +104,7 @@ export async function renderResult({ app }, arg) {
             ${it.pending && !isAdmin ? '<div class="hint warn">採点待ち</div>' : ''}</td>
           <td>${esc(fmt(it.expected))}${it.variants && it.variants.length ? ` <small class="muted">(${it.variants.map(esc).join(', ')})</small>` : ''}${it.note ? `<div class="hint">${esc(it.note)}</div>` : ''}${it.source?.url ? `<div class="hint"><a href="${esc(it.source.url)}" target="_blank" rel="noopener">解説 (${esc(it.source.site || 'source')})</a> <small class="muted">${esc(it.source.school || '')} ${it.source.year || ''}</small></div>` : ''}${explain[`${eidOf(it)}|${it.big}`] ? `<div class="hint"><button class="link" data-open-kx="${esc(`${eidOf(it)}|${it.big}`)}">解説を見る</button></div>` : ''}</td>
           <td class="qcell">${qimg(it.image, 'thumb')}</td>
-        </tr>`).join('')}</table></div>
+        </tr>${it.explanation ? `<tr class="howto-row" data-ok="${it.correct}"><td></td><td colspan="5">${howto(it)}</td></tr>` : ''}`).join('')}</table></div>
       ${explainCard(explain, bigKeys, isPractice ? examLabel : () => '')}`;
     for (const b of app.querySelectorAll('button[data-open-kx]')) {
       b.onclick = () => {

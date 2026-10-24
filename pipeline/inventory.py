@@ -6,6 +6,9 @@ Exam id: {school}_{year}_{session}_{subject}
 Shinagawa 社会・理科 share one 問題 PDF; `page_range` (0-based, inclusive) selects the subject's pages.
 Shinagawa 解答 are scanned images (answers are transcribed into pipeline/overrides/answers/*.json).
   kumiwake_2026_r1_math           kumiwake: 四谷大塚 公開組分けテスト 5年 r1..r6 (第1〜6回)
+  chuo_2026_1_math                chuo: 1 / 2 (第1回 / 第２回)           chuo_past/{year}年度/
+  sakaehigashi_2025_a_math        sakaehigashi: a (A日程)               sakaehigashi_past/{year}年度/
+Every school keeps its source PDFs in {school}_past/ (git-ignored); each entry here is derived from the file names.
 """
 from __future__ import annotations
 
@@ -20,31 +23,45 @@ KYORITSU = ROOT / "kyoritsu_past"
 SHINAGAWA = ROOT / "shinagawa_past"
 
 RE_KYO = re.compile(r"^(?P<session>\d-\d)入試_(?P<subject>[^_]+)_(?P<kind>問題|模範解答|解答用紙)\.pdf$")
+# older years come as `sansu-mondai.pdf` / `sansu-kaito.pdf`: scanned 問題 (2-page spreads, 解答用紙 on the last
+# page) + a text-layer 解答; no session in the name -> KYO_ROMAJI_SESSION, read off the 問題 cover
+RE_KYO_ROMAJI = re.compile(r"^(?P<subject>sansu|kokugo|rika|shakai)-(?P<kind>mondai|kaito)\.pdf$")
+ROMAJI_SUBJECT = {"sansu": "算数", "kokugo": "国語", "rika": "理科", "shakai": "社会"}
+ROMAJI_KIND = {"mondai": "問題", "kaito": "模範解答"}
+KYO_ROMAJI_SESSION = {2023: "2-1"}
 RE_YEAR = re.compile(r"(\d{4})年度")
 SUBJECT_LABEL = {"math": "算数", "japanese": "国語", "science": "理科", "social": "社会"}
+
+
+def _kyo_match(pdf: Path, year: int) -> tuple[str, str, str] | None:
+    """(session, 教科, kind) of a kyoritsu file name, either naming scheme."""
+    if m := RE_KYO.match(pdf.name):
+        return m["session"], m["subject"], m["kind"]
+    if (m := RE_KYO_ROMAJI.match(pdf.name)) and year in KYO_ROMAJI_SESSION:
+        return KYO_ROMAJI_SESSION[year], ROMAJI_SUBJECT[m["subject"]], ROMAJI_KIND[m["kind"]]
+    return None
 
 
 def scan_kyoritsu() -> dict[str, dict]:
     exams: dict[str, dict] = {}
     for pdf in KYORITSU.rglob("*.pdf"):
-        m = RE_KYO.match(pdf.name)
         ym = RE_YEAR.search(pdf.parent.name)
-        if not m or not ym:
+        if not ym or not (m := _kyo_match(pdf, int(ym.group(1)))):
             continue
-        subject = SUBJECT_MAP.get(m["subject"])
+        session, label, kind = m
+        subject = SUBJECT_MAP.get(label)
         if not subject:
             continue
         year = int(ym.group(1))
-        session = m["session"]
         eid = f"kyoritsu_{year}_{session}_{subject}"
         ex = exams.setdefault(eid, {
             "id": eid, "school": "kyoritsu", "school_name": "共立女子中学校",
             "year": year, "session": session, "session_label": f"{session.replace('-', '/')}入試",
-            "subject": subject, "subject_label": m["subject"],
+            "subject": subject, "subject_label": label,
             "time_limit_min": 45 if subject in ("math", "japanese") else 30,
             "files": {},
         })
-        ex["files"][KIND_MAP[m["kind"]]] = str(pdf.relative_to(ROOT)).replace("\\", "/")
+        ex["files"][KIND_MAP[kind]] = str(pdf.relative_to(ROOT)).replace("\\", "/")
     return exams
 
 
@@ -132,6 +149,75 @@ def scan_shinagawa() -> dict[str, dict]:
                 eid = f"shinagawa_{year}_{sess}_{subj}"
                 if eid in exams:
                     exams[eid]["files"]["sheet"] = str(pdf.relative_to(ROOT)).replace("\\", "/")
+    exams.update(_scan_shinagawa_scanned())
+    return {k: v for k, v in exams.items() if "question" in v["files"]}
+
+
+# 2023-25 第1回 came as scans named `品川女子学院_2023年算数問題.pdf` / `..回答.pdf` (one PDF per subject, no
+# 解答用紙); kept apart from the 解答用紙 folders on purpose (no `sheet`). Segments/answers: full override lists.
+RE_SHINA_SCAN = re.compile(r"^品川女子学院_(?P<year>\d{4})年(?P<subject>算数|理科|社会)(?P<kind>問題|回答)\.pdf$")
+
+
+def _scan_shinagawa_scanned() -> dict[str, dict]:
+    exams: dict[str, dict] = {}
+    for pdf in sorted(SHINAGAWA.glob("*年度_入試問題解答/品川女子学院_*.pdf")):
+        if not (m := RE_SHINA_SCAN.match(pdf.name)):
+            continue
+        year, subject = int(m["year"]), SUBJECT_MAP[m["subject"]]
+        eid = f"shinagawa_{year}_r1_{subject}"
+        ex = exams.setdefault(eid, {
+            "id": eid, "school": "shinagawa", "school_name": "品川女子学院中等部",
+            "year": year, "session": "r1", "session_label": "第1回",
+            "subject": subject, "subject_label": m["subject"],
+            "time_limit_min": 45 if subject == "math" else 30,
+            "files": {},
+        })
+        ex["files"]["question" if m["kind"] == "問題" else "answer"] = str(pdf.relative_to(ROOT)).replace("\\", "/")
+    return exams
+
+
+# --------------------------------------------------------------- chuo / sakaehigashi
+
+CHUO = ROOT / "chuo_past"
+RE_CHUO = re.compile(r"^中央大学附属_(?P<year>\d{4})年度_(?P<label>第(?P<round>[1-9１-９])回)_(?P<subject>算数|国語|理科|社会)問題\.pdf$")
+SAKAEHIGASHI = ROOT / "sakaehigashi_past"
+RE_SAKAE = re.compile(r"^栄東中学校_(?P<year>\d{4})年(?P<subject>算数|国語|理科|社会)(?P<kind>問題|回答)\.pdf$")
+
+
+def scan_chuo() -> dict[str, dict]:
+    """中央大学附属: 問題 only (no 解答 PDF) -- keys are in overrides/answers as full slot lists."""
+    exams: dict[str, dict] = {}
+    for pdf in sorted(CHUO.glob("*年度/*.pdf")):
+        if not (m := RE_CHUO.match(pdf.name)):
+            continue
+        year, subject, rnd = int(m["year"]), SUBJECT_MAP[m["subject"]], nfkc(m["round"])
+        eid = f"chuo_{year}_{rnd}_{subject}"
+        exams[eid] = {
+            "id": eid, "school": "chuo", "school_name": "中央大学附属中学校",
+            "year": year, "session": rnd, "session_label": m["label"],
+            "subject": subject, "subject_label": m["subject"],
+            "time_limit_min": 50 if subject in ("math", "japanese") else 30,
+            "files": {"question": str(pdf.relative_to(ROOT)).replace("\\", "/")},
+        }
+    return exams
+
+
+def scan_sakaehigashi() -> dict[str, dict]:
+    """栄東 A日程: scanned 問題 + 回答 (2026: 問題 only). Segments/answers: full override lists."""
+    exams: dict[str, dict] = {}
+    for pdf in sorted(SAKAEHIGASHI.glob("*年度/*.pdf")):
+        if not (m := RE_SAKAE.match(pdf.name)):
+            continue
+        year, subject = int(m["year"]), SUBJECT_MAP[m["subject"]]
+        eid = f"sakaehigashi_{year}_a_{subject}"
+        ex = exams.setdefault(eid, {
+            "id": eid, "school": "sakaehigashi", "school_name": "栄東中学校",
+            "year": year, "session": "a", "session_label": "A日程",
+            "subject": subject, "subject_label": m["subject"],
+            "time_limit_min": 45 if subject in ("math", "japanese") else 30,
+            "files": {},
+        })
+        ex["files"]["question" if m["kind"] == "問題" else "answer"] = str(pdf.relative_to(ROOT)).replace("\\", "/")
     return {k: v for k, v in exams.items() if "question" in v["files"]}
 
 
@@ -179,14 +265,13 @@ def scan_kumiwake() -> dict[str, dict]:
     return {k: v for k, v in exams.items() if "question" in v["files"]}
 
 
-SCANNERS ={"kyoritsu": scan_kyoritsu, "shinagawa": scan_shinagawa, "kumiwake": scan_kumiwake}
+SCANNERS = {"kyoritsu": scan_kyoritsu, "shinagawa": scan_shinagawa, "kumiwake": scan_kumiwake,
+            "chuo": scan_chuo, "sakaehigashi": scan_sakaehigashi}
 
 
 def main(subjects: tuple[str, ...] | None = None, schools: tuple[str, ...] = tuple(SCANNERS)) -> dict:
-    # hand-maintained entries survive a re-scan: schools without a scanner (chuo, sakaehigashi) and anything
-    # imported from pipeline/in/ (shinagawa 2023-25)
-    exams = {k: v for k, v in (load_json(OUT / "exams.json", {}) or {}).items()
-             if v.get("school") not in schools or v.get("files", {}).get("question", "").startswith("pipeline/in/")}
+    # entries of schools not re-scanned this run survive; the scanned schools are rebuilt from their folders
+    exams = {k: v for k, v in (load_json(OUT / "exams.json", {}) or {}).items() if v.get("school") not in schools}
     for school in schools:
         exams.update({k: v for k, v in SCANNERS[school]().items() if not subjects or v["subject"] in subjects})
     ordered = dict(sorted(exams.items()))

@@ -1,6 +1,7 @@
 import { loadExam, examTitle, getAnswerKey, listChildren, listStudentAttempts } from '../api.js';
 import { qimg } from '../qimg.js';
 import { groupAttempts, duration } from './parent.js';
+import { howto } from './result.js';
 
 // 問題の確認 (保護者 only, from 試験一覧): #/preview/{examId} — every question with its answer (answerKeys, readable by the
 // admin claim only) and the 解説 crops, plus how the child did on this exam. Read-only: no attempt is created.
@@ -47,7 +48,8 @@ export async function renderPreview({ app }, examId) {
       for (const st of it.stem_images || []) if (!shown.has(st)) { html += qimg(st, 'qimg stem'); shown.add(st); }
       if (!shown.has(it.image)) { html += qimg(it.image); shown.add(it.image); }
       html += `<div class="answer-key"><span class="lbl">${esc(it.label)}</span> <b>${esc(answerText(keys[slotId(it.id)], it))}</b>
-        ${it.grade ? `<small class="muted">小${it.grade}</small>` : ''} ${it.topic ? `<small class="muted">${esc(it.topic)}</small>` : ''}</div>`;
+        ${it.grade ? `<small class="muted">小${it.grade}</small>` : ''} ${it.topic ? `<small class="muted">${esc(it.topic)}</small>` : ''}
+        ${howto(keys[slotId(it.id)] || {})}</div>`;
     }
     const kx = b.explain_image ? `<details class="kaisetsu"><summary>大問${b.no} の解説</summary>${qimg(b.explain_image)}</details>` : '';
     return `<div class="card big" id="big-${b.no}"><div class="big-head"><span class="big-no">${b.no}</span><span class="muted">${items.length} 問</span></div>${html}${kx}</div>`;

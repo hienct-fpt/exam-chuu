@@ -10,7 +10,7 @@ functions/venv/
 kyoritsu_past/
 kumiwake_past/
 node_modules/
-pipeline/in/
+sakaehigashi_past/
 pipeline/out/*
 !pipeline/out/exams.json
 !pipeline/out/segments/
@@ -25,3 +25,4 @@ extensions/*.env.*
 # Claude Code: per-user settings and hook logs
 .claude/settings.local.json
 .claude/logs/
+.playwright-mcp/
