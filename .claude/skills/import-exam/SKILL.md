@@ -20,7 +20,8 @@ python -c "import fitz,glob; [print(f, len(d:=fitz.open(f)), d[0].rect, d[0].rot
 
 | 項目 | 見るところ | 影響 |
 |---|---|---|
-| 学校・年度・回(2/1 か 2/2、第1回…) | 問題の表紙 | exam id `{school}_{year}_{session}_{subject}` |
+| 学校・年度・回(2/1 か 2/2、第1回…) | **全ファイルの**表紙(縮小一覧で並べて見る) | exam id `{school}_{year}_{session}_{subject}`。ファイル名を信用しない: 「栄東中学校_2026年国語問題.pdf」の中身は女子学院 2026 国語だった → 別フォルダ(`joshigakuin_past/`)へ移して取り込まない |
+| 試験時間 | 表紙の(○分) | scanner の `time_limit_min`。「社会・理科合わせて50分」= 各 25 分(栄東) |
 | 教科のそろい | ファイル一覧 | 欠けた教科(例: 2023 共立は国語なし)はユーザーに伝える |
 | テキスト層 | `get_text()` が空 = スキャン | 空なら自動切り出し不可 → § 3B |
 | 判型 | `rect` / `rotation` | 横長 1032×728 = 見開き 2 ページ(左右に分けて切る) |
@@ -62,6 +63,14 @@ python -c "import fitz,glob; [print(f, len(d:=fitz.open(f)), d[0].rect, d[0].rot
 4. 座標は手で JSON を打たず、スクラッチパッドの生成スクリプト(region ヘルパー)で書き出すと直しやすい。
 5. render 後、`pipeline/out/q/{exam}/*.png` を**全部目視**(行の切れ・前後の問題の混入・図の欠け)。直して `segment`+`render` を再実行。
 
+### 3C. 国語(縦書き)
+問題ごとには切らず、**大問(漢字・語句・各読解文)ごとのページ画像**にする。スキャンの国語は `page_regions` で書く:
+`{"no": 3, "key": "3", "label": "三", "rank": 0, "regions": [], "page_regions": [{"page": 3, "x0": 25, "x1": 492, "y0": 30, "y1": 715}, …], "stem": null, "subs": []}`
+→ 1 ページ 1 画像(`q3-p1.png`…)、その大問の slot は全部そのページ群を表示。`regions` に全ページを並べると 1 枚に縦連結され
+1 枚 5MB 超になる(中央 2026 国語がその形 — 過去の結果のサムネが切れるので未変更)。白紙ページ・解答用紙(最終ページ)は入れない。
+slot は解答用紙の並び: 漢字・語句は `text` / `multi`、記号は `choice` / `set`、字数指定の記述は `essay`(模範解答を `answer` に)。
+例: 栄東 2025 国語 = 一 漢字(p1)・二 語句(p2)・三 論説(p3–12)・四 物語(p13–21)、35 slot(記述 4)。
+
 ## 4. 解答キー(slots)
 
 - **解答用紙 PDF + テキスト層の模範解答** → 自動(`answer_key.py` 算数 / `answer_key_generic.py` 理社国)。`needs review` の slot を `overrides/answers/{exam}.json` の部分パッチ `{"slots": {"4-3": {...}}}` で直す。
@@ -77,7 +86,7 @@ slot の id は `大問-小問[-枝]`、セグメントの key の並びと一�
 | 語句 | `text` + `variants`(表記ゆれ・「〜県」付き等)|
 | 欄が複数(ことば+記号、A/B/C、時間+分) | `multi`、`parts` = 欄の見出し、`answer` = 同順のリスト、`"赤血球\|ヘモグロビン"` = 別解 |
 | 前後に固定文字のある欄(`7時□分`、`憲法の□`、`西暦□年□月□日`) | `multi`、`parts: ["7時__分"]`、`part_units: ["分"]` |
-| 記述 / 作図・グラフ | `essay`(模範解答を `answer` に)/ `manual`(`note` に模範の説明)→ 保護者が ○/× |
+| 記述 / 作図・グラフ | `essay`(模範解答を `answer` に)/ `manual`(`note` に模範の説明)→ 保護者が ○/×。**essay の `answer` を空にしない**(build が `NO ANSWER` を出す)— 解答スキャンに模範解答があれば必ず写す |
 | 「計算式も書く」欄 | `"work_required": true` |
 
 配点が公表されていなければ `points` は省略(1 点扱い)。
@@ -169,6 +178,8 @@ python -m pytest tests -q             # 全解答キーの自己採点(キー通
 python scripts/sync_assets.py
 ```
 - `pipeline/out/bank/{exam}.json` で items 数・`manual_count`・画像パス、`pipeline/out/preview/{exam}.html` で切り出しを確認。
+- build の出力に `NO ANSWER: [...]` が出たら、その slot の模範解答(記述)を解答スキャンから写して直す。
+- `exams.json` の `time_limit_min` が表紙の試験時間と合っているか見る。
 - 画面で確認するなら `/start`(mock サーバー + Vite)→ 新しい試験を開いて問題画像と解答欄を見る → `/stop`。
 - README の試験数・学校ごとの説明(§ 6)を更新。新しい学校ならホームの学校フィルタ(`web/`)も。
 
